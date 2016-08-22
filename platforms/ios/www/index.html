@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IMS</title>
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            document.addEventListener("deviceready", onDeviceReady, false);
+            function consoleLog(){
+                console.log("console.log works well");
+            }
+        function consoleError(){
+            console.error("console.error works well");
+        }
+        function consoleException(){
+            console.exception("console.exception works well");
+        }
+        function consoleWarn(){
+            console.warn("console.warn works well");
+        }
+        function consoleInfo(){
+            console.info("console.info works well");
+        }
+        function consoleDebug(){
+            console.debug("console.debug works well");
+        }
+        function consoleAssert(){
+            console.assert("console.assert works well");
+        }
+        function consoleDir(){
+            console.dir("console.dir works well");
+        }
+        function consoleDirxml(){
+            console.dirxml("console.dirxml works well");
+        }
+        function consoleTime(){
+            console.time("console.time works well");
+        }
+        function consoleTimeEnd(){
+            console.timeEnd("console.timeEnd works well");
+        }
+        function consoleTable(){
+            console.table("console.table works well");
+        }
+        </script>
+        <style type="text/css">
+            button {
+                width: 200px;height:26px;font-size: 20px;padding: 1px;margin-left: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div ><br/><br/>
+            <br/><button onclick="consoleLog()">consoleLog</button><br/>
+            <br/><button onclick="consoleError()">consoleError</button><br/>
+            <br/><button onclick="consoleException()">consoleException</button><br/>
+            <br/><button onclick="consoleWarn()">consoleWarn</button><br/>
+            <br/><button onclick="consoleInfo()">consoleInfo</button><br/>
+            <br/> <button onclick="consoleDebug()">consoleDebug</button><br/>
+            <br/><button onclick="consoleAssert()">consoleAssert</button><br/>
+            <br/> <button onclick="consoleDir()">consoleDir</button><br/>
+            <br/> <button onclick="consoleDirxml()">consoleDirxml</button><br/>
+            <br/><button onclick="consoleTime()">consoleTime</button><br/>
+            <br/><button onclick="consoleTimeEnd()">consoleTimeEnd</button><br/>
+            <br/><button onclick="consoleTable()">consoleTable</button><br/>
+        </div>
+        </div>
+    </body>
+</html>
