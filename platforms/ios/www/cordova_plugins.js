@@ -17,10 +17,10 @@ module.exports = [
                                ]
                   },
                   {
-                  "id": "cordova-plugin-autoUpdate.autoUpdate",
-                  "file": "plugins/cordova-plugin-autoUpdate/www/autoUpdate.js",
+                  "id": "cordova-plugin-statusbar-master.statusbar",
+                  "file": "plugins/cordova-plugin-statusbar-master/www/statusbar.js",
                   "clobbers": [
-                               "checkUpdate"
+                               "Statusbar"
                                ]
                   }
 ];

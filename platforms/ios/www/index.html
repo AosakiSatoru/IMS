@@ -1,68 +1,38 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>IMS</title>
-        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-        <script type="text/javascript" charset="utf-8">
-            document.addEventListener("deviceready", onDeviceReady, false);
-            function consoleLog(){
-                console.log("console.log works well");
-            }
-        function consoleError(){
-            console.error("console.error works well");
-        }
-        function consoleException(){
-            console.exception("console.exception works well");
-        }
-        function consoleWarn(){
-            console.warn("console.warn works well");
-        }
-        function consoleInfo(){
-            console.info("console.info works well");
-        }
-        function consoleDebug(){
-            console.debug("console.debug works well");
-        }
-        function consoleAssert(){
-            console.assert("console.assert works well");
-        }
-        function consoleDir(){
-            console.dir("console.dir works well");
-        }
-        function consoleDirxml(){
-            console.dirxml("console.dirxml works well");
-        }
-        function consoleTime(){
-            console.time("console.time works well");
-        }
-        function consoleTimeEnd(){
-            console.timeEnd("console.timeEnd works well");
-        }
-        function consoleTable(){
-            console.table("console.table works well");
-        }
-        </script>
-        <style type="text/css">
-            button {
-                width: 200px;height:26px;font-size: 20px;padding: 1px;margin-left: 100px;
-            }
-        </style>
+        <meta charset="utf-8" />
+        <title>IMSLogin</title>
+        
+        <link href="styles/kendo.mobile.all.min.css" rel="stylesheet" />
+        <script src="js/jquery.min.js"></script>
+        <script src="js/kendo.all.min.js"></script>
     </head>
     <body>
-        <div ><br/><br/>
-            <br/><button onclick="consoleLog()">consoleLog</button><br/>
-            <br/><button onclick="consoleError()">consoleError</button><br/>
-            <br/><button onclick="consoleException()">consoleException</button><br/>
-            <br/><button onclick="consoleWarn()">consoleWarn</button><br/>
-            <br/><button onclick="consoleInfo()">consoleInfo</button><br/>
-            <br/> <button onclick="consoleDebug()">consoleDebug</button><br/>
-            <br/><button onclick="consoleAssert()">consoleAssert</button><br/>
-            <br/> <button onclick="consoleDir()">consoleDir</button><br/>
-            <br/> <button onclick="consoleDirxml()">consoleDirxml</button><br/>
-            <br/><button onclick="consoleTime()">consoleTime</button><br/>
-            <br/><button onclick="consoleTimeEnd()">consoleTimeEnd</button><br/>
-            <br/><button onclick="consoleTable()">consoleTable</button><br/>
+        <div data-role="view">
+            <img src="resources/@3x/CC_Background_3x.png" width="100%" border="0" style="position: absolute;"/>
+            <div style="width: 100%;height: 100%;text-align: center;padding-top: 25%;">
+                <img src="resources/@3x/logo@3x.png" width="35%" border="0" />
+            </div>
+            <div style="margin-top: 20%;">
+                <p style="border-bottom: 1px solid #EEEEEE;padding-bottom: 1em;">
+                <img src="resources/@3x/账号icon@3x.png" style="width: 1.5em;height: 1.5em;float: left;"/>
+                <input type="text" placeholder="请输入账号" style="font-size: 1.1em;width: 90%;padding-left: 0.4em;margin: 0;border: none;"/>
+                </p>
+            </div>
+            <div>
+                <p style="border-bottom: 1px solid #EEEEEE;padding-bottom: 1em;">
+                <img src="resources/@3x/密码icon@3x.png" style="width: 1.5em;height: 1.5em;float: left;"/>
+                <input type="password" placeholder="请输入密码" style="font-size: 1.1em;width: 90%;padding-left: 0.4em;margin: 0;border: none;"/>
+                </p>
+            </div>
+            <div style="margin-top: 25%;text-align: center;">
+                <button style="width: 95%;height: 2.3em;border: none;font-size: 1.2em;padding: 0em;background-color: #A62A40;color: #FFFFFF;">登录</button>
+            </div>
         </div>
-        </div>
+        
+        <script>
+            var app = new kendo.mobile.Application();
+            </script>
     </body>
 </html>

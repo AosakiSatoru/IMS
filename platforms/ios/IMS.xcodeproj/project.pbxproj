@@ -13,6 +13,7 @@
 		301BF552109A68D80062928A /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; };
 		302D95F114D2391D003F00A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302D95EF14D2391D003F00A1 /* MainViewController.m */; };
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
+		6026A4E01D6C031D00FDDB25 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6026A4DF1D6C031D00FDDB25 /* CDVStatusBar.m */; };
 		F7ECCADD2F6E4B4F92154AC8 /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C35DAE7E044847BBB145D0D2 /* CDVLogger.m */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,8 @@
 		3047A5101AB8059700498E2A /* build-release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "build-release.xcconfig"; path = "cordova/build-release.xcconfig"; sourceTree = SOURCE_ROOT; };
 		3047A5111AB8059700498E2A /* build.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = build.xcconfig; path = cordova/build.xcconfig; sourceTree = SOURCE_ROOT; };
 		32CA4F630368D1EE00C91783 /* IMS-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMS-Prefix.pch"; sourceTree = "<group>"; };
+		6026A4DE1D6C031D00FDDB25 /* CDVStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVStatusBar.h; sourceTree = "<group>"; };
+		6026A4DF1D6C031D00FDDB25 /* CDVStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVStatusBar.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* IMS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "IMS-Info.plist"; path = "IMS/IMS-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = SOURCE_ROOT; };
 		C2262FF0AAFB4520B8C92730 /* CDVLogger.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVLogger.h; path = "cordova-plugin-console/CDVLogger.h"; sourceTree = "<group>"; };
 		C35DAE7E044847BBB145D0D2 /* CDVLogger.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVLogger.m; path = "cordova-plugin-console/CDVLogger.m"; sourceTree = "<group>"; };
@@ -153,6 +156,8 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				6026A4DE1D6C031D00FDDB25 /* CDVStatusBar.h */,
+				6026A4DF1D6C031D00FDDB25 /* CDVStatusBar.m */,
 				C2262FF0AAFB4520B8C92730 /* CDVLogger.h */,
 				C35DAE7E044847BBB145D0D2 /* CDVLogger.m */,
 			);
@@ -268,6 +273,7 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
+				6026A4E01D6C031D00FDDB25 /* CDVStatusBar.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				F7ECCADD2F6E4B4F92154AC8 /* CDVLogger.m in Sources */,
 			);
