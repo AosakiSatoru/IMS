@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="../../styles/kendo.common.min.css"/>
+    <link rel="stylesheet" href="../../styles/kendo.default.min.css"/>
+    <link rel="stylesheet" href="../../styles/kendo.mobile.all.min.css"/>
+
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/kendo.all.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+</head>
+<body>
+<div data-role="view" id="navbar-styles" data-title="产量输入" data-use-native-scrolling="true">
+    <header data-role="header">
+        <div data-role="navbar" class="km-light">
+            <a id="back-button" href="#/" class="nav-button" data-align="left" data-role="backbutton">Back</a>
+            <span data-role="view-title"></span>
+
+            <a data-align="right" data-icon="source-code" data-click="goToSourceCode" data-role="button"
+               title="Show this demo source code"></a>
+        </div>
+    </header>
+    <ul data-role="buttongroup" data-index="0" data-select="changeNavBarStyle" class="km-primary">
+        <li>
+            预井
+        </li>
+        <li>
+            梳棉
+        </li>
+        <li>
+            粗纱
+        </li>
+    </ul>
+    <div data-role="view2">
+        <ul data-role="listview" data-type="group" data-source="nameSource" data-template="nameTemplate"
+            data-fixed-headers="true">
+        </ul>
+    </div>
+    <div data-role="footer">
+        <button id="inputButton" type="submit"
+                style="width: 100%;height: 2.5em;border: none;font-size: 1.2em;padding: 0em;background-color: #A62A40;color: #FFFFFF;text-align: center;margin-bottom:0px">
+            确定
+        </button>
+    </div>
+</div>
+
+<script>
+    nameSource = kendo.data.DataSource.create({
+        data: [
+            {
+                firstName: "Ann",
+                lastName: "Devon",
+                firstLetter: "A",
+                lastLetter: "D",
+                photo: '../content/mobile/overview/ann.jpg'
+            },
+            {
+                firstName: "Ann",
+                lastName: "Devon",
+                firstLetter: "A",
+                lastLetter: "D",
+                photo: '../content/mobile/overview/ann.jpg'
+            },
+            {
+                firstName: "Ann",
+                lastName: "Devon",
+                firstLetter: "A",
+                lastLetter: "D",
+                photo: '../content/mobile/overview/ann.jpg'
+            },
+            {
+                firstName: "Ann",
+                lastName: "Devon",
+                firstLetter: "A",
+                lastLetter: "D",
+                photo: '../content/mobile/overview/ann.jpg'
+            },
+            {
+                firstName: "Ann",
+                lastName: "Devon",
+                firstLetter: "A",
+                lastLetter: "D",
+                photo: '../content/mobile/overview/ann.jpg'
+            },
+            {
+                firstName: "Ann",
+                lastName: "Devon",
+                firstLetter: "A",
+                lastLetter: "D",
+                photo: '../content/mobile/overview/ann.jpg'
+            },
+            {
+                firstName: "Ann",
+                lastName: "Devon",
+                firstLetter: "A",
+                lastLetter: "D",
+                photo: '../content/mobile/overview/ann.jpg'
+            },
+            {
+                firstName: "Ann",
+                lastName: "Devon",
+                firstLetter: "A",
+                lastLetter: "D",
+                photo: '../content/mobile/overview/ann.jpg'
+            },
+            {
+                firstName: "Ann",
+                lastName: "Devon",
+                firstLetter: "A",
+                lastLetter: "D",
+                photo: '../content/mobile/overview/ann.jpg'
+            },
+        ],
+        group: "firstLetter"
+    });
+
+    function regroup() {
+        nameSource.group(this.selectedIndex ? "lastLetter" : "firstLetter");
+    }
+</script>
+<script id="nameTemplate" type="text/x-kendo-template">
+    <img src="#:photo#" class="km-thumbnail"/>
+    <h3>#:firstName# #:lastName#</h3>
+</script>
+
+<script>
+    function changeNavBarStyle(e) {
+        var navbar = this.view().header.find(".km-navbar");
+
+        if (e.index == 0) {
+            // navbar.removeClass("km-dark km-accent").addClass("km-light");
+        } else if (e.index == 1) {
+            //navbar.removeClass("km-light km-accent").addClass("km-dark");
+        } else if (e.index == 2) {
+            // navbar.removeClass("km-light km-dark").addClass("km-accent");
+
+        }
+    }
+
+    var app = new kendo.mobile.Application(document.body, {skin: "nova"});
+</script>
+</body>
+</html>

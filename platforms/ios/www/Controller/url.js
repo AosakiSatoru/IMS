@@ -1,1 +1,1 @@
-var IMSUrl = "http://loaclhost:8080/";
+var IMSUrl = "http://10.0.0.254:8080/";
