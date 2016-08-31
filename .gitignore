@@ -1,0 +1,14 @@
+
+.idea/modules.xml
+
+.idea/vcs.xml
+
+.idea/workspace.xml
+
+*.xcscheme
+
+platforms/ios/CordovaLib/CordovaLib.xcodeproj/xcuserdata/mac.xcuserdatad/xcschemes/xcschememanagement.plist
+
+*.xcuserstate
+
+platforms/ios/IMS.xcodeproj/xcuserdata/mac.xcuserdatad/xcschemes/xcschememanagement.plist
