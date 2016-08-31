@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8" />
+        <title>副料打包</title>
+        
+        <link href="../styles/kendo.mobile.all.min.css" rel="stylesheet" />
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/kendo.all.min.js"></script>
+    </head>
+    
+    <body>
+        <div data-role="view" data-title="副料打包" id="IMSPackingInput_first">
+            <header data-role="header">
+                <span data-role="navbar" style="width: 10%;float: left;">
+                    <div id="bindingMachine_leftNavButton" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;">
+                        <a href="../View/home.html">
+                            <img  src="../resources/@3x/返回@3x.png" style="width: 1.25em;vertical-align: middle;"/>
+                        </a>
+                    </div>
+                </span>
+                <span data-role="navbar" style="width: 80%;float: left;">
+                    <div id="bindingMachine_title" data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
+                </span>
+                <span data-role="navbar" style="width: 10%;float:left;">
+                    <div id="bindingMachine_rightNavButton" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;">
+                        <br>
+                    </div>
+                </span>
+            </header>
+            
+            <div data-role="content" style="background-color: #FFFFFF;">
+                <span><a data-role = "button" style="width: 30%;background-color: #A62A40;color: #FFFFFF;border-color: #A62A40;margin-left: 2%;">回 条</a></span>
+                <span><a data-role = "button" style="width: 30%;background-color: #F7F7F7;color: #333333;border-color: #F7F7F7;margin-left: 2%;">粗纱头</a></span>
+                <span><a data-role = "button" style="width: 30%;background-color: #F7F7F7;color: #333333;border-color: #F7F7F7;margin-left: 2%;">白 花</a></span>
+            </div>
+            
+            <footer data-role="footer">
+            </footer>
+        </div>
+        
+        <script>
+            var app = new kendo.mobile.Application();
+            </script>
+    </body>
+    
+</html>
