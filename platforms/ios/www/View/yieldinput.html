@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link href="../styles/kendo.mobile.all.min.css" rel="stylesheet" />
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/kendo.all.min.js"></script>
+
+    <meta http-equiv="Content-Type" content="text/html;" charset="utf-8" />
+</head>
+
+<body>
+<div data-role="view" id="navbar-styles" data-title="产量输入" data-use-native-scrolling="true">
+    <header data-role="header">
+                <span data-role="navbar" style="width: 10%;float: left;">
+                    <div id="bindingMachine_leftNavButton" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;">
+                        <a href="../View/home.html">
+                            <img  src="../resources/@3x/返回@3x.png" style="width: 1.25em;vertical-align: middle;"/>
+                        </a>
+                    </div>
+                </span>
+        <span data-role="navbar" style="width: 80%;float: left;">
+                    <div id="bindingMachine_title" data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
+                </span>
+        <span data-role="navbar" style="width: 10%;float:left;">
+                    <div id="bindingMachine_rightNavButton" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;">
+                        <br>
+                    </div>
+                </span>
+    </header>
+    <ul data-role="buttongroup" data-index="0" data-select="changeNavBarStyle" class="km-primary">
+        <li>
+            预并
+        </li>
+        <li>
+            梳棉
+        </li>
+        <li>
+            粗纱
+        </li>
+    </ul>
+    <div data-role="view2">
+        <ul data-role="listview" data-type="group" data-source="nameSource" data-template="nameTemplate" data-fixed-headers="true">
+        </ul>
+    </div>
+    <div data-role="footer">
+        <button id="inputButton" type="submit" style="width: 100%;height: 2.5em;border: none;font-size: 1.2em;padding: 0em;background-color: #A62A40;color: #FFFFFF;text-align: center;margin-bottom:0px">
+            确认
+        </button>
+    </div>
+</div>
+
+<script>
+    nameSource = kendo.data.DataSource.create({
+        data: [{
+            firstName: "Ann",
+            lastName: "Devon",
+            firstLetter: "A",
+            lastLetter: "D",
+            photo: '../content/mobile/overview/ann.jpg'
+        }, {
+            firstName: "Ann",
+            lastName: "Devon",
+            firstLetter: "A",
+            lastLetter: "D",
+            photo: '../content/mobile/overview/ann.jpg'
+        }, {
+            firstName: "Ann",
+            lastName: "Devon",
+            firstLetter: "A",
+            lastLetter: "D",
+            photo: '../content/mobile/overview/ann.jpg'
+        }, {
+            firstName: "Ann",
+            lastName: "Devon",
+            firstLetter: "A",
+            lastLetter: "D",
+            photo: '../content/mobile/overview/ann.jpg'
+        }, {
+            firstName: "Ann",
+            lastName: "Devon",
+            firstLetter: "A",
+            lastLetter: "D",
+            photo: '../content/mobile/overview/ann.jpg'
+        }, {
+            firstName: "Ann",
+            lastName: "Devon",
+            firstLetter: "A",
+            lastLetter: "D",
+            photo: '../content/mobile/overview/ann.jpg'
+        }, {
+            firstName: "Ann",
+            lastName: "Devon",
+            firstLetter: "A",
+            lastLetter: "D",
+            photo: '../content/mobile/overview/ann.jpg'
+        }, {
+            firstName: "Ann",
+            lastName: "Devon",
+            firstLetter: "A",
+            lastLetter: "D",
+            photo: '../content/mobile/overview/ann.jpg'
+        }, {
+            firstName: "Ann",
+            lastName: "Devon",
+            firstLetter: "A",
+            lastLetter: "D",
+            photo: '../content/mobile/overview/ann.jpg'
+        } ],
+        group: "firstLetter"
+    });
+
+    function regroup() {
+        nameSource.group(this.selectedIndex ? "lastLetter" : "firstLetter");
+    }
+</script>
+<script id="nameTemplate" type="text/x-kendo-template">
+    <img src="#:photo#" class="km-thumbnail" />
+    <h3>#:firstName# #:lastName#</h3>
+</script>
+
+<script>
+    function changeNavBarStyle(e) {
+        var navbar = this.view().header.find(".km-navbar");
+
+        if(e.index == 0) {
+
+        } else if(e.index == 1) {
+
+        } else if(e.index == 2) {
+
+
+        }
+    }
+
+    var app = new kendo.mobile.Application(document.body, {skin: "nova"});
+
+</script>
+</body>
+
+</html>

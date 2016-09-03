@@ -73,7 +73,7 @@
             </div>
             <ul data-role="listview" data-style="inset">
                 <li style="margin-top: 3em;background-color: rgba(0,0,0,0.1);position: absolute;width: 100%;top: 30%;">
-                    <a data-role="detailbutton" href="bindingMachine.html">
+                    <a data-role="detailbutton"  id="bindingMachine">
                         <p>
                         <img src="../resources/@3x/绑定几台icon@3x.png" style="width: 1.2em;vertical-align: middle;"/>
                         <span style="color: #FFFFFF; height: 60px;vertical-align: middle;">绑定机台</span>
@@ -90,12 +90,15 @@
         </div>
         <script>
             var app = new kendo.mobile.Application();
-            
+
             $("#yieldinput").click(function () {
-                                   // kendo.mobile.application.navigate("View/yieldInput/yieldInput.html");
-                                   window.location.href = "yieldInput/yieldInput.html";
-                                   });
-                                   
+                // kendo.mobile.application.navigate("View/yieldInput/yieldInput.html");
+                window.location.href = "yieldInput.html";
+            });
+            $("#bindingMachine").click(function () {
+                // kendo.mobile.application.navigate("View/yieldInput/yieldInput.html");
+                window.location.href = "bindingMachine.html";
+            });
                                    $("#packingInput").click(function () {
                                                             window.location.href = "packingInput.html";
                                                             });

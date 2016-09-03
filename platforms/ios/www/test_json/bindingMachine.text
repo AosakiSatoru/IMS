@@ -1,0 +1,36 @@
+
+{
+  "outstatus": "0",
+  "outputstr": {
+    "flowcoderows": [
+      {
+        "devices": [
+          {
+            "devcode": "c70-1",
+            "devcodename": "梳棉一号机"
+          },
+          {
+            "devcode": "c70-2",
+            "devcodename": "梳棉二号机"
+          },
+          {
+            "devcode": "c70-3",
+            "devcodename": "梳棉三号机"
+          }
+        ],
+        "flowname": "梳棉",
+        "flowcode": "1"
+      },
+      {
+        "devices": [
+          {
+            "devcode": "b10-1",
+            "devcodename": "络筒一号机"
+          }
+        ],
+        "flowname": "络筒",
+        "flowcode": "2"
+      }
+    ]
+  }
+}
