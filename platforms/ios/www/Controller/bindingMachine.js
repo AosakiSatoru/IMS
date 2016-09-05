@@ -80,7 +80,7 @@ $(document).ready(function () {
                     value.click();
                 }
             })
-          //  $(element).find("li").click();
+            //  $(element).find("li").click();
 
         }
     });
@@ -131,11 +131,11 @@ $(document).ready(function () {
     let footViewModel = kendo.observable({
         unselectedAll: function (e) {
 
-              $("input").each(function (n,value) {
-                  if (value.type == "checkbox"&&value.checked==true){
-                        value.click();
-                  }
-              })
+            $("input").each(function (n,value) {
+                if (value.type == "checkbox"&&value.checked==true){
+                    value.click();
+                }
+            })
 
 
         },
