@@ -61,13 +61,23 @@
 </script>
 </body>
 <script id="flownameTemplate" type="text/x-kendo-template">
-    <div data-role="collapsible" data-collapse-icon="arrow-up" data-expand-icon="arrow-down">
-        <h3 style="height:55px">
+    <div data-role="collapsible" data-collapse-icon="arrow-up" data-expand-icon="arrow-down" >
 
-            <a>#= flowname #</a>
-            <a data-role="detailbutton" style="border: 0;">
-                <img src="../resources/@3x/已选@3x.png" style="width: 1.4em;"/>
-            </a></h3>
+        <h3 style="height:55px">
+    <span>
+                <input type="checkbox" checked="checked">
+                #=flowname#
+                </input>
+        </span>
+            <span>
+            <button  id="collapsibleButton">xxxxxxxxxxx</button>
+                 </span>
+            <!--<a>#= flowname #</a>-->
+            <!--<a data-role="detailbutton" style="border: 0;" onclick="collapsibleButtonClick(this)">-->
+                <!--<img src="../resources/@3x/已选@3x.png" style="width: 1.4em;"/>-->
+            <!--</a>-->
+        </h3>
+
         <ul data-role="listview" data-style="inset" style="background-color: white" data-template="deviceTemplate"
             data-source="#=deviceDataSource#" id="#=flownameid#">
         </ul>

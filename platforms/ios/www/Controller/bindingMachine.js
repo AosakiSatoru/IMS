@@ -30,6 +30,7 @@ function loadInfoFromService() {
     });
 }
 function loadView(data) {
+    viewModels = [];
 
     if (data.outstatus != 0) {
         alert(data.outputstr);
@@ -65,9 +66,7 @@ function loadView(data) {
 }
 
 
-function checkboxChange(e) {
 
-};
 $(document).ready(function () {
 
     $.each(fetchData, function (n, value) {
@@ -77,6 +76,7 @@ $(document).ready(function () {
             flowcode: value.flowcode,
             selectMachinerows: [],
             alldevices: value.devices,
+
         });
         kendo.bind($("#" + value.flowname), viewModel);
 
@@ -91,21 +91,27 @@ $(document).ready(function () {
                 }
             }
 
-
         });
 
         viewModels.push(viewModel);
+
+        $("#collapsibleButton").click(function(event){
+            alert("123");
+
+        });
+
     });
 
 
     let footViewModel = kendo.observable({
         unselectedAll: function (e) {
-            viewModels[0].devices = [];
 
-            $.each(fetchData, function (n, value) {
-                //  $("#"+value.flowname).data("kendoListView").dataSource.read();
-                $("#" + value.flowname).data("kendoListView").refresh();
-            });
+              $("input").each(function (n,value) {
+                  if (value.type == "checkbox"&&value.checked==true){
+                        value.click();
+                  }
+              })
+
 
         },
 
@@ -151,3 +157,10 @@ $(document).ready(function () {
     });
     kendo.bind($("footer"), footViewModel);
 });
+function  collapsibleButtonClick(event) {
+  //  event.parentElement.parentElement.parentElement.extend();
+   // event.parentElement.parentElement.data("kendoMobileCollapsible").expand();
+   // alert("123");
+   // event.preventDefault();
+  //  event.stopPropagation();
+}
