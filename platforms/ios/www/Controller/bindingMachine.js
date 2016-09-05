@@ -36,9 +36,8 @@ function loadView(data) {
         alert(data.outputstr);
     } else if (data.outstatus == 0) {
         var category = new Array();
-        let array = data.outputstr.flowcoderows;
         fetchData = data.outputstr.flowcoderows;
-        $.each(array, function (n, value) {
+        $.each(fetchData, function (n, value) {
 
             category.push({
                 "flowname": value.flowname,
@@ -72,8 +71,8 @@ $(document).ready(function () {
     var flownameViewModel = kendo.observable({
         "flownameDataSource": flownameDataSource,
         collapsibleButtonClick : function (e) {
-            let element     =  e.target.parent().parent().parent().parent();
-            let collapsible =  element.data("kendoMobileCollapsible");
+            var element     =  e.target.parent().parent().parent().parent();
+            var collapsible =  element.data("kendoMobileCollapsible");
             collapsible.toggle();
             $(element).find("input").each(function (n,value) {
                 if (value.type == "checkbox"){
@@ -87,7 +86,7 @@ $(document).ready(function () {
     kendo.bind($("#contentListView"), flownameViewModel);
 
     $.each(fetchData, function (n, value) {
-        let viewModel = new kendo.observable({
+        var viewModel = new kendo.observable({
             devices: [],
             flowname: value.flowname,
             flowcode: value.flowcode,
@@ -128,7 +127,7 @@ $(document).ready(function () {
     });
 
 
-    let footViewModel = kendo.observable({
+    var footViewModel = kendo.observable({
         unselectedAll: function (e) {
 
             $("input").each(function (n,value) {
