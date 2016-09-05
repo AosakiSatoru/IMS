@@ -5,7 +5,7 @@ var app = new kendo.mobile.Application();
 var fetchData;
 var category = new Array();
 var viewModels = new Array();
-
+var  flownameDataSource ;
 loadInfoFromService();
 
 function loadInfoFromService() {
@@ -61,6 +61,7 @@ function loadView(data) {
         flownameDataSource = kendo.data.DataSource.create({
             data: category,
         });
+
     }
 
 }
@@ -68,6 +69,22 @@ function loadView(data) {
 
 
 $(document).ready(function () {
+    var flownameViewModel = kendo.observable({
+        "flownameDataSource": flownameDataSource,
+        collapsibleButtonClick : function (e) {
+            let element     =  e.target.parent().parent().parent().parent();
+            let collapsible =  element.data("kendoMobileCollapsible");
+            collapsible.toggle();
+            $(element).find("input").each(function (n,value) {
+                if (value.type == "checkbox"){
+                    value.click();
+                }
+            })
+          //  $(element).find("li").click();
+
+        }
+    });
+    kendo.bind($("#contentListView"), flownameViewModel);
 
     $.each(fetchData, function (n, value) {
         let viewModel = new kendo.observable({
@@ -89,16 +106,24 @@ $(document).ready(function () {
                         this.selectMachinerows.push({"devcode": this.alldevices[device].devcode});
                     }
                 }
-            }
+            };
+            if (this.alldevices.length == this.devices.length){
+                $("#"+viewModel.flowname+"CheckButton").each(function (n,button) {
+                    $(button).find(".km-text").text("全选");
+                });
+            }else {
+                $("#"+viewModel.flowname+"CheckButton").each(function (n,button) {
+                    $(button).find(".km-text").text("未全选");
+                });
+            };
+
+
 
         });
 
         viewModels.push(viewModel);
 
-        $("#collapsibleButton").click(function(event){
-            alert("123");
 
-        });
 
     });
 
@@ -157,10 +182,4 @@ $(document).ready(function () {
     });
     kendo.bind($("footer"), footViewModel);
 });
-function  collapsibleButtonClick(event) {
-  //  event.parentElement.parentElement.parentElement.extend();
-   // event.parentElement.parentElement.data("kendoMobileCollapsible").expand();
-   // alert("123");
-   // event.preventDefault();
-  //  event.stopPropagation();
-}
+

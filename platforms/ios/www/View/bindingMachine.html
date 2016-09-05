@@ -34,9 +34,10 @@
                 </span>
     </header>
     <div data-role="content" style="background-color: #F7F7F7;">
-
-        <div data-role="listview" data-style="inset" style="background-color: white;" data-source="flownameDataSource"
-             data-template="flownameTemplate">
+        <!--data-source="flownameDataSource"-->
+        <div data-role="listview" data-style="inset" style="background-color: white;"
+             data-bind="source: flownameDataSource"
+             data-template="flownameTemplate" id="contentListView">
 
         </div>
 
@@ -61,21 +62,19 @@
 </script>
 </body>
 <script id="flownameTemplate" type="text/x-kendo-template">
-    <div data-role="collapsible" data-collapse-icon="arrow-up" data-expand-icon="arrow-down" >
+    <div data-role="collapsible" data-collapse-icon="arrow-up" data-expand-icon="arrow-down" id="collapsible"
+         data-animation="false">
 
         <h3 style="height:55px">
     <span>
                 <input type="checkbox" checked="checked">
                 #=flowname#
-                </input>
+        </input>
         </span>
             <span>
-            <button  id="collapsibleButton">xxxxxxxxxxx</button>
+            <div data-role="button" data-bind="click :collapsibleButtonClick" id="#=flowname#CheckButton">未全选</div>
                  </span>
-            <!--<a>#= flowname #</a>-->
-            <!--<a data-role="detailbutton" style="border: 0;" onclick="collapsibleButtonClick(this)">-->
-                <!--<img src="../resources/@3x/已选@3x.png" style="width: 1.4em;"/>-->
-            <!--</a>-->
+
         </h3>
 
         <ul data-role="listview" data-style="inset" style="background-color: white" data-template="deviceTemplate"
@@ -107,5 +106,6 @@
     }
 </style>
 <script src="../Controller/bindingMachine.js">
+    var app = new kendo.mobile.Application();
 </script>
 </html>
