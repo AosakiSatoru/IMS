@@ -74,11 +74,15 @@ $(document).ready(function () {
             var element     =  e.target.parent().parent().parent().parent();
             var collapsible =  element.data("kendoMobileCollapsible");
             collapsible.toggle();
-            $(element).find("input").each(function (n,value) {
-                if (value.type == "checkbox"){
-                    value.click();
+          //  $(button).find(".km-text").text("未全选");
+
+            var selectAll = $(e.target).find(".km-text").text()=="全选";
+            var inputs = $(element).find("input");
+            for (var input in inputs){
+                if(inputs[input].type == "checkbox"&&inputs[input].checked!=selectAll){
+                    inputs[input].click();
                 }
-            })
+            }
             //  $(element).find("li").click();
 
         }
@@ -108,11 +112,11 @@ $(document).ready(function () {
             };
             if (this.alldevices.length == this.devices.length){
                 $("#"+viewModel.flowname+"CheckButton").each(function (n,button) {
-                    $(button).find(".km-text").text("全选");
+                    $(button).find(".km-text").text("未全选");
                 });
             }else {
                 $("#"+viewModel.flowname+"CheckButton").each(function (n,button) {
-                    $(button).find(".km-text").text("未全选");
+                    $(button).find(".km-text").text("全选");
                 });
             };
 
