@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link href="../styles/kendo.mobile.all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="../styles/kendo.default.min.css" />
+    <link rel="stylesheet" href="../styles/kendo.default.mobile.min.css" />
+    <script src="../Controller/url.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/kendo.all.min.js"></script>
+
+    <meta http-equiv="Content-Type" content="text/html;" charset="utf-8"/>
+</head>
+
+<body>
+<div data-role="view" id="navbar-styles" data-title="产量输入" data-use-native-scrolling="true">
+    <header data-role="header">
+        <div>
+                <span data-role="navbar" style="width: 10%;float: left;">
+                    <div id="bindingMachine_leftNavButton"
+                         style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;">
+                        <a href="../View/home.html">
+                            <img src="../resources/@3x/返回@3x.png" style="width: 1.25em;vertical-align: middle;"/>
+                        </a>
+                    </div>
+                </span>
+            <span data-role="navbar" style="width: 80%;float: left;">
+                    <div id="bindingMachine_title" data-role="view-title"
+                         style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
+                </span>
+            <span data-role="navbar" style="width: 10%;float:left;">
+                    <div id="bindingMachine_rightNavButton"
+                         style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;">
+                        <br>
+                    </div>
+                </span>
+        </div>
+
+        <div style="text-align: center;margin-top: 1em;" id="headerButtonGroup">
+            <span><a data-role="button"
+                     style="width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #EEEEEE;"
+                     data-bind="click: headerButtonClick">预井</a></span>
+            <span><a data-role="button"
+                     style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;"
+                     data-bind="click: headerButtonClick">梳棉</a></span>
+            <span><a data-role="button"
+                     style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE; "
+                     data-bind="click: headerButtonClick">粗纱</a></span>
+        </div>
+    </header>
+
+    <div>
+        <div data-role="listview" data-bind="source: nameSource" data-template="nameTemplate" data-fixed-headers="true"
+             id="contentListView">
+        </div>
+    </div>
+    <div data-role="footer">
+        <button id="inputButton" type="submit"
+                style="width: 100%;height: 2.5em;border: none;font-size: 1.2em;padding: 0em;background-color: #A62A40;color: #FFFFFF;text-align: center;margin-bottom:0px">
+            确认
+        </button>
+    </div>
+</div>
+
+<script>
+
+
+</script>
+<script id="nameTemplate" type="text/x-kendo-template">
+    <div style="height=100px">
+        <span style="height:100px;width:300px"> <img src="#:photo#" class="km-thumbnail"/></span>
+        <!--<span>#:firstName# #:lastName#</span>-->
+        <!--<input id="IMSPackingInput_first_yield" type="text" placeholder="请输入数量"  />-->
+        <span>
+                <div style="width: 90%;">
+                   <select id="size" style="width: 100%;" >
+                <option>S - 6 3/4"</option>
+                <option>M - 7 1/4"</option>
+                <option>L - 7 1/8"</option>
+                <option>XL - 7 5/8"</option>
+            </select>
+               </div>
+            <input style="width:90%"></input>
+        </span>
+
+
+    </div>
+</script>
+
+<script>
+
+
+    var app = new kendo.mobile.Application(document.body, {
+        skin: "nova"
+    });
+</script>
+<script src="../Controller/yieldinput.js"></script>
+</body>
+
+</html>
