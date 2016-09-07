@@ -15,3 +15,5 @@ platforms/ios/IMS.xcodeproj/xcuserdata/mac.xcuserdatad/xcschemes/xcschememanagem
 
 .DS_Store
 platforms/
+
+.project
