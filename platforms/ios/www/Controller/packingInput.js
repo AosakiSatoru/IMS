@@ -1,34 +1,35 @@
 function postPackingInputData(Type) {
     var unit;
     var count;
-    if (Type == "回条") {
+    if(Type == "回条") {
         unit = $("#dropdownlist1").val();
         count = $("#IMSPackingInput_first_yield").val();
-    } else if(Type == "粗纱头"){
+    } else if(Type == "粗纱头") {
         unit = $("#dropdownlist2").val();
         count = $("#IMSPackingInput_second_yield").val();
-    } else if (Type == "白花") {
+    } else if(Type == "白花") {
         unit = $("#dropdownlist3").val();
         count = $("#IMSPackingInput_third_yield").val();
     }
-    
+    var typerows = [{
+                    "unit": unit,
+                    "yield": count,
+                    "date": new Date().toUTCString(),
+                    "type": storage.get("flowcode") == "undefined" ? "" : storage.get("flowcode")
+                    }];
     var para = {
-        "unit": unit,
-        "yield": count,
-        "typerows": 1,
-        "date":new Date().toUTCString(),
-        "type":Type
+        "typerows": typerows
     };
     
     if(count.length == 0) {
         alert("请输入数量");
         return;
     }
-    var url = IMSUrl+"busi_PackingInput/";
+    var url = IMSUrl + "busi_PackingInput/";
     $.ajax({
            type: "post",
            url: url,
-           timeout: 1000,
+           timeout: 10000,
            async: true,
            dataType: "jsonp",
            data: {
@@ -36,7 +37,10 @@ function postPackingInputData(Type) {
            },
            dataType: "json",
            success: function(data) {
-           alert(JSON.stringify(para));
+           if(data.outstatus == 0)
+           alert("处理成功");
+           else
+           alert("操作失败，请稍后再试");
            },
            error: function(data, status, e) {
            alert("请求服务器出错");
