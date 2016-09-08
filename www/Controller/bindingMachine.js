@@ -161,8 +161,8 @@ $(document).ready(function () {
                                                               });
                                                        
                                                        var params = {
-                                                       "account": "0",
-                                                       "srcid": "",
+                                                       "account": storage.get("account"),
+                                                       "srcid": storage.get("srcid"),
                                                        "flowcoderows": flowcoderows
                                                        };
                                                        var url = IMSUrl + "busi_binding/";

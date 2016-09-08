@@ -17,3 +17,7 @@ platforms/ios/IMS.xcodeproj/xcuserdata/mac.xcuserdatad/xcschemes/xcschememanagem
 platforms/
 
 .project
+
+unpackage/.confirmed_dependencies
+
+unpackage/.dependencies
