@@ -24,13 +24,21 @@
 			<div data-role="content" style="background-color: #F7F7F7;">
 				<ul data-role="listview" data-style="inset" style="background-color: white;">
 					<li>
-						<a data-role="detailbutton" id="yieldinput">
+						<a data-role="detailbutton"   data-rel="actionsheet" href="#actionsheet">
 							<p>
 								<img src="../resources/@3x/机台产量输入@3x.png" style="width: 4.5em;vertical-align: middle;" />
 								<span style="color: #A62A40; height: 60px;padding-left: 1em;vertical-align: middle;">机台输入产量</span>
+								
 							</p>
 						</a>
+						
 					</li>
+					 <ul id="actionsheet" data-role="actionsheet" data-cancel="取消" >
+					 	 <li onclick="machine_input"><a>选择班次</a></li>
+    									  <li ><a onclick="machine_input('1')">班别:甲</a></li>
+  									   <li><a onclick="machine_input('2')">班别:乙</a></li>
+  									   <li><a onclick="machine_input('3')">班别:丙</a></li>
+							    </ul>
 					<li>
 						<a data-role="detailbutton" id="packingInput">
 							<p>
@@ -87,7 +95,9 @@
 		</div>
 		<script>
 			var app = new kendo.mobile.Application();
-
+			function machine_input(type){
+				window.location.href = "yieldInput.html?type="+type;
+			}
 			$("#yieldinput").click(function() {
 				window.location.href = "yieldInput.html";
 			});

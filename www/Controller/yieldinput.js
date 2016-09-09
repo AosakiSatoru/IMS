@@ -2,8 +2,38 @@
  * Created by mac on 16/9/6.
  */
 var contentViewModel;
-
+function request(paras){
+　　var url = location.href;
+　　var paraString = url.substring(url.indexOf("?")+1,url.length).split("&");
+　　var paraObj = {}
+　　for (i=0; j=paraString[i]; i++){
+　　paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length);
+　　}
+　　var returnValue = paraObj[paras.toLowerCase()];
+　　if(typeof(returnValue)=="undefined"){
+　　return "";
+　　}else{
+　　return returnValue;
+　　}
+}
+function getDuty(){
+	var result = "";
+	
+   switch(request("type")){
+   	case "1":
+   	result = "甲";
+   	break;
+   	case "2":
+   	result = "乙";
+   	break;
+   	case "3":
+   	result = "丙";
+   	break;
+   }
+  return result;
+}
 $(document).ready(function () {
+	
     var headerButtonViewModel = kendo.observable({
         headerButtonClick: function (e) {
            $.each(e.target.parent().parent().find("a"),function (n,button) {
@@ -124,7 +154,7 @@ function bindView(data){
 			return obj;
 	});
 	   var params = {
-	   	duty:"123",
+	   	duty:getDuty(),
 	   	flowcoderows:[{
 	   		flowcode:contentViewModel.selectflowcode,
 	   		machinerows:content
