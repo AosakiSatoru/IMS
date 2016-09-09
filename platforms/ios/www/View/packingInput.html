@@ -17,20 +17,9 @@
     <body>
         <div data-role="view" data-title="副料打包" id="IMSPackingInput_first">
             <header data-role="header">
-                <span data-role="navbar" style="width: 10%;float: left;">
-                    <div id="packingInput_leftNavButton" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;">
-                        <a href="../View/home.html">
-                            <img  src="../resources/@3x/返回@3x.png" style="width: 1.25em;vertical-align: middle;"/>
-                        </a>
-                    </div>
-                </span>
-                <span data-role="navbar" style="width: 80%;float: left;">
-                    <div id="packingInput_title" data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
-                </span>
-                <span data-role="navbar" style="width: 10%;float:left;">
-                    <div id="packingInput_rightNavButton" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;">
-                        <br>
-                    </div>
+                <span data-role="navbar">
+                    <div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
+                		<a id="packingInput_leftNavButton_1" data-role="button" data-align="left" style="background-image: url(../resources/@3x/返回@3x.png);background-repeat: round;width: 1.25em;height: 1em;"></a>
                 </span>
             </header>
             
@@ -65,20 +54,9 @@
         
         <div data-role="view" data-title="副料打包" id="IMSPackingInput_second">
             <header data-role="header">
-                <span data-role="navbar" style="width: 10%;float: left;">
-                    <div id="packingInput_leftNavButton" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;">
-                        <a href="../View/home.html">
-                            <img  src="../resources/@3x/返回@3x.png" style="width: 1.25em;vertical-align: middle;"/>
-                        </a>
-                    </div>
-                </span>
-                <span data-role="navbar" style="width: 80%;float: left;">
-                    <div id="packingInput_title" data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
-                </span>
-                <span data-role="navbar" style="width: 10%;float:left;">
-                    <div id="packingInput_rightNavButton" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;">
-                        <br>
-                    </div>
+                <span data-role="navbar">
+                    <div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
+                		<a id="packingInput_leftNavButton_2" data-role="button" data-align="left" style="background-image: url(../resources/@3x/返回@3x.png);background-repeat: round;width: 1.25em;height: 1em;"></a>
                 </span>
             </header>
             
@@ -114,20 +92,9 @@
         
         <div data-role="view" data-title="副料打包" id="IMSPackingInput_third">
             <header data-role="header">
-                <span data-role="navbar" style="width: 10%;float: left;">
-                    <div id="packingInput_leftNavButton" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;">
-                        <a href="../View/home.html">
-                            <img  src="../resources/@3x/返回@3x.png" style="width: 1.25em;vertical-align: middle;"/>
-                        </a>
-                    </div>
-                </span>
-                <span data-role="navbar" style="width: 80%;float: left;">
-                    <div id="packingInput_title" data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
-                </span>
-                <span data-role="navbar" style="width: 10%;float:left;">
-                    <div id="packingInput_rightNavButton" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;">
-                        <br>
-                    </div>
+                <span data-role="navbar">
+                    <div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
+                		<a id="packingInput_leftNavButton_3" data-role="button" data-align="left" style="background-image: url(../resources/@3x/返回@3x.png);background-repeat: round;width: 1.25em;height: 1em;"></a>
                 </span>
             </header>
             
@@ -162,6 +129,15 @@
         
         <script>
             var app = new kendo.mobile.Application();
+            $("#packingInput_leftNavButton_1").click(function() {
+				window.location.href = "home.html";
+			});
+			$("#packingInput_leftNavButton_2").click(function() {
+				window.location.href = "home.html";
+			});
+			$("#packingInput_leftNavButton_3").click(function() {
+				window.location.href = "home.html";
+			});
             $(document).ready(function() {
                               $("#dropdownlist1").kendoDropDownList();
                               $("#dropdownlist2").kendoDropDownList();

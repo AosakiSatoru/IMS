@@ -1,107 +1,108 @@
 <!DOCTYPE html>
 <html>
-    
-    <head>
-        <meta charset="utf-8" />
-        <title>首页</title>
-        
-        <link href="../styles/kendo.mobile.all.min.css" rel="stylesheet" />
-        <script src="../js/jquery.min.js"></script>
-        <script src="../js/kendo.all.min.js"></script>
-        
-    </head>
-    
-    <body>
-        <div data-role="view" data-title="IMS" id="IMSHome">
-            <header data-role="header">
-                
-                <span data-role="navbar">
+
+	<head>
+		<meta charset="utf-8" />
+		<title>首页</title>
+
+		<link href="../styles/kendo.mobile.all.min.css" rel="stylesheet" />
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/kendo.all.min.js"></script>
+
+	</head>
+
+	<body>
+		<div data-role="view" data-title="IMS" id="IMSHome">
+			<header data-role="header">
+
+				<span data-role="navbar">
                     <div data-role="view-title"
                         style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
                 </span>
-            </header>
-            <p style="background-color:#F7F7F7;margin: 0;height: 0.4em;"></p>
-            <div data-role="content" style="background-color: #F7F7F7;">
-                <ul data-role="listview" data-style="inset" style="background-color: white;">
-                    <li>
-                        <a data-role="detailbutton" id="yieldinput">
-                            <p>
-                            <img src="../resources/@3x/机台产量输入@3x.png" style="width: 4.5em;vertical-align: middle;" />
-                            <span style="color: #A62A40; height: 60px;padding-left: 1em;vertical-align: middle;">机台输入产量</span>
-                            </p>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-role="detailbutton" id="packingInput">
-                            <p>
-                            <img src="../resources/@3x/副料打包@3x.png" style="width: 4.5em;vertical-align: middle;" />
-                            <span style="color: #A62A40; height: 60px;padding-left: 1em;vertical-align: middle;">副料打包</span>
-                            </p>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-role="detailbutton" id="alert">
-                            <p>
-                            <img src="../resources/@3x/查看报警@3x.png" style="width: 4.5em;vertical-align: middle;" />
-                            <span class="km-badge" style="background-color: rgba(250,73,53,0.9);top:auto;right:auto;margin-left: -8%;margin-top: -2%;padding: 0;position: absolute;">68</span>
-                            <span style="color: #A62A40; height: 60px;padding-left: 1em;vertical-align: middle;">查看报警</span>
-                            </p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div data-role="drawer" style="width: 55%;height: 101%;margin-top: -1px;">
-            <div data-role="content">
-                <div class="km-scroll-container"></div>
-            </div>
-            <img src="../resources/@3x/side_menu_background@3x.jpg" width="100%" height="100%" border="0" style="position: absolute;" />
-            <div style="width: 100%;height: 100%;text-align: center;">
-                <img src="../resources/@3x/头像@3x.png" height="10%" border="0" style="position: relative;top: 10%;" />
-            </div>
-            <div style="color: #FFFFFF;font-size: 1em;position: absolute;top:22%;width: 100%;text-align: center;">
-                0005918
-            </div>
-            <div style="text-align: center;color: #FFFFFF;font-size: 0.8em;padding-top: 1em;position: absolute;top: 25%;width: 100%;">
-                <span>部门:</span>
-                <span>GET</span>
-                <span style="padding-left: 1.5em;">角色:</span>
-                <span>维修工</span>
-            </div>
-            <ul data-role="listview" data-style="inset">
-                <li style="margin-top: 3em;background-color: rgba(0,0,0,0.1);position: absolute;width: 100%;top: 30%;">
-                    <a data-role="detailbutton" id="bindingMachine">
-                        <p>
-                        <img src="../resources/@3x/绑定几台icon@3x.png" style="width: 1.2em;vertical-align: middle;" />
-                        <span style="color: #FFFFFF; height: 60px;vertical-align: middle;">绑定机台</span>
-                        </p>
-                    </a>
-                </li>
-            </ul>
-            <div style="position: absolute;bottom: 3em;">
-                <a href="../index.html">
-                    <img src="../resources/@3x/退出@3x.png" style="margin-left: 1em;width: 1.7em;vertical-align: middle;" />
-                    <span style="margin-left: 1em;color: #FFFFFF;font-size: 0.9em;">退出</span>
-                </a>
-            </div>
-        </div>
-        <script>
-            var app = new kendo.mobile.Application();
-            
-            $("#yieldinput").click(function() {
-                                   // kendo.mobile.application.navigate("View/yieldInput/yieldInput.html");
-                                   window.location.href = "yieldInput.html";
-                                   });
-                                   $("#bindingMachine").click(function() {
-                                                              // kendo.mobile.application.navigate("View/yieldInput/yieldInput.html");
-                                                              window.location.href = "bindingMachine.html";
-                                                              });
-                                                              $("#packingInput").click(function() {
-                                                                                       window.location.href = "packingInput.html";
-                                                                                       });
-            </script>
-        
-        <script src="Controller/home.js"></script>
-    </body>
-    
+			</header>
+			<p style="background-color:#F7F7F7;margin: 0;height: 0.4em;"></p>
+			<div data-role="content" style="background-color: #F7F7F7;">
+				<ul data-role="listview" data-style="inset" style="background-color: white;">
+					<li>
+						<a data-role="detailbutton" id="yieldinput">
+							<p>
+								<img src="../resources/@3x/机台产量输入@3x.png" style="width: 4.5em;vertical-align: middle;" />
+								<span style="color: #A62A40; height: 60px;padding-left: 1em;vertical-align: middle;">机台输入产量</span>
+							</p>
+						</a>
+					</li>
+					<li>
+						<a data-role="detailbutton" id="packingInput">
+							<p>
+								<img src="../resources/@3x/副料打包@3x.png" style="width: 4.5em;vertical-align: middle;" />
+								<span style="color: #A62A40; height: 60px;padding-left: 1em;vertical-align: middle;">副料打包</span>
+							</p>
+						</a>
+					</li>
+					<li>
+						<a data-role="detailbutton" id="warning">
+							<p>
+								<img src="../resources/@3x/查看报警@3x.png" style="width: 4.5em;vertical-align: middle;" />
+								<span class="km-badge" style="background-color: rgba(250,73,53,0.9);top:auto;right:auto;margin-left: -8%;margin-top: -2%;padding: 0;position: absolute;">68</span>
+								<span style="color: #A62A40; height: 60px;padding-left: 1em;vertical-align: middle;">查看报警</span>
+							</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div data-role="drawer" style="width: 55%;height: 101%;margin-top: -1px;">
+			<div data-role="content">
+				<div class="km-scroll-container"></div>
+			</div>
+			<img src="../resources/@3x/side_menu_background@3x.jpg" width="100%" height="100%" border="0" style="position: absolute;" />
+			<div style="width: 100%;height: 100%;text-align: center;">
+				<img src="../resources/@3x/头像@3x.png" height="10%" border="0" style="position: relative;top: 10%;" />
+			</div>
+			<div style="color: #FFFFFF;font-size: 1em;position: absolute;top:22%;width: 100%;text-align: center;">
+				0005918
+			</div>
+			<div style="text-align: center;color: #FFFFFF;font-size: 0.8em;padding-top: 1em;position: absolute;top: 25%;width: 100%;">
+				<span>部门:</span>
+				<span>GET</span>
+				<span style="padding-left: 1.5em;">角色:</span>
+				<span>维修工</span>
+			</div>
+			<ul data-role="listview" data-style="inset">
+				<li style="margin-top: 3em;background-color: rgba(0,0,0,0.1);position: absolute;width: 100%;top: 30%;">
+					<a data-role="detailbutton" id="bindingMachine">
+						<p>
+							<img src="../resources/@3x/绑定几台icon@3x.png" style="width: 1.2em;vertical-align: middle;" />
+							<span style="color: #FFFFFF; height: 60px;vertical-align: middle;">绑定机台</span>
+						</p>
+					</a>
+				</li>
+			</ul>
+			<div style="position: absolute;bottom: 3em;">
+				<a href="../index.html">
+					<img src="../resources/@3x/退出@3x.png" style="margin-left: 1em;width: 1.7em;vertical-align: middle;" />
+					<span style="margin-left: 1em;color: #FFFFFF;font-size: 0.9em;">退出</span>
+				</a>
+			</div>
+		</div>
+		<script>
+			var app = new kendo.mobile.Application();
+
+			$("#yieldinput").click(function() {
+				window.location.href = "yieldInput.html";
+			});
+			$("#bindingMachine").click(function() {
+				window.location.href = "bindingMachine.html";
+			});
+			$("#packingInput").click(function() {
+				window.location.href = "packingInput.html";
+			});
+			$("#warning").click(function() {
+				window.location.href = "warningList.html";
+			});
+		</script>
+
+		<script src="Controller/home.js"></script>
+	</body>
+
 </html>
