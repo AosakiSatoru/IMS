@@ -101,7 +101,25 @@ $(document).ready(function () {
                                                               flowcode: value.flowcode,
                                                               selectMachinerows: [],
                                                               alldevices: value.devices,
-                                                              
+                                                     		  select: function(e){
+                                                     		  	if(e.target.checked){
+                                                     		  		$($(e.target.parentElement).find("span")).removeClass().addClass("image-select");
+                                                     		  		//$(e.target.parentElement).find("span")[0].style.backgroundImage = 'url("../resources/@3x/未选@3x.png")';
+                                                     		  		//$($(e.target.parentElement).find("span")).css("background-image","url(../resources/@3x/未选@3x.png)");
+                                                     		  	}else{
+                                                     		  		$($(e.target.parentElement).find("span")).removeClass().addClass("image-unselect");
+                                                     		  		//$(e.target.parentElement).find("span")[0].style.backgroundImage = 'url("../resources/@3x/已选@3x.png")';
+                                                     		  		//$($(e.target.parentElement).find("span")).css('background-image',"url(../resources/@3x/已选@3x.png)");
+                                                     		  	}
+                                                     		  },
+//                                                   		  backgroundImage: function(e){
+//                                                   		  	if($(e.parentElement).find("input")[0].checked){
+//                                                   		  		return url('../resources/@3x/未选@3x.png');
+//                                                   		  	}else{
+//                                                   		  		return url('../resources/@3x/已选@3x.png');
+//                                                   		  	}
+//                                                   		  }
+                                                     		  
                                                               });
                          kendo.bind($("#" + value.flowname), viewModel);
                          

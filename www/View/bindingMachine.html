@@ -75,12 +75,13 @@
 		</div>
 	</script>
 	<script id="deviceTemplate" type="text/x-kendo-template">
-		<label style="padding-top: 25px;padding-bottom: 25px;"><input type="checkbox" value="#=device#" data-bind="checked: devices">
+		<label style="padding-top: 25px;padding-bottom: 25px;"><input type="checkbox" value="#=device#" data-bind="checked: devices,click: select">
 			<span data-bind="click :collapsibleButtonClick" id="#=flowname#CheckButton" isselect="NO" style="float: right;background-image: url(../resources/@3x/未选@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;right: 2px;position: relative;"></span>
 			#=device#
 		</label>
 	</script>
 	<style>
+		
 		.km-arrow-up:after,
 		.km-arrow-up:before {
 			width: 23px;
@@ -119,6 +120,12 @@
 		
 		.km-root .km-pane .km-icon.km-check {
 			color: #DDDDDD;
+		}
+		.image-select{
+			background-image: url("../resources/@3x/已选@3x.png")
+		}
+		.image-unselect{
+			background-image: url("../resources/@3x/未选@3x.png")
 		}
 	</style>
 	<script src="../Controller/bindingMachine.js">
