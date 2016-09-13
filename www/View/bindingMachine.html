@@ -66,7 +66,7 @@
         #=flowname#
         </span>
         <span>
-        <div data-role="button" data-bind="click :collapsibleButtonClick" id="#=flowname#CheckButton" isselect="NO" style="float: right;background-image: url(../resources/@3x/未选@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;"></div>
+        <div data-role="button" data-bind="click :collapsibleButtonClick" id="#=flowname#CheckAllButton" isselect="NO" style="float: right;background-image: url(../resources/@3x/未选@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;"></div>
         </span>
         </h3>
 
@@ -75,7 +75,10 @@
 		</div>
 	</script>
 	<script id="deviceTemplate" type="text/x-kendo-template">
-		<label style="padding-top: 25px;padding-bottom: 25px;"><input type="checkbox" value="#=device#" data-bind="checked: devices">#=device#</label>
+		<label style="padding-top: 25px;padding-bottom: 25px;"><input type="checkbox" value="#=device#" data-bind="checked: devices">
+			<span data-bind="click :collapsibleButtonClick" id="#=flowname#CheckButton" isselect="NO" style="float: right;background-image: url(../resources/@3x/未选@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;right: 2px;position: relative;"></span>
+			#=device#
+		</label>
 	</script>
 	<style>
 		.km-arrow-up:after,
@@ -115,7 +118,7 @@
 		}
 		
 		.km-root .km-pane .km-icon.km-check {
-			color: #A9293D;
+			color: #DDDDDD;
 		}
 	</style>
 	<script src="../Controller/bindingMachine.js">
