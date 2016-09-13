@@ -18,17 +18,17 @@
         }
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
+        "cordova-plugin-console": {
             "PACKAGE_NAME": "com.esquel.ims"
         },
-        "cordova-plugin-console": {
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.esquel.ims"
         }
     },
     "dependent_plugins": {},
     "modules": [],
     "plugin_metadata": {
-        "cordova-plugin-whitelist": "1.2.2",
-        "cordova-plugin-console": "1.0.3"
+        "cordova-plugin-console": "1.0.3",
+        "cordova-plugin-whitelist": "1.2.2"
     }
 }
