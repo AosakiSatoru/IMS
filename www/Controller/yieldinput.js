@@ -37,11 +37,13 @@ $(document).ready(function () {
     var headerButtonViewModel = kendo.observable({
         headerButtonClick: function (e) {
            $.each(e.target.parent().parent().find("a"),function (n,button) {
-              button.style.backgroundColor = "#EEEEEE";
-               button.style.color          = "#AAAAAA";
+               button.style.backgroundColor = "#EEEEEE";
+               button.style.color           = "#AAAAAA";
+               button.style.borderColor     = "#EEEEEE";
            });
             e.target[0].style.backgroundColor = "#A9293D";
-            e.target[0].style.color        = "#FFFFFF";
+            e.target[0].style.color           = "#FFFFFF";
+            e.target[0].style.borderColor     = "#A9293D";
 
             if($(e.target.find(".km-text")[0]).text()=="预并"){
 			 contentViewModel.selectflowcode = 2;
