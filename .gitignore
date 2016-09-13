@@ -21,3 +21,13 @@ platforms/
 unpackage/.confirmed_dependencies
 
 unpackage/.dependencies
+
+platforms/ios/IMS.xcodeproj/project.xcworkspace/xcuserdata/Satoru.xcuserdatad/UserInterfaceState.xcuserstate
+
+platforms/ios/www/Controller/bindingMachine.js
+
+platforms/ios/www/Controller/yieldinput.js
+
+platforms/ios/www/View/bindingMachine.html
+
+platforms/ios/www/View/yieldinput.html
