@@ -42,3 +42,13 @@ platforms/android/CordovaLib/ant-gen
 platforms/android/CordovaLib/bin
 platforms/android/CordovaLib/gen
 platforms/android/CordovaLib/local.properties
+
+platforms/ios/www/Controller/bindingMachine.js
+
+platforms/ios/www/Controller/yieldinput.js
+
+platforms/ios/www/View/bindingMachine.html
+
+platforms/ios/www/View/home.html
+
+platforms/ios/www/View/yieldinput.html
