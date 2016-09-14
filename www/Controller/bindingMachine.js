@@ -103,12 +103,12 @@ $(document).ready(function () {
                                                               alldevices: value.devices,
                                                      		  select: function(e){
                                                      		  	if(e.target.checked){
-                                                     		  		$($(e.target.parentElement).find("span")).removeClass().addClass("image-select");
-                                                     		  		//$(e.target.parentElement).find("span")[0].style.backgroundImage = 'url("../resources/@3x/未选@3x.png")';
+                                                     		  		//$($(e.target.parentElement).find("span")).removeClass().addClass("image-select");
+                                                     		  		$(e.target.parentElement).find("span")[0].style.backgroundImage = 'url("../resources/@3x/selected@3x.png")';
                                                      		  		//$($(e.target.parentElement).find("span")).css("background-image","url(../resources/@3x/未选@3x.png)");
                                                      		  	}else{
-                                                     		  		$($(e.target.parentElement).find("span")).removeClass().addClass("image-unselect");
-                                                     		  		//$(e.target.parentElement).find("span")[0].style.backgroundImage = 'url("../resources/@3x/已选@3x.png")';
+                                                     		  		//$($(e.target.parentElement).find("span")).removeClass().addClass("image-unselect");
+                                                     		  		$(e.target.parentElement).find("span")[0].style.backgroundImage = 'url("../resources/@3x/select@3x.png")';
                                                      		  		//$($(e.target.parentElement).find("span")).css('background-image',"url(../resources/@3x/已选@3x.png)");
                                                      		  	}
                                                      		  },
@@ -137,8 +137,8 @@ $(document).ready(function () {
                                         };
                                         if(this.alldevices.length == this.devices.length) {
                                         $("#" + viewModel.flowname + "CheckButton").each(function(n, button) {
-                                                                                         $(this).attr( "style","float: right;background-image: url(../resources/@3x/selected@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;right: 2px;position: relative;");
-                                                                                         $(this).attr("isselect","YES");
+                                                                                         //$(this).attr( "style","float: right;background-image: url(../resources/@3x/selected@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;right: 2px;position: relative;");
+                                                                                         //$(this).attr("isselect","YES");
                                                                                          });
                                         $("#" + viewModel.flowname + "CheckAllButton").each(function(n, button) {
                                                                                          $(this).attr( "style","float: right;background-image: url(../resources/@3x/selected@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;");
@@ -146,8 +146,8 @@ $(document).ready(function () {
                                                                                          });
                                         } else {
                                         $("#" + viewModel.flowname + "CheckButton").each(function(n, button) {
-                                                                                         $(this).attr( "style","float: right;background-image: url(../resources/@3x/select@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;right: 2px;position: relative;");
-                                                                                         $(this).attr("isselect","NO");
+                                                                                         //$(this).attr( "style","float: right;background-image: url(../resources/@3x/select@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;right: 2px;position: relative;");
+                                                                                         //$(this).attr("isselect","NO");
                                                                                          });
                                         $("#" + viewModel.flowname + "CheckAllButton").each(function(n, button) {
                                                                                          $(this).attr( "style","float: right;background-image: url(../resources/@3x/select@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;");
@@ -185,10 +185,10 @@ $(document).ready(function () {
                                                                                 })
                                                               }
                                                               });
-                                                       if(flowcoderows.length==0){
-                                                       	alert("请选择");
-                                                       	return;
-                                                       	}
+//                                                     if(flowcoderows.length==0){
+//                                                     	alert("请选择");
+//                                                     	return;
+//                                                     	}
                                                        var params = {
                                                        "account": storage.get("account"),
                                                        "srcid": storage.get("srcid"),

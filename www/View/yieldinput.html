@@ -65,19 +65,35 @@
 		position: relative;
 		margin: 0;
 	}
+	 .km-list .k-dropdown .k-input{
+	 	font-size: 1.3em;
+	 	padding-left: 0.5em;
+	 }
+	 
+	 .k-popup .k-list .k-item {
+            background-color: #EEEEEE;
+            border-color: #EEEEEE;
+            padding-left: 1em;
+            text-align: left;
+            color: #AAAAAA;
+        }
+        
+        .k-item.k-state-selected.k-state-focused {
+            background-color: #E6E6E6;
+            text-align: left;
+            padding-left: 1em;
+            border: 0;
+            color: #A9293D;
+            height: 2em;
+        }
 </style>
-
-<script>
-
-
-</script>
 
 <script id="nameTemplate" type="text/x-kendo-template">
     	<img src="#:image#" style="width: 31%;float: left;"/>
-    	<span id="dropdownlistPlaceholder" style="position: absolute;left: 37.5%;padding-left: 0.35em;top: 1em;font-size: 1.3em;color: rgb(169,169,169);>请选择品种</span>
+    	<span id="dropdownlistPlaceholder" style="position: absolute;left: 37.5%;padding-left: 0.35em;top: 1em;font-size: 1.3em;color: rgb(169,169,169);">请选择品种</span>
     	<img src="../resources/@3x/dropdownlist_icon@3x.png" style="width: 20px;float: right;position: absolute;right: 1em;top: 2em;"/>
-    	<select id="dropdownlist" data-role="dropdownlist" style="padding-bottom: 0.5em;font-size: 1.3em;float: right;width: 64%;border-radius: 0;right:0;border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: lightgray;" data-bind="source: varietiesDataSource,value:variety,events:{change:onChange}" data-text-field="variety" data-value-field="variety"></select>
-    <input data-bind="value: yield" placeholder="请输入产量" style="position: absolute;bottom: 1.7em;right: 0;font-size: 1.3em;width: 62.2%;padding-left: 0.35em;padding-bottom: 0.5em;border: none;border-bottom-width: 1px;border-bottom-style: solid;border-color: lightgray;"></input>
+    	<select id="dropdownlist" data-role="dropdownlist" style="position: relative;top: 1em;font-size: 1em;float: right;width: 64%;border-radius: 0;right:0;border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: lightgray;text-align: left;" data-bind="source: varietiesDataSource,value:variety,events:{change:onChange}" data-text-field="variety" data-value-field="variety"></select>
+    <input data-bind="value: yield" placeholder="请输入产量" style="position: absolute;bottom: 1.7em;right: 0;font-size: 1.3em;width: 62.2%;padding-left: 0.35em;padding-bottom: 15px;border: none;border-bottom-width: 1px;border-bottom-style: solid;border-color: lightgray;"></input>
     <div style="width: 31%;text-align: center;"><label >#:devcodename#</label></div>
     
 </script>
