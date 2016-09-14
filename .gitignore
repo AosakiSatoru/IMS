@@ -31,6 +31,7 @@ platforms/ios/cordova/console.log
 *.xcuserdatad
 
 # android
+platforms/android/
 platforms/android/assets/www
 platforms/android/bin
 platforms/android/gen
@@ -52,3 +53,9 @@ platforms/ios/www/View/bindingMachine.html
 platforms/ios/www/View/home.html
 
 platforms/ios/www/View/yieldinput.html
+
+platforms/android/.idea/
+
+platforms/android/assets/www/index.html
+
+platforms/android/assets/www/index.html
