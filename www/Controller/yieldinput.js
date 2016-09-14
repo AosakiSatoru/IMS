@@ -33,6 +33,13 @@ function getDuty(){
   return result;
 }
 $(document).ready(function () {
+//	  $("#dropdownlist").kendoDropDownList({
+//change: function(e) {
+//	alert("233");
+//}
+//});
+	
+	
 	
     var headerButtonViewModel = kendo.observable({
         headerButtonClick: function (e) {
@@ -106,19 +113,19 @@ function bindView(data){
 			
 			if(object.flowcode=="2"){
 				$.each(object.devices,function(n,device){
-				contentArray.push({"image":"../resources/@3x/预并条：SB2@3x.png","devcodename":device["devcodename"],"devcode":device["devcode"],"yield":"233","variety":"233"});
+				contentArray.push({"image":"../resources/@3x/ybt-sb2@3x.png","devcodename":device["devcodename"],"devcode":device["devcode"],"yield":"","variety":""});
 			});
 //				
 				first = contentArray;
 			}else if(object.flowcode=="1"){
 				$.each(object.devices,function(n,device){
-				contentArray.push({"image":"../resources/@3x/梳棉机：型号c51@3x.png","devcodename":device["devcodename"],"devcode":device["devcode"],"yield":"","variety":"233"});
+				contentArray.push({"image":"../resources/@3x/smj-c51@3x.png","devcodename":device["devcodename"],"devcode":device["devcode"],"yield":"","variety":""});
 			});
 //				
 				second = contentArray;
 			}else if(object.flowcode=="3"){
 				$.each(object.devices,function(n,device){
-				contentArray.push({"image":"../resources/@3x/粗纱机：FTID@3x.png","devcodename":device["devcodename"],"devcode":device["devcode"],"yield":"","variety":""});
+				contentArray.push({"image":"../resources/@3x/csj-ftid@3x.png","devcodename":device["devcodename"],"devcode":device["devcode"],"yield":"","variety":""});
 			});
 				third = contentArray;
 //				
@@ -139,9 +146,17 @@ function bindView(data){
 		"contentDataSource":contentDataSource,
 		"first":first,
 		"second":second,
-		"third":third
+		"third":third,
+		onChange:function(e){
+			$(e.sender.element.parent().parent()).find("#dropdownlistPlaceholder").hide();
+		}
     });
     kendo.bind($("#contentListView"), contentViewModel);
+  	var dropdownlist = $("#dropdownlist").data("kendoDropDownList");
+//	dropdownlist.bind("change", function(e){
+//		alert("233");
+//	});
+
   	
   	var footerViewModel = kendo.observable({
   		input: function (e){

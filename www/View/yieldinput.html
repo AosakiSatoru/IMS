@@ -18,7 +18,7 @@
     <header data-role="header">
 		<span data-role="navbar">
             <div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
-            <a id="bindingMachine_leftNavButton" data-role="button" data-align="left" style="background-image: url(../resources/@3x/返回@3x.png);background-repeat: round;width: 1.25em;height: 1em;"></a>
+            <a id="bindingMachine_leftNavButton" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;width: 1.25em;height: 1em;"></a>
 		</span>
 	</header>
 	
@@ -74,9 +74,9 @@
 
 <script id="nameTemplate" type="text/x-kendo-template">
     	<img src="#:image#" style="width: 31%;float: left;"/>
-    	<span id="dropdownlistPlaceholder" style="position: absolute;left: 37.5%;padding-left: 0.35em;top: 1em;font-size: 1.3em;color: rgb(169,169,169);">请选择品种</span>
-    	<img src="../resources/@3x/下拉icon@3x.png" style="width: 20px;float: right;position: absolute;right: 1em;top: 2em;"/>
-    	<select id="dropdownlist" style="padding-bottom: 0.5em;font-size: 1.3em;float: right;width: 64%;border-radius: 0;right:0;border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: lightgray;" data-bind="source: varietiesDataSource,value:variety" data-text-field="variety" data-value-field="variety"></select>
+    	<span id="dropdownlistPlaceholder" style="position: absolute;left: 37.5%;padding-left: 0.35em;top: 1em;font-size: 1.3em;color: rgb(169,169,169);>请选择品种</span>
+    	<img src="../resources/@3x/dropdownlist_icon@3x.png" style="width: 20px;float: right;position: absolute;right: 1em;top: 2em;"/>
+    	<select id="dropdownlist" data-role="dropdownlist" style="padding-bottom: 0.5em;font-size: 1.3em;float: right;width: 64%;border-radius: 0;right:0;border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: lightgray;" data-bind="source: varietiesDataSource,value:variety,events:{change:onChange}" data-text-field="variety" data-value-field="variety"></select>
     <input data-bind="value: yield" placeholder="请输入产量" style="position: absolute;bottom: 1.7em;right: 0;font-size: 1.3em;width: 62.2%;padding-left: 0.35em;padding-bottom: 0.5em;border: none;border-bottom-width: 1px;border-bottom-style: solid;border-color: lightgray;"></input>
     <div style="width: 31%;text-align: center;"><label >#:devcodename#</label></div>
     
@@ -88,13 +88,7 @@
 			window.location.href = "home.html";
 		});
     
-    $(document).ready(function() {
-                              $("#dropdownlist").kendoDropDownList({
-  select: function(e) {
-  	
-  }
-});
-                              });
+    
 </script>
 <script src="../Controller/yieldinput.js"></script>
 </body>

@@ -137,20 +137,20 @@ $(document).ready(function () {
                                         };
                                         if(this.alldevices.length == this.devices.length) {
                                         $("#" + viewModel.flowname + "CheckButton").each(function(n, button) {
-                                                                                         $(this).attr( "style","float: right;background-image: url(../resources/@3x/已选@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;right: 2px;position: relative;");
+                                                                                         $(this).attr( "style","float: right;background-image: url(../resources/@3x/selected@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;right: 2px;position: relative;");
                                                                                          $(this).attr("isselect","YES");
                                                                                          });
                                         $("#" + viewModel.flowname + "CheckAllButton").each(function(n, button) {
-                                                                                         $(this).attr( "style","float: right;background-image: url(../resources/@3x/已选@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;");
+                                                                                         $(this).attr( "style","float: right;background-image: url(../resources/@3x/selected@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;");
                                                                                          $(this).attr("isselect","YES");
                                                                                          });
                                         } else {
                                         $("#" + viewModel.flowname + "CheckButton").each(function(n, button) {
-                                                                                         $(this).attr( "style","float: right;background-image: url(../resources/@3x/未选@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;right: 2px;position: relative;");
+                                                                                         $(this).attr( "style","float: right;background-image: url(../resources/@3x/select@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;right: 2px;position: relative;");
                                                                                          $(this).attr("isselect","NO");
                                                                                          });
                                         $("#" + viewModel.flowname + "CheckAllButton").each(function(n, button) {
-                                                                                         $(this).attr( "style","float: right;background-image: url(../resources/@3x/未选@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;");
+                                                                                         $(this).attr( "style","float: right;background-image: url(../resources/@3x/select@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;");
                                                                                          $(this).attr("isselect","NO");
                                                                                          });
                                         };
