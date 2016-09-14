@@ -10,7 +10,15 @@
 		<script src="../js/kendo.all.min.js"></script>
 
 	</head>
+<style>
+	 .km-android .km-navbar .km-view-title /* After Q2 2012 SP1 */
+{
+	display: inline-block;
+    visibility: visible;
+    
+}
 
+</style>
 	<body>
 		<div data-role="view" data-title="IMS" id="IMSHome">
 			<header data-role="header">
@@ -94,7 +102,11 @@
 			</div>
 		</div>
 		<script>
-			var app = new kendo.mobile.Application();
+			var app = new kendo.mobile.Application(document.body,
+    {
+        platform:'ios',
+        skin:'nova'
+    });
 			function machine_input(type){
 				window.location.href = "yieldInput.html?type="+type;
 			}

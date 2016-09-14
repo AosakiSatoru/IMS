@@ -79,7 +79,11 @@
 		</style>
 		<script>
 			var navbar = $("#navbar").kendoMobileNavBar();
-			var app = new kendo.mobile.Application();
+				var app = new kendo.mobile.Application(document.body,
+    {
+        platform:'ios',
+        skin:'nova'
+    });
 
 			$("#warningList_leftNavButton").click(function() {
 				window.location.href = "home.html";

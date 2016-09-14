@@ -128,7 +128,11 @@
         </div>
         
         <script>
-            var app = new kendo.mobile.Application();
+            	var app = new kendo.mobile.Application(document.body,
+    {
+        platform:'ios',
+        skin:'nova'
+    });
             $("#packingInput_leftNavButton_1").click(function() {
 				window.location.href = "home.html";
 			});

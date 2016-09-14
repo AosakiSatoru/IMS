@@ -16,7 +16,7 @@
         <div data-role="view" id="IMSLogin">
             <div data-role="header">
             </div>
-            <div data-role="content">
+            <div data-role="content" style="background-color: white;">
                 <img src="resources/@3x/cc_background@3x.png" width="100%" border="0" style="position: absolute;" />
                 <div style="width: 100%;height: 100%;text-align: center;padding-top: 25%;">
                     <img src="resources/@3x/logo@3x.png" width="35%" border="0" />
@@ -37,6 +37,7 @@
                     <button id="loginButton" type="submit" style="width: 95%;height: 2.5em;border: none;font-size: 1.2em;background-color: #A62A40;color: #FFFFFF;">登录</button>
                     <!--<a href="View/home.html">home</a>-->
                 </div>
+                
             </div>
             </ul>
             <div data-role="footer">
@@ -47,10 +48,19 @@
         </div>
         
         <script>
-            var app = new kendo.mobile.Application();
+            	var app = new kendo.mobile.Application(document.body,
+    {
+        platform:'ios',
+        skin:'nova'
+    });
             </script>
         
         <script src="Controller/index.js"></script>
+        <style>
+        		.km-android div.km-view {
+    -webkit-box-direction: normal;
+}
+        </style>
     </body>
     
 </html>

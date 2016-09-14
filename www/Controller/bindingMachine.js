@@ -1,7 +1,11 @@
 /**
  * Created by mac on 16/9/1.
  */
-var app = new kendo.mobile.Application();
+var app = new kendo.mobile.Application(document.body,
+    {
+        platform:'ios',
+        skin:'nova'
+    });
 var fetchData;
 var category = new Array();
 var viewModels = new Array();
