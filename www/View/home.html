@@ -102,28 +102,9 @@
 				</a>
 			</div>
 		</div>
-		<script>
-			var app = new kendo.mobile.Application(document.body,
-    {
-        platform:'ios',
-        skin:'nova'
-    });
-			function machine_input(type){
-				window.location.href = "yieldInput.html?type="+type;
-			}
-			$("#yieldinput").click(function() {
-				window.location.href = "yieldInput.html";
-			});
-			$("#bindingMachine").click(function() {
-				window.location.href = "bindingMachine.html";
-			});
-			$("#packingInput").click(function() {
-				window.location.href = "packingInput.html";
-			});
-			$("#warning").click(function() {
-				window.location.href = "warningList.html";
-			});
-		</script>
+		<script type="text/javascript" src="../cordova.js"></script>
+		 <script src="../Controller/home.js"></script>
+		
 
 		
 	</body>
