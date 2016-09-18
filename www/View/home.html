@@ -42,10 +42,11 @@
 						
 					</li>
 					 <ul id="actionsheet" data-role="actionsheet" data-cancel="取消" >
-					 	 <li onclick="machine_input"><a>选择班次</a></li>
-    									  <li ><a onclick="machine_input('1')">班别:甲</a></li>
-  									   <li><a onclick="machine_input('2')">班别:乙</a></li>
-  									   <li><a onclick="machine_input('3')">班别:丙</a></li>
+					 	 <!--<li ><a></a></li>-->
+					 	  <li class="km-actionsheet-title">选择班次</li>
+    									  <li ><a data-action="machine_input('1')">班别:甲</a></li>
+  									   <li><a data-action="machine_input('2')">班别:乙</a></li>
+  									   <li><a data-action="machine_input('3')">班别:丙</a></li>
 							    </ul>
 					<li>
 						<a data-role="detailbutton" id="packingInput">

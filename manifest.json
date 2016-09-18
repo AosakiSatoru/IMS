@@ -256,7 +256,8 @@
 					"www/Controller/url.js",
 					"www/resources/@3x/select@3x.png",
 					"www/resources/@3x/selected@3x.png",
-					"www/View/home.html"
+					"www/View/home.html",
+					"www/styles/images/back.png"
 				],
 				"refer": [],
 				"priority": 0
