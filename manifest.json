@@ -237,7 +237,8 @@
 					"www/js/jquery.min.js",
 					"www/js/kendo.all.min.js",
 					"www/index.html",
-					"www/styles/images/back.png"
+					"www/styles/images/back.png",
+					"www/Controller/home.js"
 				],
 				"refer": [],
 				"priority": 0
@@ -522,7 +523,6 @@
 				"platforms/android/assets/www/js/cultures/kendo.culture.or-IN.min.js",
 				"platforms/android/build/intermediates/assets/debug/www/js/cultures/kendo.culture.se.min.js.map",
 				"platforms/ios/www/styles/Fiori/sprite_2x.png",
-				"www/Controller/home.js",
 				"platforms/ios/www/Controller/storage.js",
 				"platforms/ios/www/js/cultures/kendo.culture.fi-FI.min.js",
 				"platforms/android/build/intermediates/assets/debug/www/styles/Flat/markers_2x.png",

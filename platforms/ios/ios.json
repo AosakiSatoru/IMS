@@ -11,6 +11,24 @@
                         {
                             "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"JPushPlugin\"><param name=\"ios-package\" value=\"JPushPlugin\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "*PushConfig.plist": {
+                "parents": {
+                    "APP_KEY": [
+                        {
+                            "xml": "<string>c521d351cae0eb0208c70551</string>",
+                            "count": 1
                         }
                     ]
                 }
@@ -22,6 +40,13 @@
             "PACKAGE_NAME": "com.esquel.ims"
         },
         "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.esquel.ims"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.esquel.ims"
+        },
+        "jpush-phonegap-plugin": {
+            "API_KEY": "c521d351cae0eb0208c70551",
             "PACKAGE_NAME": "com.esquel.ims"
         }
     },
@@ -42,10 +67,28 @@
             "clobbers": [
                 "cordova.logger"
             ]
+        },
+        {
+            "id": "cordova-plugin-device.device",
+            "file": "plugins/cordova-plugin-device/www/device.js",
+            "pluginId": "cordova-plugin-device",
+            "clobbers": [
+                "device"
+            ]
+        },
+        {
+            "id": "jpush-phonegap-plugin.JPushPlugin",
+            "file": "plugins/jpush-phonegap-plugin/www/JPushPlugin.js",
+            "pluginId": "jpush-phonegap-plugin",
+            "clobbers": [
+                "JPush"
+            ]
         }
     ],
     "plugin_metadata": {
         "cordova-plugin-whitelist": "1.2.2",
-        "cordova-plugin-console": "1.0.3"
+        "cordova-plugin-console": "1.0.3",
+        "cordova-plugin-device": "1.1.3",
+        "jpush-phonegap-plugin": "2.2.4"
     }
 }

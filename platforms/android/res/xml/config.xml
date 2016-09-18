@@ -4,6 +4,12 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="JPushPlugin">
+        <param name="android-package" value="cn.jpush.phonegap.JPushPlugin" />
+    </feature>
     <name>IMS</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -20,5 +26,12 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <allow-intent href="market:*" />
+    <config-file parent="/*" target="AndroidManifest.xml">
+        <intent-filter android:priority="1000">
+            <action android:name="android.intent.action.BOOT_COMPLETED" />
+            <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            <category android:name="com.esquel.ims" />
+        </intent-filter>
+    </config-file>
     <preference name="loglevel" value="DEBUG" />
 </widget>

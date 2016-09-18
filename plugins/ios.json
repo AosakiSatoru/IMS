@@ -12,7 +12,15 @@
         },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.esquel.ims"
+        },
+        "jpush-phonegap-plugin": {
+            "API_KEY": "c521d351cae0eb0208c70551",
+            "PACKAGE_NAME": "com.esquel.ims"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.esquel.ims"
+        }
+    }
 }
