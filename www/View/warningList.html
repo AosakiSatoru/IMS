@@ -14,45 +14,45 @@
 	<body>
 		<div data-role="view" data-title="告警" id="IMSWarningList">
 			<header data-role="header">
-				<span data-role="navbar">
+				<span data-role="navbar" style="border-bottom-width:1px ;border-bottom-style: solid;border-bottom-color: lightgray;">
                     <div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
-                		<a id="warningList_leftNavButton" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;width: 1.25em;height: 1em;"></a>
-                </span>
+                		<a id="warningList_leftNavButton" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
+				</span>
 			</header>
 			<div data-role="content">
 				<ul data-role="listview" data-style="inset" style="background-color: white;">
-					<li style="border-width: 0;padding-top: 3em;">
+					<li style="border-width: 0;padding-top: 3em;padding-left: 30px;padding-right: 30px;">
 						<a data-role="detailbutton" id="deviceStatusButton">
 							<p>
 								<img src="../resources/@3x/device_status_alarm_icon@3x.png" style="width: 1.5em;vertical-align: middle;" />
-								<span class="km-badge" style="background-color: #FF0200;top:auto;right:2em;padding: 0;">12</span>
+								<span class="km-badge">12</span>
 								<span style="color: #333333;padding-left: 0.5em;vertical-align: middle;">设备状态告警</span>
 							</p>
 						</a>
 					</li>
-					<li style="border-width: 0;">
+					<li style="border-width: 0;padding-left: 30px;padding-right: 30px;">
 						<a data-role="detailbutton" id="productivityButton">
 							<p>
 								<img src="../resources/@3x/productivity_alarm_icon@3x.png" style="width: 1.5em;vertical-align: middle;" />
-								<span class="km-badge" style="background-color: #FF0200;top:auto;right:2em;padding: 0;">3</span>
+								<span class="km-badge">3</span>
 								<span style="color: #333333;padding-left: 0.5em;vertical-align: middle;">生产效率告警</span>
 							</p>
 						</a>
 					</li>
-					<li style="border-width: 0;">
+					<li style="border-width: 0;padding-left: 30px;padding-right: 30px;">
 						<a data-role="detailbutton" id="qualityButton">
 							<p>
 								<img src="../resources/@3x/quality_alarm_icon@3x.png" style="width: 1.5em;vertical-align: middle;" />
-								<span class="km-badge" style="background-color: #FF0200;top:auto;right:2em;padding: 0;">5</span>
+								<span class="km-badge">5</span>
 								<span style="color: #333333;padding-left: 0.5em;vertical-align: middle;">质量告警</span>
 							</p>
 						</a>
 					</li>
-					<li style="border-width: 0;-webkit-box-shadow: none;box-shadow: none;">
+					<li style="border-width: 0;padding-left: 30px;padding-right: 30px;-webkit-box-shadow: none;box-shadow: none;">
 						<a data-role="detailbutton" id="otherButton">
 							<p>
 								<img src="../resources/@3x/other_alarm_icon@3x.png" style="width: 1.5em;vertical-align: middle;" />
-								<span class="km-badge" style="background-color: #FF0200;top:auto;right:2em;padding: 0;">5</span>
+								<span class="km-badge">5</span>
 								<span style="color: #333333;padding-left: 0.5em;vertical-align: middle;">其他告警</span>
 							</p>
 						</a>
@@ -67,13 +67,11 @@
 				border-color: #DDDDDD;
 			}
 			
-			.km-list>li {
-				padding-bottom: 10px;
-				padding-right: 1em;
-			}
-			
-			.km-ios7 .km-list li>.km-listview-link {
-				margin: 0;
+			.km-badge{
+				position: relative;
+				float: right;
+				top:5px;
+				right:20px;
 				padding: 0;
 			}
 		</style>

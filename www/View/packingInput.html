@@ -7,7 +7,7 @@
         
         <link href="../styles/kendo.mobile.all.min.css" rel="stylesheet" />
         <link href="../styles/kendo.common.min.css" rel="stylesheet" />
-        <link href="../styles/kendo.material.min.css" rel="stylesheet" />
+        <!--<link href="../styles/kendo.material.min.css" rel="stylesheet" />-->
         <script src="../Controller/url.js"></script>
         <script src="../Controller/storage.js" ></script>
         <script src="../js/jquery.min.js"></script>
@@ -17,116 +17,123 @@
     <body>
         <div data-role="view" data-title="副料打包" id="IMSPackingInput_first">
             <header data-role="header">
-                <span data-role="navbar">
+				<span data-role="navbar" style="border-bottom-width:1px ;border-bottom-style: solid;border-bottom-color: lightgray;">
                     <div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
-                		<a id="packingInput_leftNavButton_1" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;width: 1.25em;height: 1em;"></a>
-                </span>
-            </header>
+                		<a id="packingInput_leftNavButton_1" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
+				</span>
+			</header>
             
             <div data-role="content" style="background-color: #FFFFFF;">
-                <div style="text-align: center;margin-top: 1em;">
+                <div style="text-align: center;margin-top: 15px;">
                     <span><a data-role = "button" style="width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;">回 条</a></span>
                     <span><a data-role = "button" href="#IMSPackingInput_second" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">粗纱头</a></span>
                     <span><a data-role = "button" href="#IMSPackingInput_third" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">白 花</a></span>
                 </div>
-                <div style="text-align: center;margin-top: 1em;">
-                    <select id="dropdownlist1" style="width: 97%;text-align: left;padding-top: 0.5em;padding-bottom: 0.5em;background-color: #EEEEEE;">
+                <div style="text-align: center;margin-top: 15px;">
+                		<select id="dropdownlist1" style="width: 97%;text-align: left;padding-top: 0.5em;padding-bottom: 0.5em;background-color: #EEEEEE;">
                         <option>T</option>
                         <option>KG</option>
                         <option>G</option>
                     </select>
+                    <img src="../resources/@3x/dropdownlist_icon@3x.png" style="width: 20px;float: right;position: absolute;right: 20px;top: 85px;"/>
                 </div>
-                <div style="text-align: center;margin-top: 1em;">
+                <div style="text-align: center;margin-top: 15px;">
                     <input id="IMSPackingInput_first_yield" type="text" placeholder="请输入数量" style="font-size: 1em;width: 97%;padding: 1em;margin: 0;border: none;background-color: #EEEEEE;" />
                 </div>
             </div>
-            
-            <div data-role="footer">
-                <div style="text-align: center;">
-                    <span>
-                        <a data-role="button" id="packingInput_confirmButton_1"
-                            style="width: 97%;height: 2.5em;font-size: 1.2em;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;"
-                            data-bind="click: packingInput">确认</a>
-                    </span>
-                </div>
+            <div style="text-align: center;position: relative;bottom: 0.5em;">
+                <span>
+                    <a data-role="button" id="packingInput_confirmButton_1"
+                        style="width: 97%;height: 2.5em;font-size: 1.2em;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;"
+                        data-bind="click: packingInput">确认</a>
+                </span>
             </div>
         </div>
         
         <div data-role="view" data-title="副料打包" id="IMSPackingInput_second">
             <header data-role="header">
-                <span data-role="navbar">
+				<span data-role="navbar" style="border-bottom-width:1px ;border-bottom-style: solid;border-bottom-color: lightgray;">
                     <div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
+<<<<<<< Updated upstream
                 		<a id="packingInput_leftNavButton_2" data-role="button" data-align="left" style="background-image: url(../resources/@3x/返回@3x.png);background-repeat: round;width: 1.25em;height: 1em;"></a>
                 </span>
             </header>
+=======
+                		<a id="packingInput_leftNavButton_2" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
+				</span>
+			</header>
+>>>>>>> Stashed changes
             
             <div data-role="content" style="background-color: #FFFFFF;">
-                <div style="text-align: center;margin-top: 1em;">
+                <div style="text-align: center;margin-top: 15px;">
                     <span><a data-role = "button" href="#IMSPackingInput_first" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">回 条</a></span>
                     <span><a data-role = "button" style="width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;">粗纱头</a></span>
                     <span><a data-role = "button" href="#IMSPackingInput_third" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">白 花</a></span>
                 </div>
                 
-                <div style="text-align: center;margin-top: 1em;">
+                <div style="text-align: center;margin-top: 15px;">
                     <select id="dropdownlist2" style="width: 97%;text-align: left;padding-top: 0.5em;padding-bottom: 0.5em;background-color: #EEEEEE;">
                         <option>T</option>
                         <option>KG</option>
                         <option>G</option>
                     </select>
+                    <img src="../resources/@3x/dropdownlist_icon@3x.png" style="width: 20px;float: right;position: absolute;right: 20px;top: 85px;"/>
                 </div>
-                <div style="text-align: center;margin-top: 1em;">
+                <div style="text-align: center;margin-top: 15px;">
                     <input id="IMSPackingInput_second_yield" type="text" placeholder="请输入数量" style="font-size: 1em;width: 97%;padding: 1em;margin: 0;border: none;background-color: #EEEEEE;" />
                 </div>
             </div>
-            
-            <div data-role="footer">
-                <div style="text-align: center;">
-                    <span>
-                        <a data-role="button" id="packingInput_confirmButton_2"
-                            style="width: 97%;height: 2.5em;font-size: 1.2em;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;"
-                            data-bind="click: packingInput">确认</a>
-                    </span>
-                </div>
+            <div style="text-align: center;position: relative;bottom: 0.5em;">
+                <span>
+                    <a data-role="button" id="packingInput_confirmButton_2"
+                        style="width: 97%;height: 2.5em;font-size: 1.2em;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;"
+                        data-bind="click: packingInput">确认</a>
+                </span>
             </div>
         </div>
         
         <div data-role="view" data-title="副料打包" id="IMSPackingInput_third">
             <header data-role="header">
-                <span data-role="navbar">
+				<span data-role="navbar" style="border-bottom-width:1px ;border-bottom-style: solid;border-bottom-color: lightgray;">
                     <div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
+<<<<<<< Updated upstream
                 		<a id="packingInput_leftNavButton_3" data-role="button" data-align="left" style="background-image: url(../resources/@3x/返回@3x.png);background-repeat: round;width: 1.25em;height: 1em;"></a>
                 </span>
             </header>
+=======
+                		<a id="packingInput_leftNavButton_3" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
+				</span>
+			</header>
+>>>>>>> Stashed changes
             
             <div data-role="content" style="background-color: #FFFFFF;">
-                <div style="text-align: center;margin-top: 1em;">
+                <div style="text-align: center;margin-top: 15px;">
                     <span><a data-role = "button" href="#IMSPackingInput_first" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">回 条</a></span>
                     <span><a data-role = "button" href="#IMSPackingInput_second" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">粗纱头</a></span>
                     <span><a data-role = "button" style="width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;">白 花</a></span>
                 </div>
                 
-                <div style="text-align: center;margin-top: 1em;">
+                <div style="text-align: center;margin-top: 15px;">
                     <select id="dropdownlist3" style="width: 97%;text-align: left;padding-top: 0.5em;padding-bottom: 0.5em;background-color: #EEEEEE;">
                         <option>T</option>
                         <option>KG</option>
                         <option>G</option>
                     </select>
+                    <img src="../resources/@3x/dropdownlist_icon@3x.png" style="width: 20px;float: right;position: absolute;right: 20px;top: 85px;"/>
                 </div>
-                <div style="text-align: center;margin-top: 1em;">
+                <div style="text-align: center;margin-top: 15px;">
                     <input id="IMSPackingInput_third_yield" type="text" placeholder="请输入数量" style="font-size: 1em;width: 97%;padding: 1em;margin: 0;border: none;background-color: #EEEEEE;" />
                 </div>
             </div>
-            <div data-role="footer">
-                <div style="text-align: center;">
-                    <span>
-                        <a data-role="button" id="packingInput_confirmButton_3"
-                            style="width: 97%;height: 2.5em;font-size: 1.2em;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;"
-                            data-bind="click: packingInput">确认</a>
-                    </span>
-                </div>
+            <div style="text-align: center;position: relative;bottom: 0.5em;">
+                <span>
+                    <a data-role="button" id="packingInput_confirmButton_3"
+                        style="width: 97%;height: 2.5em;font-size: 1.2em;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;"
+                        data-bind="click: packingInput">确认</a>
+                </span>
             </div>
         </div>
-        
+        <div id="app"></div>
         <script>
             	var app = new kendo.mobile.Application(document.body,
     {
@@ -142,6 +149,11 @@
 			$("#packingInput_leftNavButton_3").click(function() {
 				window.location.href = "home.html";
 			});
+			var layout = new kendo.Layout("<header>Header</header><section id='content'></section><footer></footer>");
+
+    layout.render($("#app"));
+	var view1 = new kendo.View("<span>Foo</span>");
+    layout.showIn("#content", view1, "swap");
             $(document).ready(function() {
                               $("#dropdownlist1").kendoDropDownList();
                               $("#dropdownlist2").kendoDropDownList();
@@ -174,6 +186,20 @@
             color: #A9293F;
             height: 2em;
         }
+        /* the initial position of the next div */
+    .k-fx-swap.k-fx-start .k-fx-next {
+        -webkit-transform: translatex(100%);
+        -moz-transform: translatex(100%);
+        transform: translatex(100%);
+    }
+
+    /* the final position of the current div */
+    .k-fx-swap.k-fx-end .k-fx-current {
+        opacity: 0;
+        -webkit-transform: scale(0.9);
+        -moz-transform: scale(0.9);
+        transform: scale(0.9);
+    }
         </style>
         
     </body>

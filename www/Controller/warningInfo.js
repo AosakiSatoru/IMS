@@ -5,25 +5,10 @@
 $(document).ready(function() {
 
 	dataSource = kendo.data.DataSource.create({
-		data: [{
-			firstName: "Ann",
-			lastName: "Devon",
-			firstLetter: "A",
-			lastLetter: "D",
-			photo: '../content/mobile/overview/ann.jpg'
-		}, {
-			firstName: "Ann",
-			lastName: "Devon",
-			firstLetter: "A",
-			lastLetter: "D",
-			photo: '../content/mobile/overview/ann.jpg'
-		}, {
-			firstName: "Ann",
-			lastName: "Devon",
-			firstLetter: "A",
-			lastLetter: "D",
-			photo: '../content/mobile/overview/ann.jpg'
-		}]
+		data: [{message:"告警信息"}, 
+		{message:"设备告警信息"}, 
+		{message:"生产效率详细告警信息"}, 
+		{message:""}]
 	});
 
 	var contentViewModel = kendo.observable({

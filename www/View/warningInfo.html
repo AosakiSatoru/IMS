@@ -16,24 +16,25 @@
 			<header data-role="header">
 				<span data-role="navbar">
                     <div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
-                		<a id="warningInfo_leftNavButton" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;width: 1.25em;height: 1em;"></a>
-                </span>
-			</header>
-			<div data-role="content" style="background-color: #F7F7F7;">
+                		<a id="warningInfo_leftNavButton" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
+				</span>
 				<div style="background-color: white;text-align: center;">
-					<span>
-                        <a data-role="button" id="warningInfo_filterButton"
-                            style="width: 40%;background-color: #FFFFFF;color: #A9293D;border-color: #A9293D;border-radius: 2px;">
-                            工序筛选
-                        </a>
-                    </span>
-					<span>
-                        <a data-role="button" id="warningInfo_allButton"
-                            style="width: 40%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;border-radius: 2px;">
-                            显示全部
-                        </a>
-                    </span>
-				</div>
+				<span>
+                    <a data-role="button" id="warningInfo_filterButton"
+                        style="width: 40%;background-color: #FFFFFF;color: #A9293D;border-color: #A9293D;border-radius: 2px;">
+                        工序筛选
+                    </a>
+                </span>
+				<span>
+                    <a data-role="button" id="warningInfo_allButton"
+                        style="width: 40%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;border-radius: 2px;">
+                        显示全部
+                    </a>
+                </span>
+			</div>
+			</header>
+			
+			<div data-role="content" style="background-color: #F7F7F7;">
 				<div data-role="listview" data-bind="source: dataSource" data-template="warningInfo_Template" data-fixed-headers="true" id="contentListView" style="background-color: white;">
 				</div>
 			</div>
@@ -52,8 +53,8 @@
 		<script id="warningInfo_Template" type="text/x-kendo-template">
 			<div style="background-color:rgb(247,247,247);height: 5px;"></div>
 			<div>
-				<a id="machineName" style="float: left;margin-top: 0.5em;padding-left: 0.5em;">清花机</a>
-				<a id="warningInfo_detilButton" data-role="button" style="background-image: url(../resources/@3x/detail@3x.png);background-repeat: round;border: none;float: right;margin: 1em;padding-left: 1.6em;padding-right: 1.6em;padding-top: 0.55em;padding-bottom: 0.55em;"></a>
+				<a id="machineName" style="float: left;margin-top: 0.5em;padding-left: 0.5em;color: black;">清花机</a>
+				<a id="warningInfo_detilButton" data-role="button" style="background-image: url(../resources/@3x/detail@3x.png);background-repeat: round;border: none;float: right;margin: 15px;padding-left: 23px;padding-right: 23px;padding-top: 8px;padding-bottom: 8px;"></a>
 			</div>
 			<div style="margin-top: 2.5em;padding-top: 0.5em;border-top-width: 1px;border-top-color: lightgray;border-top-style: solid;">
 				<div>

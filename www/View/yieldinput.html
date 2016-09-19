@@ -4,8 +4,6 @@
 <head>
     <title>产量输入</title>
     <link href="../styles/kendo.mobile.all.min.css" rel="stylesheet" />
-    <link href="../styles/kendo.common.min.css" rel="stylesheet" />
-    <link href="../styles/kendo.material.min.css" rel="stylesheet" />
     <script src="../Controller/url.js"></script>
     <script src="../js/jquery.min.js"></script>
     <script src="../js/kendo.all.min.js"></script>
@@ -16,11 +14,11 @@
 <body>
 <div data-role="view" id="navbar-styles" data-title="产量输入" data-use-native-scrolling="true">
     <header data-role="header">
-		<span data-role="navbar">
-            <div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
-            <a id="bindingMachine_leftNavButton" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;width: 1.25em;height: 1em;"></a>
-		</span>
-	</header>
+				<span data-role="navbar" style="border-bottom-width:1px ;border-bottom-style: solid;border-bottom-color: lightgray;">
+                    <div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
+                		<a id="yieldInput_leftNavButton" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
+				</span>
+			</header>
 	
 	<div data-role="content" style="background-color: white;">
 		<div style="text-align: left;margin-top: 1em;padding-left: 3%;" id="headerButtonGroup">
@@ -67,7 +65,11 @@
 	}
 	 .km-list .k-dropdown .k-input{
 	 	font-size: 1.3em;
-	 	padding-left: 0.5em;
+	 	padding-left: 5px;
+	 }
+	 
+	 .km-list .k-dropdown{
+	 	line-height: 15px;
 	 }
 	 
 	 .k-popup .k-list .k-item {
@@ -84,7 +86,6 @@
             padding-left: 1em;
             border: 0;
             color: #A9293D;
-            height: 2em;
         }
 </style>
 
@@ -92,9 +93,9 @@
     	<img src="#:image#" style="width: 31%;float: left;"/>
     	<span id="dropdownlistPlaceholder" style="position: absolute;left: 37.5%;padding-left: 0.35em;top: 1em;font-size: 1.3em;color: rgb(169,169,169);">请选择品种</span>
     	<img src="../resources/@3x/dropdownlist_icon@3x.png" style="width: 20px;float: right;position: absolute;right: 1em;top: 2em;"/>
-    	<select id="dropdownlist" data-role="dropdownlist" style="position: relative;top: 1em;font-size: 1em;float: right;width: 64%;border-radius: 0;right:0;border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: lightgray;text-align: left;" data-bind="source: varietiesDataSource,value:variety,events:{change:onChange}" data-text-field="variety" data-value-field="variety"></select>
+    	<select id="dropdownlist" data-role="dropdownlist" style="position: relative;top: 28px;font-size: 1em;float: right;width: 64%;border-radius: 0;right:0;border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: lightgray;text-align: left;" data-bind="source: varietiesDataSource,value:variety,events:{change:onChange}" data-text-field="variety" data-value-field="variety"></select>
     <input data-bind="value: yield" placeholder="请输入产量" style="position: absolute;bottom: 1.7em;right: 0;font-size: 1.3em;width: 62.2%;padding-left: 0.35em;padding-bottom: 15px;border: none;border-bottom-width: 1px;border-bottom-style: solid;border-color: lightgray;"></input>
-    <div style="width: 31%;text-align: center;"><label >#:devcodename#</label></div>
+    <div style="width: 31%;text-align: center;"><label style="color: rgb(51,51,51)">#:devcodename#</label></div>
     
 </script>
 <script>
@@ -104,7 +105,7 @@
         skin:'nova'
     });
 	var navbar = $("#navbar").kendoMobileNavBar();
-		$("#bindingMachine_leftNavButton").click(function() {
+		$("#yieldInput_leftNavButton").click(function() {
 			window.location.href = "home.html";
 		});
     
