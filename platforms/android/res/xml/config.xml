@@ -26,12 +26,5 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <allow-intent href="market:*" />
-    <config-file parent="/*" target="AndroidManifest.xml">
-        <intent-filter android:priority="1000">
-            <action android:name="android.intent.action.BOOT_COMPLETED" />
-            <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            <category android:name="com.esquel.ims" />
-        </intent-filter>
-    </config-file>
     <preference name="loglevel" value="DEBUG" />
 </widget>
