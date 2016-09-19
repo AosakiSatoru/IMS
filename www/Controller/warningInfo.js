@@ -16,4 +16,7 @@ $(document).ready(function() {
 
 	});
 	kendo.bind($("#contentListView"), contentViewModel);
+	$("#warningInfo_detilButton").click(function() {
+				window.location.href = "warningDetail.html";
+			});
 });
