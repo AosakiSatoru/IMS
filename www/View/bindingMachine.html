@@ -66,7 +66,7 @@
         #=flowname#
         </span>
         <span>
-        <div data-role="button" data-bind="click :collapsibleButtonClick" id="#=flowname#CheckAllButton" isselect="NO" style="float: right;background-image: url(../resources/@3x/未选@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;"></div>
+        <div data-role="button" data-bind="click :collapsibleButtonClick" id="#=flowname#CheckAllButton" isselect="NO" style="float: right;background-image: url(../resources/@3x/select@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;"></div>
         </span>
         </h3>
 
@@ -76,7 +76,7 @@
 	</script>
 	<script id="deviceTemplate" type="text/x-kendo-template">
 		<label style="padding-top: 25px;padding-bottom: 25px;"><input type="checkbox" value="#=device#" data-bind="checked: devices,click: select">
-			<span data-bind="click :collapsibleButtonClick" id="#=flowname#CheckButton" isselect="NO" style="float: right;background-image: url(../resources/@3x/未选@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;right: 2px;position: relative;"></span>
+			<span data-bind="click :collapsibleButtonClick" id="#=flowname#CheckButton" isselect="NO" style="float: right;background-image: url(../resources/@3x/select@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;right: 2px;position: relative;"></span>
 			#=device#
 		</label>
 	</script>
@@ -100,27 +100,32 @@
 		
 		.km-widget.km-collapsible.km-expanded,
 		.km-widget.km-collapsible.km-collapsed,
-		.km-collapsible-content {
+		.km-nova .km-collapsible-content {
 			padding-bottom: 0;
 			padding-top: 0;
 			margin: 0;
-			border: 0;
+			border: none;
 		}
 		
 		.km-collapsible-header.km-icon-left {
 			border-top: 0;
+			border-bottom: 0;
 			font-size: 1em;
 			color: #A9293D;
-			border-bottom: 0;
+			line-height: 0;
 		}
 		
-		.km-list>li {
-			padding-bottom: 0;
-			padding-top: 0;
+		.km-nova .km-list>li,
+		.km-list:not(.km-virtual-list)>li:first-child {
+			padding: 0;
+			margin: 0;
+			border-bottom: none;
+			border-top-width: 1px;
 		}
 		
 		.km-root .km-pane .km-icon.km-check {
 			color: #DDDDDD;
+			border: none;
 		}
 		.image-select{
 			background-image: url("../resources/@3x/select@3x.png")
