@@ -9,7 +9,7 @@
     });
     
 			function machine_input(type){
-				window.location.href = "yieldInput.html?type="+type;
+				window.location.href = "yieldinput.html?type="+type;
 			}
 			$("#yieldinput").click(function() {
 				window.location.href = "yieldInput.html";
