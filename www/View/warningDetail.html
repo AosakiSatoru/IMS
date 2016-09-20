@@ -21,7 +21,7 @@
 			</header>
 
 			<div data-role="content" style="background-color: white;">
-				<div style="position: relative;top: 15px;border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: lightgray;">
+				<div style="position: relative;top: 15px;">
 					<div style="width: 30%;text-align: right;float: left;margin-top: 10px;">
 						<div>机台编号:</div>
 						<div>品种:</div>
@@ -32,28 +32,46 @@
 						<div>CV</div>
 						<div>120</div>
 					</span>
-					<span style="text-align: center;">
+					<span style="float: right;margin-right: 20%;">
 						<div data-role="button" style="float: left;left: 15%;background-image: url(../resources/@3x/productivity_process@3x.png);background-repeat: round;border: 0;width: 80px;height: 80px;">
 							<div style="font-size: 26px;color: #A9293D;margin-top: 20px;">
-								<span>23</span>
+								<span>233</span>
 								<span style="font-size: 15px;float: right;">%</span>
 							</div>
 						</div>
 					</span>
-					<div style="width: 1px">
-						<img src="../resources/@3x/smj-c70@3x.png" style="width: 100px;"/>
+					<div style="position: absolute;left: 0;top: 100px;width: 100%;">
+						<span style="position: absolute;right: 4%;left: 4%;float: left;height: 100px;border-width: 1px;border-style: solid;border-color: #A9293D;">
+							<img src="../resources/@3x/smj-c70@3x.png" style="margin-top: -1px;margin-left: -1px;width: 100px;float: left;" />
+							<div style="font-size: 0.8em;padding: 1em;padding-left: 110px;">
+								<div>告警信息告警信息告警信息告警信息告警信息告警信息告警信息告警信息告警信息告警信息</div>
+							</div>
+						</span>
 					</div>
-					<div style="text-align: center;">
-						<div style="float: left;width: 45%;background-color: #EEEEEE;">A%:-0.1</div>
-						<div style="float: right;width: 45%;background-color: #EEEEEE;">CV%:0</div>
+					<div style="padding-bottom: 30px;width: 100%;position: absolute;top: 220px;text-align: center;border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: lightgray;">
+						<div style="margin-left: 4%;float: left;width: 45%;background-color: #EEEEEE;padding: 30px;">A%:-0.1</div>
+						<div style="margin-right: 4%;float: right;width: 45%;background-color: #EEEEEE;padding: 30px;">CV%:0</div>
+					</div>
+					<div style="position: absolute;width: 100%;top: 330px" data-role="listview" data-bind="source: dataSource" data-template="otherInfo_Template" data-fixed-headers="true" id="contentListView" style="background-color: white;">
 					</div>
 				</div>
 			</div>
 		</div>
 		<style>
-
+			#contentListView.km-list>li{
+				padding-left: 4%;
+				padding-bottom: 0.1em;
+				padding-right: 0;
+				padding-top: 0.1em;
+				/*border: none;*/
+				-webkit-box-shadow: none;
+				box-shadow: none;
+			}
 		</style>
-
+		<script id="otherInfo_Template" type="text/x-kendo-template">
+			<img src="../resources/@3x/other_info_icon@3x.png" style="padding: 5px;width: 20px;float: left;" />
+			<div style="font-size: 0.8em;">2016-09-20 11:21 其他信息</div>
+		</script>
 		<script>
 			var navbar = $("#navbar").kendoMobileNavBar();
 			var app = new kendo.mobile.Application(document.body, {
@@ -64,6 +82,7 @@
 				window.location.href = "warningInfo.html";
 			});
 		</script>
+		<script src="../Controller/warningDetail.js"></script>
 	</body>
 
 </html>
