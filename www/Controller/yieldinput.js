@@ -70,6 +70,7 @@ $(document).ready(function () {
             }
 
 			$("#contentListView").data("kendoMobileListView").refresh( );
+
         }
 
     });
@@ -149,6 +150,9 @@ function bindView(data){
 		"third":third,
 		onChange:function(e){
 			$(e.sender.element.parent().parent()).find("#dropdownlistPlaceholder").hide();
+		},
+		hidden:function(e){
+			return !(e.variety.length==0);
 		}
     });
     kendo.bind($("#contentListView"), contentViewModel);
