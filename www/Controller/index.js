@@ -55,7 +55,24 @@ function RequestPreHookData() {
 };
 
 $(document).ready(function() {
+	document.getElementById('clearBtn').style.display = 'none';
                   $("#loginButton").click(function() {
                                           RequestPreHookData();
                                           });
                   });
+                  
+                  
+                  
+                  function showBtn(){
+     if(document.getElementById('loginUserName').value.length > 0){
+     document.getElementById('clearBtn').style.display = 'block';
+     }else{
+     document.getElementById('clearBtn').style.display = 'none';
+     }
+     }
+
+     function clearText(){
+     document.getElementById('loginUserName').value = '';
+     document.getElementById('clearBtn').style.display = 'none';
+     }   
+
