@@ -55,24 +55,35 @@ function RequestPreHookData() {
 };
 
 $(document).ready(function() {
-	document.getElementById('clearBtn').style.display = 'none';
-                  $("#loginButton").click(function() {
-                                          RequestPreHookData();
-                                          });
-                  });
+	document.getElementById('accountClearBtn').style.display = 'none';
+	document.getElementById('passwordClearBtn').style.display = 'none';
+    $("#loginButton").click(function() {
+        							RequestPreHookData();
+                            });
+    });
                   
                   
                   
-                  function showBtn(){
-     if(document.getElementById('loginUserName').value.length > 0){
-     document.getElementById('clearBtn').style.display = 'block';
-     }else{
-     document.getElementById('clearBtn').style.display = 'none';
-     }
-     }
-
-     function clearText(){
-     document.getElementById('loginUserName').value = '';
-     document.getElementById('clearBtn').style.display = 'none';
-     }   
+    function showAccountClearBtn(){
+    		if(document.getElementById('loginUserName').value.length > 0){
+    		document.getElementById('accountClearBtn').style.display = 'block';
+    		}else{
+    		document.getElementById('accountClearBtn').style.display = 'none';
+    		}
+    }
+	function showPasswordClearBtn(){
+    		if(document.getElementById('loginPassword').value.length > 0){
+    		document.getElementById('passwordClearBtn').style.display = 'block';
+    		}else{
+    		document.getElementById('passwordClearBtn').style.display = 'none';
+    		}
+    }
+    function clearAccountText(){
+    		document.getElementById('loginUserName').value = '';
+    		document.getElementById('accountClearBtn').style.display = 'none';
+    }
+    function clearPasswordText(){
+    		document.getElementById('loginPassword').value = '';
+    		document.getElementById('passwordClearBtn').style.display = 'none';
+    }
 

@@ -23,15 +23,16 @@
                 </div>
                 <div style="margin-top: 15%;margin-left: 1em;">
                     <p style="border-bottom: 1px solid #EEEEEE;padding-bottom: 0.45em;">
-                    <img src="resources/@3x/account_icon@3x.png" style="width: 1.4em;height: 1.45em;float: left;" />
-                    <input id="loginUserName" type="text" class="texter" placeholder="请输入账号" name="userID" onKeyUp="showBtn()" style="font-size: 1.1em;width: 90%;padding-left: 0.4em;margin: 0;border: none;" />
-                    <input type="image" class="clearer" id="clearBtn" onclick="clearText()" src="resources/@3x/clear_icon@3x.png" style="width: 1.4em;height: 1.45em;float: right;margin-right: 0.5em"/>
+                    <img src="resources/@3x/account_icon@3x.png" style="width: 19px;height: 20px;float: left;" />
+                    <input id="loginUserName" type="text" class="texter" placeholder="请输入账号" name="userID" onKeyUp="showAccountClearBtn()" style="font-size: 1.1em;width: 80%;padding-left: 0.4em;margin: 0;border: none;" />
+                    <input type="image" class="clearer" id="accountClearBtn" onclick="clearAccountText()" src="resources/@3x/clear_icon@3x.png" style="width: 18px;position: relative;float: right;margin-right: 1em"/>
                     </p>
                 </div>
                 <div style="margin-top: 5%;margin-left: 1em;">
                     <p style="border-bottom: 1px solid #EEEEEE;padding-bottom: 0.45em;">
-                    <img src="resources/@3x/password_icon@3x.png" style="width: 1.2em;height: 1.5em;float: left;margin-left: 0.1em;" />
-                    <input id="loginPassword" type="password" placeholder="请输入密码" name="password" style="font-size: 1.1em;width: 90%;padding-left: 0.5em;margin: 0;border: none;" />
+                    <img src="resources/@3x/password_icon@3x.png" style="width: 17px;height: 20px;float: left;margin-left: 0.1em;" />
+                    <input id="loginPassword" type="password" placeholder="请输入密码" name="password" onKeyUp="showPasswordClearBtn()" style="font-size: 1.1em;width: 80%;padding-left: 0.5em;margin: 0;border: none;" />
+                    <input type="image" class="clearer" id="passwordClearBtn" onclick="clearPasswordText()" src="resources/@3x/clear_icon@3x.png" style="width: 18px;position: relative;float: right;margin-right: 1em"/>
                     </p>
                 </div>
                 <div style="margin-top: 30%;text-align: center;">
@@ -47,12 +48,11 @@
         </div>
         
         <script>
-            	var app = new kendo.mobile.Application(document.body,
-    {
-        platform:'ios',
-        skin:'nova'
-    });
-            </script>
+            	var app = new kendo.mobile.Application(document.body,{
+        			platform:'ios',
+        			skin:'nova'
+    			});
+        </script>
         
         <script src="Controller/index.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
