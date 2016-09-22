@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
-    
     <head>
 		<meta charset="utf-8" />
 		<title>绑定机台</title>
 
 		<link href="../styles/kendo.mobile.all.min.css" rel="stylesheet" />
+		<link href="../css/bindingMachine.css" rel="stylesheet" />
 		<script src="../Controller/url.js"></script>
 		<script src="../Controller/storage.js" ></script>
 		<script src="../js/jquery.min.js"></script>
 		<script src="../js/kendo.all.min.js"></script>
+		<script src="../Controller/bindingMachine.js"></script>
 	</head>
 
 	<body>
-
 		<div data-role="view" data-title="绑定机台" id="IMSBindingMachine">
 			<header data-role="header">
 				<span data-role="navbar">
@@ -21,16 +21,6 @@
                 		<a id="bindingMachine_leftNavButton" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
 				</span>
 			</header>
-			<div data-role="content" style="background-color: #F7F7F7;">
-				<!--data-source="flownameDataSource"-->
-				<div data-role="listview" data-style="inset" style="background-color: white;" data-bind="source: flownameDataSource" data-template="flownameTemplate" id="contentListView">
-				</div>
-			</div>
-			<footer data-role="footer">
-				<div style="background-color: #F7F7F7;">
-					<span>
-                </span>
-            </header>
             <div data-role="content" style="background-color: #F7F7F7;">
                 <!--data-source="flownameDataSource"-->
                 <div data-role="listview" data-style="inset" style="background-color: white;" data-bind="source: flownameDataSource" data-template="flownameTemplate" id="contentListView">
@@ -52,12 +42,8 @@
 			</footer>
 		</div>
 	</body>
-	<script>
-		var navbar = $("#navbar").kendoMobileNavBar();
-		$("#bindingMachine_leftNavButton").click(function() {
-			window.location.href = "home.html";
-		});
-	</script>
+	
+	<!--collapsible模板-->
 	<script id="flownameTemplate" type="text/x-kendo-template">
 		<div data-role="collapsible" data-collapse-icon="arrow-up" data-expand-icon="arrow-down" id="collapsible" data-animation="false">
 
@@ -74,92 +60,19 @@
 			</ul>
 		</div>
 	</script>
+	
+	<!--List模板-->
 	<script id="deviceTemplate" type="text/x-kendo-template">
 		<label style="padding-top: 25px;padding-bottom: 25px;"><input type="checkbox" value="#=device#" data-bind="checked: devices,click: select">
 			<span data-bind="click :collapsibleButtonClick" id="#=flowname#CheckButton" isselect="NO" style="float: right;background-image: url(../resources/@3x/select@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;right: 2px;position: relative;"></span>
 			#=device#
 		</label>
 	</script>
-	<style>
-		
-		.km-arrow-up:after,
-		.km-arrow-up:before {
-			width: 23px;
-			height: 23px;
-			background-image: url("../resources/@3x/collapsible_selected@3x.png");
-			background-repeat: round;
-		}
-		
-		.km-arrow-down:after,
-		.km-arrow-down:before {
-			width: 23px;
-			height: 23px;
-			background-image: url("../resources/@3x/collapsible_select@3x.png");
-			background-repeat: round;
-		}
-		
-		.km-widget.km-collapsible.km-expanded,
-		.km-widget.km-collapsible.km-collapsed,
-		.km-nova .km-collapsible-content {
-			padding-bottom: 0;
-			padding-top: 0;
-			margin: 0;
-			border: none;
-		}
-		
-		.km-collapsible-header.km-icon-left {
-			border-top: 0;
-			border-bottom: 0;
-			font-size: 1em;
-			line-height: 0;
-			top: 15px;
-			padding: 0;
-			padding-right: 1em;
-		}
-		
-		.km-collapsible-header.km-icon{
-			padding: none;
-			margin: none;
-		}
-		
-		.km-nova .km-list>li,
-		.km-list:not(.km-virtual-list)>li:first-child {
-			padding: 0;
-			margin: 0;
-			border-bottom: none;
-			border-top-width: 1px;
-			padding-left: 1em;
-		}
-		
-		.km-root .km-pane .km-icon.km-check {
-			border: none;
-		}
-		.image-select{
-			background-image: url("../resources/@3x/select@3x.png")
-		}
-		.image-unselect{
-			background-image: url("../resources/@3x/selected@3x.png")
-		}
-		.km-nova .km-collapsible-header h3{
-			color: #333333;
-		}
-		.km-nova .km-list>li label{
-			color: #333333;
-			font-weight: 300;
-			font-size: 0.8em;
-		}
-		
-		.km-nova .km-collapsible-header .km-icon{
-			top: 9px;
-		}
-		
-		.km-root .km-pane .km-check:checked:after, .km-widget .km-check:checked:after{
-			content: none;
-		}
-		
-	</style>
-	<script src="../Controller/bindingMachine.js">
 	
+	<script>
+		var navbar = $("#navbar").kendoMobileNavBar();
+		$("#bindingMachine_leftNavButton").click(function() {
+			window.location.href = "home.html";
+		});
 	</script>
-
 </html>
