@@ -6,6 +6,7 @@
 		<title>告警详情</title>
 
 		<link href="../styles/kendo.mobile.all.min.css" rel="stylesheet" />
+		<link href="../css/warningDetail.css" rel="stylesheet" />
 		<script src="../js/jquery.min.js"></script>
 		<script src="../js/kendo.all.min.js"></script>
 
@@ -35,8 +36,9 @@
 					<span style="float: right;margin-right: 20%;">
 						<div data-role="button" style="float: left;left: 15%;background-image: url(../resources/@3x/productivity_process@3x.png);background-repeat: round;border: 0;width: 80px;height: 80px;">
 							<div style="font-size: 26px;color: #A9293D;margin-top: 20px;">
-								<span>233</span>
+								<span>23</span>
 								<span style="font-size: 15px;float: right;">%</span>
+								<div style="font-size: 10px;color: #333333;">生产效率</div>
 							</div>
 						</div>
 					</span>
@@ -48,36 +50,34 @@
 							</div>
 						</span>
 					</div>
-					<div style="padding-bottom: 30px;width: 100%;position: absolute;top: 220px;text-align: center;border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: lightgray;">
-						<div style="margin-left: 4%;float: left;width: 45%;background-color: #EEEEEE;padding: 30px;">A%:-0.1</div>
-						<div style="margin-right: 4%;float: right;width: 45%;background-color: #EEEEEE;padding: 30px;">CV%:0</div>
+					<div style="padding-bottom: 20px;width: 100%;position: absolute;top: 220px;text-align: center;border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: lightgray;">
+						<div style="margin-left: 4%;float: left;width: 28%;background-color: #EEEEEE;padding-top: 1em;height: 90px;">
+							<img src="../resources/@3x/status_red@3x.png" style="width: 15px;" />
+							<span style="color: #FE0200;">切割</span>
+							<div style="font-size: 10px;">信息信息信息信息信息信息</div>
+						</div>
+						<div style="margin-left: 4%;float: left;width: 28%;background-color: #EEEEEE;padding-top: 1em;height: 90px;">
+							<img src="../resources/@3x/status_red@3x.png" style="width: 15px;" />
+							<span style="color: #FE0200;">锭位</span>
+							<div style="font-size: 10px;">信息信息信息信息信息信息</div>
+						</div>
+						<div style="margin-left: 4%;float: left;width: 28%;background-color: #EEEEEE;padding-top: 1em;height: 90px;">
+							<img src="../resources/@3x/status_red@3x.png" style="width: 15px;" />
+							<span style="color: #FE0200;">生产组</span>
+							<div style="font-size: 10px;">信息信息信息信息信息信息</div>
+						</div>
 					</div>
 					<div style="position: absolute;width: 100%;top: 330px" data-role="listview" data-bind="source: dataSource" data-template="otherInfo_Template" data-fixed-headers="true" id="contentListView" style="background-color: white;">
 					</div>
 				</div>
 			</div>
 		</div>
-		<style>
-			#contentListView.km-list>li{
-				padding-left: 4%;
-				padding-bottom: 0.1em;
-				padding-right: 0;
-				padding-top: 0.1em;
-				border: none;
-				-webkit-box-shadow: none;
-				box-shadow: none;
-			}
-		</style>
+		<!--List模板-->
 		<script id="otherInfo_Template" type="text/x-kendo-template">
 			<img src="../resources/@3x/other_info_icon@3x.png" style="padding: 5px;width: 20px;float: left;" />
 			<div style="font-size: 0.8em;">2016-09-20 11:21 其他信息</div>
 		</script>
 		<script>
-			var navbar = $("#navbar").kendoMobileNavBar();
-			var app = new kendo.mobile.Application(document.body, {
-				platform: 'ios',
-				skin: 'nova'
-			});
 			$("#warningInfo_leftNavButton").click(function() {
 				window.location.href = "warningInfo.html";
 			});

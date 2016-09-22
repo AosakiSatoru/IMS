@@ -1,3 +1,8 @@
+var app = new kendo.mobile.Application(document.body,
+    {
+        platform:'ios',
+        skin:'nova'
+    });
 function postPackingInputData(Type) {
     var unit;
     var count;
@@ -58,4 +63,7 @@ $(document).ready(function() {
                   $("#packingInput_confirmButton_3").click(function() {
                                                            postPackingInputData("白花");
                                                            });
-                  });
+                  $("#dropdownlist1").kendoDropDownList();
+                  $("#dropdownlist2").kendoDropDownList();
+                  $("#dropdownlist3").kendoDropDownList();
+                 });

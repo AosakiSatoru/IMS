@@ -1,6 +1,11 @@
 /**
  * Created by mac on 16/9/6.
  */
+var app = new kendo.mobile.Application(document.body,
+    {
+        platform:'ios',
+        skin:'nova'
+    });
 var contentViewModel;
 function request(paras){
 　　var url = location.href;

@@ -2,6 +2,11 @@
  * Created by mac on 16/9/7.
  */
 
+var navbar = $("#navbar").kendoMobileNavBar();
+var app = new kendo.mobile.Application(document.body,{
+    platform:'ios',
+    skin:'nova'
+});
 $(document).ready(function() {
 
 	dataSource = kendo.data.DataSource.create({

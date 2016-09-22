@@ -7,7 +7,7 @@
         
         <link href="../styles/kendo.mobile.all.min.css" rel="stylesheet" />
         <link href="../styles/kendo.common.min.css" rel="stylesheet" />
-        <!--<link href="../styles/kendo.material.min.css" rel="stylesheet" />-->
+        <link href="../css/packingInput.css" rel="stylesheet" />
         <script src="../Controller/url.js"></script>
         <script src="../Controller/storage.js" ></script>
         <script src="../js/jquery.min.js"></script>
@@ -121,13 +121,7 @@
                 </span>
             </div>
         </div>
-        <div id="app"></div>
         <script>
-            	var app = new kendo.mobile.Application(document.body,
-    {
-        platform:'ios',
-        skin:'nova'
-    });
             $("#packingInput_leftNavButton_1").click(function() {
 				window.location.href = "home.html";
 			});
@@ -137,58 +131,8 @@
 			$("#packingInput_leftNavButton_3").click(function() {
 				window.location.href = "home.html";
 			});
-			var layout = new kendo.Layout("<header>Header</header><section id='content'></section><footer></footer>");
-
-    layout.render($("#app"));
-	var view1 = new kendo.View("<span>Foo</span>");
-    layout.showIn("#content", view1, "swap");
-            $(document).ready(function() {
-                              $("#dropdownlist1").kendoDropDownList();
-                              $("#dropdownlist2").kendoDropDownList();
-                              $("#dropdownlist3").kendoDropDownList();
-                              });
             </script>
         <script src="../Controller/packingInput.js"></script>
-        
-        <style>
-            .k-popup .k-list .k-item {
-                background-color: #EEEEEE;
-                text-align: left;
-                padding-left: 1em;
-                border: 0;
-                color: #AAAAAA;
-                height: 2em;
-            }
-        
-        .k-dropdown .k-state-default {
-            background-color: #EEEEEE;
-            border-color: #EEEEEE;
-            padding-left: 0.5em;
-        }
-        
-        .k-item.k-state-selected.k-state-focused {
-            background-color: #E6E6E6;
-            text-align: left;
-            padding-left: 1em;
-            border: 0;
-            color: #A9293F;
-            height: 2em;
-        }
-        /* the initial position of the next div */
-    .k-fx-swap.k-fx-start .k-fx-next {
-        -webkit-transform: translatex(100%);
-        -moz-transform: translatex(100%);
-        transform: translatex(100%);
-    }
-
-    /* the final position of the current div */
-    .k-fx-swap.k-fx-end .k-fx-current {
-        opacity: 0;
-        -webkit-transform: scale(0.9);
-        -moz-transform: scale(0.9);
-        transform: scale(0.9);
-    }
-        </style>
         
     </body>
     

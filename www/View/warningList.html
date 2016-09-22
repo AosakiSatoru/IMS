@@ -6,6 +6,7 @@
 		<title>告警</title>
 
 		<link href="../styles/kendo.mobile.all.min.css" rel="stylesheet" />
+		<link href="../css/warningList.css" rel="stylesheet" />
 		<script src="../js/jquery.min.js"></script>
 		<script src="../js/kendo.all.min.js"></script>
 
@@ -60,29 +61,13 @@
 				</ul>
 			</div>
 		</div>
-		<style>
-			.km-widget .km-listview-link {
-				border-width: 1px;
-				border-style: solid;
-				border-color: #DDDDDD;
-			}
-			
-			.km-badge{
-				position: relative;
-				float: right;
-				top:5px;
-				right:20px;
-				padding: 0;
-			}
-		</style>
+		
 		<script>
 			var navbar = $("#navbar").kendoMobileNavBar();
-				var app = new kendo.mobile.Application(document.body,
-    {
-        platform:'ios',
-        skin:'nova'
-    });
-
+			var app = new kendo.mobile.Application(document.body,{
+        			platform:'ios',
+       			 skin:'nova'
+    			});
 			$("#warningList_leftNavButton").click(function() {
 				window.location.href = "home.html";
 			});
