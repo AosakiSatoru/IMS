@@ -5,7 +5,7 @@ var contentViewModel;
 var type;
 function viewInit(e){
 
-ƒ}
+}
 function viewShow(e) {
 	var navbar = $("#navbar").kendoMobileNavBar();
 	// $("#yieldInput_leftNavButton").click(function() {
