@@ -6,7 +6,6 @@
 		<title>告警列表</title>
 
 		<link href="../styles/kendo.mobile.all.min.css" rel="stylesheet" />
-		<link href="../css/warningInfo.css" rel="stylesheet" />
 		<script src="../js/jquery.min.js"></script>
 		<script src="../js/kendo.all.min.js"></script>
 
@@ -14,10 +13,11 @@
 
 	<body>
 		<div data-role="view" data-title="设备状态告警" id="IMSWarningInfo">
+			<link href="../css/warningInfo.css" rel="stylesheet" />
 			<header data-role="header">
 				<span data-role="navbar">
                     <div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
-                		<a id="warningInfo_leftNavButton" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
+                		<a href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
 				</span>
 				<div style="background-color: white;text-align: center;">
 				<span>
@@ -39,36 +39,33 @@
 				<div data-role="listview" data-bind="source: dataSource" data-template="warningInfo_Template" data-fixed-headers="true" id="contentListView" style="background-color: white;">
 				</div>
 			</div>
+			<!--List模板-->
+			<script id="warningInfo_Template" type="text/x-kendo-template">
+				<div style="background-color:rgb(247,247,247);height: 5px;"></div>
+				<div>
+					<a id="machineName" style="float: left;margin-top: 0.5em;padding-left: 0.5em;color: black;">清花机</a>
+					<a id="warningInfo_detilButton" data-role="button" style="background-image: url(../resources/@3x/detail@3x.png);background-repeat: round;border: none;float: right;margin: 15px;padding-left: 23px;padding-right: 23px;padding-top: 8px;padding-bottom: 8px;"></a>
+				</div>
+				<div style="margin-top: 2.5em;padding-top: 0.5em;border-top-width: 1px;border-top-color: lightgray;border-top-style: solid;">
+					<div style="padding-left: 0.5em;float: left;font-size: 13px;width: 48%;">
+						<img src="../resources/@3x/status_red@3x.png" style="width: 15px;" />
+						设备状态
+					</div>
+					<div>
+						<div style="font-size: 13px;width: 50%;float: right;border-left-width: 1px;border-left-style: solid;border-left-color: lightgray;padding-left: 0.5em;margin-bottom: 0.5em;">
+							<div style="font-size: 1em;">告警信息</div>
+							设备告警信息<br>
+							生产效率详细告警信息<br>
+						</div>
+					</div>
+
+				</div>
+			</script>
+
+			<script src="../Controller/warningInfo.js"></script>
 		</div>
 		
-		<!--List模板-->
-		<script id="warningInfo_Template" type="text/x-kendo-template">
-			<div style="background-color:rgb(247,247,247);height: 5px;"></div>
-			<div>
-				<a id="machineName" style="float: left;margin-top: 0.5em;padding-left: 0.5em;color: black;">清花机</a>
-				<a id="warningInfo_detilButton" data-role="button" style="background-image: url(../resources/@3x/detail@3x.png);background-repeat: round;border: none;float: right;margin: 15px;padding-left: 23px;padding-right: 23px;padding-top: 8px;padding-bottom: 8px;"></a>
-			</div>
-			<div style="margin-top: 2.5em;padding-top: 0.5em;border-top-width: 1px;border-top-color: lightgray;border-top-style: solid;">
-				<div style="padding-left: 0.5em;float: left;font-size: 13px;width: 48%;">
-					<img src="../resources/@3x/status_red@3x.png" style="width: 15px;" />
-					设备状态
-				</div>
-				<div>
-					<div style="font-size: 13px;width: 50%;float: right;border-left-width: 1px;border-left-style: solid;border-left-color: lightgray;padding-left: 0.5em;margin-bottom: 0.5em;">
-						<div style="font-size: 1em;">告警信息</div>
-						设备告警信息<br>
-						生产效率详细告警信息<br>
-					</div>
-				</div>
-				
-			</div>
-		</script>
-		<script>
-			$("#warningInfo_leftNavButton").click(function() {
-				window.location.href = "warningList.html";
-			});
-		</script>
-		<script src="../Controller/warningInfo.js"></script>
+
 	</body>
 
 </html>

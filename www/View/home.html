@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
-
+ƒ
 	<head>
 		<meta charset="utf-8" />
 		<title>首页</title>
-
+		<link href="../styles/kendo.common.min.css" rel="stylesheet" />
 		<link href="../styles/kendo.mobile.all.min.css" rel="stylesheet" />
 		<script src="../js/jquery.min.js"></script>
 		<script src="../js/kendo.all.min.js"></script>
 
 	</head>
-	<body>
+	<body id="xxx">
 		<div data-role="view" data-title="IMS" id="IMSHome">
 			<header data-role="header">
 
@@ -35,9 +35,9 @@
 					 <ul id="actionsheet" data-role="actionsheet" data-cancel="取消" >
 					 	 <!--<li ><a></a></li>-->
 					 	  <li class="km-actionsheet-title">选择班次</li>
-    									  <li ><a data-action="machine_input('1')">班别:甲</a></li>
-  									   <li><a data-action="machine_input('2')">班别:乙</a></li>
-  									   <li><a data-action="machine_input('3')">班别:丙</a></li>
+    									  <li ><a data-action="machine_input('甲')">班别:甲</a></li>
+  									   <li><a data-action="machine_input('乙')">班别:乙</a></li>
+  									   <li><a data-action="machine_input('丙')">班别:丙</a></li>
 							    </ul>
 					<li>
 						<a data-role="detailbutton" id="packingInput">
@@ -59,7 +59,7 @@
 				</ul>
 			</div>
 		</div>
-		<div data-role="drawer" style="width: 55%;height: 101%;margin-top: -1px;">
+		<div data-role="drawer" style="width: 55%;height: 101%;margin-top: -1px;" data-swipe-to-open-views='["IMSHome"]'>
 			<div data-role="content">
 				<div class="km-scroll-container"></div>
 			</div>
@@ -93,11 +93,20 @@
 				</a>
 			</div>
 		</div>
+		<!--<div data-role="layout" data-id="xxx"  data-show="showDemoLayout">-->
+			<!--<header data-role="header">-->
+				<!--<span data-role="navbar">-->
+                    <!--<div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>-->
+                		<!--<a id="bindingMachine_leftNavButton" href="#/" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>-->
+				<!--</span>-->
+			<!--</header>-->
+		<!--</div>-->
+
 		<script type="text/javascript" src="../cordova.js"></script>
 		 <script src="../Controller/home.js"></script>
-		
 
-		
+
+
 	</body>
 
 </html>

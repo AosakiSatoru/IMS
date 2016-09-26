@@ -2,28 +2,36 @@
  * Created by mac on 16/8/30.
  */
 
-	var app = new kendo.mobile.Application(document.body,
+window.app = new kendo.mobile.Application(document.body,
     {
         platform:'ios',
-        skin:'nova'
+        skin:'nova',
+		// layout:'xxx'
+
     });
-    
-			function machine_input(type){
-				window.location.href = "yieldinput.html?type="+type;
+
+function machine_input(type){
+				app.navigate("yieldinput.html?type="+type);
+
+				//window.location.href = "yieldinput.html?type="+type;
+
 			}
-			$("#yieldinput").click(function() {
-				window.location.href = "yieldInput.html";
-			});
+
 			$("#bindingMachine").click(function() {
-				window.location.href = "bindingMachine.html";
+			//	window.location.href = "bindingMachine.html";
+                app.navigate("bindingMachine.html");
 			});
 			$("#packingInput").click(function() {
-				window.location.href = "packingInput.html";
+				app.navigate("packingInput.html");
+				//window.location.href = "";
 			});
 			$("#warning").click(function() {
-				window.location.href = "warningList.html";
+				//window.location.href = "warningList.html";
+				app.navigate("warningList.html");
 			});
-
+function back() {
+	app.navigate("home.html");
+}
 // document.addEventListener("deviceready", function() {
 // 	window.plugins.jPushPlugin.init();
 //
@@ -48,7 +56,7 @@
 // 	var onReceiveNotification = function(event) {
 // 		try {
 // 			var alertContent;
-// 			if (device.platform == "Android") {
+// 			if (device.platform == "Android") {ƒ
 // 				alertContent = event.alert;
 // 			} else {
 // 				alertContent = event.aps.alert;

@@ -1,8 +1,4 @@
-var app = new kendo.mobile.Application(document.body,
-    {
-        platform:'ios',
-        skin:'nova'
-    });
+
 function postPackingInputData(Type) {
     var unit;
     var count;
@@ -52,18 +48,20 @@ function postPackingInputData(Type) {
            }
            });
 };
-
+function viewShow(){
+    $("#packingInput_confirmButton_1").click(function() {
+        postPackingInputData("回条");
+    });
+    $("#packingInput_confirmButton_2").click(function() {
+        postPackingInputData("粗纱头");
+    });
+    $("#packingInput_confirmButton_3").click(function() {
+        postPackingInputData("白花");
+    });
+    $("#dropdownlist1").kendoDropDownList();
+    $("#dropdownlist2").kendoDropDownList();
+    $("#dropdownlist3").kendoDropDownList();
+}
 $(document).ready(function() {
-                  $("#packingInput_confirmButton_1").click(function() {
-                                                           postPackingInputData("回条");
-                                                           });
-                  $("#packingInput_confirmButton_2").click(function() {
-                                                           postPackingInputData("粗纱头");
-                                                           });
-                  $("#packingInput_confirmButton_3").click(function() {
-                                                           postPackingInputData("白花");
-                                                           });
-                  $("#dropdownlist1").kendoDropDownList();
-                  $("#dropdownlist2").kendoDropDownList();
-                  $("#dropdownlist3").kendoDropDownList();
+
                  });
