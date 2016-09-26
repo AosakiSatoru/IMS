@@ -121,35 +121,35 @@ function bindView(data) {
 
 			if($(e.target.find(".km-text")[0]).text() == "预并") {
 				contentViewModel.selectflowcode = 2;
-				$("#contentListView").data("kendoMobileListView").setDataSource(kendo.data.DataSource.create({
+				$("#yieldInputListView").data("kendoMobileListView").setDataSource(kendo.data.DataSource.create({
 					data: self.contentViewModel.first
 				}));
 			} else if($(e.target.find(".km-text")[0]).text() == "梳棉") {
 				contentViewModel.selectflowcode = 1;
-				$("#contentListView").data("kendoMobileListView").setDataSource(kendo.data.DataSource.create({
+				$("#yieldInputListView").data("kendoMobileListView").setDataSource(kendo.data.DataSource.create({
 					data: self.contentViewModel.second
 				}));
 			} else if($(e.target.find(".km-text")[0]).text() == "粗纱") {
 				contentViewModel.selectflowcode = 3;
-				$("#contentListView").data("kendoMobileListView").setDataSource(kendo.data.DataSource.create({
+				$("#yieldInputListView").data("kendoMobileListView").setDataSource(kendo.data.DataSource.create({
 					data: self.contentViewModel.third
 				}));
 			}
 
-			$("#contentListView").data("kendoMobileListView").refresh();
+			$("#yieldInputListView").data("kendoMobileListView").refresh();
 
 		}
 
 	});
 	kendo.bind($("#headerButtonGroup"), headerButtonViewModel);
 
-	kendo.bind($("#contentListView"), contentViewModel);
+	kendo.bind($("#yieldInputListView"), contentViewModel);
 	var dropdownlist = $("#dropdownlist").data("kendoDropDownList");
 	var footerViewModel = kendo.observable({
 		input: function(e) {
 			var content =
 
-				$("#contentListView").data("kendoMobileListView").dataSource.data().map(function(item) {
+				$("#yieldInputListView").data("kendoMobileListView").dataSource.data().map(function(item) {
 					var obj = {
 						devcode1: item.devcode,
 						yield: item.yield,

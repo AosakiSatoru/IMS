@@ -98,7 +98,7 @@ function bindingView() {
 
 		}
 	});
-	kendo.bind($("#contentListView"), flownameViewModel);
+	kendo.bind($("#bindingMachineListView"), flownameViewModel);
 	$.each(fetchData, function(n, value) {
 		var viewModel = new kendo.observable({
 			devices: [],

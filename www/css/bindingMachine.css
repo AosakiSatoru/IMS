@@ -57,8 +57,8 @@
 
 /*List样式*/
 
-.km-nova .km-list>li,
-.km-list:not(.km-virtual-list)>li:first-child {
+.km-nova #bindingMachineListView.km-list>li,
+#bindingMachineListView .km-list:not(.km-virtual-list)>li {
 	padding: 0;
 	margin: 0;
 	border-bottom: none;
@@ -66,7 +66,7 @@
 	padding-left: 1em;
 }
 
-.km-nova .km-list>li label {
+.km-nova #bindingMachineListView.km-list>li label {
 	color: #333333;
 	font-weight: 300;
 	font-size: 0.8em;

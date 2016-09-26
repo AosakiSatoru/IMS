@@ -3,10 +3,7 @@
  */
 
 var navbar = $("#navbar").kendoMobileNavBar();
-var app = new kendo.mobile.Application(document.body,{
-    platform:'ios',
-    skin:'nova'
-});
+
 $(document).ready(function() {
 
 	dataSource = kendo.data.DataSource.create({
@@ -20,8 +17,9 @@ $(document).ready(function() {
 		"dataSource": dataSource,
 
 	});
-	kendo.bind($("#contentListView"), contentViewModel);
+	kendo.bind($("#warningInfoListView"), contentViewModel);
 	$("#warningInfo_detilButton").click(function() {
-				window.location.href = "warningDetail.html";
+//				window.location.href = "warningDetail.html";
+				app.navigate("warningDetail.html");
 			});
 });

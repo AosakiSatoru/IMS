@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
 
 	<head>
@@ -12,12 +12,12 @@
 
 	</head>
 
-	<body>
+	<body>-->
 		<div data-role="view" data-title="告警详情" id="IMSWarningDetail">
 			<header data-role="header">
 				<span data-role="navbar" style="border-bottom-width:1px ;border-bottom-style: solid;border-bottom-color: lightgray;">
                     <div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
-                		<a id="warningInfo_leftNavButton" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
+                		<a id="warningInfo_leftNavButton" href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
 				</span>
 			</header>
 
@@ -67,7 +67,7 @@
 							<div style="font-size: 10px;">信息信息信息信息信息信息</div>
 						</div>
 					</div>
-					<div style="position: absolute;width: 100%;top: 330px" data-role="listview" data-bind="source: dataSource" data-template="otherInfo_Template" data-fixed-headers="true" id="contentListView" style="background-color: white;">
+					<div style="position: absolute;width: 100%;top: 330px" data-role="listview" data-bind="source: dataSource" data-template="otherInfo_Template" data-fixed-headers="true" id="warningDetailListView" style="background-color: white;">
 					</div>
 				</div>
 			</div>
@@ -77,12 +77,7 @@
 			<img src="../resources/@3x/other_info_icon@3x.png" style="padding: 5px;width: 20px;float: left;" />
 			<div style="font-size: 0.8em;">2016-09-20 11:21 其他信息</div>
 		</script>
-		<script>
-			$("#warningInfo_leftNavButton").click(function() {
-				window.location.href = "warningInfo.html";
-			});
-		</script>
 		<script src="../Controller/warningDetail.js"></script>
-	</body>
+	<!--</body>
 
-</html>
+</html>-->

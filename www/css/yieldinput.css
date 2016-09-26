@@ -2,7 +2,7 @@
  * Created by Satoru on 16/9/22.
  */
 
-#contentListView.km-list>li {
+#yieldInputListView.km-list>li {
 	padding-left: 3%;
 	padding-bottom: 15px;
 	padding-right: 0;

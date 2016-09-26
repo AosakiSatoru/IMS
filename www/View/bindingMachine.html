@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
 
 	<head>
@@ -10,19 +10,19 @@
 
 	</head>
 
-	<body>
+	<body>-->
 		<div data-role="view" data-title="绑定机台" id="IMSBindingMachine" data-show="viewShow">
 
 			<link href="../css/bindingMachine.css" rel="stylesheet" />
 			<header data-role="header">
 				<span data-role="navbar">
                     <div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
-                		<a id="bindingMachine_leftNavButton" href="#/" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
+                		<a id="bindingMachine_leftNavButton" href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
 				</span>
 			</header>
 			<div data-role="content" style="background-color: #F7F7F7;">
 				<!--data-source="flownameDataSource"-->
-				<div data-role="listview" data-style="inset" style="background-color: white;" data-bind="source: flownameDataSource" data-template="flownameTemplate" id="contentListView">
+				<div id="bindingMachineListView" data-role="listview" data-style="inset" style="background-color: white;" data-bind="source: flownameDataSource" data-template="flownameTemplate">
 				</div>
 			</div>
 			<footer data-role="footer">
@@ -71,6 +71,6 @@
 			<script src="../Controller/storage.js"></script>
 			<script src="../Controller/bindingMachine.js"></script>
 		</div>
-	</body>
+	<!--</body>
 
-</html>
+</html>-->

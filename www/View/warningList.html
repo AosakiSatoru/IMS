@@ -17,11 +17,11 @@
 			<header data-role="header">
 				<span data-role="navbar" style="border-bottom-width:1px ;border-bottom-style: solid;border-bottom-color: lightgray;">
                     <div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
-                		<a id="warningList_leftNavButton" href="#/" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
+                		<a id="warningList_leftNavButton" href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
 				</span>
 			</header>
 			<div data-role="content">
-				<ul data-role="listview" data-style="inset" style="background-color: white;">
+				<ul id="warningListView" data-role="listview" data-style="inset" style="background-color: white;">
 					<li style="border-width: 0;padding-top: 3em;padding-left: 30px;padding-right: 30px;">
 						<a data-role="detailbutton" id="deviceStatusButton" href="#warningInfo.html?messageid=1">
 							<p>
@@ -66,11 +66,6 @@
 		
 		<script>
 			var navbar = $("#navbar").kendoMobileNavBar();
-			var app = new kendo.mobile.Application(document.body,{
-        			platform:'ios',
-       			 skin:'nova'
-    			});
-
 		</script>
 	</body>
 
