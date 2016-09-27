@@ -18,12 +18,6 @@
     <feature name="Console">
         <param name="ios-package" value="CDVLogger" />
     </feature>
-    <feature name="Device">
-        <param name="ios-package" value="CDVDevice" />
-    </feature>
-    <feature name="JPushPlugin">
-        <param name="ios-package" value="JPushPlugin" />
-    </feature>
     <name>IMS</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -54,4 +48,10 @@
     <preference name="PageLength" value="0" />
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
+    <feature name="Device">
+        <param name="ios-package" value="CDVDevice" />
+    </feature>
+    <feature name="JPushPlugin">
+        <param name="ios-package" value="JPushPlugin" />
+    </feature>
 </widget>
