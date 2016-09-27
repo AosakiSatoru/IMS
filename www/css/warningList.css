@@ -11,7 +11,10 @@
 
 /*badge样式*/
 
-.km-badge {
+#warningListBadge_1.km-badge,
+#warningListBadge_2.km-badge,
+#warningListBadge_3.km-badge,
+#warningListBadge_4.km-badge {
 	position: relative;
 	float: right;
 	top: 5px;
