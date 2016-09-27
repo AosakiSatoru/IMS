@@ -33,7 +33,7 @@ function warningListBindView(data) {
 	if(data.outstatus != 0) {
 		alert(data.outputstr);
 	} else if(data.outstatus == 0) {
-		alert(JSON.stringify(data.outputstr.Messagerows));
+//		alert(JSON.stringify(data.outputstr.Messagerows));
 		var messageArray = data.outputstr.Messagerows;
 		$.each(messageArray, function(n, value) {
 			if(value.messagename == "设备告警")
