@@ -2,7 +2,7 @@
  * Created by Satoru on 16/9/22.
  */
 
-.km-list>li {
+#warningInfoListView.km-list>li {
 	padding-left: 0;
 	padding-bottom: 0;
 	padding-right: 0;

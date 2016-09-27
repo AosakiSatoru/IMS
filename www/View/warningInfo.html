@@ -12,8 +12,7 @@
 	</head>
 
 	<body>-->
-		<div data-role="view" data-title="设备状态告警" id="IMSWarningInfo" data-show="viewShow">
-			<link href="../css/warningInfo.css" rel="stylesheet" />
+		<div data-role="view" data-title="告警" id="IMSWarningInfo" data-show="viewShow">
 			<header data-role="header">
 				<span data-role="navbar">
                     <div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
@@ -43,29 +42,28 @@
 			<script id="warningInfo_Template" type="text/x-kendo-template">
 				<div style="background-color:rgb(247,247,247);height: 5px;"></div>
 				<div>
-					<a id="machineName" style="float: left;margin-top: 0.5em;padding-left: 0.5em;color: black;">清花机</a>
+					<a id="machineName" style="float: left;margin-top: 0.5em;padding-left: 0.5em;color: black;">#=deviceName#</a>
 					<a id="warningInfo_detilButton" data-role="button" style="background-image: url(../resources/@3x/detail@3x.png);background-repeat: round;border: none;float: right;margin: 15px;padding-left: 23px;padding-right: 23px;padding-top: 8px;padding-bottom: 8px;"></a>
 				</div>
 				<div style="margin-top: 2.5em;padding-top: 0.5em;border-top-width: 1px;border-top-color: lightgray;border-top-style: solid;">
 					<div style="padding-left: 0.5em;float: left;font-size: 13px;width: 48%;">
 						<img src="../resources/@3x/status_red@3x.png" style="width: 15px;" />
-						设备状态
+						#=deviceStatus#
 					</div>
 					<div>
 						<div style="font-size: 13px;width: 50%;float: right;border-left-width: 1px;border-left-style: solid;border-left-color: lightgray;padding-left: 0.5em;margin-bottom: 0.5em;">
-							<div style="font-size: 1em;">告警信息</div>
-							设备告警信息<br>
-							生产效率详细告警信息<br>
+							<p>#=message#</p>
 						</div>
 					</div>
 
 				</div>
 			</script>
+			
 			<script src="../Controller/url.js"></script>
 			<script src="../Controller/storage.js"></script>
 			<script src="../Controller/warningInfo.js"></script>
+			<link href="../css/warningInfo.css" rel="stylesheet" />
 		</div>
-		
 
 	<!--</body>
 

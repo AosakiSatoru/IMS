@@ -1,9 +1,9 @@
 function viewShow() {
 	var navbar = $("#navbar").kendoMobileNavBar();
-	webRequest();
+	warningListInitRequest();
 }
 
-function webRequest() {
+function warningListInitRequest() {
 
 	var params = {
 		"account": storage.get("account"),
