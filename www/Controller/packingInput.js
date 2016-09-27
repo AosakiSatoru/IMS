@@ -40,7 +40,7 @@ function postPackingInputData(Type) {
            success: function(data) {
            if(data.outstatus == 0)
            alert("处理成功");
-           else{
+           else
            alert("操作失败，请稍后再试");
            },
            error: function(data, status, e) {
