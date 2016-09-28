@@ -6,64 +6,57 @@ window.app = new kendo.mobile.Application(document.body,
     {
         platform:'ios',
         skin:'nova',
-		// layout:'xxx'
-
     });
+
 
 function machine_input(type){
 				app.navigate("yieldinput.html?type="+type);
-
-				//window.location.href = "yieldinput.html?type="+type;
-
 			}
 
 			$("#bindingMachine").click(function() {
-			//	window.location.href = "bindingMachine.html";
+
                 app.navigate("bindingMachine.html");
 			});
 			$("#packingInput").click(function() {
 				app.navigate("packingInput.html");
-				//window.location.href = "";
+
 			});
 			$("#warning").click(function() {
-				//window.location.href = "warningList.html";
+
 				app.navigate("warningList.html");
 			});
-function back() {
-	app.navigate("home.html");
-}
+
 document.addEventListener("deviceready", function() {
 	window.plugins.jPushPlugin.init();
-
 	window.plugins.jPushPlugin.getRegistrationID(onGetRegistradionID);
 	var onGetRegistradionID = function(data) {
 		try {
 			alert("JPushPlugin:registrationID is " + data);
 		} catch(exception) {
-			alert(exception);
+			alert(exception+"出错");
 		}
 	}
 	window.plugins.jPushPlugin.isPushStopped(function (result) {
 		if (result == 0) {
-			// 开启
-			alert("开启");
+
 		} else {
-			// 关闭
-			alert("关闭");
+
 		}
 	})
 
 	var onReceiveNotification = function(event) {
 		try {
 			var alertContent;
-			if (device.platform == "Android") {ƒ
+			if (device.platform == "Android") {
 				alertContent = event.alert;
 			} else {
 				alertContent = event.aps.alert;
 			}
-			$("#notificationResult").html(alertContent);
+
+			alert("i onReceiveNotification"+alertContent);
 		} catch (exception) {
-			console.log(exception)
+			console.log(exception);
+			alert("i onReceiveNotification error!");
 		}
 	};
 
@@ -75,13 +68,30 @@ document.addEventListener("deviceready", function() {
 			} else {
 				message = event.content;
 			}
-			$("#messageResult").html(message);
+			alert("i onReceiveMessage"+message);
 		} catch (exception) {
-			console.log("JPushPlugin:onReceiveMessage-->" + exception);
+			alert("JPushPlugin:onReceiveMessage-->" + exception);
+		}
+	};
+
+	var onOpenNotification = function(event){
+
+		try {
+			var message;
+			if (device.platform == "Android") {
+				message = event.message;
+			} else {
+				message = event.content;
+			}
+			alert("onOpenNotification");
+			app.navigate("warningList.html");
+		} catch (exception) {
+			alert("JPushPlugin:onReceiveMessage-->" + exception);
 		}
 	};
 	document.addEventListener("jpush.receiveNotification", onReceiveNotification, false);
 	document.addEventListener("jpush.receiveMessage", onReceiveMessage, false);
+	document.addEventListener("jpush.openNotification", onOpenNotification, false);
 }, false);
 
 

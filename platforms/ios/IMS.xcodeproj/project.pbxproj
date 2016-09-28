@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
@@ -30,6 +29,10 @@
 		F215A17287DB408DA4884A1F /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F048A77B2A49B28CD1C411 /* UserNotifications.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F7ECCADD2F6E4B4F92154AC8 /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C35DAE7E044847BBB145D0D2 /* CDVLogger.m */; };
 		F912DA43EADF4990A249CB05 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B1EF9D749F49A1A9D3EF87 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		EC26058CE62A4724A1470439 /* CDVNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5559D0901D5E4AC1B6687E3E /* CDVNotification.m */; };
+		E80080213AC04EAB89CC243A /* CDVNotification.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 825B9CAEEBE34436BCE8F616 /* CDVNotification.bundle */; };
+		3B47FDC6422B43C98359C70E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A0302D71004A4997D9BBD9 /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		05A449867CA5403A8F397086 /* CDVVibration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D20DA9EF6CA4004AD59D02B /* CDVVibration.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +94,12 @@
 		F4B1EF9D749F49A1A9D3EF87 /* UIKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = IMS/config.xml; sourceTree = "<group>"; };
 		F954B57B6BCC435BBFE0FCF6 /* JPUSHService.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = JPUSHService.h; path = "jpush-phonegap-plugin/JPUSHService.h"; sourceTree = "<group>"; };
+		5559D0901D5E4AC1B6687E3E /* CDVNotification.m */ = {isa = PBXFileReference; name = "CDVNotification.m"; path = "cordova-plugin-dialogs/CDVNotification.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		CAF85E55983744E497C257D3 /* CDVNotification.h */ = {isa = PBXFileReference; name = "CDVNotification.h"; path = "cordova-plugin-dialogs/CDVNotification.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		825B9CAEEBE34436BCE8F616 /* CDVNotification.bundle */ = {isa = PBXFileReference; name = "CDVNotification.bundle"; path = "CDVNotification.bundle"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.plug-in; explicitFileType = undefined; includeInIndex = 0; };
+		41A0302D71004A4997D9BBD9 /* AudioToolbox.framework */ = {isa = PBXFileReference; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		4D20DA9EF6CA4004AD59D02B /* CDVVibration.m */ = {isa = PBXFileReference; name = "CDVVibration.m"; path = "cordova-plugin-vibration/CDVVibration.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		8B0FB518815A439FA2687C25 /* CDVVibration.h */ = {isa = PBXFileReference; name = "CDVVibration.h"; path = "cordova-plugin-vibration/CDVVibration.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +119,7 @@
 				4979F04CF9734BD984C6B58D /* AdSupport.framework in Frameworks */,
 				D789CBB582CE427C82C0FDA1 /* jpush-ios-2.1.9.a in Frameworks */,
 				F215A17287DB408DA4884A1F /* UserNotifications.framework in Frameworks */,
+				3B47FDC6422B43C98359C70E /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +181,7 @@
 				3047A50E1AB8057F00498E2A /* config */,
 				8D1107310486CEB800E47090 /* IMS-Info.plist */,
 				D6654D2C789E4C11AFDDA9B7 /* PushConfig.plist */,
+				825B9CAEEBE34436BCE8F616 /* CDVNotification.bundle */,
 			);
 			name = Resources;
 			path = IMS/Resources;
@@ -190,6 +201,7 @@
 				0162550C69C14A6CB078DEFA /* AdSupport.framework */,
 				B2DC92D73A2D4C529D0CC7CD /* jpush-ios-2.1.9.a */,
 				06F048A77B2A49B28CD1C411 /* UserNotifications.framework */,
+				41A0302D71004A4997D9BBD9 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -226,6 +238,10 @@
 				A1D87CB94A7F414287FF5398 /* JPushPlugin.h */,
 				F954B57B6BCC435BBFE0FCF6 /* JPUSHService.h */,
 				1A38FDD12B174687987775FD /* AppDelegate+JPush.h */,
+				5559D0901D5E4AC1B6687E3E /* CDVNotification.m */,
+				CAF85E55983744E497C257D3 /* CDVNotification.h */,
+				4D20DA9EF6CA4004AD59D02B /* CDVVibration.m */,
+				8B0FB518815A439FA2687C25 /* CDVVibration.h */,
 			);
 			name = Plugins;
 			path = IMS/Plugins;
@@ -320,6 +336,7 @@
 				302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */,
 				0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */,
 				4068BC2B5FD640478558E840 /* PushConfig.plist in Resources */,
+				E80080213AC04EAB89CC243A /* CDVNotification.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +373,8 @@
 				A1507C97E7724AB99136787A /* CDVDevice.m in Sources */,
 				CAF26C728A5D4B03A9CDAB2D /* JPushPlugin.m in Sources */,
 				B785A47F87CA4EC49B79824F /* AppDelegate+JPush.m in Sources */,
+				EC26058CE62A4724A1470439 /* CDVNotification.m in Sources */,
+				05A449867CA5403A8F397086 /* CDVVibration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

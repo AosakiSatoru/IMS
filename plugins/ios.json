@@ -16,6 +16,12 @@
         "jpush-phonegap-plugin": {
             "API_KEY": "f4a1c2568706d4389d0111f2",
             "PACKAGE_NAME": "com.esquel.ims"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.esquel.ims.prod"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "com.esquel.ims.prod"
         }
     },
     "dependent_plugins": {

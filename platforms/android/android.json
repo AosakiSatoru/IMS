@@ -19,6 +19,14 @@
                         {
                             "xml": "<feature name=\"JPushPlugin\"><param name=\"android-package\" value=\"cn.jpush.phonegap.JPushPlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Notification\"><param name=\"android-package\" value=\"org.apache.cordova.dialogs.Notification\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Vibration\"><param name=\"android-package\" value=\"org.apache.cordova.vibration.Vibration\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -56,7 +64,7 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
-                            "count": 1
+                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\" />",
@@ -138,6 +146,12 @@
         "jpush-phonegap-plugin": {
             "API_KEY": "f4a1c2568706d4389d0111f2",
             "PACKAGE_NAME": "com.esquel.ims"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.esquel.ims"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "com.esquel.ims"
         }
     },
     "dependent_plugins": {},
@@ -157,12 +171,39 @@
             "clobbers": [
                 "JPush"
             ]
+        },
+        {
+            "id": "cordova-plugin-dialogs.notification",
+            "file": "plugins/cordova-plugin-dialogs/www/notification.js",
+            "pluginId": "cordova-plugin-dialogs",
+            "merges": [
+                "navigator.notification"
+            ]
+        },
+        {
+            "id": "cordova-plugin-dialogs.notification_android",
+            "file": "plugins/cordova-plugin-dialogs/www/android/notification.js",
+            "pluginId": "cordova-plugin-dialogs",
+            "merges": [
+                "navigator.notification"
+            ]
+        },
+        {
+            "id": "cordova-plugin-vibration.notification",
+            "file": "plugins/cordova-plugin-vibration/www/vibration.js",
+            "pluginId": "cordova-plugin-vibration",
+            "merges": [
+                "navigator.notification",
+                "navigator"
+            ]
         }
     ],
     "plugin_metadata": {
         "cordova-plugin-console": "1.0.3",
         "cordova-plugin-whitelist": "1.2.2",
         "cordova-plugin-device": "1.1.3",
-        "jpush-phonegap-plugin": "2.2.5"
+        "jpush-phonegap-plugin": "2.2.5",
+        "cordova-plugin-dialogs": "1.3.0",
+        "cordova-plugin-vibration": "2.1.2"
     }
 }

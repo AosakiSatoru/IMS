@@ -1,5 +1,7 @@
 function RequestPreHookData() {
-    
+    navigator.vibrate(2000);
+    navigator.notification.beep(1);
+    return ;
     var userName = $("#loginUserName").val();
     var password = $("#loginPassword").val();
     
@@ -61,9 +63,9 @@ $(document).ready(function() {
         							RequestPreHookData();
                             });
     });
-                  
-                  
-                  
+
+
+
     function showAccountClearBtn(){
     		if(document.getElementById('loginUserName').value.length > 0){
     		document.getElementById('accountClearBtn').style.display = 'block';

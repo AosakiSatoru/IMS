@@ -8,5 +8,6 @@
     "Security.framework": 2,
     "libz.tbd": 2,
     "AdSupport.framework": 2,
-    "UserNotifications.framework": 1
+    "UserNotifications.framework": 1,
+    "AudioToolbox.framework": 2
 }

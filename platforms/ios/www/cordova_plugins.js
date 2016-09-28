@@ -31,6 +31,23 @@ module.exports = [
         "clobbers": [
             "JPush"
         ]
+    },
+    {
+        "id": "cordova-plugin-dialogs.notification",
+        "file": "plugins/cordova-plugin-dialogs/www/notification.js",
+        "pluginId": "cordova-plugin-dialogs",
+        "merges": [
+            "navigator.notification"
+        ]
+    },
+    {
+        "id": "cordova-plugin-vibration.notification",
+        "file": "plugins/cordova-plugin-vibration/www/vibration.js",
+        "pluginId": "cordova-plugin-vibration",
+        "merges": [
+            "navigator.notification",
+            "navigator"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -39,7 +56,9 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-plugin-console": "1.0.3",
     "cordova-plugin-device": "1.1.3",
-    "jpush-phonegap-plugin": "2.2.5"
+    "jpush-phonegap-plugin": "2.2.5",
+    "cordova-plugin-dialogs": "1.3.0",
+    "cordova-plugin-vibration": "2.1.2"
 };
 // BOTTOM OF METADATA
 });

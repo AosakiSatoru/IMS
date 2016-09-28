@@ -24,6 +24,12 @@
     <feature name="JPushPlugin">
         <param name="ios-package" value="JPushPlugin" />
     </feature>
+    <feature name="Notification">
+        <param name="ios-package" value="CDVNotification" />
+    </feature>
+    <feature name="Vibration">
+        <param name="ios-package" value="CDVVibration" />
+    </feature>
     <name>IMS</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
