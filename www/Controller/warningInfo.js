@@ -2,14 +2,11 @@
  * Created by mac on 16/9/7.
  */
 
+var flowArray;
+
 function viewShow(e) {
 	//	app.view().header.find(".km-navbar").data("kendoMobileNavBar").title("test");
 	//	app.view().header.find(".km-navbar").data("kendoMobileNavBar").refresh();
-
-	$("#warningInfo_detilButton").click(function() {
-		//				window.location.href = "warningDetail.html";
-		app.navigate("warningDetail.html");
-	});
 
 	warningInfoFetchDataRequest(false, e.view.params.messageid);
 }
@@ -54,9 +51,9 @@ function warningInfoBindView(data, messageid) {
 	if(data.outstatus != 0) {
 		alert(data.outputstr);
 	} else if(data.outstatus == 0) {
-//		alert(JSON.stringify(data.outputstr.Messagerows));
+		//		alert(JSON.stringify(data.outputstr.Messagerows));
 		var category = new Array();
-		var flowArray = data.outputstr.Messagerows;
+		flowArray = data.outputstr.Messagerows;
 		$.each(flowArray, function(n, flowValue) {
 			var deviceStatus;
 			if(messageid == 0)
@@ -73,13 +70,14 @@ function warningInfoBindView(data, messageid) {
 				var messageArray = deviceValue.alarms;
 				var message = "";
 				$.each(messageArray, function(n, messageValue) {
-					message = message + messageValue.message +"<br>";
+					message = message + messageValue.message + "<br>";
 				});
 				category.push({
-						"deviceStatus": deviceStatus,
-						"deviceName": deviceValue.devcodename,
-						"message": message
-					});
+					"deviceStatus": deviceStatus,
+					"deviceName": deviceValue.devcodename,
+					"deviceCode": deviceValue.devcode, 
+					"message": message
+				});
 			});
 		});
 		dataSource = kendo.data.DataSource.create({
@@ -88,6 +86,9 @@ function warningInfoBindView(data, messageid) {
 
 		var contentViewModel = kendo.observable({
 			"dataSource": dataSource,
+			detailClicked: function(e) {
+				app.navigate("#warningDetail.html?deviceCode="+e.target.attr("deviceCode"));
+			}
 		});
 		kendo.bind($("#warningInfoListView"), contentViewModel);
 	}

@@ -29,14 +29,14 @@
 						<div>实际产量:</div>
 					</div>
 					<span style="text-align: left;float: left;margin-top: 10px;">
-						<div>K001</div>
-						<div>CV</div>
-						<div>120</div>
+						<div id="warningDetail_devcode">&nbsp;</div>
+						<div id="warningDetail_ArticleName">&nbsp;</div>
+						<div id="warningDetail_ProductionKM">&nbsp;</div>
 					</span>
 					<span style="float: right;margin-right: 20%;">
 						<div data-role="button" style="float: left;left: 15%;background-image: url(../resources/@3x/productivity_process@3x.png);background-repeat: round;border: 0;width: 80px;height: 80px;">
 							<div style="font-size: 26px;color: #A9293D;margin-top: 20px;">
-								<span>23</span>
+								<div id="warningDetail_EfficProduction">0.0</div>
 								<span style="font-size: 15px;float: right;">%</span>
 								<div style="font-size: 10px;color: #333333;">生产效率</div>
 							</div>
@@ -46,25 +46,25 @@
 						<span style="position: absolute;right: 4%;left: 4%;float: left;height: 100px;border-width: 1px;border-style: solid;border-color: #A9293D;">
 							<img src="../resources/@3x/smj-c70@3x.png" style="margin-top: -1px;margin-left: -1px;width: 100px;float: left;" />
 							<div style="font-size: 0.8em;padding: 1em;padding-left: 110px;">
-								<div>告警信息告警信息告警信息告警信息告警信息告警信息告警信息告警信息告警信息告警信息</div>
+								<div id="warningDetail_deviceStatusMessage"></div>
 							</div>
 						</span>
 					</div>
 					<div style="padding-bottom: 20px;width: 100%;position: absolute;top: 220px;text-align: center;border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: lightgray;">
 						<div style="margin-left: 4%;float: left;width: 28%;background-color: #EEEEEE;padding-top: 1em;height: 90px;">
 							<img src="../resources/@3x/status_red@3x.png" style="width: 15px;" />
-							<span style="color: #FE0200;">切割</span>
-							<div style="font-size: 10px;">信息信息信息信息信息信息</div>
+							<span style="color: #FE0200;">组切割</span>
+							<div style="font-size: 10px;"></div>
 						</div>
 						<div style="margin-left: 4%;float: left;width: 28%;background-color: #EEEEEE;padding-top: 1em;height: 90px;">
 							<img src="../resources/@3x/status_red@3x.png" style="width: 15px;" />
 							<span style="color: #FE0200;">锭位</span>
-							<div style="font-size: 10px;">信息信息信息信息信息信息</div>
+							<div style="font-size: 10px;"></div>
 						</div>
 						<div style="margin-left: 4%;float: left;width: 28%;background-color: #EEEEEE;padding-top: 1em;height: 90px;">
 							<img src="../resources/@3x/status_red@3x.png" style="width: 15px;" />
 							<span style="color: #FE0200;">生产组</span>
-							<div style="font-size: 10px;">信息信息信息信息信息信息</div>
+							<div style="font-size: 10px;"></div>
 						</div>
 					</div>
 					<div style="position: absolute;width: 100%;top: 330px" data-role="listview" data-bind="source: dataSource" data-template="otherInfo_Template" data-fixed-headers="true" id="warningDetailListView" style="background-color: white;">
@@ -75,11 +75,12 @@
 		<!--List模板-->
 		<script id="otherInfo_Template" type="text/x-kendo-template">
 			<img src="../resources/@3x/other_info_icon@3x.png" style="padding: 5px;width: 20px;float: left;" />
-			<div style="font-size: 0.8em;">2016-09-20 11:21 其他信息</div>
+			<div style="font-size: 0.8em;">#=otherMessage#</div>
 		</script>
 		<script src="../Controller/url.js"></script>
 		<script src="../Controller/storage.js"></script>
 		<script src="../Controller/warningDetail.js"></script>
+		<link href="../css/warningDetail.css" rel="stylesheet" />
 	<!--</body>
 
 </html>-->
