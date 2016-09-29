@@ -100,7 +100,7 @@ document.addEventListener("deviceready", function() {
 }, false);
 
 $("#logout").click(function () {
-	JPushPlugin.prototype.setTagsWithAlias(storage.get("roleids", storage.get("srcid");
+	JPushPlugin.prototype.setTagsWithAlias(storage.get("roleids"), storage.get("srcid"));
 	//this.location.href="index.html";
 	window.location.href = "../index.html";
 });
