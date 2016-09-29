@@ -44,8 +44,9 @@ document.addEventListener("deviceready", function() {
 	window.plugins.jPushPlugin.isPushStopped(function (result) {
 		if (result == 0) {
 			//开启了
-			if(storage.get("alias").length==0||typeof(storage.get("alias") == "undefined"){
-				window.plugins.jPushPlugin.setTagsWithAlias([storage.get("roleids")], storage.get("srcid"));
+			window.plugins.jPushPlugin.setTagsWithAlias(["2"], "XJE0000004");
+			if(storage.get("alias").length==0||typeof(storage.get("alias")) == "undefined"){
+			//	window.plugins.jPushPlugin.setTagsWithAlias([storage.get("roleids")], storage.get("srcid"));
 			}
 			console.log("getRegistrationID");
 
@@ -64,8 +65,8 @@ document.addEventListener("deviceready", function() {
 			}
 			navigator.vibrate(2000);
 			navigator.notification.beep(1);
-			console.log(JSON.stringify(alertContent));
-			//alert("i onReceiveNotification"+alertContent);
+			//console.log(JSON.stringify("onReceiveNotification");
+			alert("i onReceiveNotification"+JSON.stringify(event));
 		} catch (exception) {
 			console.log(exception);
 			alert("i onReceiveNotification error!");
@@ -80,7 +81,7 @@ document.addEventListener("deviceready", function() {
 			} else {
 				message = event.content;
 			}
-			alert("i onReceiveMessage"+message);
+			alert("i onReceiveMessage"+JSON.stringify(event));
 		} catch (exception) {
 			alert("JPushPlugin:onReceiveMessage-->" + exception);
 		}
@@ -95,7 +96,7 @@ document.addEventListener("deviceready", function() {
 			} else {
 				message = event.content;
 			}
-			alert("onOpenNotification");
+			alert("onOpenNotification"+JSON.stringify(event));
 			app.navigate("warningList.html");
 		} catch (exception) {
 			alert("JPushPlugin:onReceiveMessage-->" + exception);
@@ -112,7 +113,7 @@ document.addEventListener("deviceready", function() {
 			alert("tags and alias "+result);
 		} catch(exception) {
 			console.log(exception);
-			alert("设置标签出错!");
+			alert("设置标签出错!"+JSON.stringify(exception));
 		}
 	}
 	document.addEventListener("jpush.setTagsWithAlias", onTagsWithAlias, false);
