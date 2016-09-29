@@ -33,17 +33,24 @@ document.addEventListener("deviceready", function() {
 	window.plugins.jPushPlugin.getRegistrationID(onGetRegistradionID);
 	var onGetRegistradionID = function(data) {
 		try {
-
-			JPushPlugin.prototype.setTagsWithAlias(storage.get("roleids"), storage.get("srcid"));
+			alert("成功注册id,要设置标签了 "+JSON.stringify(data));
+			//window.plugins.jPushPlugin.setTagsWithAlias([storage.get("roleids")], storage.get("srcid"));
+			//JPushPlugin.prototype.setTagsWithAlias(["abc"], "888");
+			console.log("getRegistrationID");
 		} catch(exception) {
 			alert(exception+"出错");
 		}
 	}
 	window.plugins.jPushPlugin.isPushStopped(function (result) {
 		if (result == 0) {
+			//开启了
+			if(storage.get("alias").length==0||typeof(storage.get("alias") == "undefined"){
+				window.plugins.jPushPlugin.setTagsWithAlias([storage.get("roleids")], storage.get("srcid"));
+			}
+			console.log("getRegistrationID");
 
 		} else {
-			JPushPlugin.prototype.setTagsWithAlias(storage.get("roleids"), storage.get("srcid"));
+
 		}
 	})
 
@@ -57,7 +64,7 @@ document.addEventListener("deviceready", function() {
 			}
 			navigator.vibrate(2000);
 			navigator.notification.beep(1);
-
+			console.log(JSON.stringify(alertContent));
 			//alert("i onReceiveNotification"+alertContent);
 		} catch (exception) {
 			console.log(exception);
@@ -94,15 +101,35 @@ document.addEventListener("deviceready", function() {
 			alert("JPushPlugin:onReceiveMessage-->" + exception);
 		}
 	};
+	var onTagsWithAlias = function(event) {
+		try {
+			console.log("onTagsWithAlias");
+			var result = "result code:"+event.resultCode + " ";
+			result += "tags:" + event.tags + " ";
+			result += "alias:" + event.alias + " ";
+			storage.put("tag",tag[0]);
+			storage.put("alias",event.alias);
+			alert("tags and alias "+result);
+		} catch(exception) {
+			console.log(exception);
+			alert("设置标签出错!");
+		}
+	}
+	document.addEventListener("jpush.setTagsWithAlias", onTagsWithAlias, false);
 	document.addEventListener("jpush.receiveNotification", onReceiveNotification, false);
 	document.addEventListener("jpush.receiveMessage", onReceiveMessage, false);
 	document.addEventListener("jpush.openNotification", onOpenNotification, false);
+
 }, false);
 
 $("#logout").click(function () {
-	JPushPlugin.prototype.setTagsWithAlias(storage.get("roleids"), storage.get("srcid"));
-	//this.location.href="index.html";
-	window.location.href = "../index.html";
+
+	window.plugins.jPushPlugin.setTagsWithAlias([],"");
+
+	setTimeout(function(){
+		window.location.href = "../index.html";
+	},2000);
+
 });
 
 
