@@ -41,13 +41,19 @@ function warningDetailBindView(data, devcode) {
 	if(data.outstatus != 0) {
 		alert(data.outputstr);
 	} else if(data.outstatus == 0) {
-		alert(JSON.stringify(data.outputstr));
+//		alert(JSON.stringify(data.outputstr));
 		$("#warningDetail_devcode").text(devcode);
 		$("#warningDetail_ProductionKM").text(data.outputstr.ProductionKM);
 		$("#warningDetail_ArticleName").text(data.outputstr.ArticleName);
 		$("#warningDetail_EfficProduction").text(data.outputstr.EfficProduction);
 		var alarmrows = data.outputstr.alarmrows;
-
+		var category = new Array();
+		var scrollViewCategory = new Array();
+		var message_zqg = "a";
+		var message_dw = "a";
+		var message_scz = "a";
+		var message_a = "a";
+		var message_cv = "a";
 		$.each(alarmrows, function(n, value) {
 			var messageid = value.messageid;
 			switch(messageid) {
@@ -70,29 +76,107 @@ function warningDetailBindView(data, devcode) {
 				case "2":
 					{
 						switch(value.messagechild) {
-							case "01":
+							case "01": //%A
 								{
 									if(!workingMark) {
 										workingMark = true;
-										$("#warningDetail_QualityMessage_1").html(value.message + "<br>");
-										$("#warningDetail_QualityMessageTitle_1").text("组切割");
+										message_a = value.message + "<br>";
 									} else {
-										var txt = $("#warningDetail_QualityMessage_1").html() + value.message + "<br>";
-										$("#warningDetail_QualityMessage_1").html(txt);
+										message_a = message_a + value.message + "<br>";
+									}
+								}
+								break;
+							case "02": //CV%
+								{
+									if(!workingMark) {
+										workingMark = true;
+										message_cv = value.message + "<br>";
+									} else {
+										message_cv = message_cv + value.message + "<br>";
+									}
+								}
+								break;
+							case "03": //组切割:生产效率
+								{
+									if(!workingMark) {
+										workingMark = true;
+										message_zqg = value.message + "<br>";
+									} else {
+										message_zqg = message_zqg + value.message + "<br>";
+									}
+								}
+								break;
+							case "04": //组切割:纱疵报警
+								{
+									if(!workingMark) {
+										workingMark = true;
+										message_zqg = value.message + "<br>";
+									} else {
+										message_zqg = message_zqg + value.message + "<br>";
+									}
+								}
+								break;
+							case "05": //组切割:异纤报警
+								{
+									if(!workingMark) {
+										workingMark = true;
+										message_zqg = value.message + "<br>";
+									} else {
+										message_zqg = message_zqg + value.message + "<br>";
+									}
+								}
+								break;
+							case "06": //锭位:纱线接头
+								{
+									if(!workingMark) {
+										workingMark = true;
+										message_dw = value.message + "<br>";
+									} else {
+										message_dw = message_dw + value.message + "<br>";
+									}
+								}
+								break;
+							case "07": //锭位:深色异纤
+								{
+									if(!workingMark) {
+										workingMark = true;
+										message_dw = value.message + "<br>";
+									} else {
+										message_dw = message_dw + value.message + "<br>";
+									}
+								}
+								break;
+							case "08": //生产组:纱疵报警
+								{
+									if(!workingMark) {
+										workingMark = true;
+										message_scz = value.message + "<br>";
+									} else {
+										message_scz = message_scz + value.message + "<br>";
+									}
+								}
+								break;
+							case "09": //生产组:异纤报警
+								{
+									if(!workingMark) {
+										workingMark = true;
+										message_scz = value.message + "<br>";
+									} else {
+										message_scz = message_scz + value.message + "<br>";
 									}
 								}
 								break;
 							default:
 								{
-
+									console.log("******error: warningDetail-undefined messageChild");
 								}
 								break;
 						}
+
 					}
 					break;
 				case "3":
 					{
-						var category = new Array();
 						category.push({
 							"otherMessage": new Date(value.alarmtime).Format("yyyy-MM-dd hh:mm") + "&nbsp&nbsp&nbsp" + value.message
 						});
@@ -109,12 +193,51 @@ function warningDetailBindView(data, devcode) {
 					break;
 				default:
 					{
-						console.log("******error: warningDetailDefault");
+						console.log("******error: warningDetail-undefined messageid");
 					}
 					break;
 			}
 		});
 		workingMark = false;
+		if(message_zqg != "" || message_dw != "" || message_scz != "") {
+			scrollViewCategory.push({
+				"Title_1": "组切割",
+				"Message_1": message_zqg,
+				"Title_2": "锭位",
+				"Message_2": message_dw,
+				"Title_3": "生产组",
+				"Message_3": message_scz
+			});
+		}
+		if(message_a != "" || message_cv != "") {
+			scrollViewCategory.push({
+				"Title_1": "%A",
+				"Message_1": message_a,
+				"Title_2": "CV%",
+				"Message_2": message_cv,
+				"Title_3": "",
+				"Message_3": ""
+			});
+		}
+		if(message_zqg == "" && message_dw == "" && message_scz == "" && message_a == "" && message_cv == "") {
+			scrollViewCategory.push({
+				"Title_1": "",
+				"Message_1": "",
+				"Title_2": "",
+				"Message_2": "",
+				"Title_3": "",
+				"Message_3": ""
+			});
+		}
+
+		scrollViewDataSource = kendo.data.DataSource.create({
+			data: scrollViewCategory,
+		});
+
+		var contentScrollViewModel = kendo.observable({
+			"scrollViewDataSource": scrollViewDataSource,
+		});
+		kendo.bind($("#warningDetailScrollView"), contentScrollViewModel);
 	}
 }
 
