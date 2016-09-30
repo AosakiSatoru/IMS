@@ -2,24 +2,28 @@
 function postPackingInputData(Type) {
     var unit;
     var count;
+    var type;
     if(Type == "回条") {
         unit = $("#dropdownlist1").val();
         count = $("#IMSPackingInput_first_yield").val();
+        type = "0";
     } else if(Type == "粗纱头") {
         unit = $("#dropdownlist2").val();
         count = $("#IMSPackingInput_second_yield").val();
+        type = "1";
     } else if(Type == "白花") {
         unit = $("#dropdownlist3").val();
         count = $("#IMSPackingInput_third_yield").val();
+        type = "2";
     }
     var typerows = [{
                     "unit": unit,
                     "yield": count,
-                    "date": new Date().toUTCString(),
-                    "type": storage.get("flowcode") == "undefined" ? "" : storage.get("flowcode")
+                    "type": type
                     }];
     var para = {
-        "typerows": typerows
+        "typerows": typerows,
+        "username":storage.get("srcid"),
     };
     
     if(count.length == 0) {

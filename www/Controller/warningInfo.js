@@ -35,7 +35,7 @@ function warningInfoFetchDataRequest(onlyShowBindingMachine, messageid) {
 			"messageid": messageid,
 			"account": storage.get("account"),
 			"srcid": storage.get("srcid"),
-			"type": "1"
+			"type": "define"
 		};
 	} else {
 		params = {
@@ -44,10 +44,12 @@ function warningInfoFetchDataRequest(onlyShowBindingMachine, messageid) {
 			"srcid": storage.get("srcid"),
 		};
 	}
+
+	
 	$.ajax({
 		type: "post",
 		url: IMSUrl + "busi_alarm/",
-		async: true,
+		async: false,
 		dataType: "jsonp",
 		data: {
 			"parameter": JSON.stringify(params)

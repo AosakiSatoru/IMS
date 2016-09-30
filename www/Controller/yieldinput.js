@@ -77,7 +77,7 @@ function bindView(data) {
 					"variety": ""
 				});
 			});
-			//				
+			//
 			first = contentArray;
 		} else if(object.flowcode == "1") {
 			$.each(object.devices, function(n, device) {
@@ -89,7 +89,7 @@ function bindView(data) {
 					"variety": ""
 				});
 			});
-			//				
+			//
 			second = contentArray;
 		} else if(object.flowcode == "3") {
 			$.each(object.devices, function(n, device) {
@@ -102,7 +102,7 @@ function bindView(data) {
 				});
 			});
 			third = contentArray;
-			//				
+			//
 		}
 
 	}
@@ -170,21 +170,21 @@ function bindView(data) {
 
 				$("#yieldInputListView").data("kendoMobileListView").dataSource.data().map(function(item) {
 					var obj = {
-						devcode1: item.devcode,
+						devcode: item.devcode,
 						yield: item.yield,
 						varieties: item.variety
 					};
 					return obj;
 				});
 			var params = {
-				duty: type,
+				duty: "甲",
 				flowcoderows: [{
 					flowcode: contentViewModel.selectflowcode,
 					machinerows: content
 				}]
 			};
-			alert(JSON.stringify(params));
-			return ;
+			
+
 			$.ajax({
 				type: "post",
 				url: IMSUrl + "busi_YieldInput/",
