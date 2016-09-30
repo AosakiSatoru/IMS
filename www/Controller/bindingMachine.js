@@ -8,9 +8,21 @@ var viewModels = new Array();
 var flownameDataSource;
 
 function viewShow() {
-	kendo.mobile.application.showLoading();
+	//kendo.mobile.application.showLoading();
 	var navbar = $("#navbar").kendoMobileNavBar();
 	loadInfoFromService();
+	document.addEventListener("jpush.receiveMessage", function(event) {
+		try {
+			var message;
+			if (device.platform == "Android") {
+				message = event.message;
+			} else {
+				message = event.content;
+			}
+		} catch (exception) {
+
+		}
+	}, false);
 }
 
 function loadInfoFromService() {

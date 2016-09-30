@@ -1,6 +1,12 @@
 function viewShow() {
 	var navbar = $("#navbar").kendoMobileNavBar();
 	warningListInitRequest();
+	document.addEventListener("jpush.receiveMessage", function(event) {
+		warningListInitRequest();
+	}, false);
+}
+function viewBeforeHide(){
+	document.removeEventListener("jpush.receiveMessage",nil, false);
 }
 
 function warningListInitRequest() {

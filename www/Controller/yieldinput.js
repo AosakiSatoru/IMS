@@ -7,6 +7,7 @@ function viewInit(e){
 
 }
 function viewShow(e) {
+
 	var navbar = $("#navbar").kendoMobileNavBar();
 	// $("#yieldInput_leftNavButton").click(function() {
 	// 	//window.location.href="home.html";
@@ -34,7 +35,29 @@ function viewShow(e) {
 		}
 	});
 	}
+function fetchXJS(){
+	var url = IMSUrl + "findxjs/";
+	var result = [];
+	$.ajax({
+		type: "post",
+		url: url,
+		async: false,
+		dataType: "jsonp",
+		data: null,
+		dataType: "json",
+		success: function(data) {
 
+			result = data.outputstr.map(function (item){
+				return {variety:item.XJS_No};
+			});
+
+		},
+		error: function(data, status, e) {
+
+		}
+	});
+	return result;
+}
 
 function bindView(data) {
 	var first, second, third;
@@ -84,11 +107,7 @@ function bindView(data) {
 
 	}
 	varietiesDataSource = kendo.data.DataSource.create({
-		data: [{
-			"variety": "type1"
-		}, {
-			"variety": "type2"
-		}]
+		data: fetchXJS(),
 	});
 	contentDataSource = kendo.data.DataSource.create({
 		data: first

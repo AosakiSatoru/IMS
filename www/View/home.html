@@ -9,14 +9,18 @@
 		<script src="../js/kendo.all.min.js"></script>
 	</head>
 	<body>
-		<div data-role="view" data-title="IMS" id="IMSHome">
-			<header data-role="header">
+	<div data-role="layout" data-id="default">
+		<header data-role="header">
 				<span data-role="navbar">
                     <div data-role="view-title"
-                        style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
-                        <a data-badge="0" id="packingInput_rightNavButton_1" href="#warningList.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red@3x.png);background-repeat: round;height: 25px;width: 30px;padding-right: 9px;margin-right: 1em;"></a>
+						 style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
+					    <a id="bindingMachine_leftNavButton" href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
+                        <a data-badge="0" id="packingInput_rightNavButton_1" href="warningList.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red@3x.png);background-repeat: round;height: 25px;width: 30px;padding-right: 9px;margin-right: 1em;"></a>
                 </span>
-			</header>
+		</header>
+	</div>
+		<div data-role="view" data-title="IMS" id="IMSHome" data-show="viewShow" data-before-hide="viewBeforeHide" data-init="viewInit">
+
 			<p style="background-color:#F7F7F7;margin: 0;height: 0.4em;"></p>
 			<div data-role="content" style="background-color: #F7F7F7;">
 				<ul id="homeListView" data-role="listview" data-style="inset" style="background-color: white;">

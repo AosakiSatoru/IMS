@@ -14,15 +14,16 @@
 		<div data-role="view" data-title="绑定机台" id="IMSBindingMachine" data-show="viewShow">
 
 			<link href="../css/bindingMachine.css" rel="stylesheet" />
-			<header data-role="header">
-				<span data-role="navbar">
-                    <div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
-                		<a id="bindingMachine_leftNavButton" href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
-					<a data-badge="0" id="packingInput_rightNavButton_1" href="#warningList.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red@3x.png);background-repeat: round;height: 25px;width: 30px;padding-right: 9px;margin-right: 1em;"></a>
-				</span>
-			</header>
+			<!--<header data-role="header">-->
+				<!--<span data-role="navbar">-->
+                    <!--<div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>-->
+                		<!--<a id="bindingMachine_leftNavButton" href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>-->
+					<!--<a data-badge="0" id="packingInput_rightNavButton_1" href="#warningList.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red@3x.png);background-repeat: round;height: 25px;width: 30px;padding-right: 9px;margin-right: 1em;"></a>-->
+				<!--</span>-->
+			<!--</header>-->
 			<div data-role="content" style="background-color: #F7F7F7;">
 				<!--data-source="flownameDataSource"-->
+				<script src="../js/kendo.mobile.min.js"></script>
 				<div id="bindingMachineListView" data-role="listview" data-style="inset" style="background-color: white;" data-bind="source: flownameDataSource" data-template="flownameTemplate">
 				</div>
 			</div>
