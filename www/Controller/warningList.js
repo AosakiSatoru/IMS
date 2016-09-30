@@ -5,8 +5,12 @@ function viewShow() {
 		warningListInitRequest();
 	}, false);
 }
+function removeEventListenerFunction(event){
+
+}
+
 function viewBeforeHide(){
-	document.removeEventListener("jpush.receiveMessage",nil, false);
+	document.removeEventListener("jpush.receiveMessage",removeEventListenerFunction, false);
 }
 
 function warningListInitRequest() {
