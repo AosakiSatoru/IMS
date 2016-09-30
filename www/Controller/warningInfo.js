@@ -3,13 +3,29 @@
  */
 
 var flowArray;
+var isAll = false;
 
 function viewShow(e) {
 	//	app.view().header.find(".km-navbar").data("kendoMobileNavBar").title("test");
 	//	app.view().header.find(".km-navbar").data("kendoMobileNavBar").refresh();
+	$("#warningInfo_allButton").click(function() {
+		if(isAll) {
+			$("#warningInfo_allButton").attr("style", "width: 40%;background-color: #FFFFFF;color: #A9293D;border-color: #A9293D;border-radius: 2px;");
+			isAll = false;
+		} else {
+			$("#warningInfo_allButton").attr("style", "width: 40%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;border-radius: 2px;");
+			isAll = true;
+		}
+		warningInfoFetchDataRequest(!isAll, e.view.params.messageid);
+	});
 
-	warningInfoFetchDataRequest(false, e.view.params.messageid);
+	$("#warningInfo_filterButton").click(function() {
+
+	});
+
+	warningInfoFetchDataRequest(true, e.view.params.messageid);
 }
+
 // BOOL onlyShowBindingMachine -- "type":"1" 只显示绑定机台
 //messsage id 消息类型
 function warningInfoFetchDataRequest(onlyShowBindingMachine, messageid) {
@@ -75,7 +91,7 @@ function warningInfoBindView(data, messageid) {
 				category.push({
 					"deviceStatus": deviceStatus,
 					"deviceName": deviceValue.devcodename,
-					"deviceCode": deviceValue.devcode, 
+					"deviceCode": deviceValue.devcode,
 					"message": message
 				});
 			});
@@ -87,7 +103,7 @@ function warningInfoBindView(data, messageid) {
 		var contentViewModel = kendo.observable({
 			"dataSource": dataSource,
 			detailClicked: function(e) {
-				app.navigate("#warningDetail.html?deviceCode="+e.target.attr("deviceCode"));
+				app.navigate("#warningDetail.html?deviceCode=" + e.target.attr("deviceCode"));
 			}
 		});
 		kendo.bind($("#warningInfoListView"), contentViewModel);
