@@ -85,7 +85,10 @@ function bindView(data) {
 				});
 			});
 			//
-			first = contentArray;
+			first = 
+			kendo.data.DataSource.create({
+					data: contentArray
+				});
 		} else if(object.flowcode == "1") {
 			$.each(object.devices, function(n, device) {
 				contentArray.push({
@@ -97,7 +100,10 @@ function bindView(data) {
 				});
 			});
 			//
-			second = contentArray;
+			second = 
+			kendo.data.DataSource.create({
+					data: contentArray
+				});
 		} else if(object.flowcode == "3") {
 			$.each(object.devices, function(n, device) {
 				contentArray.push({
@@ -108,7 +114,10 @@ function bindView(data) {
 					"variety": ""
 				});
 			});
-			third = contentArray;
+			third = 
+			kendo.data.DataSource.create({
+					data: contentArray
+				});
 			//
 		}
 
@@ -116,9 +125,7 @@ function bindView(data) {
 	varietiesDataSource = kendo.data.DataSource.create({
 		data: fetchXJS(),
 	});
-	contentDataSource = kendo.data.DataSource.create({
-		data: first
-	});
+	contentDataSource = first;
 	contentViewModel = kendo.observable({
 		"selectflowcode": 2,
 		"varietiesDataSource": varietiesDataSource,
@@ -147,22 +154,14 @@ function bindView(data) {
 
 			if($(e.target.find(".km-text")[0]).text() == "预并") {
 				contentViewModel.selectflowcode = 2;
-				$("#yieldInputListView").data("kendoMobileListView").setDataSource(kendo.data.DataSource.create({
-					data: self.contentViewModel.first
-				}));
+				$("#yieldInputListView").data("kendoMobileListView").setDataSource(self.contentViewModel.first);
 			} else if($(e.target.find(".km-text")[0]).text() == "梳棉") {
 				contentViewModel.selectflowcode = 1;
-				$("#yieldInputListView").data("kendoMobileListView").setDataSource(kendo.data.DataSource.create({
-					data: self.contentViewModel.second
-				}));
+				$("#yieldInputListView").data("kendoMobileListView").setDataSource(self.contentViewModel.second);
 			} else if($(e.target.find(".km-text")[0]).text() == "粗纱") {
 				contentViewModel.selectflowcode = 3;
-				$("#yieldInputListView").data("kendoMobileListView").setDataSource(kendo.data.DataSource.create({
-					data: self.contentViewModel.third
-				}));
+				$("#yieldInputListView").data("kendoMobileListView").setDataSource(self.contentViewModel.third);
 			}
-
-			$("#yieldInputListView").data("kendoMobileListView").refresh();
 
 		}
 
@@ -210,7 +209,6 @@ function bindView(data) {
 					}
 				},
 				error: function(data, status, e) {
-
 					alert("请求服务器出错");
 				}
 			});
