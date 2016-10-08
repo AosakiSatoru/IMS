@@ -49,11 +49,11 @@ function warningDetailBindView(data, devcode) {
 		var alarmrows = data.outputstr.alarmrows;
 		var category = new Array();
 		var scrollViewCategory = new Array();
-		var message_zqg = "a";
-		var message_dw = "a";
-		var message_scz = "a";
-		var message_a = "a";
-		var message_cv = "a";
+		var message_zqg = "";
+		var message_dw = "";
+		var message_scz = "";
+		var message_a = "";
+		var message_cv = "";
 		$.each(alarmrows, function(n, value) {
 			var messageid = value.messageid;
 			switch(messageid) {

@@ -7,20 +7,24 @@ var isAll = false;
 var messageid_global;
 var data_global;
 
+$("#warningInfo_allButton").click(function() {
+	if(isAll) {
+		$("#warningInfo_allButton").attr("style", "width: 40%;background-color: #FFFFFF;color: #A9293D;border-color: #A9293D;border-radius: 2px;");
+		isAll = false;
+	} else {
+		$("#warningInfo_allButton").attr("style", "width: 40%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;border-radius: 2px;");
+		isAll = true;
+	}
+	warningInfoFetchDataRequest(!isAll, messageid_global);
+});
+
 function viewShow(e) {
 	//	app.view().header.find(".km-navbar").data("kendoMobileNavBar").title("test");
 	//	app.view().header.find(".km-navbar").data("kendoMobileNavBar").refresh();
 	messageid_global = e.view.params.messageid;
-	$("#warningInfo_allButton").click(function() {
-		if(isAll) {
-			$("#warningInfo_allButton").attr("style", "width: 40%;background-color: #FFFFFF;color: #A9293D;border-color: #A9293D;border-radius: 2px;");
-			isAll = false;
-		} else {
-			$("#warningInfo_allButton").attr("style", "width: 40%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;border-radius: 2px;");
-			isAll = true;
-		}
-		warningInfoFetchDataRequest(!isAll, messageid_global);
-	});
+
+	$("#warningInfo_allButton").attr("style", "width: 40%;background-color: #FFFFFF;color: #A9293D;border-color: #A9293D;border-radius: 2px;");
+	isAll = false;
 
 	warningInfoFetchDataRequest(true, messageid_global);
 }
@@ -68,7 +72,7 @@ function warningInfoBindView(data, messageid, filtercode) {
 	if(data.outstatus != 0) {
 		alert(data.outputstr);
 	} else if(data.outstatus == 0) {
-//		alert(JSON.stringify(data.outputstr.Messagerows));
+		//				alert(JSON.stringify(data.outputstr.Messagerows));
 		var category = new Array();
 		flowArray = data.outputstr.Messagerows;
 		$.each(flowArray, function(n, flowValue) {
@@ -111,10 +115,9 @@ function warningInfoBindView(data, messageid, filtercode) {
 				app.navigate("#warningDetail.html?deviceCode=" + e.target.attr("deviceCode"));
 			}
 		});
-		if(filtercode == 'init')kendo.bind($("#warningInfoListView"), contentViewModel);
+		if(filtercode == 'init') kendo.bind($("#warningInfoListView"), contentViewModel);
 		else $("#warningInfoListView").data("kendoMobileListView").setDataSource(contentViewModel.dataSource);
-		
-		
+
 	}
 }
 
