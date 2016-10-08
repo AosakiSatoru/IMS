@@ -4,15 +4,22 @@
 var contentViewModel;
 var type;
 function viewInit(e){
-
 }
 function viewShow(e) {
-
+	
 	var navbar = $("#navbar").kendoMobileNavBar();
-	// $("#yieldInput_leftNavButton").click(function() {
-	// 	//window.location.href="home.html";
-	// });
-	type = e.view.params.type;
+	
+	switch (e.view.params.type){
+		case "0":
+		type="甲";
+		break;
+		case "1":
+		type = "乙";
+		break;
+		case "2":
+		type = "丙";
+	};
+	
 	var url = IMSUrl + "busi_bindfind";
 	$.ajax({
 		type: "post",
@@ -177,7 +184,7 @@ function bindView(data) {
 					return obj;
 				});
 			var params = {
-				duty: "甲",
+				duty: type,
 				flowcoderows: [{
 					flowcode: contentViewModel.selectflowcode,
 					machinerows: content

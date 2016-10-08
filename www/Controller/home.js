@@ -24,13 +24,20 @@ function viewBeforeHide() {
 	$("#bindingMachine_leftNavButton").show();
 	//$("#packingInput_rightNavButton_1").data("kendoMobileButton").badge(100);
 }
-
-function machine_input(type) {
-	app.navigate("yieldinput.html?type=" + type);
+var actionsheetAction = {
+	action0:function(){ 	machine_input("0");},
+	action1:function(){ 	machine_input("1");},
+	action2:function(){ 	machine_input("2");},
 }
-
+function machine_input(type) {
+	var urlString = "yieldinput.html?type="+type ;
+	app.navigate(urlString);
+}
+function xx(e){
+	alert("134");
+}
 $("#bindingMachine").click(function() {
-
+   
 	app.navigate("bindingMachine.html");
 });
 $("#packingInput").click(function() {
