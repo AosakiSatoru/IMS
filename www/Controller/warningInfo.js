@@ -55,7 +55,7 @@ function warningInfoFetchDataRequest(onlyShowBindingMachine, messageid) {
 		dataType: "json",
 		success: function(data) {
 			data_global = data;
-			warningInfoBindView(data, messageid, '0');
+			warningInfoBindView(data, messageid, 'init');
 		},
 		error: function(data, status, e) {
 			alert("请求服务器出错");
@@ -73,7 +73,7 @@ function warningInfoBindView(data, messageid, filtercode) {
 		flowArray = data.outputstr.Messagerows;
 		$.each(flowArray, function(n, flowValue) {
 
-			if(filtercode == '0' || filtercode == flowValue.flowcode) {
+			if(filtercode == 'init' || filtercode == '0' || filtercode == flowValue.flowcode) {
 				var deviceStatus;
 				if(messageid == 0)
 					deviceStatus = "设备告警";
@@ -111,7 +111,10 @@ function warningInfoBindView(data, messageid, filtercode) {
 				app.navigate("#warningDetail.html?deviceCode=" + e.target.attr("deviceCode"));
 			}
 		});
-		kendo.bind($("#warningInfoListView"), contentViewModel);
+		if(filtercode == 'init'){kendo.bind($("#warningInfoListView"), contentViewModel);alert(1);}
+		else $("#warningInfoListView").data("kendoMobileListView").setDataSource(contentViewModel.dataSource);
+		
+		
 	}
 }
 
