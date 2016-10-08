@@ -4,10 +4,13 @@
 
 var flowArray;
 var isAll = false;
+var messageid_global;
+var data_global;
 
 function viewShow(e) {
 	//	app.view().header.find(".km-navbar").data("kendoMobileNavBar").title("test");
 	//	app.view().header.find(".km-navbar").data("kendoMobileNavBar").refresh();
+	messageid_global = e.view.params.messageid;
 	$("#warningInfo_allButton").click(function() {
 		if(isAll) {
 			$("#warningInfo_allButton").attr("style", "width: 40%;background-color: #FFFFFF;color: #A9293D;border-color: #A9293D;border-radius: 2px;");
@@ -16,17 +19,13 @@ function viewShow(e) {
 			$("#warningInfo_allButton").attr("style", "width: 40%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;border-radius: 2px;");
 			isAll = true;
 		}
-		warningInfoFetchDataRequest(!isAll, e.view.params.messageid);
+		warningInfoFetchDataRequest(!isAll, messageid_global);
 	});
 
-	$("#warningInfo_filterButton").click(function() {
-
-	});
-
-	warningInfoFetchDataRequest(true, e.view.params.messageid);
+	warningInfoFetchDataRequest(true, messageid_global);
 }
 
-// BOOL onlyShowBindingMachine -- "type":"1" 只显示绑定机台
+// BOOL onlyShowBindingMachine -- "type":"define" 只显示绑定机台
 //messsage id 消息类型
 function warningInfoFetchDataRequest(onlyShowBindingMachine, messageid) {
 	var params;
@@ -45,7 +44,6 @@ function warningInfoFetchDataRequest(onlyShowBindingMachine, messageid) {
 		};
 	}
 
-	
 	$.ajax({
 		type: "post",
 		url: IMSUrl + "busi_alarm/",
@@ -56,7 +54,8 @@ function warningInfoFetchDataRequest(onlyShowBindingMachine, messageid) {
 		},
 		dataType: "json",
 		success: function(data) {
-			warningInfoBindView(data, messageid);
+			data_global = data;
+			warningInfoBindView(data, messageid, '0');
 		},
 		error: function(data, status, e) {
 			alert("请求服务器出错");
@@ -65,38 +64,42 @@ function warningInfoFetchDataRequest(onlyShowBindingMachine, messageid) {
 
 }
 
-function warningInfoBindView(data, messageid) {
+function warningInfoBindView(data, messageid, filtercode) {
 	if(data.outstatus != 0) {
 		alert(data.outputstr);
 	} else if(data.outstatus == 0) {
-		//		alert(JSON.stringify(data.outputstr.Messagerows));
+//		alert(JSON.stringify(data.outputstr.Messagerows));
 		var category = new Array();
 		flowArray = data.outputstr.Messagerows;
 		$.each(flowArray, function(n, flowValue) {
-			var deviceStatus;
-			if(messageid == 0)
-				deviceStatus = "设备告警";
-			else if(messageid == 1)
-				deviceStatus = "生产效率告警";
-			else if(messageid == 2)
-				deviceStatus = "质量告警";
-			else if(messageid == 3)
-				deviceStatus = "其他告警信息";
 
-			var deviceArray = flowValue.devices;
-			$.each(deviceArray, function(n, deviceValue) {
-				var messageArray = deviceValue.alarms;
-				var message = "";
-				$.each(messageArray, function(n, messageValue) {
-					message = message + messageValue.message + "<br>";
+			if(filtercode == '0' || filtercode == flowValue.flowcode) {
+				var deviceStatus;
+				if(messageid == 0)
+					deviceStatus = "设备告警";
+				else if(messageid == 1)
+					deviceStatus = "生产效率告警";
+				else if(messageid == 2)
+					deviceStatus = "质量告警";
+				else if(messageid == 3)
+					deviceStatus = "其他告警信息";
+
+				var deviceArray = flowValue.devices;
+				$.each(deviceArray, function(n, deviceValue) {
+					var messageArray = deviceValue.alarms;
+					var message = "";
+					$.each(messageArray, function(n, messageValue) {
+						message = message + messageValue.message + "<br>";
+					});
+					category.push({
+						"deviceStatus": deviceStatus,
+						"deviceName": deviceValue.devcodename,
+						"deviceCode": deviceValue.devcode,
+						"message": message
+					});
 				});
-				category.push({
-					"deviceStatus": deviceStatus,
-					"deviceName": deviceValue.devcodename,
-					"deviceCode": deviceValue.devcode,
-					"message": message
-				});
-			});
+			}
+
 		});
 		dataSource = kendo.data.DataSource.create({
 			data: category,
@@ -110,4 +113,9 @@ function warningInfoBindView(data, messageid) {
 		});
 		kendo.bind($("#warningInfoListView"), contentViewModel);
 	}
+}
+
+function warningInfo_filter(flowcode) {
+	warningInfoBindView(data_global, messageid_global, flowcode);
+	$("#warningInfo_actionsheet").data("kendoMobileActionSheet").close();
 }

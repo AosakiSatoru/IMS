@@ -20,7 +20,7 @@
 				</span>
 				<div style="background-color: white;text-align: center;">
 				<span>
-                    <a data-role="button" id="warningInfo_filterButton"
+                    <a data-role="button" id="warningInfo_filterButton" data-rel="actionsheet" href="#warningInfo_actionsheet"
                         style="width: 40%;background-color: #FFFFFF;color: #A9293D;border-color: #A9293D;border-radius: 2px;">
                         工序筛选
                     </a>
@@ -38,6 +38,19 @@
 				<div data-role="listview" data-bind="source: dataSource" data-template="warningInfo_Template" data-fixed-headers="true" id="warningInfoListView" style="background-color: white;">
 				</div>
 			</div>
+			
+			<ul id="warningInfo_actionsheet" data-role="actionsheet" data-cancel="取消">
+				<li class="km-actionsheet-title">选择工序</li>
+				<li><a data-action="warningInfo_filter('0')">全部</a></li>
+				<li><a data-action="warningInfo_filter('1')">清花</a></li>
+  				<li><a data-action="warningInfo_filter('2')">梳棉</a></li>
+  				<li><a data-action="warningInfo_filter('3')">预并</a></li>
+  				<li><a data-action="warningInfo_filter('4')">精梳</a></li>
+  				<li><a data-action="warningInfo_filter('5')">末并</a></li>
+  				<li><a data-action="warningInfo_filter('6')">粗纱</a></li>
+  				<li><a data-action="warningInfo_filter('7')">细纱</a></li>
+			</ul>
+			
 			<!--List模板-->
 			<script id="warningInfo_Template" type="text/x-kendo-template">
 				<div style="background-color:rgb(247,247,247);height: 5px;"></div>
