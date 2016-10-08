@@ -5,7 +5,8 @@
 window.app = new kendo.mobile.Application(document.body, {
 	platform: 'ios',
 	skin: 'nova',
-	layout: 'default'
+	layout: 'default',
+	transition:'overlay'
 });
 function viewInit(){
 	$("#username").text(storage.get("username"));
@@ -33,12 +34,12 @@ function machine_input(type) {
 	var urlString = "yieldinput.html?type="+type ;
 	app.navigate(urlString);
 }
-function xx(e){
-	alert("134");
-}
 $("#bindingMachine").click(function() {
-   
-	app.navigate("bindingMachine.html");
+   $("#homeDrawer").data("kendoMobileDrawer").hide();
+   setTimeout(function() {
+		app.navigate("bindingMachine.html");
+	}, 200);
+	
 });
 $("#packingInput").click(function() {
 	app.navigate("packingInput.html");
