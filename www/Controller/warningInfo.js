@@ -111,7 +111,7 @@ function warningInfoBindView(data, messageid, filtercode) {
 				app.navigate("#warningDetail.html?deviceCode=" + e.target.attr("deviceCode"));
 			}
 		});
-		if(filtercode == 'init'){kendo.bind($("#warningInfoListView"), contentViewModel);alert(1);}
+		if(filtercode == 'init')kendo.bind($("#warningInfoListView"), contentViewModel);
 		else $("#warningInfoListView").data("kendoMobileListView").setDataSource(contentViewModel.dataSource);
 		
 		
