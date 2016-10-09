@@ -3,23 +3,24 @@
  */
 var contentViewModel;
 var type;
-function viewInit(e){
-}
+
+function viewInit(e) {}
+
 function viewShow(e) {
-	
+
 	var navbar = $("#navbar").kendoMobileNavBar();
-	
-	switch (e.view.params.type){
+
+	switch(e.view.params.type) {
 		case "0":
-		type="甲";
-		break;
+			type = "甲";
+			break;
 		case "1":
-		type = "乙";
-		break;
+			type = "乙";
+			break;
 		case "2":
-		type = "丙";
+			type = "丙";
 	};
-	
+
 	var url = IMSUrl + "busi_bindfind";
 	$.ajax({
 		type: "post",
@@ -38,11 +39,12 @@ function viewShow(e) {
 		},
 		error: function(data, status, e) {
 			kendo.mobile.application.hideLoading();
-			alert("请求服务器出错!原因:"+JSON.stringify(data));
+			alert("请求服务器出错!原因:" + JSON.stringify(data));
 		}
 	});
-	}
-function fetchXJS(){
+}
+
+function fetchXJS() {
 	var url = IMSUrl + "findxjs/";
 	var result = [];
 	$.ajax({
@@ -54,8 +56,10 @@ function fetchXJS(){
 		dataType: "json",
 		success: function(data) {
 
-			result = data.outputstr.map(function (item){
-				return {variety:item.XJS_No};
+			result = data.outputstr.map(function(item) {
+				return {
+					variety: item.XJS_No
+				};
 			});
 
 		},
@@ -85,8 +89,8 @@ function bindView(data) {
 				});
 			});
 			//
-			first = 
-			kendo.data.DataSource.create({
+			first =
+				kendo.data.DataSource.create({
 					data: contentArray
 				});
 		} else if(object.flowcode == "1") {
@@ -100,8 +104,8 @@ function bindView(data) {
 				});
 			});
 			//
-			second = 
-			kendo.data.DataSource.create({
+			second =
+				kendo.data.DataSource.create({
 					data: contentArray
 				});
 		} else if(object.flowcode == "3") {
@@ -114,8 +118,8 @@ function bindView(data) {
 					"variety": ""
 				});
 			});
-			third = 
-			kendo.data.DataSource.create({
+			third =
+				kendo.data.DataSource.create({
 					data: contentArray
 				});
 			//
@@ -168,7 +172,21 @@ function bindView(data) {
 	});
 	kendo.bind($("#headerButtonGroup"), headerButtonViewModel);
 
+	//刷新头部
+	$.each($("#headerButtonGroup").find("a"), function(n, button) {
+		if(n == 0) {
+			button.style.backgroundColor = "#A9293D";
+			button.style.color = "#FFFFFF";
+			button.style.borderColor = "#A9293D";
+		} else {
+			button.style.backgroundColor = "#EEEEEE";
+			button.style.color = "#AAAAAA";
+			button.style.borderColor = "#EEEEEE";
+		}
+	});
+
 	kendo.bind($("#yieldInputListView"), contentViewModel);
+
 	var dropdownlist = $("#dropdownlist").data("kendoDropDownList");
 	var footerViewModel = kendo.observable({
 		input: function(e) {
@@ -189,7 +207,6 @@ function bindView(data) {
 					machinerows: content
 				}]
 			};
-			
 
 			$.ajax({
 				type: "post",
