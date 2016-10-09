@@ -208,6 +208,7 @@ function bindView(data) {
 				}]
 			};
 
+ kendo.ui.progress($("#IMSYieldinput"), true);
 			$.ajax({
 				type: "post",
 				url: IMSUrl + "busi_YieldInput/",
@@ -219,9 +220,11 @@ function bindView(data) {
 				},
 				dataType: "json",
 				success: function(data) {
+					kendo.ui.progress($("#IMSYieldinput"), false);
 					if(data.outstatus == 0) {
 						alert("成功");
 					} else {
+						kendo.ui.progress($("#IMSYieldinput"), false);
 						alert("失败,原因:" + data.outputstr);
 					}
 				},

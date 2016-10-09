@@ -14,11 +14,7 @@ function viewInit(){
 	$("#rolename").text(storage.get("rolename"));
 }
 function viewShow() {
-
 	$("#bindingMachine_leftNavButton").hide();
-
-	
-
 }
 
 function viewBeforeHide() {

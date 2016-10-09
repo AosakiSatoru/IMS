@@ -15,6 +15,7 @@ function viewShow() {
 }
 
 function loadInfoFromService() {
+	 kendo.ui.progress($("#IMSBindingMachine"), true);
 	var url = IMSUrl + "busi_bindfind";
 	$.ajax({
 		type: "post",
@@ -28,10 +29,12 @@ function loadInfoFromService() {
 		},
 		dataType: "json",
 		success: function(data) {
+			 kendo.ui.progress($("#IMSBindingMachine"), false);
 			kendo.mobile.application.hideLoading();
 			loadView(data);
 		},
 		error: function(data, status, e) {
+			 kendo.ui.progress($("#IMSBindingMachine"), false);
 			kendo.mobile.application.hideLoading();
 			alert("请求服务器出错!原因:" + JSON.stringify(data));
 		}
