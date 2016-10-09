@@ -51,7 +51,7 @@ function warningDetailBindView(data, devcode) {
 		if(!data.outputstr.ArticleName) ArticleName = " ";
 		if(!data.outputstr.EfficProduction) EfficProduction = 0.00;
 		
-		if(EfficProduction > 30 || EfficProduction < 10) //阈值
+		if(EfficProduction > 20 || EfficProduction < 10) //阈值
 			createChart(EfficProduction, "#A9293D");
 		else
 			createChart(EfficProduction, "#9DE219");

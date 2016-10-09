@@ -16,17 +16,17 @@
             <link href="../css/packingInput.css" rel="stylesheet" />
             <header data-role="header">
 				<span data-role="navbar" style="border-bottom-width:1px ;border-bottom-style: solid;border-bottom-color: lightgray;">
-                    <div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
-                		<a id="packingInput_leftNavButton_1" href="#/" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
+                    <div data-role="view-title" style="line-height: 4.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
+                		<a id="packingInput_leftNavButton_1" data-transition = "overlay:left reverse" href="#/" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
                 		<a data-badge="0" id="packingInput_rightNavButton_1" href="#warningList.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red@3x.png);background-repeat: round;height: 25px;width: 30px;padding-right: 9px;margin-right: 1em;"></a>
 				</span>
 			</header>
             
             <div data-role="content" style="background-color: #FFFFFF;">
                 <div style="text-align: center;margin-top: 15px;">
-                    <span><a data-role = "button" style="width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;">回 条</a></span>
-                    <span><a data-role = "button" href="#IMSPackingInput_second" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">粗纱头</a></span>
-                    <span><a data-role = "button" href="#IMSPackingInput_third" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">白 花</a></span>
+                    <span><a data-role = "button"  style="width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;">回 条</a></span>
+                    <span><a data-role = "button" data-transition="none" href="#IMSPackingInput_second" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">粗纱头</a></span>
+                    <span><a data-role = "button" data-transition="none" href="#IMSPackingInput_third" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">白 花</a></span>
                 </div>
                 <div style="text-align: center;margin-top: 15px;">
                 		<select id="dropdownlist1" style="width: 97%;text-align: left;padding-top: 0.5em;padding-bottom: 0.5em;background-color: #EEEEEE;">
@@ -52,17 +52,17 @@
         <div data-role="view" data-title="副料打包" id="IMSPackingInput_second">
             <header data-role="header">
 				<span data-role="navbar" style="border-bottom-width:1px ;border-bottom-style: solid;border-bottom-color: lightgray;">
-                    <div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
-                		<a id="packingInput_leftNavButton_2" href="#/" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
+                    <div data-role="view-title" style="line-height: 4.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
+                		<a id="packingInput_leftNavButton_2" data-transition = "overlay:left reverse" href="#/" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
 					<a data-badge="0" id="packingInput_rightNavButton_1" href="#warningList.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red@3x.png);background-repeat: round;height: 25px;width: 30px;padding-right: 9px;margin-right: 1em;"></a>
 				</span>
 			</header>
             
             <div data-role="content" style="background-color: #FFFFFF;">
                 <div style="text-align: center;margin-top: 15px;">
-                    <span><a data-role = "button" href="#IMSPackingInput_first" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">回 条</a></span>
+                    <span><a data-role = "button" data-transition="none" href="#IMSPackingInput_first" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">回 条</a></span>
                     <span><a data-role = "button" style="width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;">粗纱头</a></span>
-                    <span><a data-role = "button" href="#IMSPackingInput_third" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">白 花</a></span>
+                    <span><a data-role = "button" data-transition="none" href="#IMSPackingInput_third" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">白 花</a></span>
                 </div>
                 
                 <div style="text-align: center;margin-top: 15px;">
@@ -89,16 +89,16 @@
         <div data-role="view" data-title="副料打包" id="IMSPackingInput_third">
             <header data-role="header">
 				<span data-role="navbar" style="border-bottom-width:1px ;border-bottom-style: solid;border-bottom-color: lightgray;">
-                    <div data-role="view-title" style="line-height: 3.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
-                		<a id="packingInput_leftNavButton_3" href="#/" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
+                    <div data-role="view-title" style="line-height: 4.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
+                		<a id="packingInput_leftNavButton_3" data-transition = "overlay:left reverse" href="#/" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>
 					<a data-badge="0" id="packingInput_rightNavButton_1" href="#warningList.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red@3x.png);background-repeat: round;height: 25px;width: 30px;padding-right: 9px;margin-right: 1em;"></a>
 				</span>
 			</header>
             
             <div data-role="content" style="background-color: #FFFFFF;">
                 <div style="text-align: center;margin-top: 15px;">
-                    <span><a data-role = "button" href="#IMSPackingInput_first" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">回 条</a></span>
-                    <span><a data-role = "button" href="#IMSPackingInput_second" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">粗纱头</a></span>
+                    <span><a data-role = "button" data-transition="none" href="#IMSPackingInput_first" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">回 条</a></span>
+                    <span><a data-role = "button" data-transition="none" href="#IMSPackingInput_second" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">粗纱头</a></span>
                     <span><a data-role = "button" style="width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;">白 花</a></span>
                 </div>
                 
