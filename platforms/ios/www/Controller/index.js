@@ -1,5 +1,8 @@
+ 	var app = new kendo.mobile.Application(document.body,{
+        			platform:'ios',
+        			skin:'nova'
+    			});
 function RequestPreHookData() {
-
     var userName = $("#loginUserName").val();
     var password = $("#loginPassword").val();
     
@@ -18,6 +21,7 @@ function RequestPreHookData() {
         alert("请输入密码");
         return;
     }
+    kendo.ui.progress($("#IMSLogin"), true);
     var url = IMSUrl+"busi_login/";
     $.ajax({
            type: "post",
@@ -30,6 +34,7 @@ function RequestPreHookData() {
            },
            dataType: "json",
            success: function(data) {
+           	 kendo.ui.progress($("#IMSLogin"), false);
            if(data.outstatus == 201) {
            alert("账号或密码出错");
            } else if(data.outstatus == 0) {
@@ -48,7 +53,7 @@ function RequestPreHookData() {
            }
            },
            error: function(data, status, e) {
-           
+            kendo.ui.progress($("#IMSLogin"), false);
            alert("请求服务器出错");
            }
            });

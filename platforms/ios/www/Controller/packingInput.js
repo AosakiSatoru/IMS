@@ -31,6 +31,7 @@ function postPackingInputData(Type) {
         return;
     }
     var url = IMSUrl + "busi_PackingInput/";
+    kendo.ui.progress($("body"), true);
     $.ajax({
            type: "post",
            url: url,
@@ -42,12 +43,14 @@ function postPackingInputData(Type) {
            },
            dataType: "json",
            success: function(data) {
+           	 kendo.ui.progress($("body"), false);
            if(data.outstatus == 0)
            alert("处理成功");
            else
            alert("操作失败，请稍后再试");
            },
            error: function(data, status, e) {
+           	 kendo.ui.progress($("body"), false);
            alert("请求服务器出错");
            }
            });
