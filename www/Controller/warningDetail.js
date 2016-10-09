@@ -7,6 +7,7 @@ var workingMark = false;
 function viewShow(e) {
 	var navbar = $("#navbar").kendoMobileNavBar();
 	warningDetailInitRequest(e.view.params.deviceCode);
+	$(document).bind("kendo:skinChange", createChart);
 }
 
 function warningDetailInitRequest(devcode) {
@@ -41,11 +42,23 @@ function warningDetailBindView(data, devcode) {
 	if(data.outstatus != 0) {
 		alert(data.outputstr);
 	} else if(data.outstatus == 0) {
-//		alert(JSON.stringify(data.outputstr));
+		//		alert(JSON.stringify(data.outputstr));
 		$("#warningDetail_devcode").text(devcode);
-		$("#warningDetail_ProductionKM").text(data.outputstr.ProductionKM);
-		$("#warningDetail_ArticleName").text(data.outputstr.ArticleName);
-		$("#warningDetail_EfficProduction").text(data.outputstr.EfficProduction);
+		var ProductionKM = data.outputstr.ProductionKM;
+		var ArticleName = data.outputstr.ArticleName;
+		var EfficProduction = data.outputstr.EfficProduction;
+		if(!data.outputstr.ProductionKM) ProductionKM = " ";
+		if(!data.outputstr.ArticleName) ArticleName = " ";
+		if(!data.outputstr.EfficProduction) EfficProduction = 0.00;
+		
+		if(EfficProduction > 30 || EfficProduction < 10) //阈值
+			createChart(EfficProduction, "#A9293D");
+		else
+			createChart(EfficProduction, "#9DE219");
+		
+		$("#warningDetail_ProductionKM").text(ProductionKM);
+		$("#warningDetail_ArticleName").text(ArticleName);
+		$("#warningDetail_EfficProduction").text(EfficProduction);
 		var alarmrows = data.outputstr.alarmrows;
 		var category = new Array();
 		var scrollViewCategory = new Array();
@@ -258,3 +271,47 @@ Date.prototype.Format = function(fmt) { //author: meizz
 			fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
 	return fmt;
 };
+
+function createChart(productionEfficiency, color) {
+	$("#chart").kendoChart({
+		title: {
+			//			position: "top",
+			//			text: "生产效率"
+		},
+		legend: {
+			visible: false
+		},
+		chartArea: {
+			background: ""
+		},
+		seriesDefaults: {
+			type: "donut",
+			startAngle: 90
+		},
+		series: [{
+			name: "",
+			data: [{}]
+		}, {
+			name: "生产效率",
+			data: [{
+				category: "生产中",
+				value: productionEfficiency,
+				color: color
+			}, {
+				category: "未生产",
+				value: 100.00 - productionEfficiency,
+				color: "#EEEEEE"
+			}],
+			labels: {
+				visible: false,
+				background: "transparent",
+				//				position: "outsideEnd",
+				template: /*"#= category #:*/ "#= value#%"
+			}
+		}],
+		tooltip: {
+			visible: true,
+			template: /*"#= series.name #:*/ "#= value #%"
+		}
+	});
+}
