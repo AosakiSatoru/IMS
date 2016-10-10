@@ -9,7 +9,7 @@
 .km-arrow-up:before {
 	width: 23px;
 	height: 23px;
-	content: url("../resources/@3x/collapsible_selected@3x.png");
+	content: url("../resources/@3x/collapsible_selected_23x23@3x.png");
 	background-repeat: round;
 	-webkit-background-clip: border-box;
 }
@@ -21,7 +21,7 @@
 .km-arrow-down:before {
 	width: 23px;
 	height: 23px;
-	content: url("../resources/@3x/xxx.png");
+	content: url("../resources/@3x/collapsible_select_23x23@3x.png");
 	background-repeat: round;
 	-webkit-background-clip: border-box;
 }
@@ -44,7 +44,7 @@
 }
 
 .km-nova .km-collapsible-header .km-icon {
-	top: 9px;
+	top: 13px;
 }
 
 .km-widget.km-collapsible.km-expanded,
