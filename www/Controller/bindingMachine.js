@@ -121,7 +121,9 @@ function bindingView() {
 		collapsibleButtonClick: function(e) {
 			var element = e.target.parent().parent().parent().parent();
 			var collapsible = element.data("kendoMobileCollapsible");
+			collapsible.options.animation = false;
 			collapsible.toggle();
+			collapsible.options.animation = true;
 			//  $(button).find(".km-text").text("未全选");
 
 			var selectAll = $(e.target).attr("isselect") == "NO";
