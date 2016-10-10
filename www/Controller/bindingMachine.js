@@ -10,8 +10,8 @@ var flownameDataSource;
 function viewShow() {
 	//kendo.mobile.application.showLoading();
 	var navbar = $("#navbar").kendoMobileNavBar();
-	//loadInfoFromService();
-	localtest();
+	loadInfoFromService();
+	//localtest();
 }
 
 function localtest() {
