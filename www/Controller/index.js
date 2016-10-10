@@ -91,4 +91,13 @@ $(document).ready(function() {
     		document.getElementById('loginPassword').value = '';
     		document.getElementById('passwordClearBtn').style.display = 'none';
     }
-
+$('input#loginUserName').bind('keypress', function(event) {
+	if(event.keyCode == "13") {
+		$('input#loginPassword').focus();
+	}
+});
+$('input#loginPassword').bind('keypress', function(event) {
+	if(event.keyCode == "13") {
+		RequestPreHookData();
+	}
+});
