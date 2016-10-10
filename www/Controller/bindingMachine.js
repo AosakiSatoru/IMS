@@ -10,12 +10,42 @@ var flownameDataSource;
 function viewShow() {
 	//kendo.mobile.application.showLoading();
 	var navbar = $("#navbar").kendoMobileNavBar();
-	loadInfoFromService();
-	
+	//loadInfoFromService();
+	localtest();
+}
+
+function localtest() {
+	var data = {
+		"outstatus": "0",
+		"outputstr": {
+			"flowcoderows": [{
+				"devices": [{
+					"devcode": "c70-1",
+					"devcodename": "梳棉一号机"
+				}, {
+					"devcode": "c70-2",
+					"devcodename": "梳棉二号机"
+				}, {
+					"devcode": "c70-3",
+					"devcodename": "梳棉三号机"
+				}],
+				"flowname": "梳棉",
+				"flowcode": "1"
+			}, {
+				"devices": [{
+					"devcode": "b10-1",
+					"devcodename": "络筒一号机"
+				}],
+				"flowname": "络筒",
+				"flowcode": "2"
+			}]
+		}
+	}
+	loadView(data);
 }
 
 function loadInfoFromService() {
-	 kendo.ui.progress($("#IMSBindingMachine"), true);
+	kendo.ui.progress($("#IMSBindingMachine"), true);
 	var url = IMSUrl + "busi_bindfind";
 	$.ajax({
 		type: "post",
@@ -29,12 +59,15 @@ function loadInfoFromService() {
 		},
 		dataType: "json",
 		success: function(data) {
-			 kendo.ui.progress($("#IMSBindingMachine"), false);
+			kendo.ui.progress($("#IMSBindingMachine"), false);
 			kendo.mobile.application.hideLoading();
+			alert(JSON.stringify(data));
+			return;
 			loadView(data);
+			
 		},
 		error: function(data, status, e) {
-			 kendo.ui.progress($("#IMSBindingMachine"), false);
+			kendo.ui.progress($("#IMSBindingMachine"), false);
 			kendo.mobile.application.hideLoading();
 			alert("请求服务器出错!原因:" + JSON.stringify(data));
 		}
@@ -179,10 +212,11 @@ function bindingView() {
 			var flowcoderows = new Array();
 			$.each(viewModels, function(n, viewModel) {
 				if(viewModel.selectMachinerows.length > 0) {
+
 					flowcoderows.push({
 						"flowcode": viewModel.flowcode,
 						"machinerows": viewModel.selectMachinerows
-					})
+					});
 				}
 			});
 			var params = {

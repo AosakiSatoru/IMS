@@ -9,8 +9,9 @@
 .km-arrow-up:before {
 	width: 23px;
 	height: 23px;
-	background-image: url("../resources/@3x/collapsible_selected@3x.png");
+	content: url("../resources/@3x/collapsible_selected@3x.png");
 	background-repeat: round;
+	-webkit-background-clip: border-box;
 }
 
 
@@ -20,8 +21,9 @@
 .km-arrow-down:before {
 	width: 23px;
 	height: 23px;
-	background-image: url("../resources/@3x/collapsible_select@3x.png");
+	content: url("../resources/@3x/xxx.png");
 	background-repeat: round;
+	-webkit-background-clip: border-box;
 }
 
 

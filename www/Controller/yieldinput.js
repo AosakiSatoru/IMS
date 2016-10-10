@@ -200,11 +200,28 @@ function bindView(data) {
 					};
 					return obj;
 				});
+				//对客户输入的信息的每一项进行校验，没输入的不输出，输入一半的提示出错
+				var filterContent = new Array();
+				for(var index in content){
+					var item = content[index];
+					
+					if(item.yield.length==0&&item.varieties.length==0){
+						continue;
+					}
+					else if(item.yield.length==0||item.varieties.length==0){
+						alert("某项的品种或数量没有填写！");
+						return ;
+					}else{
+						filterContent.push(item);
+					}
+				}
+				//alert(JSON.stringify(filterContent));
+				//return ;
 			var params = {
 				duty: type,
 				flowcoderows: [{
 					flowcode: contentViewModel.selectflowcode,
-					machinerows: content
+					machinerows: filterContent
 				}]
 			};
 
