@@ -9,9 +9,9 @@ window.app = new kendo.mobile.Application(document.body, {
 	transition:'overlay'
 });
 function viewInit(){
-	$("#username").text(storage.get("username"));
-	$("#deptname").text(storage.get("deptname"));
-	$("#rolename").text(storage.get("rolename"));
+	$("#username").text(storage.get("username")!="undefined"?storage.get("username"):" ");
+	$("#deptname").text(storage.get("deptname")!="undefined"?storage.get("deptname"):" ");
+	$("#rolename").text(storage.get("rolename")!="undefined"?storage.get("rolename"):" ");
 }
 function viewShow() {
 	$("#bindingMachine_leftNavButton").hide();
@@ -112,8 +112,10 @@ document.addEventListener("deviceready", function() {
 $("#logout").click(function() {
 
 	window.plugins.jPushPlugin.setTagsWithAlias([], "");
-
+	 $("#homeDrawer").data("kendoMobileDrawer").hide();
+    kendo.ui.progress($("#IMSHome"),true);
 	setTimeout(function() {
+		kendo.ui.progress($("#IMSHome"),false);
 		window.location.href = "../index.html";
 	}, 2000);
 

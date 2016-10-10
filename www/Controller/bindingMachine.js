@@ -61,8 +61,6 @@ function loadInfoFromService() {
 		success: function(data) {
 			kendo.ui.progress($("#IMSBindingMachine"), false);
 			kendo.mobile.application.hideLoading();
-			alert(JSON.stringify(data));
-			return;
 			loadView(data);
 			
 		},
