@@ -1,36 +1,12 @@
-$("#packingInput_confirmButton_1").click(function() {
-	postPackingInputData("回条");
-});
-$("#packingInput_confirmButton_2").click(function() {
-	postPackingInputData("粗纱头");
-});
-$("#packingInput_confirmButton_3").click(function() {
-	postPackingInputData("白花");
-});
-$("#dropdownlist1").kendoDropDownList();
-$("#dropdownlist2").kendoDropDownList();
-$("#dropdownlist3").kendoDropDownList();
 
-function postPackingInputData(Type) {
-	var unit;
-	var count;
-	var type;
-	if(Type == "回条") {
-		unit = $("#dropdownlist1").val();
-		count = $("#IMSPackingInput_first_yield").val();
-		type = "0";
-	} else if(Type == "粗纱头") {
-		unit = $("#dropdownlist2").val();
-		count = $("#IMSPackingInput_second_yield").val();
-		type = "1";
-	} else if(Type == "白花") {
-		unit = $("#dropdownlist3").val();
-		count = $("#IMSPackingInput_third_yield").val();
-		type = "2";
-	}
+
+var type = "0";
+$("#dropdownlist").kendoDropDownList();
+
+function postPackingInputData() {
 	var typerows = [{
-		"unit": unit,
-		"yield": count,
+		"unit": $("#dropdownlist").val(),
+		"yield": $("#IMSPackingInput_yield").val(),
 		"type": type
 	}];
 	var para = {
@@ -71,3 +47,31 @@ function postPackingInputData(Type) {
 function viewShow() {
 
 }
+
+$("#packingInput_confirmButton").click(function() {
+	postPackingInputData(type);
+});
+
+$("#packingInput_button_1").click(function() {
+	type = "0";
+	$("#IMSPackingInput_yield").val("");
+	$("#packingInput_button_1").attr("style","width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;");
+	$("#packingInput_button_2").attr("style","width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
+	$("#packingInput_button_3").attr("style","width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
+});
+
+$("#packingInput_button_2").click(function() {
+	type = "1";
+	$("#IMSPackingInput_yield").val("");
+	$("#packingInput_button_1").attr("style","width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
+	$("#packingInput_button_2").attr("style","width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;");
+	$("#packingInput_button_3").attr("style","width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
+});
+
+$("#packingInput_button_3").click(function() {
+	type = "2";
+	$("#IMSPackingInput_yield").val("");
+	$("#packingInput_button_1").attr("style","width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
+	$("#packingInput_button_2").attr("style","width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
+	$("#packingInput_button_3").attr("style","width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;");
+});
