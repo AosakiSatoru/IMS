@@ -20,7 +20,7 @@ function warningListInitRequest() {
 		"srcid": storage.get("srcid"),
 		"messageid": "*"
 	};
-
+	kendo.ui.progress($("#IMSWarningList"), true);
 	$.ajax({
 		type: "post",
 		url: IMSUrl + "busi_alarm/",
@@ -32,8 +32,10 @@ function warningListInitRequest() {
 		dataType: "json",
 		success: function(data) {
 			warningListBindView(data);
+			kendo.ui.progress($("#IMSWarningList"), false);
 		},
 		error: function(data, status, e) {
+			kendo.ui.progress($("#IMSWarningList"), false);
 			alert("请求服务器出错");
 		}
 	});

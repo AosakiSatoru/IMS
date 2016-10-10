@@ -18,7 +18,7 @@ function warningDetailInitRequest(devcode) {
 		"srcid": storage.get("srcid"),
 		"type": "1"
 	};
-
+	kendo.ui.progress($("#IMSWarningDetail"), true);
 	$.ajax({
 		type: "post",
 		url: IMSUrl + "devcodeDetail/",
@@ -30,8 +30,10 @@ function warningDetailInitRequest(devcode) {
 		dataType: "json",
 		success: function(data) {
 			warningDetailBindView(data, devcode);
+			kendo.ui.progress($("#IMSWarningDetail"), false);
 		},
 		error: function(data, status, e) {
+			kendo.ui.progress($("#IMSWarningDetail"), false);
 			alert("请求服务器出错");
 		}
 	});
@@ -50,12 +52,12 @@ function warningDetailBindView(data, devcode) {
 		if(!data.outputstr.ProductionKM) ProductionKM = " ";
 		if(!data.outputstr.ArticleName) ArticleName = " ";
 		if(!data.outputstr.EfficProduction) EfficProduction = 0.00;
-		
+
 		if(EfficProduction > 20 || EfficProduction < 10) //阈值
 			createChart(EfficProduction, "#A9293D");
 		else
 			createChart(EfficProduction, "#9DE219");
-		
+
 		$("#warningDetail_ProductionKM").text(ProductionKM);
 		$("#warningDetail_ArticleName").text(ArticleName);
 		$("#warningDetail_EfficProduction").text(EfficProduction);

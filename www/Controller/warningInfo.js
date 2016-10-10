@@ -47,7 +47,7 @@ function warningInfoFetchDataRequest(onlyShowBindingMachine, messageid) {
 			"srcid": storage.get("srcid"),
 		};
 	}
-
+	kendo.ui.progress($("#IMSWarningInfo"), true);
 	$.ajax({
 		type: "post",
 		url: IMSUrl + "busi_alarm/",
@@ -60,8 +60,10 @@ function warningInfoFetchDataRequest(onlyShowBindingMachine, messageid) {
 		success: function(data) {
 			data_global = data;
 			warningInfoBindView(data, messageid, 'init');
+			kendo.ui.progress($("#IMSWarningInfo"), false);
 		},
 		error: function(data, status, e) {
+			kendo.ui.progress($("#IMSWarningInfo"), false);
 			alert("请求服务器出错");
 		}
 	});

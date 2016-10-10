@@ -33,6 +33,7 @@
 	padding-left: 1em;
 	text-align: left;
 	color: #AAAAAA;
+	height: 60px;
 }
 
 .k-item.k-state-selected.k-state-focused {
@@ -41,4 +42,5 @@
 	padding-left: 1em;
 	border: 0;
 	color: #A9293D;
+	height: 60px;
 }
