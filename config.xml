@@ -23,4 +23,20 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    <platform name="android">
+        <!--
+            ldpi    : 36x36 px
+            mdpi    : 48x48 px
+            hdpi    : 72x72 px
+            xhdpi   : 96x96 px
+            xxhdpi  : 144x144 px
+            xxxhdpi : 192x192 px
+        -->
+        <icon src="logo.png" density="ldpi" />
+        <icon src="logo.png" density="mdpi" />
+        <icon src="logo.png" density="hdpi" />
+        <icon src="logo.png" density="xhdpi" />
+        <icon src="logo.png" density="xxhdpi" />
+        <icon src="logo.png" density="xxxhdpi" />
+    </platform>
 </widget>
