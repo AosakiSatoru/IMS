@@ -1,11 +1,11 @@
 
 
 var type = "0";
-$("#dropdownlist").kendoDropDownList();
+$("#packingInput_dropdownlist").kendoDropDownList();
 
 function postPackingInputData() {
 	var typerows = [{
-		"unit": $("#dropdownlist").val(),
+		"unit": $("#packingInput_dropdownlist").val(),
 		"yield": $("#IMSPackingInput_yield").val(),
 		"type": type
 	}];

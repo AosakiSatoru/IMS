@@ -30,3 +30,16 @@
 .k-dropdown-wrap .k-select{
 	display: none;
 }
+
+.km-nova .km-actionsheet-root, .km-nova .km-popup, .km-nova .km-shim, .km-phone .km-nova .km-actionsheet-wrapper{
+	/*background: rgba(255,255,255,0);*/
+}
+
+.km-nova .km-actionsheet-wrapper, .km-nova .km-popup .k-list-container{
+	border-color: #EEEEEE;
+	border-radius: 4px;
+}
+
+.km-nova .km-popup-wrapper{
+	padding: 0;
+}
