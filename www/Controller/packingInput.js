@@ -13,8 +13,7 @@ function postPackingInputData() {
 		"typerows": typerows,
 		"username": storage.get("srcid"),
 	};
-
-	if(count.length == 0) {
+	if($("#IMSPackingInput_yield").val().length == 0) {
 		alert("请输入数量");
 		return;
 	}
@@ -49,7 +48,7 @@ function viewShow() {
 }
 
 $("#packingInput_confirmButton").click(function() {
-	postPackingInputData(type);
+	postPackingInputData();
 });
 
 $("#packingInput_button_1").click(function() {
