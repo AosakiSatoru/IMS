@@ -5,7 +5,7 @@ $("#packingInput_dropdownlist").kendoDropDownList();
 
 function postPackingInputData() {
 	var typerows = [{
-		"unit": $("#packingInput_dropdownlist").val(),
+		"unit": $("#packingInput_dropdownlist").val(),//$("#packingInput_filterButton").text(),
 		"yield": $("#IMSPackingInput_yield").val(),
 		"type": type
 	}];
@@ -44,8 +44,14 @@ function postPackingInputData() {
 };
 
 function viewShow() {
-
+//	$("#packingInput_actionsheet").attr("data-popup",'{ "width": '+document.body.scrollWidth+' }');
+//	$("#packingInput_actionsheet").data("kendoMobileActionSheet").options.popup = '{height: "auto", width: '+document.body.scrollWidth+' }';
 }
+
+//function packingInput_filter(value) {
+//	$("#packingInput_filterButton").text(value);
+//	$("#packingInput_actionsheet").data("kendoMobileActionSheet").close();
+//}
 
 $("#packingInput_confirmButton").click(function() {
 	postPackingInputData();
