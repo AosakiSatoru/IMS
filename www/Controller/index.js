@@ -2,6 +2,14 @@
         			platform:'ios',
         			skin:'nova'
     			});
+ function showPassword(element){
+ 	
+ 	if(element.checked){
+ 		$("#loginPassword")[0].type = "text";
+ 	}else{
+ 		$("#loginPassword")[0].type = "password";
+ 	}
+ }
 function RequestPreHookData() {
     var userName = $("#loginUserName").val();
     var password = $("#loginPassword").val();
