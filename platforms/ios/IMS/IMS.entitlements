@@ -4,5 +4,12 @@
 <dict>
 	<key>aps-environment</key>
 	<string>development</string>
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>applinks:getazdevlnx002.chinacloudapp.cn</string>
+		<string>applinks:www.getazdevlnx002.chinacloudapp.cn</string>
+		<string>applinks:esquelpasscontuat.esquel.cn</string>
+		<string>applinks:www.esquelpasscontuat.esquel.cn</string>
+	</array>
 </dict>
 </plist>
