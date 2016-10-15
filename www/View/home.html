@@ -27,7 +27,8 @@
 			<div data-role="content" style="background-color: #F7F7F7;">
 				<ul id="homeListView" data-role="listview" data-style="inset" style="background-color: white;">
 					<li>
-						<a data-role="detailbutton"   data-rel="actionsheet" href="#actionsheet">
+						<a data-role="detailbutton"   href="#yieldInputModal" data-rel="modalview">
+							<!--<a data-role="detailbutton"   data-rel="actionsheet" href="#actionsheet">-->
 							<p>
 								<img src="../resources/@3x/yield_input@3x.png" style="width: 4.5em;vertical-align: middle;" />
 								<span style="color: #A62A40; height: 60px;padding-left: 1em;vertical-align: middle;">机台输入产量</span>
@@ -38,10 +39,10 @@
 					</li>
 					 <ul id="actionsheet" data-role="actionsheet" data-cancel="取消" >
 					 	 <!--<li ><a></a></li>-->
-					 	  <li class="km-actionsheet-title">选择班次</li>
-    									   <li><a data-action="actionsheetAction.action0">班别:甲</a></li>
-  									   <li><a data-action="actionsheetAction.action1">班别:乙</a></li>
-  									   <li><a data-action="actionsheetAction.action2">班别:丙</a></li>
+					 	  <li class="km-actionsheet-title">查询</li>
+    									   <li><a data-action="actionsheetAction.action0">机台输入产量查询</a></li>
+  									   <li><a data-action="actionsheetAction.action1">副料打包查询</a></li>
+  									  
 							    </ul>
 					<li>
 						<a data-role="detailbutton" id="packingInput">
@@ -59,6 +60,17 @@
 								<span style="color: #A62A40; height: 60px;padding-left: 1em;vertical-align: middle;">查看报警</span>
 							</p>
 						</a>
+					</li>
+					<li>
+						
+							<a data-role="detailbutton"   data-rel="actionsheet" href="#actionsheet">
+							<p>
+								<img src="../resources/@3x/yield_input@3x.png" style="width: 4.5em;vertical-align: middle;" />
+								<span style="color: #A62A40; height: 60px;padding-left: 1em;vertical-align: middle;">查看</span>
+								
+							</p>
+						</a>
+						
 					</li>
 				</ul>
 			</div>
@@ -97,11 +109,21 @@
 				</a>
 			</div>
 		</div>
-
+		<div data-role="modalview" id="yieldInputModal" style="width: 100%; height: 80%;" data-modal="false">
+ 		 <input id="datepicker" style="width: 100%;"/>
+  		<ul  data-role="listview" data-style="inset" style="background-color: white;">
+  		 								<li id="chooseJia"><a >班别:甲</a></li>
+  									   <li><a id="chooseYi">班别:乙</a></li>
+  									   <li><a id="chooseBing">班别:丙</a></li>
+  									   <li><a id="cancelModalView" style="color: black;" >取消</a></li>
+  		</ul>
+  			
+</div>
 		<script type="text/javascript" src="../cordova.js"></script>
 		<script src = "../Controller/storage.js"></script>
 		<script src="../Controller/home.js"></script>
-
+		<script src="../js/cultures/kendo.culture.zh-CN.min.js"></script>
+		
 	</body>
 
 </html>

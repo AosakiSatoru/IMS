@@ -209,44 +209,7 @@ function bindingView() {
 
 		bindingMachine: function(e) {
 
-//			var flowcoderows = new Array();
-//			$.each(viewModels, function(n, viewModel) {
-//				if(viewModel.selectMachinerows.length > 0) {
-//
-//					flowcoderows.push({
-//						"flowcode": viewModel.flowcode,
-//						"machinerows": viewModel.selectMachinerows
-//					});
-//				}
-//			});
-//			var params = {
-//				"account": storage.get("account"),
-//				"srcid": storage.get("srcid"),
-//				"flowcoderows": flowcoderows
-//			};
-//			var url = IMSUrl + "busi_binding/";
-//			$.ajax({
-//				type: "post",
-//				url: url,
-//				timeout: 10000,
-//				async: false,
-//				dataType: "jsonp",
-//				data: {
-//					"parameter": JSON.stringify(params),
-//				},
-//				dataType: "json",
-//				success: function(data) {
-//					if(data.outstatus == 0) {
-//						alert("成功");
-//					} else {
-//						alert("失败,原因:" + data.outputstr);
-//					}
-//				},
-//				error: function(data, status, e) {
-//
-//					alert("请求服务器出错");
-//				}
-//			});
+
 		}
 	});
 	kendo.bind($("footer"), footViewModel);

@@ -3,13 +3,13 @@
  */
 var contentViewModel;
 var type;
-
+var selectdate;
 function viewInit(e) {}
 
 function viewShow(e) {
 
 	var navbar = $("#navbar").kendoMobileNavBar();
-
+    selectdate = e.view.params.selectdate;
 	switch(e.view.params.type) {
 		case "0":
 			type = "甲";

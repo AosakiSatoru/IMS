@@ -1,0 +1,39 @@
+<div data-role="view" id="navbar-styles" data-title="机台输入产量查询" data-use-native-scrolling="true" data-show="viewShow" data-init="viewInit" id="IMSYieldinput">
+	<input id="startTimeDatepicker1" style="width: 100%;" />
+	<input id="startTimeDatepicker2" style="width: 100%;" />
+	<select id="procedure" data-role="dropdownlist" style="width: 100%;">
+
+		<option>预并</option>
+		<option>梳面</option>
+		<option>粗纱</option>
+	</select>
+	<select id="machine" data-role="dropdownlist" style="width: 100%;">
+
+		<option>机器一</option>
+		<option>机器二</option>
+		<option>机器三</option>
+	</select>
+	<select id="duty" data-role="dropdownlist" style="width: 100%;">
+
+		<option>班别甲</option>
+		<option>班别乙</option>
+		<option>班别丙</option>
+	</select>
+	<div data-role="button">确定</div>
+
+	<ul data-role="listview" data-bind="source: queryResultDataSource" data-style="inset" style="background-color: white" data-template="itemTemplate" id="listview">
+	</ul>
+	<script id="itemTemplate" type="text/x-kendo-template">
+		<label id="itemInfo" style="width: 100%;">xxxxxxxx</label>
+		<select id="yield" data-role="dropdownlist" style="width: 100%;">
+		<option>班别甲</option>
+		<option>班别乙</option>
+		<option>班别丙</option>
+	</select>
+	<input style="width: 100%;"></input>
+	<div data-role="button" style="width: 100%;">修改</div>
+	<div data-role="button"style="width: 100%;">删除</div>
+
+	</script>
+	<script src="../Controller/queryyieldinput.js"></script>
+</div>

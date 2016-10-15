@@ -8,6 +8,14 @@ window.app = new kendo.mobile.Application(document.body, {
 	layout: 'default',
 	transition: 'overlay'
 });
+
+$("#datepicker").kendoDatePicker({
+	animation: false,
+	culture: "zh-CN",
+	format: "yyyy-MM-dd"
+});
+var todayDate = kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd');
+$("#datepicker").data("kendoDatePicker").value(todayDate);
 var beginDate; // 两次点击退出按钮开始时间  
 var isToast = false; // 是否弹出弹框  
 
@@ -58,18 +66,15 @@ function viewBeforeHide() {
 }
 var actionsheetAction = {
 	action0: function() {
-		machine_input("0");
+	app.navigate("queryyieldinput.html");
 	},
 	action1: function() {
-		machine_input("1");
-	},
-	action2: function() {
-		machine_input("2");
-	},
+	app.navigate("querypackingInput.html");
+	}
 }
 
 function machine_input(type) {
-	var urlString = "yieldinput.html?type=" + type;
+	var urlString = "yieldinput.html?type=" + type + "&selectdate=" + $("#datepicker").val();
 	app.navigate(urlString);
 }
 $("#bindingMachine").click(function() {
@@ -161,4 +166,24 @@ $("#logout").click(function() {
 		window.location.href = "../index.html";
 	}, 2000);
 
+});
+
+//弹出视图事件
+$("#chooseJia").click(function() {
+	machine_input("0");
+	$("#yieldInputModal").data("kendoMobileModalView").close();
+
+});
+$("#chooseYi").click(function() {
+	machine_input("1");
+	$("#yieldInputModal").data("kendoMobileModalView").close();
+
+});
+$("#chooseBing").click(function() {
+	machine_input("2");
+	$("#yieldInputModal").data("kendoMobileModalView").close();
+
+});
+$("#cancelModalView").click(function() {
+	$("#yieldInputModal").data("kendoMobileModalView").close();
 });
