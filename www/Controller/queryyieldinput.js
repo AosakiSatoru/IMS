@@ -13,10 +13,16 @@ $("#startTimeDatepicker2").kendoDatePicker({
 }
 function viewShow(){
 	var dataSource = kendo.data.DataSource.create({
-		data: [{},{},{}],
+		data: [{itemInfo:"123"},{itemInfo:"123"},{itemInfo:"123"}],
 	});
 	var listViewModel = new kendo.observable({
-		queryResultDataSource:dataSource
+		queryResultDataSource:dataSource,
+		editItem:function (e){
+			var index = e.target.parent().index();
+		},
+		deleteItem: function(e){
+			var index = e.target.parent().index();
+		}
 	});
 	kendo.bind($("#listview"), listViewModel);
 	
