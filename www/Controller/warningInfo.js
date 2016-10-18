@@ -107,7 +107,7 @@ function warningInfoBindView(data, messageid, filtercode) {
 			}
 
 		});
-		dataSource = kendo.data.DataSource.create({
+		var dataSource = kendo.data.DataSource.create({
 			data: category,
 		});
 

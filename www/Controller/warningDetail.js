@@ -245,7 +245,7 @@ function warningDetailBindView(data, devcode) {
 			});
 		}
 
-		scrollViewDataSource = kendo.data.DataSource.create({
+		var scrollViewDataSource = kendo.data.DataSource.create({
 			data: scrollViewCategory,
 		});
 

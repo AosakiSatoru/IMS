@@ -1,28 +1,40 @@
-<div data-role="view" id="navbar-styles" data-title="副料打包查询" data-use-native-scrolling="true" data-show="viewShow" data-init="viewInit" id="IMSYieldinput">
-	<input id="startTimeDatepicker1" style="width: 100%;" />
-	<input id="startTimeDatepicker2" style="width: 100%;" />
-	<select id="type" data-role="dropdownlist" style="width: 100%;">
+<div data-role="view" id="navbar-styles" data-title="副料打包查询" data-use-native-scrolling="true" data-show="viewShow" data-init="viewInit" id="IMSQueryPackingInput">
 
-		<option>回条</option>
-		<option>粗纱头</option>
-		<option>白花</option>
-	</select>
-	
-	<div data-role="button">确定</div>
+	<div style="text-align: center;border-bottom-width: 1px;border-top-width: 1px;border-bottom-color: #EEEEEE;border-top-color: #EEEEEE;border-bottom-style: solid;border-top-style: solid;padding-top: 10px;padding-bottom: 10px;">
+		<input id="queryPackingInput_startTimeDatepicker1" style="width: 47%;" placeholder="开始日期" />
+		<input id="queryPackingInput_startTimeDatepicker2" style="width: 47%;" placeholder="结束日期" />
+		<select id="queryPackingInput_type" data-role="dropdownlist" style="width: 72%;text-align: left;margin-top: 10px;">
+			<option>全部</option>
+			<option>回条</option>
+			<option>粗纱头</option>
+			<option>白花</option>
+		</select>
+		<div id="queryPackingInput_QueryButton" data-role="button" style="width: 22%;height: 35px;border: none;font-size: 1em;background-color: #A62A40;color: #FFFFFF;border-radius: 4px;margin-top: 10px;">查 询</div>
+	</div>
 
-	<ul data-role="listview" data-bind="source: queryResultDataSource" data-style="inset" style="background-color: white" data-template="itemTemplate" id="listview">
+	<ul data-role="listview" data-bind="source: queryResultDataSource" data-style="inset" style="background-color: white" data-template="queryPackingInput_itemTemplate" id="queryPackingInput_listview">
 	</ul>
-	<script id="itemTemplate" type="text/x-kendo-template">
-		<label id="itemInfo" style="width: 100%;">xxxxxxxx</label>
-		<select id="yield" data-role="dropdownlist" style="width: 100%;">
-		<option>T</option>
-		<option>KG</option>
-		<option>G</option>
-	</select>
-	<input style="width: 100%;"></input>
-	<div data-role="button" style="width: 100%;">修改</div>
-	<div data-role="button"style="width: 100%;">删除</div>
 
+	<!--item模板-->
+	<script id="queryPackingInput_itemTemplate" type="text/x-kendo-template">
+		<div id="queryPackingInput_itemInfo" style="text-align: right;color: gray;font-size: 0.7em;width: 100%;height: 10px;" recid="#:recid#">#:Type# #:date#</div>
+		<div style="height: 50px;">
+			<select id="queryPackingInput_unit" value="#:unit#"  data-bind="value: unit" style="position: relative;top: 35px;font-size: 1em;margin-left: 40%;width: 30%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
+				<option value="" selected disabled="true">单位</option>
+				<option>T</option>
+				<option>KG</option>
+				<option>G</option>
+			</select>
+			<input id="queryPackingInput_yield" value="#:yield#" placeholder="产量" type="number" style="position: relative;top: 0px;font-size: 1em;padding-left: 0.5em;width: 37%;height: 35px;margin-top: 0px;padding-top: 0px;border: none;background-color: rgb(238,238,238);border-radius: 4px;"></input>
+			<a data-role="button" data-bind="click: editItem" style="position: absolute;top: 38px;right: 2%;width: 20%;background-color: rgb(255,255,255);color: rgb(169,41,61);border-color: rgb(169,41,61);border-radius: 4px;font-size: 0.7em;">修 改</a>
+			<!--<div style="text-align: center;">-->
+			<!--<a data-role="button" data-bind="click: editItem" style="float: right;position: relative;width: 10%;background-color: rgb(255,255,255);color: rgb(169,41,61);border-color: rgb(169,41,61);border-radius: 4px;font-size: 0.6em;">修改</a>-->
+			<!--<span data-role="button" data-bind="click: deleteItem" style="position: absolute;top: 10px;right: 3%;width: 13%;background-color: rgb(255,255,255);color: rgb(169,41,61);border-color: rgb(169,41,61);border-radius: 4px;font-size: 0.6em;">删除</span>-->
+			<!--</div>-->
+		</div>
 	</script>
-	<script src="../Controller/queryyieldinput.js"></script>
+
+	<link rel="stylesheet" href="../css/querypackingInput.css" />
+	<script src="../Controller/querypackinginput.js"></script>
+	<script src="../Controller/url.js"></script>
 </div>

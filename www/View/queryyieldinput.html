@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
 
 	<head>
@@ -12,58 +12,70 @@
 		<script src="../js/kendo.all.min.js"></script>
 
 	</head>
-	<body>
-		
-<div data-role="view" id="navbar-styles" data-title="机台输入产量查询" data-use-native-scrolling="true" data-show="viewShow" data-init="viewInit" id="IMSYieldinput">
-	<input id="startTimeDatepicker1" style="width: 100%;" />
-	<input id="startTimeDatepicker2" style="width: 100%;" />
-	<select id="procedure" data-role="dropdownlist" style="width: 100%;">
 
-		<option>预并</option>
-		<option>梳面</option>
-		<option>粗纱</option>
-	</select>
-	<select id="machine" data-role="dropdownlist" style="width: 100%;">
+	<body>-->
 
-		<option>机器一</option>
-		<option>机器二</option>
-		<option>机器三</option>
-	</select>
-	<select id="duty" data-role="dropdownlist" style="width: 100%;">
+<div data-role="view" id="navbar-styles" data-title="机台输入产量查询" data-use-native-scrolling="true" data-show="viewShow" data-init="viewInit" id="IMSQueryYieldInput">
+	<div style="text-align: center;border-bottom-width: 1px;border-top-width: 1px;border-bottom-color: #EEEEEE;border-top-color: #EEEEEE;border-bottom-style: solid;border-top-style: solid;padding-top: 10px;padding-bottom: 10px;">
+		<input id="queryYieldInput_startTimeDatepicker1" style="width: 47%;" placeholder="开始日期" />
+		<input id="queryYieldInput_startTimeDatepicker2" style="width: 47%;" placeholder="结束日期" />
+		<select id="queryYieldInput_procedure" data-role = "dropdownlist" style="width: 31%;text-align: left;margin-top: 10px;">
+			<option value="" selected disabled="true">工序</option>
+			<option>预并</option>
+			<option>梳面</option>
+			<option>粗纱</option>
+		</select>
+		<select id="queryYieldInput_machine" data-role = "dropdownlist" style="width: 31%;text-align: left;margin-top: 10px;">
+			<option value="" selected disabled="true">设备</option>
+			<option>机器一</option>
+			<option>机器二</option>
+			<option>机器三</option>
+		</select>
+		<select id="duty" data-role = "dropdownlist" style="width: 31%;text-align: left;margin-top: 10px;">
+			<option value="" selected disabled="true">班别</option>
+			<option>甲</option>
+			<option>乙</option>
+			<option>丙</option>
+		</select>
+		<div id="queryYieldInput_QueryButton" data-role="button" style="width: 95%;height: 35px;border: none;font-size: 1em;background-color: #A62A40;color: #FFFFFF;border-radius: 4px;margin-top: 10px;">查 询</div>
+	</div>
 
-		<option>班别甲</option>
-		<option>班别乙</option>
-		<option>班别丙</option>
-	</select>
-	<div data-role="button">确定</div>
-
-	<ul data-role="listview" data-bind="source: queryResultDataSource" data-style="inset" style="background-color: white" data-template="itemTemplate" id="listview">
+	<ul data-role="listview" data-bind="source: queryResultDataSource" data-style="inset" style="background-color: white" data-template="queryYieldInput_itemTemplate" id="queryYieldInput_listview">
 	</ul>
-	<script id="itemTemplate" type="text/x-kendo-template">
-		<label id="itemInfo" style="width: 100%;" recid="#:recid#">#:date# #:flowcode# #:devcode#</label>
-		<select id="duty"  data-role="dropdownlist" style="width: 100%;" data-bind="value: duty">
-		<option>班别甲</option>
-		<option>班别乙</option>
-		<option>班别丙</option>
-	</select>
-	<select id="varieties"  data-role="dropdownlist" style="width: 100%;" data-bind="value: varieties">
-		<option>品种一</option>
-		<option>品种二</option>
-	</select>
-	<input style="width: 100%;" id="yield" value="#:yield#"></input>
-	<div data-role="button" data-bind="click: editItem" style="width: 100%;">修改</div>
-	<div data-role="button"data-bind="click: deleteItem" style="width: 100%;">删除</div>
+	<script id="queryYieldInput_itemTemplate" type="text/x-kendo-template">
+		<div id="queryYieldInput_itemInfo" style="color: black;font-size: 1em;width: 100%;height: 10px;" recid="#:recid#">#:flowname# #:devname# #:date#</div>
+		<div>
+			<select id="queryYieldInput_duty" data-bind="value: duty" style="position: relative;top: 25px;font-size: 1em;width: 48%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
+				<option value="" selected disabled="true">班别</option>
+				<option>甲</option>
+				<option>乙</option>
+				<option>丙</option>
+			</select>
+			<select id="queryYieldInput_varieties" data-bind="value: varieties" style="position: relative;top: 25px;font-size: 1em;float: right;width: 48%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
+				<option value="" selected disabled="true">品种</option>
+				<option>品种一</option>
+				<option>品种二</option>
+			</select>
+			<input id="queryYieldInput_yield" value="#:yield#" placeholder="产量" type="number" style="position: relative;font-size: 1em;padding-left: 0.5em;width: 48%;height: 35px;margin-top: 35px;border-width: 2px;border-style: solid;border-color: rgb(238,238,238);border-radius: 4px;"></input>
+			<div data-role="button" data-bind="click: editItem" style="float: right;margin-top: 18px;width: 47.5%;background-color: rgb(255,255,255);color: rgb(169,41,61);border-color: rgb(169,41,61);border-radius: 4px;font-size: 14px;">修 改</div>
+			<!--<div data-role="button" data-bind="click: deleteItem" style="float: right;width: 47.5%;background-color: rgb(255,255,255);color: rgb(169,41,61);border-color: rgb(169,41,61);border-radius: 4px;">删 除</div>-->
 
+		</div>
 	</script>
+
+	<link rel="stylesheet" href="../css/queryyieldinput.css" />
 	<script src="../Controller/queryyieldinput.js"></script>
+	<script src="../Controller/url.js"></script>
 </div>
-<script>window.app = new kendo.mobile.Application(document.body, {
-	platform: 'ios',
-	skin: 'nova',
-	layout: 'default',
-	transition: 'overlay'
-});</script>
+<!--<script>
+			window.app = new kendo.mobile.Application(document.body, {
+				platform: 'ios',
+				skin: 'nova',
+				layout: 'default',
+				transition: 'overlay'
+			});
+		</script>
 
 	</body>
 
-</html>
+</html>-->
