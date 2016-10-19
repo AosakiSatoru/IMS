@@ -9,13 +9,16 @@
 	<div style="text-align: center;border-bottom-width: 1px;border-top-width: 1px;border-bottom-color: #EEEEEE;border-top-color: #EEEEEE;border-bottom-style: solid;border-top-style: solid;padding-top: 10px;padding-bottom: 10px;">
 		<input id="queryPackingInput_startTimeDatepicker1" style="width: 47%;" placeholder="开始日期" />
 		<input id="queryPackingInput_startTimeDatepicker2" style="width: 47%;" placeholder="结束日期" />
-		<select id="queryPackingInput_type" data-role="dropdownlist" style="width: 72%;text-align: left;margin-top: 10px;">
-			<option>全部</option>
-			<option>回条</option>
-			<option>粗纱头</option>
-			<option>白花</option>
-		</select>
-		<div id="queryPackingInput_QueryButton" data-role="button" style="width: 22%;height: 35px;border: none;font-size: 1em;background-color: #A62A40;color: #FFFFFF;border-radius: 4px;margin-top: 10px;">查 询</div>
+		<div>
+			<span style="width: 10%;top: 5px;position: relative;">类型:</span>
+			<select id="queryPackingInput_type" data-role="dropdownlist" style="width: 60%;text-align: left;margin-top: 10px;">
+				<option>全部</option>
+				<option>回条</option>
+				<option>粗纱头</option>
+				<option>白花</option>
+			</select>
+			<div id="queryPackingInput_QueryButton" data-role="button" style="width: 22%;height: 35px;border: none;font-size: 1em;background-color: #A62A40;color: #FFFFFF;border-radius: 4px;margin-top: 10px;">查 询</div>
+		</div>
 	</div>
 
 	<ul data-role="listview" data-bind="source: queryResultDataSource" data-style="inset" style="background-color: white" data-template="queryPackingInput_itemTemplate" id="queryPackingInput_listview">

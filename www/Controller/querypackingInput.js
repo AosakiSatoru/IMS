@@ -41,9 +41,6 @@ function viewShow() {
 //params mark - dealloc
 $("#queryPackingInput_leftNavButton").click(function() {
 	setTimeout(function() {
-		$("#queryPackingInput_startTimeDatepicker1").data("kendoDatePicker").destroy();
-		$("#queryPackingInput_startTimeDatepicker2").data("kendoDatePicker").destroy();
-		$("#queryPackingInput_type").data("kendoDropDownList").destroy();
 		$("#queryPackingInput_type-list").data("kendoPopup").destroy();
 		$("#IMSQueryPackingInput").data("kendoMobileView").destroy();
 		$("#IMSQueryPackingInput").remove();
