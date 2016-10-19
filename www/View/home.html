@@ -1,49 +1,55 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="utf-8" />
 		<title>首页</title>
-  		<link href="../styles/kendo.default.min.css" rel="stylesheet" />
+		<link href="../styles/kendo.default.min.css" rel="stylesheet" />
 		<link href="../styles/kendo.common.min.css" rel="stylesheet" />
 		<link href="../styles/kendo.mobile.all.min.css" rel="stylesheet" />
 		<script src="../js/jquery.min.js"></script>
 		<script src="../js/kendo.all.min.js"></script>
-		
+
 	</head>
+
 	<body>
-	<div data-role="layout" data-id="default">
-		<header data-role="header">
+		<div data-role="layout" data-id="default">
+			<header data-role="header">
 				<span data-role="navbar">
                     <div data-role="view-title"
 						 style="line-height: 4.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
 					    <a id="bindingMachine_leftNavButton" href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back_big@3x.png);background-repeat: round;height: 50px;padding-left: 50px;"></a>
                         <a data-badge="0" id="packingInput_rightNavButton_1" href="warningList.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red@3x.png);background-repeat: round;height: 25px;width: 30px;padding-right: 9px;margin-right: 1em;"></a>
                 </span>
-		</header>
-	</div>
+			</header>
+		</div>
 		<div data-role="view" data-title="IMS" id="IMSHome" data-after-show="viewAfterShow" data-before-hide="viewBeforeHide" data-init="viewInit">
-			
+
 			<p style="background-color:#F7F7F7;margin: 0;height: 0.4em;"></p>
 			<div data-role="content" style="background-color: #F7F7F7;">
 				<ul id="homeListView" data-role="listview" data-style="inset" style="background-color: white;">
 					<li>
-						<a data-role="detailbutton"   href="#yieldInputModal" data-rel="modalview">
+						<a data-role="detailbutton" href="#yieldInputModal" data-rel="modalview">
 							<!--<a data-role="detailbutton"   data-rel="actionsheet" href="#actionsheet">-->
 							<p>
 								<img src="../resources/@3x/yield_input@3x.png" style="width: 4.5em;vertical-align: middle;" />
 								<span style="color: #A62A40; height: 60px;padding-left: 1em;vertical-align: middle;">机台输入产量</span>
-								
+
 							</p>
 						</a>
-						
+
 					</li>
-					 <ul id="actionsheet" data-role="actionsheet" data-cancel="取消" >
-					 	 <!--<li ><a></a></li>-->
-					 	  <li class="km-actionsheet-title">查询</li>
-    									   <li><a data-action="actionsheetAction.action0">机台输入产量查询</a></li>
-  									   <li><a data-action="actionsheetAction.action1">副料打包查询</a></li>
-  									  
-							    </ul>
+					<ul id="actionsheet" data-role="actionsheet" data-cancel="取消">
+						<!--<li ><a></a></li>-->
+						<li class="km-actionsheet-title">查询</li>
+						<li>
+							<a data-action="actionsheetAction.action0">机台输入产量查询</a>
+						</li>
+						<li>
+							<a data-action="actionsheetAction.action1">副料打包查询</a>
+						</li>
+
+					</ul>
 					<li>
 						<a data-role="detailbutton" id="packingInput">
 							<p>
@@ -62,15 +68,15 @@
 						</a>
 					</li>
 					<li>
-						
-							<a data-role="detailbutton"   data-rel="actionsheet" href="#actionsheet">
+
+						<a data-role="detailbutton" data-rel="actionsheet" href="#actionsheet">
 							<p>
 								<img src="../resources/@3x/yield_input@3x.png" style="width: 4.5em;vertical-align: middle;" />
 								<span style="color: #A62A40; height: 60px;padding-left: 1em;vertical-align: middle;">历史记录</span>
-								
+
 							</p>
 						</a>
-						
+
 					</li>
 				</ul>
 			</div>
@@ -110,20 +116,28 @@
 			</div>
 		</div>
 		<div data-role="modalview" id="yieldInputModal" style="width: 100%; height: 80%;" data-modal="false">
- 		 <input id="datepicker" style="width: 100%;"/>
-  		<ul  data-role="listview" data-style="inset" style="background-color: white;">
-  		 								<li id="chooseJia"><a >班别:甲</a></li>
-  									   <li><a id="chooseYi">班别:乙</a></li>
-  									   <li><a id="chooseBing">班别:丙</a></li>
-  									   <li><a id="cancelModalView" style="color: black;" >取消</a></li>
-  		</ul>
-  			
-</div>
+			<input id="datepicker" style="width: 100%;" />
+			<ul data-role="listview" data-style="inset" style="background-color: white;">
+				<li id="chooseJia">
+					<a>班别:甲</a>
+				</li>
+				<li>
+					<a id="chooseYi">班别:乙</a>
+				</li>
+				<li>
+					<a id="chooseBing">班别:丙</a>
+				</li>
+				<li>
+					<a id="cancelModalView" style="color: black;">取消</a>
+				</li>
+			</ul>
+
+		</div>
 		<script type="text/javascript" src="../cordova.js"></script>
-		<script src = "../Controller/storage.js"></script>
+		<script src="../Controller/storage.js"></script>
 		<script src="../Controller/home.js"></script>
 		<script src="../js/cultures/kendo.culture.zh-CN.min.js"></script>
-		
+
 	</body>
 
 </html>
