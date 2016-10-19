@@ -38,6 +38,19 @@ function viewShow() {
 
 }
 
+//params mark - dealloc
+$("#queryPackingInput_leftNavButton").click(function() {
+	setTimeout(function() {
+		$("#queryPackingInput_startTimeDatepicker1").data("kendoDatePicker").destroy();
+		$("#queryPackingInput_startTimeDatepicker2").data("kendoDatePicker").destroy();
+		$("#queryPackingInput_type").data("kendoDropDownList").destroy();
+		$("#queryPackingInput_type-list").data("kendoPopup").destroy();
+		$("#IMSQueryPackingInput").data("kendoMobileView").destroy();
+		$("#IMSQueryPackingInput").remove();
+	}, 550);
+	app.navigate("#:", "overlay:left reverse");
+});
+
 //params mark - Interface
 function queryPackingInputFetchDataRequest(params) {
 	kendo.ui.progress($("#IMSQueryPackingInput"), true);
@@ -63,7 +76,6 @@ function queryPackingInputFetchDataRequest(params) {
 }
 
 function queryPackingInputModifyDataRequest(params) {
-	alert(JSON.stringify(params));
 	kendo.ui.progress($("#IMSQueryPackingInput"), true);
 	$.ajax({
 		type: "post",
@@ -75,7 +87,11 @@ function queryPackingInputModifyDataRequest(params) {
 		},
 		dataType: "json",
 		success: function(data) {
-			alert(JSON.stringify(data));
+			if(data.outstatus != 0) {
+				alert(data.outputstr);
+			} else if(data.outstatus == 0) {
+				alert("修改成功");
+			}
 			kendo.ui.progress($("#IMSQueryPackingInput"), false);
 		},
 		error: function(data, status, e) {
@@ -94,16 +110,24 @@ $("#queryPackingInput_QueryButton").click(function() {
 	else if($("#queryPackingInput_type").val() == "粗纱头") Type = "1";
 	else if($("#queryPackingInput_type").val() == "白花") Type = "2";
 
+	var startDate = $("#queryPackingInput_startTimeDatepicker1").val();
+	var endDate = $("#queryPackingInput_startTimeDatepicker2").val();
+
+	if(endDate == "" || startDate == "") {
+		alert("请输入完整日期");
+		return;
+	}
+
 	if($("#queryPackingInput_type").val() == "全部") {
 		params = {
-			"startdate": $("#queryPackingInput_startTimeDatepicker1").val(),
-			"enddate": $("#queryPackingInput_startTimeDatepicker2").val(),
+			"startdate": startDate,
+			"enddate": endDate,
 		};
 	} else {
 		params = {
 			"Type": Type,
-			"startdate": $("#queryPackingInput_startTimeDatepicker1").val(),
-			"enddate": $("#queryPackingInput_startTimeDatepicker2").val(),
+			"startdate": startDate,
+			"enddate": endDate,
 		};
 	}
 	queryPackingInputFetchDataRequest(params);
@@ -126,7 +150,7 @@ function showList(data) {
 				"recid": value.recid,
 				"Type": type,
 				"date": new Date(value.date).Format("yyyy-MM-dd hh:mm:ss"),
-				"unit": value.unit,
+				"unit": value.unit.trim(),
 				"yield": value.yield
 			});
 		});
@@ -139,9 +163,9 @@ function showList(data) {
 			queryResultDataSource: dataSource,
 			editItem: function(e) {
 				var index = e.target.parent().index();
-				var recid = e.target.parent().find("#queryPackingInput_itemInfo").attr("recid");
+				var recid = e.target.parent().parent().find("#queryPackingInput_itemInfo").attr("recid");
 				var unit = e.target.parent().find("#queryPackingInput_unit").val();
-				var yield = e.target.parent().find("#queryYieldInput_yield").val();
+				var yield = e.target.parent().find("#queryPackingInput_yield").val();
 				var params;
 				params = {
 					"recid": recid,

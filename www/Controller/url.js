@@ -1,5 +1,5 @@
 //DEV
-var IMSUrl = "http://10.0.0.21:8080/service/ws/api/rest/";
+var IMSUrl = "http://10.0.0.15:8280/service/ws/api/rest/";
 //公司
 //var IMSUrl = "http://10.0.0.254:8080/service/ws/api/rest/";
 //高明
