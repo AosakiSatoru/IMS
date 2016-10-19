@@ -15,8 +15,7 @@ function viewInit() {
 	$("#queryYieldInput_machine").kendoDropDownList({
 		dataSource: [],
 		dataTextField: "devcodename",
-		dataValueField: "devcodename",
-		value: "devcode"
+		dataValueField: "devcode"
 	});
 }
 
@@ -40,7 +39,6 @@ $("#queryYieldInput_leftNavButton").click(function() {
 
 //params mark - Interface
 function queryYieldInputFetchDataRequest(params) {
-	alert(JSON.stringify(params));
 	kendo.ui.progress($("#IMSQueryYieldInput"), true);
 	$.ajax({
 		type: "post",
@@ -52,9 +50,9 @@ function queryYieldInputFetchDataRequest(params) {
 		},
 		dataType: "json",
 		success: function(data) {
+			kendo.ui.progress($("#IMSQueryYieldInput"), false);
 			alert(JSON.stringify(data));
 			showList(data);
-			kendo.ui.progress($("#IMSQueryYieldInput"), false);
 		},
 		error: function(data, status, e) {
 			kendo.ui.progress($("#IMSQueryYieldInput"), false);
@@ -143,7 +141,7 @@ function queryYieldInputFetchDevicesDataRequest() {
 					if(device.devcode.trim() != "" && device.devcode && device.devcodename.trim() != "" && device.devcodename) {
 						var dropdownlist = $("#queryYieldInput_machine").data("kendoDropDownList");
 						dropdownlist.dataSource.add({
-							devcodename: device.devcodename.trim(),
+							devcodename: device.devcodename.trim() + ":" + device.devcode.trim(),
 							devcode: device.devcode.trim()
 						});
 						//						dropdownlist.search("A");
@@ -168,20 +166,45 @@ $("#queryYieldInput_QueryButton").click(function() {
 		return;
 	}
 
-	var devname = $("#queryYieldInput_machine").val();
-	if(devname == "" || !devname) {
+	var devcode = $("#queryYieldInput_machine").val();
+	if(devcode == "" || !devcode) {
 		alert("请选择设备");
 		return;
 	}
 
 	var params;
-	params = {
-		"duty": $("#duty").val(),
-		"flowcode": $("#queryYieldInput_procedure").val(),
-		"devcode": devname,
-		"startdate": startDate,
-		"enddate": endDate,
-	};
+	if($("#duty").val() == "0" && $("#queryYieldInput_procedure").val() == "0") {
+		params = {
+			"devcode": devcode,
+			"startdate": startDate,
+			"enddate": endDate,
+		};
+	} else if($("#duty").val() != "0" && $("#queryYieldInput_procedure").val() == "0") {
+		params = {
+			"duty": $("#duty").val(),
+			"devcode": devcode,
+			"startdate": startDate,
+			"enddate": endDate,
+		};
+	} else if($("#duty").val() == "0" && $("#queryYieldInput_procedure").val() != "0") {
+		params = {
+			"flowcode": $("#queryYieldInput_procedure").val(),
+			"devcode": devcode,
+			"startdate": startDate,
+			"enddate": endDate,
+		};
+	} else if($("#duty").val() != "0" && $("#queryYieldInput_procedure").val() != "0") {
+		params = {
+			"duty": $("#duty").val(),
+			"flowcode": $("#queryYieldInput_procedure").val(),
+			"devcode": devcode,
+			"startdate": startDate,
+			"enddate": endDate,
+		};
+	}
+	
+	alert(JSON.stringify(params));
+
 	queryYieldInputFetchDataRequest(params);
 });
 
@@ -189,20 +212,26 @@ function showList(data) {
 	if(data.outstatus != 0) {
 		alert(data.outputstr);
 	} else if(data.outstatus == 0) {
-		//				alert(JSON.stringify(data.outputstr.Listrow));
 		var category = new Array();
-		dataArray = data.outputstr.Listrow;
+		dataArray = data.outputstr;
 		$.each(dataArray, function(n, value) {
+			var duty = "";
+			if(value.duty.trim() == "1") duty = "甲";
+			else if(value.duty.trim() == "2") duty = "乙";
+			else if(value.duty.trim() == "3") duty = "丙";
+
 			category.push({
 				"recid": value.recid,
-				"duty": value.duty,
+				"duty": duty,
 				"flowname": value.flowname,
 				"date": new Date(value.date).Format("yyyy-MM-dd hh:mm:ss"),
-				"devname": value.devname,
+				"devname": value.devcode,
 				"yield": value.yield,
-				"varieties": value.varieties
+				"variety": value.varieties
 			});
 		});
+
+		alert(JSON.stringify(category));
 
 		var dataSource = kendo.data.DataSource.create({
 			data: category,
@@ -214,7 +243,6 @@ function showList(data) {
 			queryResultDataSource: dataSource,
 			varietiesDataSource: varietiesDataSource,
 			editItem: function(e) {
-
 				var index = e.target.parent().index();
 				var duty = e.target.parent().find("#queryYieldInput_duty").val();
 				var varieties = e.target.parent().find("#queryYieldInput_varieties").val();
@@ -228,6 +256,7 @@ function showList(data) {
 					"varieties": varieties,
 					"Dotype": "0" //0-修改
 				};
+				alert(JSON.stringify(params));
 				queryYieldInputModifyDataRequest(params);
 
 			},

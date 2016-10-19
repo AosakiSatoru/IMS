@@ -30,16 +30,25 @@
 			<span style="width: 10%;top: 5px;position: relative;">工序:</span>
 			<select id="queryYieldInput_procedure" data-role="dropdownlist" style="width: 35%;text-align: left;margin-top: 10px;">
 				<option value="" selected disabled="true">工序</option>
-				<option value="3">预并</option>
+				<option value="0">全部</option>
+				<option value="1">清花</option>
 				<option value="2">梳棉</option>
+				<option value="3">预并</option>
+				<option value="4">条并卷</option>
+				<option value="5">精梳</option>
+				<option value="6">末并</option>
 				<option value="7">粗纱</option>
+				<option value="8">细纱</option>
+				<option value="9">清纱</option>
+				<option value="10">络筒</option>
 			</select>
 			<span style="width: 10%;top: 5px;position: relative;">班别:</span>
 			<select id="duty" data-role="dropdownlist" style="width: 35%;text-align: left;margin-top: 10px;">
 				<option value="" selected disabled="true">班别</option>
-				<option>甲</option>
-				<option>乙</option>
-				<option>丙</option>
+				<option value="0">全部</option>
+				<option value="1">甲</option>
+				<option value="2">乙</option>
+				<option value="3">丙</option>
 			</select>
 		</div>
 		<div>
@@ -54,15 +63,15 @@
 	<ul data-role="listview" data-bind="source: queryResultDataSource" data-style="inset" style="background-color: white" data-template="queryYieldInput_itemTemplate" id="queryYieldInput_listview">
 	</ul>
 	<script id="queryYieldInput_itemTemplate" type="text/x-kendo-template">
-		<div id="queryYieldInput_itemInfo" style="color: black;font-size: 1em;width: 100%;height: 10px;" recid="#:recid#">#:flowname# #:devname# #:date#</div>
+		<div id="queryYieldInput_itemInfo" style="text-align: right;color: gray;font-size: 0.7em;width: 100%;height: 10px;" recid="#:recid#">#:flowname# #:devname# #:date#</div>
 		<div>
 			<select id="queryYieldInput_duty" data-bind="value: duty" data-text-field="duty" data-value-field="duty" style="position: relative;top: 25px;font-size: 1em;width: 48%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
 				<option value="" selected disabled="true">班别</option>
-				<option>甲</option>
-				<option>乙</option>
-				<option>丙</option>
+				<option value="1">甲</option>
+				<option value="2">乙</option>
+				<option value="3">丙</option>
 			</select>
-			<select id="queryYieldInput_varieties" data-bind="source: varietiesDataSource,value:varieties" data-text-field="varieties" data-value-field="varieties" style="position: relative;top: 25px;font-size: 1em;float: right;width: 48%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
+			<select id="queryYieldInput_varieties" data-bind="source: varietiesDataSource,value:variety" data-text-field="variety" data-value-field="variety" style="position: relative;top: 25px;font-size: 1em;float: right;width: 48%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
 				<option value="" selected disabled="true">品种</option>
 			</select>
 			<input id="queryYieldInput_yield" value="#:yield#" placeholder="产量" type="number" style="position: relative;font-size: 1em;padding-left: 0.5em;width: 48%;height: 35px;margin-top: 35px;border-width: 2px;border-style: solid;border-color: rgb(238,238,238);border-radius: 4px;"></input>
