@@ -77,7 +77,11 @@ function queryYieldInputModifyDataRequest(params) {
 		},
 		dataType: "json",
 		success: function(data) {
-			alert(JSON.stringify(data));
+			if(data.outstatus != 0) {
+				alert(data.outputstr);
+			} else if(data.outstatus == 0) {
+				alert("修改成功");
+			}
 			kendo.ui.progress($("#IMSQueryYieldInput"), false);
 		},
 		error: function(data, status, e) {
