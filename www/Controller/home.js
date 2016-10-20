@@ -66,15 +66,15 @@ function viewBeforeHide() {
 }
 var actionsheetAction = {
 	action0: function() {
-	app.navigate("queryyieldinput.html");
+	app.navigate("queryYieldInput.html");
 	},
 	action1: function() {
-	app.navigate("querypackingInput.html");
+	app.navigate("queryPackingInput.html");
 	}
 }
 
 function machine_input(type) {
-	var urlString = "yieldinput.html?type=" + type + "&selectdate=" + $("#datepicker").val();
+	var urlString = "yieldInput.html?type=" + type + "&selectdate=" + $("#datepicker").val();
 	app.navigate(urlString);
 }
 $("#bindingMachine").click(function() {
