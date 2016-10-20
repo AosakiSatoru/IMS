@@ -1,9 +1,29 @@
+ 	
+ 	if(storage.get("login")=="yes"){
+ 		window.location.href = "View/home.html";
+ 	}else{
+ 		try {
+			window.plugins.jPushPlugin.setTagsWithAlias([], "");
+		} catch(exception) {
+			
+		}
+ 	}
+ 	
+		
  	var app = new kendo.mobile.Application(document.body,{
         			platform:'ios',
         			skin:'nova'
     			});
+ function showPassword(element){
+ 	
+ 	if(element.checked){
+ 		$("#loginPassword")[0].type = "text";
+ 	}else{
+ 		$("#loginPassword")[0].type = "password";
+ 	}
+ }
 function RequestPreHookData() {
-    var userName = $("#loginUserName").val();
+    var userName = $("#loginUserName").val().trim();
     var password = $("#loginPassword").val();
     
     var para = {
@@ -49,6 +69,7 @@ function RequestPreHookData() {
            storage.put("flight", data.outputstr.flight);
            storage.put("duty", data.outputstr.duty);
            storage.put("machinerows", data.outputstr.machinerows);
+           storage.put("login","yes");
            window.location.href = "View/home.html";
            }
            },
@@ -91,4 +112,13 @@ $(document).ready(function() {
     		document.getElementById('loginPassword').value = '';
     		document.getElementById('passwordClearBtn').style.display = 'none';
     }
-
+$('input#loginUserName').bind('keypress', function(event) {
+	if(event.keyCode == "13") {
+		$('input#loginPassword').focus();
+	}
+});
+$('input#loginPassword').bind('keypress', function(event) {
+	if(event.keyCode == "13") {
+		RequestPreHookData();
+	}
+});
