@@ -1,9 +1,26 @@
-<div data-role="view" id="IMSQueryPackingInput" data-title="副料打包查询" data-use-native-scrolling="true" data-show="viewShow" data-init="viewInit">
+<!--<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>副料打包查询</title>
+
+		<link href="../styles/kendo.default.min.css" rel="stylesheet" />
+		<link href="../styles/kendo.common.min.css" rel="stylesheet" />
+		<link href="../styles/kendo.mobile.all.min.css" rel="stylesheet" />
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/kendo.all.min.js"></script>
+
+	</head>
+
+	<body>-->
+
+<div data-role="view" data-title="副料打包查询" data-use-native-scrolling="true" data-show="viewShow" data-init="viewInit" id="IMSQueryPackingInput">
 	<header data-role="header">
 		<span data-role="navbar" style="border-bottom-width:1px ;border-bottom-style: solid;border-bottom-color: lightgray;">
                 <div data-role="view-title" style="line-height: 4.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
-                <a id="queryPackingInput_leftNavButton" href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back_big@3x.png);background-repeat: round;height: 50px;padding-left: 50px;"></a>
-				<a data-badge="0" id="packingInput_rightNavButton_1" href="warningList.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red@3x.png);background-repeat: round;height: 25px;width: 30px;padding-right: 9px;margin-right: 1em;"></a>
+                <a id="queryPackingInput_leftNavButton" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back_big@3x.png);background-repeat: round;height: 50px;padding-left: 50px;"></a>
+				<a data-badge="0" id="queryPackingInput_rightNavButton_1" href="warningList.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red@3x.png);background-repeat: round;height: 25px;width: 30px;padding-right: 9px;margin-right: 1em;"></a>
 		</span>
 	</header>
 	<div style="text-align: center;border-bottom-width: 1px;border-top-width: 1px;border-bottom-color: #EEEEEE;border-top-color: #EEEEEE;border-bottom-style: solid;border-top-style: solid;padding-top: 10px;padding-bottom: 10px;">
@@ -47,3 +64,15 @@
 	<script src="../Controller/querypackinginput.js"></script>
 	<script src="../Controller/url.js"></script>
 </div>
+<!--<script>
+			window.app = new kendo.mobile.Application(document.body, {
+				platform: 'ios',
+				skin: 'nova',
+				layout: 'default',
+				transition: 'overlay'
+			});
+		</script>
+
+	</body>
+
+</html>-->

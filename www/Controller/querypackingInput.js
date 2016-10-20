@@ -1,31 +1,16 @@
+
+
 //params mark - Initalize
 function viewInit() {
+	alert("queryPackingInput_viewInit");
 	$("#queryPackingInput_startTimeDatepicker1").kendoDatePicker({
-		animation: {
-			close: {
-				effects: "fadeOut zoom:out",
-				duration: 300
-			},
-			open: {
-				effects: "fadeIn zoom:in",
-				duration: 300
-			}
-		},
+		animation: false,
 		culture: "zh-CN",
 		format: "yyyy-MM-dd"
 	});
 
 	$("#queryPackingInput_startTimeDatepicker2").kendoDatePicker({
-		animation: {
-			close: {
-				effects: "fadeOut zoom:out",
-				duration: 300
-			},
-			open: {
-				effects: "fadeIn zoom:in",
-				duration: 300
-			}
-		},
+		animation: false,
 		culture: "zh-CN",
 		format: "yyyy-MM-dd"
 	});
@@ -35,17 +20,18 @@ function viewInit() {
 }
 
 function viewShow() {
-
+	
 }
 
 //params mark - dealloc
 $("#queryPackingInput_leftNavButton").click(function() {
 	setTimeout(function() {
+		alert("queryPackingInput_destroy");
 		$("#queryPackingInput_type-list").data("kendoPopup").destroy();
 		$("#IMSQueryPackingInput").data("kendoMobileView").destroy();
 		$("#IMSQueryPackingInput").remove();
 	}, 550);
-	app.navigate("#:", "overlay:left reverse");
+	app.navigate("#:back", "overlay:left reverse");
 });
 
 //params mark - Interface

@@ -17,12 +17,12 @@ function viewInit() {
 		dataTextField: "devcodename",
 		dataValueField: "devcode"
 	});
+	varList = queryYieldInputFetchVarietiesDataRequest();
+	queryYieldInputFetchDevicesDataRequest();
 }
 
 function viewShow() {
-	varList = queryYieldInputFetchVarietiesDataRequest();
-	console.log(varList);
-	queryYieldInputFetchDevicesDataRequest();
+	
 }
 
 //params mark - dealloc
@@ -34,7 +34,7 @@ $("#queryYieldInput_leftNavButton").click(function() {
 		$("#IMSQueryYieldInput").data("kendoMobileView").destroy();
 		$("#IMSQueryYieldInput").remove();
 	}, 550);
-	app.navigate("#:", "overlay:left reverse");
+	app.navigate("#:back", "overlay:left reverse");
 });
 
 //params mark - Interface
@@ -91,7 +91,7 @@ function queryYieldInputModifyDataRequest(params) {
 
 function queryYieldInputFetchVarietiesDataRequest() {
 	var result = [];
-	kendo.ui.progress($("#IMSQueryYieldInput"), true);
+//	kendo.ui.progress($("#IMSQueryYieldInput"), true);
 	$.ajax({
 		type: "post",
 		url: IMSUrl + "findxjs/",
