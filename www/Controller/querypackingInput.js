@@ -2,7 +2,6 @@
 
 //params mark - Initalize
 function viewInit() {
-	alert("queryPackingInput_viewInit");
 	$("#queryPackingInput_startTimeDatepicker1").kendoDatePicker({
 		animation: false,
 		culture: "zh-CN",
@@ -26,7 +25,6 @@ function viewShow() {
 //params mark - dealloc
 $("#queryPackingInput_leftNavButton").click(function() {
 	setTimeout(function() {
-		alert("queryPackingInput_destroy");
 		$("#queryPackingInput_type-list").data("kendoPopup").destroy();
 		$("#IMSQueryPackingInput").data("kendoMobileView").destroy();
 		$("#IMSQueryPackingInput").remove();
