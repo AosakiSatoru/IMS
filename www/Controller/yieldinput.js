@@ -12,13 +12,13 @@ function viewShow(e) {
     selectdate = e.view.params.selectdate;
 	switch(e.view.params.type) {
 		case "0":
-			type = "甲";
+			type = "1";
 			break;
 		case "1":
-			type = "乙";
+			type = "2";
 			break;
 		case "2":
-			type = "丙";
+			type = "3";
 	};
 
 	var url = IMSUrl + "busi_bindfind";
@@ -219,6 +219,7 @@ function bindView(data) {
 				//return ;
 			var params = {
 				duty: type,
+				date:selectdate,
 				flowcoderows: [{
 					flowcode: contentViewModel.selectflowcode,
 					machinerows: filterContent

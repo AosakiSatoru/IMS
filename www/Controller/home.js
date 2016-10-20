@@ -157,14 +157,18 @@ document.addEventListener("deviceready", function() {
 }, false);
 
 $("#logout").click(function() {
-
-	window.plugins.jPushPlugin.setTagsWithAlias([], "");
+   try {
+			window.plugins.jPushPlugin.setTagsWithAlias([], "");
+		} catch(exception) {
+			
+		}
 	$("#homeDrawer").data("kendoMobileDrawer").hide();
 	kendo.ui.progress($("#IMSHome"), true);
 	setTimeout(function() {
+		 storage.put("login","no");
 		kendo.ui.progress($("#IMSHome"), false);
 		window.location.href = "../index.html";
-	}, 2000);
+	}, 1000);
 
 });
 

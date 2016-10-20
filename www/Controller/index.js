@@ -1,3 +1,15 @@
+ 	
+ 	if(storage.get("login")=="yes"){
+ 		window.location.href = "View/home.html";
+ 	}else{
+ 		try {
+			window.plugins.jPushPlugin.setTagsWithAlias([], "");
+		} catch(exception) {
+			
+		}
+ 	}
+ 	
+		
  	var app = new kendo.mobile.Application(document.body,{
         			platform:'ios',
         			skin:'nova'
@@ -57,6 +69,7 @@ function RequestPreHookData() {
            storage.put("flight", data.outputstr.flight);
            storage.put("duty", data.outputstr.duty);
            storage.put("machinerows", data.outputstr.machinerows);
+           storage.put("login","yes");
            window.location.href = "View/home.html";
            }
            },
