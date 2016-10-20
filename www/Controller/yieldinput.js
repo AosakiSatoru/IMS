@@ -219,7 +219,7 @@ function bindView(data) {
 				//return ;
 			var params = {
 				duty: type,
-				date:selectdate,
+				shiftdate:selectdate,
 				flowcoderows: [{
 					flowcode: contentViewModel.selectflowcode,
 					machinerows: filterContent

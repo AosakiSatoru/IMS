@@ -51,7 +51,7 @@ function queryYieldInputFetchDataRequest(params) {
 		dataType: "json",
 		success: function(data) {
 			kendo.ui.progress($("#IMSQueryYieldInput"), false);
-			alert(JSON.stringify(data));
+//			alert(JSON.stringify(data));
 			showList(data);
 		},
 		error: function(data, status, e) {
@@ -63,7 +63,6 @@ function queryYieldInputFetchDataRequest(params) {
 }
 
 function queryYieldInputModifyDataRequest(params) {
-	alert(JSON.stringify(params));
 	kendo.ui.progress($("#IMSQueryYieldInput"), true);
 	$.ajax({
 		type: "post",
@@ -203,7 +202,7 @@ $("#queryYieldInput_QueryButton").click(function() {
 		};
 	}
 	
-	alert(JSON.stringify(params));
+//	alert(JSON.stringify(params));
 
 	queryYieldInputFetchDataRequest(params);
 });
@@ -215,14 +214,9 @@ function showList(data) {
 		var category = new Array();
 		dataArray = data.outputstr;
 		$.each(dataArray, function(n, value) {
-			var duty = "";
-			if(value.duty.trim() == "1") duty = "甲";
-			else if(value.duty.trim() == "2") duty = "乙";
-			else if(value.duty.trim() == "3") duty = "丙";
-
 			category.push({
 				"recid": value.recid,
-				"duty": duty,
+				"duty": value.duty,
 				"flowname": value.flowname,
 				"date": new Date(value.date).Format("yyyy-MM-dd hh:mm:ss"),
 				"devname": value.devcode,
@@ -231,7 +225,7 @@ function showList(data) {
 			});
 		});
 
-		alert(JSON.stringify(category));
+//		alert(JSON.stringify(category));
 
 		var dataSource = kendo.data.DataSource.create({
 			data: category,
@@ -256,7 +250,7 @@ function showList(data) {
 					"varieties": varieties,
 					"Dotype": "0" //0-修改
 				};
-				alert(JSON.stringify(params));
+//				alert(JSON.stringify(params));
 				queryYieldInputModifyDataRequest(params);
 
 			},
