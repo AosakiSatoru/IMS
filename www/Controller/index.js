@@ -23,7 +23,7 @@
  	}
  }
 function RequestPreHookData() {
-    var userName = $("#loginUserName").val();
+    var userName = $("#loginUserName").val().trim();
     var password = $("#loginPassword").val();
     
     var para = {

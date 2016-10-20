@@ -4,12 +4,13 @@
 var contentViewModel;
 var type;
 var selectdate;
+
 function viewInit(e) {}
 
 function viewShow(e) {
 
 	var navbar = $("#navbar").kendoMobileNavBar();
-    selectdate = e.view.params.selectdate;
+	selectdate = e.view.params.selectdate;
 	switch(e.view.params.type) {
 		case "0":
 			type = "1";
@@ -20,7 +21,7 @@ function viewShow(e) {
 		case "2":
 			type = "3";
 	};
-
+	kendo.ui.progress($("#IMSYieldinput"), true);
 	var url = IMSUrl + "busi_bindfind";
 	$.ajax({
 		type: "post",
@@ -34,11 +35,13 @@ function viewShow(e) {
 		},
 		dataType: "json",
 		success: function(data) {
-			kendo.mobile.application.hideLoading();
+			kendo.ui.progress($("#IMSYieldinput"), false);
+			//			kendo.mobile.application.hideLoading();
 			bindView(data);
 		},
 		error: function(data, status, e) {
-			kendo.mobile.application.hideLoading();
+			//			kendo.mobile.application.hideLoading();
+			kendo.ui.progress($("#IMSYieldinput"), false);
 			alert("请求服务器出错!原因:" + JSON.stringify(data));
 		}
 	});
@@ -47,6 +50,7 @@ function viewShow(e) {
 function fetchXJS() {
 	var url = IMSUrl + "findxjs/";
 	var result = [];
+	kendo.ui.progress($("#IMSYieldinput"), true);
 	$.ajax({
 		type: "post",
 		url: url,
@@ -55,7 +59,7 @@ function fetchXJS() {
 		data: null,
 		dataType: "json",
 		success: function(data) {
-
+			kendo.ui.progress($("#IMSYieldinput"), false);
 			result = data.outputstr.map(function(item) {
 				return {
 					variety: item.XJS_No
@@ -64,7 +68,7 @@ function fetchXJS() {
 
 		},
 		error: function(data, status, e) {
-
+			kendo.ui.progress($("#IMSYieldinput"), false);
 		}
 	});
 	return result;
@@ -200,33 +204,32 @@ function bindView(data) {
 					};
 					return obj;
 				});
-				//对客户输入的信息的每一项进行校验，没输入的不输出，输入一半的提示出错
-				var filterContent = new Array();
-				for(var index in content){
-					var item = content[index];
-					
-					if(item.yield.length==0&&item.varieties.length==0){
-						continue;
-					}
-					else if(item.yield.length==0||item.varieties.length==0){
-						alert("某项的品种或数量没有填写！");
-						return ;
-					}else{
-						filterContent.push(item);
-					}
+			//对客户输入的信息的每一项进行校验，没输入的不输出，输入一半的提示出错
+			var filterContent = new Array();
+			for(var index in content) {
+				var item = content[index];
+
+				if(item.yield.length == 0 && item.varieties.length == 0) {
+					continue;
+				} else if(item.yield.length == 0 || item.varieties.length == 0) {
+					alert("某项的品种或数量没有填写！");
+					return;
+				} else {
+					filterContent.push(item);
 				}
-				//alert(JSON.stringify(filterContent));
-				//return ;
+			}
+			//alert(JSON.stringify(filterContent));
+			//return ;
 			var params = {
 				duty: type,
-				shiftdate:selectdate,
+				shiftdate: selectdate,
 				flowcoderows: [{
 					flowcode: contentViewModel.selectflowcode,
 					machinerows: filterContent
 				}]
 			};
 
- kendo.ui.progress($("#IMSYieldinput"), true);
+			kendo.ui.progress($("#IMSYieldinput"), true);
 			$.ajax({
 				type: "post",
 				url: IMSUrl + "busi_YieldInput/",
@@ -242,11 +245,11 @@ function bindView(data) {
 					if(data.outstatus == 0) {
 						alert("成功");
 					} else {
-						kendo.ui.progress($("#IMSYieldinput"), false);
 						alert("失败,原因:" + data.outputstr);
 					}
 				},
 				error: function(data, status, e) {
+					kendo.ui.progress($("#IMSYieldinput"), false);
 					alert("请求服务器出错");
 				}
 			});
