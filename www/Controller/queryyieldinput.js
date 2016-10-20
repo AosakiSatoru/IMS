@@ -17,12 +17,16 @@ function viewInit() {
 		dataTextField: "devcodename",
 		dataValueField: "devcode"
 	});
-	varList = queryYieldInputFetchVarietiesDataRequest();
-	queryYieldInputFetchDevicesDataRequest();
+
 }
 
 function viewShow() {
-	
+
+}
+
+function afterShow() {
+	varList = queryYieldInputFetchVarietiesDataRequest();
+	queryYieldInputFetchDevicesDataRequest();
 }
 
 //params mark - dealloc
@@ -51,7 +55,6 @@ function queryYieldInputFetchDataRequest(params) {
 		dataType: "json",
 		success: function(data) {
 			kendo.ui.progress($("#IMSQueryYieldInput"), false);
-//			alert(JSON.stringify(data));
 			showList(data);
 		},
 		error: function(data, status, e) {
@@ -91,7 +94,7 @@ function queryYieldInputModifyDataRequest(params) {
 
 function queryYieldInputFetchVarietiesDataRequest() {
 	var result = [];
-//	kendo.ui.progress($("#IMSQueryYieldInput"), true);
+	//	kendo.ui.progress($("#IMSQueryYieldInput"), true);
 	$.ajax({
 		type: "post",
 		url: IMSUrl + "findxjs/",
@@ -130,9 +133,7 @@ function queryYieldInputFetchDevicesDataRequest() {
 		},
 		dataType: "json",
 		success: function(data) {
-			kendo.ui.progress($("#IMSQueryYieldInput"), false);
 			var content = data.outputstr.flowcoderows;
-			//			alert(JSON.stringify(content));
 			for(var key in content) {
 				var object = content[key];
 				var contentArray = new Array();
@@ -148,6 +149,10 @@ function queryYieldInputFetchDevicesDataRequest() {
 					}
 				});
 			}
+			setTimeout(function() {
+				kendo.ui.progress($("#IMSQueryYieldInput"), false);
+			}, 300);
+
 		},
 		error: function(data, status, e) {
 			kendo.ui.progress($("#IMSQueryYieldInput"), false);
@@ -201,8 +206,6 @@ $("#queryYieldInput_QueryButton").click(function() {
 			"enddate": endDate,
 		};
 	}
-	
-//	alert(JSON.stringify(params));
 
 	queryYieldInputFetchDataRequest(params);
 });
@@ -224,8 +227,6 @@ function showList(data) {
 				"variety": value.varieties
 			});
 		});
-
-//		alert(JSON.stringify(category));
 
 		var dataSource = kendo.data.DataSource.create({
 			data: category,
@@ -250,7 +251,6 @@ function showList(data) {
 					"varieties": varieties,
 					"Dotype": "0" //0-修改
 				};
-//				alert(JSON.stringify(params));
 				queryYieldInputModifyDataRequest(params);
 
 			},
