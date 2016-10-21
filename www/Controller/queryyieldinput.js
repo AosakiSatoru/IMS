@@ -29,18 +29,6 @@ function afterShow() {
 	queryYieldInputFetchDevicesDataRequest();
 }
 
-//params mark - dealloc
-$("#queryYieldInput_leftNavButton").click(function() {
-	setTimeout(function() {
-		$("#queryYieldInput_procedure-list").data("kendoPopup").destroy();
-		$("#queryYieldInput_machine-list").data("kendoPopup").destroy();
-		$("#duty-list").data("kendoPopup").destroy();
-		$("#IMSQueryYieldInput").data("kendoMobileView").destroy();
-		$("#IMSQueryYieldInput").remove();
-	}, 550);
-	app.navigate("#:back", "overlay:left reverse");
-});
-
 //params mark - Interface
 function queryYieldInputFetchDataRequest(params) {
 	kendo.ui.progress($("#IMSQueryYieldInput"), true);
@@ -54,8 +42,12 @@ function queryYieldInputFetchDataRequest(params) {
 		},
 		dataType: "json",
 		success: function(data) {
+			if(data.outstatus != 0) {
+				alert(data.outputstr);
+			} else if(data.outstatus == 0) {
+				showList(data);
+			}
 			kendo.ui.progress($("#IMSQueryYieldInput"), false);
-			showList(data);
 		},
 		error: function(data, status, e) {
 			kendo.ui.progress($("#IMSQueryYieldInput"), false);
@@ -134,9 +126,13 @@ function queryYieldInputFetchDevicesDataRequest() {
 		dataType: "json",
 		success: function(data) {
 			var content = data.outputstr.flowcoderows;
+			var dropdownlist = $("#queryYieldInput_machine").data("kendoDropDownList");
+			dropdownlist.dataSource.add({
+				devcodename: "全部",
+				devcode: "ALL"
+			});
 			for(var key in content) {
 				var object = content[key];
-				var contentArray = new Array();
 				$.each(object.devices, function(n, device) {
 					if(device.devcode.trim() != "" && device.devcode && device.devcodename.trim() != "" && device.devcodename) {
 						var dropdownlist = $("#queryYieldInput_machine").data("kendoDropDownList");
@@ -177,89 +173,64 @@ $("#queryYieldInput_QueryButton").click(function() {
 	}
 
 	var params;
-	if($("#duty").val() == "0" && $("#queryYieldInput_procedure").val() == "0") {
-		params = {
-			"devcode": devcode,
-			"startdate": startDate,
-			"enddate": endDate,
-		};
-	} else if($("#duty").val() != "0" && $("#queryYieldInput_procedure").val() == "0") {
-		params = {
-			"duty": $("#duty").val(),
-			"devcode": devcode,
-			"startdate": startDate,
-			"enddate": endDate,
-		};
-	} else if($("#duty").val() == "0" && $("#queryYieldInput_procedure").val() != "0") {
-		params = {
-			"flowcode": $("#queryYieldInput_procedure").val(),
-			"devcode": devcode,
-			"startdate": startDate,
-			"enddate": endDate,
-		};
-	} else if($("#duty").val() != "0" && $("#queryYieldInput_procedure").val() != "0") {
-		params = {
-			"duty": $("#duty").val(),
-			"flowcode": $("#queryYieldInput_procedure").val(),
-			"devcode": devcode,
-			"startdate": startDate,
-			"enddate": endDate,
-		};
-	}
+	params = {
+		"startdate": startDate,
+		"enddate": endDate,
+	};
+	if($("#queryYieldInput_machine").val() != "ALL") params.devcode = devcode;
+	if($("#duty").val() != "0") params.duty = $("#duty").val();
+	if($("#queryYieldInput_procedure").val() != "0") params.flowcode = $("#queryYieldInput_procedure").val();
 
 	queryYieldInputFetchDataRequest(params);
 });
 
 function showList(data) {
-	if(data.outstatus != 0) {
-		alert(data.outputstr);
-	} else if(data.outstatus == 0) {
-		var category = new Array();
-		dataArray = data.outputstr;
-		$.each(dataArray, function(n, value) {
-			category.push({
-				"recid": value.recid,
-				"duty": value.duty,
-				"flowname": value.flowname,
-				"date": new Date(value.date).Format("yyyy-MM-dd hh:mm:ss"),
-				"devname": value.devcode,
-				"yield": value.yield,
-				"variety": value.varieties
-			});
-		});
 
-		var dataSource = kendo.data.DataSource.create({
-			data: category,
+	var category = new Array();
+	dataArray = data.outputstr;
+	$.each(dataArray, function(n, value) {
+		category.push({
+			"recid": value.recid,
+			"duty": value.duty,
+			"flowname": value.flowname,
+			"date": new Date(value.date).Format("yyyy-MM-dd hh:mm:ss"),
+			"devname": value.devcode,
+			"yield": value.yield,
+			"variety": value.varieties
 		});
-		var varietiesDataSource = kendo.data.DataSource.create({
-			data: varList,
-		});
-		var listViewModel = new kendo.observable({
-			queryResultDataSource: dataSource,
-			varietiesDataSource: varietiesDataSource,
-			editItem: function(e) {
-				var index = e.target.parent().index();
-				var duty = e.target.parent().find("#queryYieldInput_duty").val();
-				var varieties = e.target.parent().find("#queryYieldInput_varieties").val();
-				var yield = e.target.parent().find("#queryYieldInput_yield").val();
-				var recid = e.target.parent().parent().find("#queryYieldInput_itemInfo").attr("recid");
-				var params;
-				params = {
-					"recid": recid,
-					"duty": duty,
-					"yield": yield,
-					"varieties": varieties,
-					"Dotype": "0" //0-修改
-				};
-				queryYieldInputModifyDataRequest(params);
+	});
 
-			},
-			deleteItem: function(e) {
-				var index = e.target.parent().index();
-			}
-		});
-		kendo.bind($("#queryYieldInput_listview"), listViewModel);
-	}
+	var dataSource = kendo.data.DataSource.create({
+		data: category,
+	});
+	var varietiesDataSource = kendo.data.DataSource.create({
+		data: varList,
+	});
+	var listViewModel = new kendo.observable({
+		queryResultDataSource: dataSource,
+		varietiesDataSource: varietiesDataSource,
+		editItem: function(e) {
+			var index = e.target.parent().index();
+			var duty = e.target.parent().find("#queryYieldInput_duty").val();
+			var varieties = e.target.parent().find("#queryYieldInput_varieties").val();
+			var yield = e.target.parent().find("#queryYieldInput_yield").val();
+			var recid = e.target.parent().parent().find("#queryYieldInput_itemInfo").attr("recid");
+			var params;
+			params = {
+				"recid": recid,
+				"duty": duty,
+				"yield": yield,
+				"varieties": varieties,
+				"Dotype": "0" //0-修改
+			};
+			queryYieldInputModifyDataRequest(params);
+
+		},
+		deleteItem: function(e) {
+			var index = e.target.parent().index();
+		}
+	});
+	kendo.bind($("#queryYieldInput_listview"), listViewModel);
 }
 
 Date.prototype.Format = function(fmt) { //author: meizz  

@@ -1,5 +1,3 @@
-
-
 //params mark - Initalize
 function viewInit() {
 	$("#queryPackingInput_startTimeDatepicker1").kendoDatePicker({
@@ -19,18 +17,8 @@ function viewInit() {
 }
 
 function viewShow() {
-	
-}
 
-//params mark - dealloc
-$("#queryPackingInput_leftNavButton").click(function() {
-	setTimeout(function() {
-		$("#queryPackingInput_type-list").data("kendoPopup").destroy();
-		$("#IMSQueryPackingInput").data("kendoMobileView").destroy();
-		$("#IMSQueryPackingInput").remove();
-	}, 550);
-	app.navigate("#:back", "overlay:left reverse");
-});
+}
 
 //params mark - Interface
 function queryPackingInputFetchDataRequest(params) {
@@ -99,18 +87,12 @@ $("#queryPackingInput_QueryButton").click(function() {
 		return;
 	}
 
-	if($("#queryPackingInput_type").val() == "全部") {
-		params = {
-			"startdate": startDate,
-			"enddate": endDate,
-		};
-	} else {
-		params = {
-			"Type": Type,
-			"startdate": startDate,
-			"enddate": endDate,
-		};
-	}
+	params = {
+		"startdate": startDate,
+		"enddate": endDate,
+	};
+	if($("#queryPackingInput_type").val() != "全部") params.Type = Type;
+
 	queryPackingInputFetchDataRequest(params);
 });
 

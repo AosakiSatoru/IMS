@@ -57,6 +57,26 @@ function viewAfterShow() {
 	$("#bindingMachine_leftNavButton").hide();
 	document.addEventListener("backbutton", exitFunction, false);
 	beginDate = new Date().getTime()
+
+	//IMSQueryYieldInput dealloc
+	if($("#queryYieldInput_procedure-list").data("kendoPopup"))
+		$("#queryYieldInput_procedure-list").data("kendoPopup").destroy();
+	if($("#queryYieldInput_machine-list").data("kendoPopup"))
+		$("#queryYieldInput_machine-list").data("kendoPopup").destroy();
+	if($("#duty-list").data("kendoPopup"))
+		$("#duty-list").data("kendoPopup").destroy();
+	if($("#IMSQueryYieldInput").data("kendoMobileView"))
+		$("#IMSQueryYieldInput").data("kendoMobileView").destroy();
+	if($("#IMSQueryYieldInput"))
+		$("#IMSQueryYieldInput").remove();
+
+	//IMSQueryPackingInput dealloc
+	if($("#queryPackingInput_type-list").data("kendoPopup"))
+		$("#queryPackingInput_type-list").data("kendoPopup").destroy();
+	if($("#IMSQueryPackingInput").data("kendoMobileView"))
+		$("#IMSQueryPackingInput").data("kendoMobileView").destroy();
+	if($("#IMSQueryPackingInput"))
+		$("#IMSQueryPackingInput").remove();
 }
 
 function viewBeforeHide() {
@@ -66,10 +86,10 @@ function viewBeforeHide() {
 }
 var actionsheetAction = {
 	action0: function() {
-	app.navigate("queryYieldInput.html");
+		app.navigate("queryYieldInput.html");
 	},
 	action1: function() {
-	app.navigate("queryPackingInput.html");
+		app.navigate("queryPackingInput.html");
 	}
 }
 
@@ -86,11 +106,15 @@ $("#bindingMachine").click(function() {
 });
 $("#packingInput").click(function() {
 	app.navigate("packingInput.html");
-
 });
 $("#warning").click(function() {
-
 	app.navigate("warningList.html");
+});
+$("#queryYieldInput").click(function() {
+	app.navigate("queryYieldInput.html");
+});
+$("#queryPackingInput").click(function() {
+	app.navigate("queryPackingInput.html");
 });
 
 document.addEventListener("deviceready", function() {
@@ -157,15 +181,15 @@ document.addEventListener("deviceready", function() {
 }, false);
 
 $("#logout").click(function() {
-   try {
-			window.plugins.jPushPlugin.setTagsWithAlias([], "");
-		} catch(exception) {
-			
-		}
+	try {
+		window.plugins.jPushPlugin.setTagsWithAlias([], "");
+	} catch(exception) {
+
+	}
 	$("#homeDrawer").data("kendoMobileDrawer").hide();
 	kendo.ui.progress($("#IMSHome"), true);
 	setTimeout(function() {
-		 storage.put("login","no");
+		storage.put("login", "no");
 		kendo.ui.progress($("#IMSHome"), false);
 		window.location.href = "../index.html";
 	}, 1000);
