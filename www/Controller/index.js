@@ -2,7 +2,6 @@
  	if(storage.get("login")=="yes"){
  		kendo.ui.progress($("#IMSLogin"), true);
 	setTimeout(function() {
-		kendo.ui.progress($("#IMSLogin"), false);
 		window.location.href = "View/home.html";
 	}, 1000);
  		
