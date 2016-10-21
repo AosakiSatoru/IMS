@@ -114,7 +114,7 @@ $("#queryYieldInput").click(function() {
 	app.navigate("queryYieldInput.html");
 });
 $("#queryPackingInput").click(function() {
-	app.navigate("queryPackingInput.html");
+	app.navigate("query-packing-input.html");
 });
 
 document.addEventListener("deviceready", function() {
