@@ -7,18 +7,8 @@ var isAll = false;
 var messageid_global;
 var data_global;
 
-$("#warningInfo_allButton").click(function() {
-	if(isAll) {
-		$("#warningInfo_allButton").attr("style", "width: 40%;background-color: #FFFFFF;color: #A9293D;border-color: #A9293D;border-radius: 2px;");
-		isAll = false;
-	} else {
-		$("#warningInfo_allButton").attr("style", "width: 40%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;border-radius: 2px;");
-		isAll = true;
-	}
-	warningInfoFetchDataRequest(!isAll, messageid_global);
-});
-
-function viewShow(e) {
+//params mark - Initalize
+function viewInit(e) {
 	//	app.view().header.find(".km-navbar").data("kendoMobileNavBar").title("test");
 	//	app.view().header.find(".km-navbar").data("kendoMobileNavBar").refresh();
 	messageid_global = e.view.params.messageid;
@@ -29,6 +19,11 @@ function viewShow(e) {
 	warningInfoFetchDataRequest(true, messageid_global);
 }
 
+function viewShow(e) {
+
+}
+
+//params mark - Interface
 // BOOL onlyShowBindingMachine -- "type":"define" 只显示绑定机台
 //messsage id 消息类型
 function warningInfoFetchDataRequest(onlyShowBindingMachine, messageid) {
@@ -70,6 +65,7 @@ function warningInfoFetchDataRequest(onlyShowBindingMachine, messageid) {
 
 }
 
+//params mark - Action
 function warningInfoBindView(data, messageid, filtercode) {
 	if(data.outstatus != 0) {
 		alert(data.outputstr);
@@ -122,6 +118,17 @@ function warningInfoBindView(data, messageid, filtercode) {
 
 	}
 }
+
+$("#warningInfo_allButton").click(function() {
+	if(isAll) {
+		$("#warningInfo_allButton").attr("style", "width: 40%;background-color: #FFFFFF;color: #A9293D;border-color: #A9293D;border-radius: 2px;");
+		isAll = false;
+	} else {
+		$("#warningInfo_allButton").attr("style", "width: 40%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;border-radius: 2px;");
+		isAll = true;
+	}
+	warningInfoFetchDataRequest(!isAll, messageid_global);
+});
 
 function warningInfo_filter(flowcode) {
 	warningInfoBindView(data_global, messageid_global, flowcode);

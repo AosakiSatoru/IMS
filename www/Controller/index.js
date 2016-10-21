@@ -1,6 +1,11 @@
  	
  	if(storage.get("login")=="yes"){
- 		window.location.href = "View/home.html";
+ 		kendo.ui.progress($("#IMSLogin"), true);
+	setTimeout(function() {
+		kendo.ui.progress($("#IMSLogin"), false);
+		window.location.href = "View/home.html";
+	}, 1000);
+ 		
  	}else{
  		try {
 			window.plugins.jPushPlugin.setTagsWithAlias([], "");

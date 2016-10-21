@@ -4,9 +4,11 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>首页</title>
+		
 		<link href="../styles/kendo.default.min.css" rel="stylesheet" />
 		<link href="../styles/kendo.common.min.css" rel="stylesheet" />
 		<link href="../styles/kendo.mobile.all.min.css" rel="stylesheet" />
+		<link href="../css/home.css" rel="stylesheet" />
 		<script src="../js/jquery.min.js"></script>
 		<script src="../js/kendo.all.min.js"></script>
 
@@ -121,17 +123,18 @@
 				</a>
 			</div>
 		</div>
-		<div data-role="modalview" id="yieldInputModal" style="width: 100%; height: auto;" data-modal="false">
-			<input id="datepicker" style="width: 100%;" />
-			<ul data-role="listview" data-style="inset" style="background-color: white;">
-				<li id="chooseJia">
-					<a>班别:甲</a>
+		<div data-role="modalview" id="yieldInputModal" style="width: 98%; height: 322px;border-radius: 10px;" data-modal="false">
+			<div style="height: 10px;"></div>
+			<input id="datepicker" style="width: 100%;height: 30px;" />
+			<ul data-role="listview" data-style="inset" style="background-color: #EEEEEE;">
+				<li>
+					<a id="chooseJia" style="color: black;">班别:甲</a>
 				</li>
 				<li>
-					<a id="chooseYi">班别:乙</a>
+					<a id="chooseYi" style="color: black;">班别:乙</a>
 				</li>
 				<li>
-					<a id="chooseBing">班别:丙</a>
+					<a id="chooseBing" style="color: black;">班别:丙</a>
 				</li>
 				<li>
 					<a id="cancelModalView" style="color: black;">取消</a>
@@ -139,6 +142,7 @@
 			</ul>
 
 		</div>
+		
 		<script type="text/javascript" src="../cordova.js"></script>
 		<script src="../Controller/storage.js"></script>
 		<script src="../Controller/home.js"></script>

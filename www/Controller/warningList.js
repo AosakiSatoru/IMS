@@ -13,6 +13,14 @@ function viewBeforeHide(){
 	document.removeEventListener("jpush.receiveMessage",removeEventListenerFunction, false);
 }
 
+function viewAfterShow() {
+	//IMSWarningInfo dealloc
+	if($("#IMSWarningInfo").data("kendoMobileView"))
+		$("#IMSWarningInfo").data("kendoMobileView").destroy();
+	if($("#IMSWarningInfo"))
+		$("#IMSWarningInfo").remove();
+}
+
 function warningListInitRequest() {
 
 	var params = {
