@@ -39,4 +39,5 @@
     <icon density="xxhdpi" src="logo.png" />
     <icon density="xxxhdpi" src="logo.png" />
     <preference name="loglevel" value="DEBUG" />
+    <preference name="AutoHideSplashScreen" value="false" />
 </widget>

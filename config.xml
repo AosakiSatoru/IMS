@@ -38,5 +38,6 @@
         <icon src="logo.png" density="xhdpi" />
         <icon src="logo.png" density="xxhdpi" />
         <icon src="logo.png" density="xxxhdpi" />
+        <preference name="AutoHideSplashScreen" value="false" />
     </platform>
 </widget>
