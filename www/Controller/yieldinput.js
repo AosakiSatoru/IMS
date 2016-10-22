@@ -142,6 +142,7 @@ function bindView(data) {
 		"second": second,
 		"third": third,
 		onChange: function(e) {
+			console.log(e);
 			$(e.sender.element.parent().parent()).find("#dropdownlistPlaceholder").hide();
 		},
 		hidden: function(e) {
@@ -191,7 +192,6 @@ function bindView(data) {
 
 	kendo.bind($("#yieldInputListView"), contentViewModel);
 
-	var dropdownlist = $("#dropdownlist").data("kendoDropDownList");
 	var footerViewModel = kendo.observable({
 		input: function(e) {
 			var content =
