@@ -13,10 +13,10 @@
 	text-align: left;
 }
 
-.km-list select:not([multiple]) {
+/*.km-list select:not([multiple]) {
 	position: relative;
 	margin: 0;
-}
+}*/
 
 #yieldInputListView .km-list .k-dropdown .k-input {
 	font-size: 1.3em;
@@ -27,7 +27,7 @@
 	line-height: 15px;
 }
 
-.k-popup .k-list .k-item {
+/*.k-popup .k-list .k-item {
 	background-color: #EEEEEE;
 	border-color: #EEEEEE;
 	padding-left: 1em;
@@ -43,4 +43,4 @@
 	border: 0;
 	color: #A9293D;
 	height: 60px;
-}
+}*/
