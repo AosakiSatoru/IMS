@@ -11,57 +11,56 @@
     </head>
     
     <body>-->
-        <div data-role="view" data-title="副料打包" id="IMSPackingInput" data-show="viewShow">
-            <header data-role="header">
-				<span data-role="navbar" style="border-bottom-width:1px ;border-bottom-style: solid;border-bottom-color: lightgray;">
+<div data-role="view" data-title="副料打包" id="IMSPackingInput" data-show="viewShow">
+	<header data-role="header">
+		<span data-role="navbar" style="border-bottom-width:1px ;border-bottom-style: solid;border-bottom-color: lightgray;">
                     <div data-role="view-title" style="line-height: 4.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
                 		<a id="packingInput_leftNavButton" href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back_big@3x.png);background-repeat: round;height: 50px;padding-left: 50px;"></a>
 					<a data-badge="0" id="packingInput_rightNavButton" href="#warningList.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red@3x.png);background-repeat: round;height: 25px;width: 30px;padding-right: 9px;margin-right: 1em;"></a>
 				</span>
-			</header>
-            
-            <div data-role="content" style="background-color: #FFFFFF;">
-                <div style="text-align: center;margin-top: 15px;">
-                    <span><a id="packingInput_button_1" data-role = "button" style="width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;">回 条</a></span>
-                    <span><a id="packingInput_button_2" data-role = "button" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">粗纱头</a></span>
-                    <span><a id="packingInput_button_3" data-role = "button" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">白 花</a></span>
-                </div>
-                
-                <div style="text-align: center;margin-top: 15px;">
-                    <select id="packingInput_dropdownlist" style="width: 97%;text-align: left;padding-top: 0.5em;padding-bottom: 0.5em;background-color: #EEEEEE;">
-                        <option>T</option>
-                        <option selected="">KG</option>
-                        <option>G</option>
-                    </select>
-                    <img src="../resources/@3x/dropdownlist_icon@3x.png" style="width: 20px;float: right;position: absolute;right: 20px;top: 85px;"/>
-                </div>
-                <!--<div style="text-align: center;margin-top: 15px;">
-                		<a data-role="button" id="packingInput_filterButton" data-rel="actionsheet" href="#packingInput_actionsheet" style="text-align: left;font-size: 1em;width: 97%;padding: 1em;margin: 0;background-color: #EEEEEE;color: black;border-color: #EEEEEE;border-radius: 4px;">T</a>
-                </div>-->
-                <div style="text-align: center;margin-top: 15px;">
-                    <input id="IMSPackingInput_yield" type="number"  placeholder="请输入数量" style="font-size: 1em;width: 97%;padding: 1em;margin: 0;border: none;background-color: #EEEEEE;border-radius: 4px;" />
-                </div>
-            </div>
-            <div style="text-align: center;position: relative;bottom: 0.5em;">
-                <span>
-                    <a data-role="button" id="packingInput_confirmButton"
-                        style="width: 97%;height: 2.5em;font-size: 1.2em;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;"
-                        data-bind="click: packingInput">确认</a>
-                </span>
-            </div>
-            
-            <!--<ul id="packingInput_actionsheet" data-role="actionsheet" data-cancel="关闭" data-type="tablet" data-popup='{ "width": 2000 }'>
+	</header>
+
+	<div data-role="content" style="background-color: #FFFFFF;">
+		<div style="text-align: center;margin-top: 15px;">
+			<span><a id="packingInput_button_1" data-role = "button" style="width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;">回 条</a></span>
+			<span><a id="packingInput_button_2" data-role = "button" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">粗纱头</a></span>
+			<span><a id="packingInput_button_3" data-role = "button" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">白 花</a></span>
+		</div>
+		<ul data-role="listview" data-bind="source: packingInputDataSource" data-style="inset" style="margin-top: 15px;background-color: white" data-template="packingInput_itemTemplate" id="packingInput_listview">
+		</ul>
+	</div>
+	<div style="text-align: center;position: relative;bottom: 0.5em;">
+		<span>
+         	<a data-role="button" id="packingInput_confirmButton" style="width: 97%;height: 2.5em;font-size: 1.2em;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;" data-bind="click: packingInput">确认</a>
+  	    </span>
+	</div>
+
+	<!--<ul id="packingInput_actionsheet" data-role="actionsheet" data-cancel="关闭" data-type="tablet" data-popup='{ "width": 2000 }'>
 				<li class="km-actionsheet-title">选择单位</li>
 				<li><a data-action="packingInput_filter('T')">T</a></li>
 				<li><a data-action="packingInput_filter('KG')">KG</a></li>
   				<li><a data-action="packingInput_filter('G')">G</a></li>
 			</ul>-->
-            
-            <link href="../css/packingInput.css" rel="stylesheet" />
-            <script src="../Controller/packingInput.js"></script>
-            <script src="../Controller/url.js"></script>
-            <script src="../Controller/storage.js" ></script>
-        </div>
+	<!--item模板-->
+	<script id="packingInput_itemTemplate" type="text/x-kendo-template">
+		<div style="width: 100%;text-align: center;position: relative;">
+			<select id="packingInput_dropdownlist" style="padding: 10px;width: 100%;text-align: left;background-color: rgb(238,238,238);border-radius: 6px;">
+				<option>T</option>
+				<option selected="">KG</option>
+				<option>G</option>
+			</select>
+		</div>
+		<img src="../resources/@3x/dropdownlist_icon@3x.png" style="width: 20px;position: absolute;right: 30px;top: 13px;z-index: 999;" />
+		<div style="width: 100%;text-align: center;position: relative;margin-top: 15px;">
+			<input id="IMSPackingInput_yield" type="number" placeholder="请输入数量" style="position: relative;top: 40px;font-size: 1em;width: 100%;padding: 10px;margin: 0;border: none;background-color: rgb(238,238,238);border-radius: 6px;" />
+		</div>
+	</script>
 
-    <!--</body>
+	<link href="../css/packingInput.css" rel="stylesheet" />
+	<script src="../Controller/packingInput.js"></script>
+	<script src="../Controller/url.js"></script>
+	<script src="../Controller/storage.js"></script>
+</div>
+
+<!--</body>
 </html>-->

@@ -1,11 +1,8 @@
-
-
 var type = "0";
-$("#packingInput_dropdownlist").kendoDropDownList();
 
 function postPackingInputData() {
 	var typerows = [{
-		"unit": $("#packingInput_dropdownlist").val(),//$("#packingInput_filterButton").text(),
+		"unit": $("#packingInput_dropdownlist").val(),
 		"yield": $("#IMSPackingInput_yield").val(),
 		"type": type
 	}];
@@ -17,6 +14,7 @@ function postPackingInputData() {
 		alert("请输入数量");
 		return;
 	}
+	
 	var url = IMSUrl + "busi_PackingInput/";
 	kendo.ui.progress($("body"), true);
 	$.ajax({
@@ -44,8 +42,16 @@ function postPackingInputData() {
 };
 
 function viewShow() {
-//	$("#packingInput_actionsheet").attr("data-popup",'{ "width": '+document.body.scrollWidth+' }');
-//	$("#packingInput_actionsheet").data("kendoMobileActionSheet").options.popup = '{height: "auto", width: '+document.body.scrollWidth+' }';
+	//	$("#packingInput_actionsheet").attr("data-popup",'{ "width": '+document.body.scrollWidth+' }');
+	//	$("#packingInput_actionsheet").data("kendoMobileActionSheet").options.popup = '{height: "auto", width: '+document.body.scrollWidth+' }';
+	var dataSource = kendo.data.DataSource.create({
+		data: [{}],
+	});
+
+	var listViewModel = new kendo.observable({
+		packingInputDataSource: dataSource,
+	});
+	kendo.bind($("#packingInput_listview"), listViewModel);
 }
 
 //function packingInput_filter(value) {
@@ -60,23 +66,23 @@ $("#packingInput_confirmButton").click(function() {
 $("#packingInput_button_1").click(function() {
 	type = "0";
 	$("#IMSPackingInput_yield").val("");
-	$("#packingInput_button_1").attr("style","width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;");
-	$("#packingInput_button_2").attr("style","width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
-	$("#packingInput_button_3").attr("style","width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
+	$("#packingInput_button_1").attr("style", "width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;");
+	$("#packingInput_button_2").attr("style", "width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
+	$("#packingInput_button_3").attr("style", "width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
 });
 
 $("#packingInput_button_2").click(function() {
 	type = "1";
 	$("#IMSPackingInput_yield").val("");
-	$("#packingInput_button_1").attr("style","width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
-	$("#packingInput_button_2").attr("style","width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;");
-	$("#packingInput_button_3").attr("style","width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
+	$("#packingInput_button_1").attr("style", "width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
+	$("#packingInput_button_2").attr("style", "width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;");
+	$("#packingInput_button_3").attr("style", "width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
 });
 
 $("#packingInput_button_3").click(function() {
 	type = "2";
 	$("#IMSPackingInput_yield").val("");
-	$("#packingInput_button_1").attr("style","width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
-	$("#packingInput_button_2").attr("style","width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
-	$("#packingInput_button_3").attr("style","width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;");
+	$("#packingInput_button_1").attr("style", "width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
+	$("#packingInput_button_2").attr("style", "width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
+	$("#packingInput_button_3").attr("style", "width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;");
 });
