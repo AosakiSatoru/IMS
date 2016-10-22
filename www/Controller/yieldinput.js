@@ -142,8 +142,9 @@ function bindView(data) {
 		"second": second,
 		"third": third,
 		onChange: function(e) {
-			console.log(e);
-			$(e.sender.element.parent().parent()).find("#dropdownlistPlaceholder").hide();
+			console.log($(e.target).parent());
+			
+			$(e.target).parent().find("#dropdownlistPlaceholder").hide();
 		},
 		hidden: function(e) {
 			return !(e.variety.length == 0);
