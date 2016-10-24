@@ -17,12 +17,16 @@ function viewInit(e) {
 	isAll = false;
 
 	warningInfoFetchDataRequest(true, messageid_global);
+	
 }
 
 function viewShow(e) {
 
 }
-
+function listViewClick(e) {
+	var button = $(e.item.find("#warningInfoDetailButton")[0]);
+   app.navigate("#warningDetail.html?deviceCode=" + button.attr("deviceCode"));
+ }
 //params mark - Interface
 // BOOL onlyShowBindingMachine -- "type":"define" 只显示绑定机台
 //messsage id 消息类型
