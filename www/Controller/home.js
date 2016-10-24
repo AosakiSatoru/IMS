@@ -152,17 +152,9 @@ document.addEventListener("deviceready", function() {
 	};
 
 	var onOpenNotification = function(event) {
-
 		try {
-			var message;
-			if(device.platform == "Android") {
-				message = event.message;
-			} else {
-				message = event.content;
-			}
-			//alert("onOpenNotification"+JSON.stringify(event));
-			if(device.platform=="iOS"){
-				window.plugins.jPushPlugin.prototype.setApplicationIconBadgeNumber(0);
+			if(device.platform == "iOS") {
+				window.plugins.jPushPlugin.setApplicationIconBadgeNumber(0);
 			}
 			app.navigate("warning_list.html");
 		} catch(exception) {
