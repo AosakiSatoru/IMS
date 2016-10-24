@@ -22,11 +22,10 @@
         },
         "cordova-plugin-vibration": {
             "PACKAGE_NAME": "com.esquel.ims.prod"
-        }
-    },
-    "dependent_plugins": {
+        },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.esquel.ims"
         }
-    }
+    },
+    "dependent_plugins": {}
 }

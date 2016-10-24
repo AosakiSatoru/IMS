@@ -161,6 +161,9 @@ document.addEventListener("deviceready", function() {
 				message = event.content;
 			}
 			//alert("onOpenNotification"+JSON.stringify(event));
+			if(device.platform=="iOS"){
+				window.plugins.jPushPlugin.prototype.setApplicationIconBadgeNumber(0);
+			}
 			app.navigate("warning_list.html");
 		} catch(exception) {
 			alert("出错 JPushPlugin:onReceiveMessage-->" + exception);
