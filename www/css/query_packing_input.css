@@ -6,6 +6,13 @@
 	padding: 10px;
 }
 
+#queryPackingInputCommonlistview.km-list>li{
+	padding: 5px;
+	background: slategray;
+	margin: 0;
+	border: 0;
+}
+
 .k-popup .k-list .k-item {
 	background-color: #EEEEEE;
 	text-align: left;

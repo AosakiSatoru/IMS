@@ -17,7 +17,14 @@ function viewInit() {
 }
 
 function viewShow() {
+	var dataSource = kendo.data.DataSource.create({
+		data: [{}],
+	});
 
+	var listViewModel = new kendo.observable({
+		queryPackingInputCommonDataSource: dataSource,
+	});
+	kendo.bind($("#queryPackingInputCommonlistview"), listViewModel);
 }
 
 //params mark - Interface
@@ -92,6 +99,8 @@ $("#queryPackingInput_QueryButton").click(function() {
 		"enddate": endDate,
 	};
 	if($("#queryPackingInput_type").val() != "全部") params.Type = Type;
+	
+	alert(JSON.stringify(params));
 
 	queryPackingInputFetchDataRequest(params);
 });

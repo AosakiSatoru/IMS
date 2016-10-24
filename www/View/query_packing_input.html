@@ -23,22 +23,16 @@
 				<a data-badge="0" id="queryPackingInput_rightNavButton_1" href="warningList.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red@3x.png);background-repeat: round;height: 25px;width: 30px;padding-right: 9px;margin-right: 20px;"></a>
 		</span>
 		<div style="background-color: slategray;">
-			<div style="text-align: center;border-bottom-width: 1px;border-top-width: 1px;border-bottom-color: #EEEEEE;border-top-color: #EEEEEE;border-bottom-style: solid;border-top-style: solid;padding-top: 10px;padding-bottom: 10px;">
+			<div style="text-align: center;border-bottom-width: 1px;border-top-width: 1px;border-bottom-color: rgb(238,238,238);border-top-color: rgb(238,238,238);border-bottom-style: solid;border-top-style: solid;padding-top: 10px;padding-bottom: 10px;">
 				<input id="queryPackingInput_startTimeDatepicker1" style="font-size: 1em;width: 47%;" placeholder="开始日期" />
 				<input id="queryPackingInput_startTimeDatepicker2" style="font-size: 1em;width: 47%;" placeholder="结束日期" />
-				<div>
-					<span style="width: 10%;top: 5px;position: relative;font-size: 1em;">类型:</span>
-					<select id="queryPackingInput_type" data-role="dropdownlist" style="font-size: 1em;width: 60%;text-align: left;margin-top: 10px;">
-						<!--<option>全部</option>-->
-						<option>回条</option>
-						<option>粗纱头</option>
-						<option>白花</option>
-					</select>
-					<div id="queryPackingInput_QueryButton" data-role="button" style="width: 22%;height: 35px;border: none;font-size: 1em;background-color: #A62A40;color: #FFFFFF;border-radius: 4px;margin-top: 10px;">查询</div>
-				</div>
+				<span id="queryPackingInput_QueryButton" data-role="button" style="position: absolute;right: 4%;top: 128px;width: 22%;height: 35px;border: none;font-size: 1em;background-color: rgb(166,42,64);color: white;border-radius: 4px;margin-top: 10px;">查询</span>
+				<ul data-role="listview" data-bind="source: queryPackingInputCommonDataSource" data-style="inset" style="width: 70%;margin-top: 15px;background-color: white" data-template="queryPackingInputCommonItemTemplate" id="queryPackingInputCommonlistview">
+				</ul>
 			</div>
 
 		</div>
+
 	</header>
 
 	<ul data-role="listview" data-bind="source: queryResultDataSource" data-style="inset" style="background-color: white" data-template="queryPackingInput_itemTemplate" id="queryPackingInput_listview">
@@ -60,6 +54,23 @@
 			<!--<a data-role="button" data-bind="click: editItem" style="float: right;position: relative;width: 10%;background-color: rgb(255,255,255);color: rgb(169,41,61);border-color: rgb(169,41,61);border-radius: 4px;font-size: 0.6em;">修改</a>-->
 			<!--<span data-role="button" data-bind="click: deleteItem" style="position: absolute;top: 10px;right: 3%;width: 13%;background-color: rgb(255,255,255);color: rgb(169,41,61);border-color: rgb(169,41,61);border-radius: 4px;font-size: 0.6em;">删除</span>-->
 			<!--</div>-->
+		</div>
+	</script>
+
+	<!--Common Item模板-->
+	<script id="queryPackingInputCommonItemTemplate" type="text/x-kendo-template">
+		<div style="background-color: slategray;">
+			<div style="text-align: left;">
+				<span style="margin-left: 4%;top: 5px;font-size: 1em;text-align: right;">类型:</span>
+				<select id="queryPackingInput_type" style="width: 70%;;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
+					<!--<option>全部</option>-->
+					<option>回条</option>
+					<option>粗纱头</option>
+					<option>白花</option>
+				</select>
+				
+			</div>
+
 		</div>
 	</script>
 
