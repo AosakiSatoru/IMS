@@ -13,14 +13,14 @@
 		<div data-role="view" data-title="产量输入" data-use-native-scrolling="true" data-show="viewShow" data-init="viewInit" id="IMSYieldinput">
             <!--<header data-role="header">-->
 				<!--<span data-role="navbar">-->
-                    <!--<div data-role="view-title" style="line-height: 4.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>-->
+                    <!--<div data-role="view-title" style="line-height: 80px;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>-->
                 		<!--<a href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 16px;padding-left: 9px;margin-left: 1em;"></a>-->
-					<!--<a data-badge="0" id="packingInput_rightNavButton_1" href="#warningList.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red@3x.png);background-repeat: round;height: 25px;width: 30px;padding-right: 9px;margin-right: 1em;"></a>-->
+					<!--<a data-badge="0" id="packingInput_rightNavButton_1" href="#warningList.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red@3x.png);background-repeat: round;height: 25px;width: 30px;padding-right: 9px;margin-right: 20px;"></a>-->
 				<!--</span>-->
             <!--</header>-->
 
 			<div data-role="content" style="background-color: white;">
-				<div style="text-align: left;margin-top: 1em;padding-left: 3%;" id="headerButtonGroup">
+				<div style="font-size: 1em;text-align: left;margin-top: 1em;padding-left: 3%;" id="headerButtonGroup">
 					<span><a data-role="button"
                      style="width: 31%;;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;"
                      data-bind="click: headerButtonClick">预并</a></span>
@@ -44,13 +44,13 @@
 			</div>
 			<!--List模板-->
 			<script id="nameTemplate" type="text/x-kendo-template">
-				<img src="#:image#" style="width: 31%;float: left;" />
-				<span id="dropdownlistPlaceholder" style="position: absolute;left: 37.5%;padding-left: 0.4em;top: 1.7em;font-size: 1em;color: rgb(169,169,169);" data-bind="invisible: hidden">请选择品种</span>
+				<img src="#:image#" style="width: 31%;float: left;font-size: 0.8em;" />
+				<span id="dropdownlistPlaceholder" style="position: absolute;left: 37.5%;padding-left: 0.4em;top: 35px;font-size: 0.8em;color: rgb(169,169,169);" data-bind="invisible: hidden">请选择品种</span>
 				<img src="../resources/@3x/dropdownlist_icon@3x.png" style="width: 20px;float: right;position: absolute;right: 1em;top: 2em;" />
-				<select id="yieldInput_dropdownlist" data-bind="source: varietiesDataSource,value:variety,events:{change:onChange}" data-text-field="variety" data-value-field="variety" style="position: relative;top: 28px;padding-left: 6px;font-size: 1em;float: right;height: 30px;width: 64%;border-radius: 0;right:0;border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: lightgray;text-align: left;">
+				<select id="yieldInput_dropdownlist" data-bind="source: varietiesDataSource,value:variety,events:{change:onChange}" data-text-field="variety" data-value-field="variety" style="position: relative;top: 28px;padding-left: 6px;font-size: 0.8em;float: right;height: 30px;width: 64%;border-radius: 0;right:0;border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: lightgray;text-align: left;">
 					<option value="" selected disabled="true">请选择品种</option>
 				</select>
-				<input data-bind="value: yield" placeholder="请输入产量" type="number" style="position: relative;float: right;top: 60px;font-size: 1em;width: 64%;padding-left: 0.35em;padding-bottom: 3px;border: none;border-bottom-width: 1px;border-bottom-style: solid;border-color: lightgray;border-radius: 0;"></input>
+				<input data-bind="value: yield" placeholder="请输入产量" type="number" style="position: relative;float: right;top: 60px;font-size: 0.8em;width: 64%;padding-left: 0.35em;padding-bottom: 3px;border: none;border-bottom-width: 1px;border-bottom-style: solid;border-color: lightgray;border-radius: 0;"></input>
 				<div style="width: 31%;text-align: center;"><label style="color: rgb(51,51,51)">#:devcodename#</label></div>
 
 			</script>

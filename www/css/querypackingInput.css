@@ -13,6 +13,7 @@
 	border: 0;
 	color: #AAAAAA;
 	height: 60px;
+	font-size: 1em;
 }
 
 .k-dropdown .k-state-default {
@@ -20,6 +21,7 @@
 	border-color: #EEEEEE;
 	padding-left: 0.5em;
 	background: none;
+	font-size: 1em;
 }
 
 .k-item.k-state-selected.k-state-focused {
@@ -29,4 +31,5 @@
 	border: 0;
 	color: #A9293F;
 	height: 60px;
+	font-size: 1em;
 }

@@ -15,19 +15,19 @@
 		<div data-role="view" data-title="告警" id="IMSWarningInfo" data-show="viewShow" data-init = "viewInit">
 			<header data-role="header">
 				<span data-role="navbar">
-                    <div data-role="view-title" style="line-height: 4.5em;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
+                    <div data-role="view-title" style="line-height: 80px;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
                 		<a href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back_big@3x.png);background-repeat: round;height: 50px;padding-left: 50px;"></a>
 				</span>
 				<div style="background-color: white;text-align: center;">
 				<span>
                     <a data-role="button" id="warningInfo_filterButton" data-rel="actionsheet" href="#warningInfo_actionsheet"
-                        style="width: 40%;background-color: #FFFFFF;color: #A9293D;border-color: #A9293D;border-radius: 2px;">
+                        style="font-size: 1em;width: 40%;background-color: #FFFFFF;color: #A9293D;border-color: #A9293D;border-radius: 2px;">
                         工序筛选
                     </a>
                 </span>
 				<span>
                     <a data-role="button" id="warningInfo_allButton"
-                        style="width: 40%;background-color: #FFFFFF;color: #A9293D;border-color: #A9293D;border-radius: 2px;">
+                        style="font-size: 1em;width: 40%;background-color: #FFFFFF;color: #A9293D;border-color: #A9293D;border-radius: 2px;">
                         显示全部
                     </a>
                 </span>
@@ -39,7 +39,7 @@
 				</div>
 			</div>
 			
-			<ul id="warningInfo_actionsheet" data-role="actionsheet" data-cancel="取消">
+			<ul id="warningInfo_actionsheet" data-role="actionsheet" data-cancel="取消" style="font-size: 0.7em;">
 				<li class="km-actionsheet-title">选择工序</li>
 				<li><a data-action="warningInfo_filter('0')">全部</a></li>
 				<li><a data-action="warningInfo_filter('1')">清花</a></li>
@@ -58,16 +58,16 @@
 			<script id="warningInfo_Template" type="text/x-kendo-template">
 				<div style="background-color:rgb(247,247,247);height: 5px;"></div>
 				<div>
-					<a id="machineName" style="float: left;margin-top: 0.5em;padding-left: 0.5em;color: black;">#=deviceName#</a>
+					<a id="machineName" style="font-size: 1em;float: left;margin-top: 0.5em;padding-left: 0.5em;color: black;">#=deviceName#</a>
 					<div id="warningInfoDetailButton" deviceCode = "#:deviceCode#" data-bind = "click: detailClicked" data-role="button" style="background-image: url(../resources/@3x/detail@3x.png);background-repeat: round;border: none;float: right;margin: 15px;padding-left: 23px;padding-right: 23px;padding-top: 8px;padding-bottom: 8px;"></div>
 				</div>
 				<div style="margin-top: 2.5em;padding-top: 0.5em;border-top-width: 1px;border-top-color: lightgray;border-top-style: solid;">
-					<div style="padding-left: 0.5em;float: left;font-size: 13px;width: 48%;">
+					<div style="padding-left: 0.5em;float: left;font-size: 0.8em;;width: 48%;">
 						<img src="../resources/@3x/status_red@3x.png" style="width: 15px;" />
 						#=deviceStatus#
 					</div>
 					<div>
-						<div style="font-size: 13px;width: 50%;float: right;border-left-width: 1px;border-left-style: solid;border-left-color: lightgray;padding-left: 0.5em;margin-bottom: 0.5em;">
+						<div style="font-size: 0.8em;width: 50%;float: right;border-left-width: 1px;border-left-style: solid;border-left-color: lightgray;padding-left: 0.5em;margin-bottom: 0.5em;">
 							<p>#=message#</p>
 						</div>
 					</div>
