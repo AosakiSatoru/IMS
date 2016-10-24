@@ -99,8 +99,6 @@ $("#queryPackingInput_QueryButton").click(function() {
 		"enddate": endDate,
 	};
 	if($("#queryPackingInput_type").val() != "全部") params.Type = Type;
-	
-	alert(JSON.stringify(params));
 
 	queryPackingInputFetchDataRequest(params);
 });
