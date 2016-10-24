@@ -94,7 +94,7 @@ var actionsheetAction = {
 }
 
 function machine_input(type) {
-	var urlString = "yieldInput.html?type=" + type + "&selectdate=" + $("#datepicker").val();
+	var urlString = "yield_input.html?type=" + type + "&selectdate=" + $("#datepicker").val();
 	app.navigate(urlString);
 }
 $("#bindingMachine").click(function() {
