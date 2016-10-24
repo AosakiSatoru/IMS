@@ -2,6 +2,7 @@ var varList;
 
 //params mark - Initalize
 function viewInit() {
+	kendo.ui.progress($("#IMSQueryYieldInput"), true);
 	$("#queryYieldInput_startTimeDatepicker1").kendoDatePicker({
 		animation: false,
 		culture: "zh-CN",
@@ -17,7 +18,7 @@ function viewInit() {
 		dataTextField: "devcodename",
 		dataValueField: "devcode"
 	});
-
+	
 }
 
 function viewShow() {
@@ -31,7 +32,7 @@ function afterShow() {
 
 //params mark - Interface
 function queryYieldInputFetchDataRequest(params) {
-	kendo.ui.progress($("#IMSQueryYieldInput"), true);
+	
 	$.ajax({
 		type: "post",
 		url: IMSUrl + "Query_YieldInput/",
@@ -95,7 +96,7 @@ function queryYieldInputFetchVarietiesDataRequest() {
 		data: null,
 		dataType: "json",
 		success: function(data) {
-			kendo.ui.progress($("#IMSQueryYieldInput"), false);
+//			kendo.ui.progress($("#IMSQueryYieldInput"), false);
 			result = data.outputstr.map(function(item) {
 				return {
 					variety: item.XJS_No
@@ -104,7 +105,7 @@ function queryYieldInputFetchVarietiesDataRequest() {
 
 		},
 		error: function(data, status, e) {
-			kendo.ui.progress($("#IMSQueryYieldInput"), false);
+//			kendo.ui.progress($("#IMSQueryYieldInput"), false);
 			alert("请求服务器出错");
 		}
 	});
