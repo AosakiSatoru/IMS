@@ -18,7 +18,9 @@ function viewInit() {
 		dataTextField: "devcodename",
 		dataValueField: "devcode"
 	});
-	
+	var todayDate = kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd');
+	$("#queryYieldInput_startTimeDatepicker1").data("kendoDatePicker").value(todayDate);
+	$("#queryYieldInput_startTimeDatepicker2").data("kendoDatePicker").value(todayDate);
 }
 
 function viewShow() {
