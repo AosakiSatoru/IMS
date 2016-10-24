@@ -44,14 +44,14 @@
 			</div>
 			<!--List模板-->
 			<script id="nameTemplate" type="text/x-kendo-template">
-				<img src="#:image#" style="width: 31%;float: left;font-size: 0.8em;" />
+				<img src="#:image#" style="width: 31%;float: left;" />
 				<span id="dropdownlistPlaceholder" style="position: absolute;left: 37.5%;padding-left: 0.4em;top: 35px;font-size: 0.8em;color: rgb(169,169,169);" data-bind="invisible: hidden">请选择品种</span>
 				<img src="../resources/@3x/dropdownlist_icon@3x.png" style="width: 20px;float: right;position: absolute;right: 1em;top: 2em;" />
 				<select id="yieldInput_dropdownlist" data-bind="source: varietiesDataSource,value:variety,events:{change:onChange}" data-text-field="variety" data-value-field="variety" style="position: relative;top: 28px;padding-left: 6px;font-size: 0.8em;float: right;height: 30px;width: 64%;border-radius: 0;right:0;border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: lightgray;text-align: left;">
 					<option value="" selected disabled="true">请选择品种</option>
 				</select>
 				<input data-bind="value: yield" placeholder="请输入产量" type="number" style="position: relative;float: right;top: 60px;font-size: 0.8em;width: 64%;padding-left: 0.35em;padding-bottom: 3px;border: none;border-bottom-width: 1px;border-bottom-style: solid;border-color: lightgray;border-radius: 0;"></input>
-				<div style="width: 31%;text-align: center;"><label style="color: rgb(51,51,51)">#:devcodename#</label></div>
+				<div style="width: 31%;text-align: center;font-size: 0.8em;"><label style="color: rgb(51,51,51)">#:devcodename#</label></div>
 
 			</script>
             <script src="../Controller/url.js"></script>

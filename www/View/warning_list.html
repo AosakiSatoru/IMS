@@ -13,7 +13,6 @@
 
 	<body id="warningList">-->
 		<div data-role="view" data-title="告警" id="IMSWarningList" data-show="viewShow" data-before-hide="viewBeforeHide" data-after-show="viewAfterShow">
-			<link href="../css/warningList.css" rel="stylesheet" />
 			<header data-role="header">
 				<span data-role="navbar" style="border-bottom-width:1px ;border-bottom-style: solid;border-bottom-color: lightgray;">
                     <div data-role="view-title" style="line-height: 80px;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
@@ -23,7 +22,7 @@
 			<div data-role="content">
 				<ul id="warningListView" data-role="listview" data-style="inset" style="background-color: white;">
 					<li style="border-width: 0;padding-top: 3em;padding-left: 30px;padding-right: 30px;">
-						<a data-role="detailbutton" id="deviceStatusButton" href="#warningInfo.html?messageid=0">
+						<a data-role="detailbutton" id="deviceStatusButton" href="#warning_info.html?messageid=0">
 							<p>
 								<img src="../resources/@3x/device_status_alarm_icon@3x.png" style="width: 1.5em;vertical-align: middle;" />
 								<span id="warningListBadge_1" style="color: #A9293D;font-size: 1em;float: right;margin-right: 20px;">0</span>
@@ -32,7 +31,7 @@
 						</a>
 					</li>
 					<li style="border-width: 0;padding-left: 30px;padding-right: 30px;">
-						<a data-role="detailbutton" id="productivityButton" href="#warningInfo.html?messageid=1">
+						<a data-role="detailbutton" id="productivityButton" href="#warning_info.html?messageid=1">
 							<p>
 								<img src="../resources/@3x/productivity_alarm_icon@3x.png" style="width: 1.5em;vertical-align: middle;" />
 								<span id="warningListBadge_2" style="color: #A9293D;font-size: 1em;float: right;margin-right: 20px;">0</span>
@@ -41,7 +40,7 @@
 						</a>
 					</li>
 					<li style="border-width: 0;padding-left: 30px;padding-right: 30px;">
-						<a data-role="detailbutton" id="qualityButton" href="#warningInfo.html?messageid=2">
+						<a data-role="detailbutton" id="qualityButton" href="#warning_info.html?messageid=2">
 							<p>
 								<img src="../resources/@3x/quality_alarm_icon@3x.png" style="width: 1.5em;vertical-align: middle;" />
 								<span id="warningListBadge_3" style="color: #A9293D;font-size: 1em;float: right;margin-right: 20px;">0</span>
@@ -50,7 +49,7 @@
 						</a>
 					</li>
 					<li style="border-width: 0;padding-left: 30px;padding-right: 30px;-webkit-box-shadow: none;box-shadow: none;">
-						<a data-role="detailbutton" id="otherButton" href="#warningInfo.html?messageid=3">
+						<a data-role="detailbutton" id="otherButton" href="#warning_info.html?messageid=3">
 							<p>
 								<img src="../resources/@3x/other_alarm_icon@3x.png" style="width: 1.5em;vertical-align: middle;" />
 								<span id="warningListBadge_4" style="color: #A9293D;font-size: 1em;float: right;margin-right: 20px;">0</span>
@@ -61,8 +60,9 @@
 				</ul>
 
 			</div>
+			<link href="../css/warning_list.css" rel="stylesheet" />
 			<script src="../Controller/url.js"></script>
-			<script src="../Controller/warningList.js"></script>
+			<script src="../Controller/warning_list.js"></script>
 			<script src="../Controller/storage.js"></script>
 		</div>
 		

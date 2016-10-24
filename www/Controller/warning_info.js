@@ -25,7 +25,7 @@ function viewShow(e) {
 }
 function listViewClick(e) {
 	var button = $(e.item.find("#warningInfoDetailButton")[0]);
-   app.navigate("#warningDetail.html?deviceCode=" + button.attr("deviceCode"));
+   app.navigate("#warning_detail.html?deviceCode=" + button.attr("deviceCode"));
  }
 //params mark - Interface
 // BOOL onlyShowBindingMachine -- "type":"define" 只显示绑定机台
@@ -114,7 +114,7 @@ function warningInfoBindView(data, messageid, filtercode) {
 		var contentViewModel = kendo.observable({
 			"dataSource": dataSource,
 			detailClicked: function(e) {
-				app.navigate("#warningDetail.html?deviceCode=" + e.target.attr("deviceCode"));
+				app.navigate("#warning_detail.html?deviceCode=" + e.target.attr("deviceCode"));
 			}
 		});
 		if(filtercode == 'init') kendo.bind($("#warningInfoListView"), contentViewModel);

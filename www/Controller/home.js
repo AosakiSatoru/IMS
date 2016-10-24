@@ -86,10 +86,10 @@ function viewBeforeHide() {
 }
 var actionsheetAction = {
 	action0: function() {
-		app.navigate("queryYieldInput.html");
+		app.navigate("query_yield_input.html");
 	},
 	action1: function() {
-		app.navigate("queryPackingInput.html");
+		app.navigate("query_packing_input.html");
 	}
 }
 
@@ -100,21 +100,21 @@ function machine_input(type) {
 $("#bindingMachine").click(function() {
 	$("#homeDrawer").data("kendoMobileDrawer").hide();
 	setTimeout(function() {
-		app.navigate("bindingMachine.html");
+		app.navigate("binding_machine.html");
 	}, 200);
 
 });
 $("#packingInput").click(function() {
-	app.navigate("packingInput.html");
+	app.navigate("packing_input.html");
 });
 $("#warning").click(function() {
-	app.navigate("warningList.html");
+	app.navigate("warning_list.html");
 });
 $("#queryYieldInput").click(function() {
-	app.navigate("queryYieldInput.html");
+	app.navigate("query_yield_input.html");
 });
 $("#queryPackingInput").click(function() {
-	app.navigate("query-packing-input.html");
+	app.navigate("query_packing_input.html");
 });
 
 document.addEventListener("deviceready", function() {
@@ -161,7 +161,7 @@ document.addEventListener("deviceready", function() {
 				message = event.content;
 			}
 			//alert("onOpenNotification"+JSON.stringify(event));
-			app.navigate("warningList.html");
+			app.navigate("warning_list.html");
 		} catch(exception) {
 			alert("出错 JPushPlugin:onReceiveMessage-->" + exception);
 		}
