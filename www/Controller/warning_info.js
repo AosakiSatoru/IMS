@@ -18,6 +18,14 @@ function viewInit(e) {
 
 	warningInfoFetchDataRequest(true, messageid_global);
 	
+	var dataSource = kendo.data.DataSource.create({
+		data: [{}],
+	});
+
+	var listViewModel = new kendo.observable({
+		warningInfoCommonDataSource: dataSource,
+	});
+	kendo.bind($("#warningInfoCommonlistview"), listViewModel);
 }
 
 function viewShow(e) {
@@ -79,7 +87,7 @@ function warningInfoBindView(data, messageid, filtercode) {
 		flowArray = data.outputstr.Messagerows;
 		$.each(flowArray, function(n, flowValue) {
 
-			if(filtercode == 'init' || filtercode == '0' || filtercode == flowValue.flowcode) {
+			if(filtercode == 'init' || filtercode == 'ALL' || filtercode == flowValue.flowcode) {
 				var deviceStatus;
 				if(messageid == 0)
 					deviceStatus = "设备告警";
@@ -137,4 +145,10 @@ $("#warningInfo_allButton").click(function() {
 function warningInfo_filter(flowcode) {
 	warningInfoBindView(data_global, messageid_global, flowcode);
 	$("#warningInfo_actionsheet").data("kendoMobileActionSheet").close();
+}
+
+function warningInfo_displayStatus(status) {
+	if(status == "ALL") isAll = true;
+	else isAll = false;
+	warningInfoFetchDataRequest(!isAll, messageid_global);
 }
