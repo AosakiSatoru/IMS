@@ -34,7 +34,7 @@ function afterShow() {
 
 //params mark - Interface
 function queryYieldInputFetchDataRequest(params) {
-	
+
 	$.ajax({
 		type: "post",
 		url: IMSUrl + "Query_YieldInput/",
@@ -50,7 +50,10 @@ function queryYieldInputFetchDataRequest(params) {
 			} else if(data.outstatus == 0) {
 				showList(data);
 			}
-			kendo.ui.progress($("#IMSQueryYieldInput"), false);
+			setTimeout(function() {
+				kendo.ui.progress($("#IMSQueryYieldInput"), false);
+			}, 300);
+
 		},
 		error: function(data, status, e) {
 			kendo.ui.progress($("#IMSQueryYieldInput"), false);
@@ -98,7 +101,7 @@ function queryYieldInputFetchVarietiesDataRequest() {
 		data: null,
 		dataType: "json",
 		success: function(data) {
-//			kendo.ui.progress($("#IMSQueryYieldInput"), false);
+			//			kendo.ui.progress($("#IMSQueryYieldInput"), false);
 			result = data.outputstr.map(function(item) {
 				return {
 					variety: item.XJS_No
@@ -107,7 +110,7 @@ function queryYieldInputFetchVarietiesDataRequest() {
 
 		},
 		error: function(data, status, e) {
-//			kendo.ui.progress($("#IMSQueryYieldInput"), false);
+			//			kendo.ui.progress($("#IMSQueryYieldInput"), false);
 			alert("请求服务器出错");
 		}
 	});
@@ -115,7 +118,7 @@ function queryYieldInputFetchVarietiesDataRequest() {
 }
 
 function queryYieldInputFetchDevicesDataRequest() {
-	kendo.ui.progress($("#IMSQueryYieldInput"), true);
+
 	$.ajax({
 		type: "post",
 		url: IMSUrl + "busi_bindfind/",
@@ -175,6 +178,7 @@ $("#queryYieldInput_QueryButton").click(function() {
 		return;
 	}
 
+	kendo.ui.progress($("#IMSQueryYieldInput"), true);
 	var params;
 	params = {
 		"startdate": startDate,

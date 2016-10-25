@@ -14,7 +14,7 @@ function viewInit() {
 
 	$("#queryPackingInput_yield").kendoDropDownList();
 	$("#queryPackingInput_type").kendoDropDownList();
-	
+
 	var todayDate = kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd');
 	$("#queryPackingInput_startTimeDatepicker1").data("kendoDatePicker").value(todayDate);
 	$("#queryPackingInput_startTimeDatepicker2").data("kendoDatePicker").value(todayDate);
@@ -33,7 +33,7 @@ function viewShow() {
 
 //params mark - Interface
 function queryPackingInputFetchDataRequest(params) {
-	kendo.ui.progress($("#IMSQueryPackingInput"), true);
+
 	$.ajax({
 		type: "post",
 		url: IMSUrl + "Query_PackingInput/",
@@ -45,7 +45,9 @@ function queryPackingInputFetchDataRequest(params) {
 		dataType: "json",
 		success: function(data) {
 			showList(data);
-			kendo.ui.progress($("#IMSQueryPackingInput"), false);
+			setTimeout(function() {
+				kendo.ui.progress($("#IMSQueryPackingInput"), false);
+			}, 300);
 		},
 		error: function(data, status, e) {
 			kendo.ui.progress($("#IMSQueryPackingInput"), false);
@@ -97,7 +99,7 @@ $("#queryPackingInput_QueryButton").click(function() {
 		alert("请输入完整日期");
 		return;
 	}
-
+	kendo.ui.progress($("#IMSQueryPackingInput"), true);
 	params = {
 		"startdate": startDate,
 		"enddate": endDate,
