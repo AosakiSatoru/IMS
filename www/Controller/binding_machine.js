@@ -88,11 +88,12 @@ function loadView(data) {
 				"flownameid": value.flowname
 			});
 			var devices = new Array();
-
+			
 			$.each(value.devices, function(n, value2) {
 				devices.push({
 					"device": value2.devcodename,
-					"flowname": value.flowname
+					"flowname": value.flowname,
+					"devcode":value2.devcode
 				});
 			});
 			anObjectName = value.flowname + "binding_machine_database";
@@ -161,10 +162,11 @@ function bindingView() {
 
 		viewModel.bind("change", function(e) {
 			this.selectMachinerows = [];
-
+            
 			for(var device in this.alldevices) {
 				for(var device2 in this.devices) {
-					if(this.alldevices[device].devcodename == this.devices[device2]) {
+					
+					if(this.alldevices[device].devcode == this.devices[device2]) {
 						this.selectMachinerows.push({
 							"devcode": this.alldevices[device].devcode
 						});
@@ -231,6 +233,7 @@ $("#bindingMachine_confirmButton").click(function(){
 				"srcid": storage.get("srcid"),
 				"flowcoderows": flowcoderows
 			};
+			
 			var url = IMSUrl + "busi_binding/";
 			$.ajax({
 				type: "post",
