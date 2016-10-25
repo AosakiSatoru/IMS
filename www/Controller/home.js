@@ -52,12 +52,15 @@ function viewInit() {
 	$("#deptname").text(storage.get("deptname") != "undefined" ? storage.get("deptname") : " ");
 	$("#rolename").text(storage.get("rolename") != "undefined" ? storage.get("rolename") : " ");
 }
-
+function viewBeforeShow(){
+	$("#left_drawerButton").show();
+	$("#bindingMachine_leftNavButton").hide();
+}
 function viewAfterShow() {
 	$("#left_drawerButton").show();
 	$("#bindingMachine_leftNavButton").hide();
 	document.addEventListener("backbutton", exitFunction, false);
-	beginDate = new Date().getTime()
+	beginDate = new Date().getTime();
 
 	//IMSQueryYieldInput dealloc
 	if($("#queryYieldInput_procedure-list").data("kendoPopup"))
