@@ -92,9 +92,9 @@ $("#queryPackingInput_QueryButton").click(function() {
 	else if($("#queryPackingInput_type").val() == "粗纱头") Type = "1";
 	else if($("#queryPackingInput_type").val() == "白花") Type = "2";
 
-	var startDate = $("#queryYieldInput_startTimeDatepicker1").val()+" 00:00:00";
-	var endDate = $("#queryYieldInput_startTimeDatepicker2").val()+" 23:59:59";
-
+	var startDate = $("#queryPackingInput_startTimeDatepicker1").val()+" 00:00:00";
+	var endDate = $("#queryPackingInput_startTimeDatepicker2").val()+" 23:59:59";
+    alert(startDate+" "+endDate);
 	if(endDate == "" || startDate == "") {
 		alert("请输入完整日期");
 		return;
