@@ -21,9 +21,7 @@ function viewInit() {
 	var todayDate = kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd');
 	$("#queryYieldInput_startTimeDatepicker1").data("kendoDatePicker").value(todayDate);
 	$("#queryYieldInput_startTimeDatepicker2").data("kendoDatePicker").value(todayDate);
-}
-
-function viewShow() {
+	
 	var dataSource = kendo.data.DataSource.create({
 		data: [{}],
 	});
@@ -32,6 +30,10 @@ function viewShow() {
 		queryYieldInputCommonDataSource: dataSource,
 	});
 	kendo.bind($("#queryYieldInputCommonlistview"), listViewModel);
+}
+
+function viewShow() {
+	
 }
 
 function afterShow() {

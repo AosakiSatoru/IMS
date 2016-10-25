@@ -18,9 +18,7 @@ function viewInit() {
 	var todayDate = kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd');
 	$("#queryPackingInput_startTimeDatepicker1").data("kendoDatePicker").value(todayDate);
 	$("#queryPackingInput_startTimeDatepicker2").data("kendoDatePicker").value(todayDate);
-}
-
-function viewShow() {
+	
 	var dataSource = kendo.data.DataSource.create({
 		data: [{}],
 	});
@@ -29,6 +27,10 @@ function viewShow() {
 		queryPackingInputCommonDataSource: dataSource,
 	});
 	kendo.bind($("#queryPackingInputCommonlistview"), listViewModel);
+}
+
+function viewShow() {
+	
 }
 
 //params mark - Interface
