@@ -26,37 +26,10 @@
 			<div style="text-align: center;border-bottom-width: 1px;border-top-width: 1px;border-bottom-color: #EEEEEE;border-top-color: #EEEEEE;border-bottom-style: solid;border-top-style: solid;padding-top: 10px;padding-bottom: 10px;">
 				<input id="queryYieldInput_startTimeDatepicker1" style="font-size: 1em;width: 47%;" placeholder="开始日期" />
 				<input id="queryYieldInput_startTimeDatepicker2" style="font-size: 1em;width: 47%;" placeholder="结束日期" />
+				<ul data-role="listview" data-bind="source: queryYieldInputCommonDataSource" data-style="inset" style="width: 100%;margin-top: 15px;background-color: white" data-template="queryYieldInputCommonItemTemplate" id="queryYieldInputCommonlistview">
+				</ul>
 				<div>
-					<span style="font-size: 1em;width: 10%;top: 5px;position: relative;">工序:</span>
-					<select id="queryYieldInput_procedure" data-role="dropdownlist" style="font-size: 1em;width: 35%;text-align: left;margin-top: 10px;">
-						<option value="" selected disabled="true">工序</option>
-						<option value="0">全部</option>
-						<option value="1">清花</option>
-						<option value="2">梳棉</option>
-						<option value="3">预并</option>
-						<option value="4">条并卷</option>
-						<option value="5">精梳</option>
-						<option value="6">末并</option>
-						<option value="7">粗纱</option>
-						<option value="8">细纱</option>
-						<option value="9">清纱</option>
-						<option value="10">络筒</option>
-					</select>
-					<span style="font-size: 1em;width: 10%;top: 5px;position: relative;">班别:</span>
-					<select id="duty" data-role="dropdownlist" style="font-size: 1em;width: 35%;text-align: left;margin-top: 10px;">
-						<option value="" selected disabled="true">班别</option>
-						<option value="0">全部</option>
-						<option value="1">甲</option>
-						<option value="2">乙</option>
-						<option value="3">丙</option>
-					</select>
-				</div>
-				<div>
-					<span style="font-size: 1em;width: 10%;top: 5px;position: relative;">设备:</span>
-					<select id="queryYieldInput_machine" data-role="dropdownlist" style="font-size: 1em;width: 60%;text-align: left;margin-top: 10px;">
-						<option value="" selected disabled="true">设备</option>
-					</select>
-					<div id="queryYieldInput_QueryButton" data-role="button" style="width: 22%;height: 35px;border: none;font-size: 1em;background-color: #A62A40;color: #FFFFFF;border-radius: 4px;margin-top: 10px;">查 询</div>
+					<div id="queryYieldInput_QueryButton" data-role="button" style="position: absolute;right: 4%;top: 184px;width: 22%;height: 35px;border: none;font-size: 1em;background-color: #A62A40;color: #FFFFFF;border-radius: 4px;margin-top: 10px;">查 询</div>
 				</div>
 			</div>
 		</div>
@@ -65,6 +38,8 @@
 
 	<ul data-role="listview" data-bind="source: queryResultDataSource" data-style="inset" style="background-color: white" data-template="queryYieldInput_itemTemplate" id="queryYieldInput_listview">
 	</ul>
+
+	<!--list模板-->
 	<script id="queryYieldInput_itemTemplate" type="text/x-kendo-template">
 		<div id="queryYieldInput_itemInfo" style="text-align: right;color: gray;font-size: 0.7em;width: 100%;height: 10px;" recid="#:recid#">#:flowname# #:devname# #:date#</div>
 		<div>
@@ -81,6 +56,42 @@
 			<div data-role="button" data-bind="click: editItem" style="float: right;margin-top: 18px;width: 47.5%;background-color: rgb(255,255,255);color: rgb(169,41,61);border-color: rgb(169,41,61);border-radius: 4px;font-size: 14px;">修 改</div>
 			<!--<div data-role="button" data-bind="click: deleteItem" style="float: right;width: 47.5%;background-color: rgb(255,255,255);color: rgb(169,41,61);border-color: rgb(169,41,61);border-radius: 4px;">删 除</div>-->
 
+		</div>
+	</script>
+
+	<!--Common Item模板-->
+	<script id="queryYieldInputCommonItemTemplate" type="text/x-kendo-template">
+		<div style="background-color: slategray;">
+			<div style="text-align: center;">
+				<span style="top: 5px;font-size: 1em;text-align: right;width: 5%;">工序:</span>
+			<select id="queryYieldInput_procedure" style="position: relative;top: 18px;font-size: 1em;width: 26%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
+				<option value="0" selected>全部</option>
+				<option value="1">清花</option>
+				<option value="2">梳棉</option>
+				<option value="3">预并</option>
+				<option value="4">条并卷</option>
+				<option value="5">精梳</option>
+				<option value="6">末并</option>
+				<option value="7">粗纱</option>
+				<option value="8">细纱</option>
+				<option value="9">清纱</option>
+				<option value="10">络筒</option>
+			</select>
+			<span style="top: 5px;font-size: 1em;text-align: right;width: 5%;">班别:</span>
+			<select id="duty" style="position: relative;top: 18px;font-size: 1em;width: 26%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
+				<option value="0" selected>全部</option>
+				<option value="1">甲</option>
+				<option value="2">乙</option>
+				<option value="3">丙</option>
+			</select>
+			</div>
+			
+		</div>
+		<div style="margin-top: 15px;text-align: left;">
+			<span style="top: 5px;font-size: 1em;text-align: right;">设备:</span>
+			<select id="queryYieldInput_machine" style="position: relative;top: 18px;font-size: 1em;width: 58%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
+				<option value="ALL" selected>全部</option>
+			</select>
 		</div>
 	</script>
 

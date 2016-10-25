@@ -24,7 +24,14 @@ function viewInit() {
 }
 
 function viewShow() {
+	var dataSource = kendo.data.DataSource.create({
+		data: [{}],
+	});
 
+	var listViewModel = new kendo.observable({
+		queryYieldInputCommonDataSource: dataSource,
+	});
+	kendo.bind($("#queryYieldInputCommonlistview"), listViewModel);
 }
 
 function afterShow() {
@@ -132,22 +139,24 @@ function queryYieldInputFetchDevicesDataRequest() {
 		dataType: "json",
 		success: function(data) {
 			var content = data.outputstr.flowcoderows;
-			var dropdownlist = $("#queryYieldInput_machine").data("kendoDropDownList");
-			dropdownlist.dataSource.add({
-				devcodename: "全部",
-				devcode: "ALL"
-			});
+			//			var dropdownlist = $("#queryYieldInput_machine").data("kendoDropDownList");
+			//			dropdownlist.dataSource.add({
+			//				devcodename: "全部",
+			//				devcode: "ALL"
+			//			});
+			var obj = document.getElementById('queryYieldInput_machine');
 			for(var key in content) {
 				var object = content[key];
 				$.each(object.devices, function(n, device) {
 					if(device.devcode.trim() != "" && device.devcode && device.devcodename.trim() != "" && device.devcodename) {
-						var dropdownlist = $("#queryYieldInput_machine").data("kendoDropDownList");
-						dropdownlist.dataSource.add({
-							devcodename: device.devcodename.trim() + ":" + device.devcode.trim(),
-							devcode: device.devcode.trim()
-						});
-						//						dropdownlist.search("A");
-						dropdownlist.select(0);
+						//						var dropdownlist = $("#queryYieldInput_machine").data("kendoDropDownList");
+						//						dropdownlist.dataSource.add({
+						//							devcodename: device.devcodename.trim() + ":" + device.devcode.trim(),
+						//							devcode: device.devcode.trim()
+						//						});
+						//						//dropdownlist.search("A");
+						//						dropdownlist.select(0);
+						obj.options.add(new Option(device.devcodename.trim() + ":" + device.devcode.trim(), device.devcode.trim()));
 					}
 				});
 			}
