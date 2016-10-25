@@ -54,6 +54,7 @@ function viewInit() {
 }
 
 function viewAfterShow() {
+	$("#left_drawerButton").show();
 	$("#bindingMachine_leftNavButton").hide();
 	document.addEventListener("backbutton", exitFunction, false);
 	beginDate = new Date().getTime()
@@ -80,6 +81,7 @@ function viewAfterShow() {
 }
 
 function viewBeforeHide() {
+	$("#left_drawerButton").hide();
 	$("#bindingMachine_leftNavButton").show();
 	//$("#packingInput_rightNavButton_1").data("kendoMobileButton").badge(100);
 	document.removeEventListener("backbutton", exitFunction);
