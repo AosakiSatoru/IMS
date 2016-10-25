@@ -38,6 +38,7 @@ function viewShow(e) {
 			kendo.ui.progress($("#IMSYieldinput"), false);
 			//			kendo.mobile.application.hideLoading();
 			bindView(data);
+			console.log(JSON.stringify(data));
 		},
 		error: function(data, status, e) {
 			//			kendo.mobile.application.hideLoading();
@@ -82,7 +83,7 @@ function bindView(data) {
 		var object = content[key];
 		var contentArray = new Array();
 
-		if(object.flowcode == "2") {
+		if(object.flowname == "预并") {
 			$.each(object.devices, function(n, device) {
 				contentArray.push({
 					"image": "../resources/@3x/ybt-sb2@3x.png",
@@ -97,7 +98,7 @@ function bindView(data) {
 				kendo.data.DataSource.create({
 					data: contentArray
 				});
-		} else if(object.flowcode == "1") {
+		} else if(object.flowname == "梳棉") {
 			$.each(object.devices, function(n, device) {
 				contentArray.push({
 					"image": "../resources/@3x/smj-c51@3x.png",
@@ -112,7 +113,7 @@ function bindView(data) {
 				kendo.data.DataSource.create({
 					data: contentArray
 				});
-		} else if(object.flowcode == "3") {
+		} else if(object.flowname == "粗纱") {
 			$.each(object.devices, function(n, device) {
 				contentArray.push({
 					"image": "../resources/@3x/csj-ftid@3x.png",
