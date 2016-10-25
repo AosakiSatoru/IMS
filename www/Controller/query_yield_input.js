@@ -165,8 +165,8 @@ function queryYieldInputFetchDevicesDataRequest() {
 
 //params mark - Action
 $("#queryYieldInput_QueryButton").click(function() {
-	var startDate = $("#queryYieldInput_startTimeDatepicker1").val();
-	var endDate = $("#queryYieldInput_startTimeDatepicker2").val();
+	var startDate = $("#queryYieldInput_startTimeDatepicker1").val()+" 00:00:00";
+	var endDate = $("#queryYieldInput_startTimeDatepicker2").val()+" 23:59:59";
 	if(endDate == "" || startDate == "") {
 		alert("请输入完整日期");
 		return;
