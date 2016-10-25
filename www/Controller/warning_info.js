@@ -31,6 +31,19 @@ function viewInit(e) {
 function viewShow(e) {
 
 }
+
+function viewAfterShow() {
+	warningInfo_dealloc();
+}
+
+function warningInfo_dealloc() {
+	//IMSWarningDetail dealloc
+	if($("#IMSWarningDetail").data("kendoMobileView"))
+		$("#IMSWarningDetail").data("kendoMobileView").destroy();
+	if($("#IMSWarningDetail"))
+		$("#IMSWarningDetail").remove();
+}
+
 function listViewClick(e) {
 	var button = $(e.item.find("#warningInfoDetailButton")[0]);
    app.navigate("#warning_detail.html?deviceCode=" + button.attr("deviceCode"));

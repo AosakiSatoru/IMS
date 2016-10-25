@@ -10,55 +10,55 @@
 	</head>
 
 	<body>-->
-		<div data-role="view" data-title="产量输入" data-use-native-scrolling="true" data-show="viewShow" data-init="viewInit" id="IMSYieldinput">
-            <!--<header data-role="header">-->
-				<!--<span data-role="navbar">-->
-                    <!--<div data-role="view-title" style="line-height: 80px;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>-->
-                		<!--<a href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back@3x.png);background-repeat: round;height: 80px;width: 100px;"></a>-->
-					<!--<a data-badge="0" id="packingInput_rightNavButton_1" href="#warning_list.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red_big@3x.png);background-repeat: round;height: 80px;width: 100px;"></a>-->
-				<!--</span>-->
-            <!--</header>-->
+<div data-role="view" data-title="产量输入" data-use-native-scrolling="true" data-show="viewShow" data-init="viewInit" id="IMSYieldinput">
+	<header data-role="header">
+		<span data-role="navbar">
+      		<div data-role="view-title" style="line-height: 80px;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
+       		<a href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back_big@3x.png);background-repeat: round;height: 80px;width: 100px;"></a>
+			<a data-badge="0" id="packingInput_rightNavButton_1" href="#warning_list.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red_big@3x.png);background-repeat: round;height: 80px;width: 100px;"></a>
+		</span>
+	</header>
 
-			<div data-role="content" style="background-color: white;">
-				<div style="font-size: 1em;text-align: left;margin-top: 1em;padding-left: 3%;" id="headerButtonGroup">
-					<span><a data-role="button"
+	<div data-role="content" style="background-color: white;">
+		<div style="font-size: 1em;text-align: left;margin-top: 1em;padding-left: 3%;" id="headerButtonGroup">
+			<span><a data-role="button"
                      style="width: 31%;;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;"
                      data-bind="click: headerButtonClick">预并</a></span>
-					<span><a data-role="button"
+			<span><a data-role="button"
                      style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;"
                      data-bind="click: headerButtonClick">梳棉</a></span>
-					<span><a data-role="button"
+			<span><a data-role="button"
                      style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE; "
                      data-bind="click: headerButtonClick">粗纱</a></span>
-				</div>
-				<div>
-					<div data-role="listview" data-bind="source: contentDataSource" data-template="nameTemplate" data-fixed-headers="true" id="yieldInputListView">
-					</div>
-				</div>
+		</div>
+		<div>
+			<div data-role="listview" data-bind="source: contentDataSource" data-template="nameTemplate" data-fixed-headers="true" id="yieldInputListView">
 			</div>
+		</div>
+	</div>
 
-			<div data-role="footer" id="footer">
-				<button id="inputButton" type="submit" data-bind="click: input" style="width: 100%;height: 2.5em;border: none;font-size: 1.2em;padding: 0em;background-color: #A62A40;color: #FFFFFF;text-align: center;margin-bottom:0px">
+	<div data-role="footer" id="footer">
+		<button id="inputButton" type="submit" data-bind="click: input" style="width: 100%;height: 2.5em;border: none;font-size: 1.2em;padding: 0em;background-color: #A62A40;color: #FFFFFF;text-align: center;margin-bottom:0px">
             确认
         </button>
-			</div>
-			<!--List模板-->
-			<script id="nameTemplate" type="text/x-kendo-template">
-				<img src="#:image#" style="width: 31%;float: left;" />
-				<span id="dropdownlistPlaceholder" style="position: absolute;left: 37.5%;padding-left: 0.4em;top: 35px;font-size: 0.8em;color: rgb(169,169,169);" data-bind="invisible: hidden">请选择品种</span>
-				<img src="../resources/@3x/dropdownlist_icon@3x.png" style="width: 20px;float: right;position: absolute;right: 1em;top: 2em;" />
-				<select id="yieldInput_dropdownlist" data-bind="source: varietiesDataSource,value:variety,events:{change:onChange}" data-text-field="variety" data-value-field="variety" style="position: relative;top: 28px;padding-left: 6px;font-size: 0.8em;float: right;height: 30px;width: 64%;border-radius: 0;right:0;border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: lightgray;text-align: left;">
-					<option value="" selected disabled="true">请选择品种</option>
-				</select>
-				<input data-bind="value: yield" placeholder="请输入产量" type="number" style="position: relative;float: right;top: 60px;font-size: 0.8em;width: 64%;padding-left: 0.35em;padding-bottom: 3px;border: none;border-bottom-width: 1px;border-bottom-style: solid;border-color: lightgray;border-radius: 0;"></input>
-				<div style="width: 31%;text-align: center;font-size: 0.8em;"><label style="color: rgb(51,51,51)">#:devcodename#</label></div>
+	</div>
+	<!--List模板-->
+	<script id="nameTemplate" type="text/x-kendo-template">
+		<img src="#:image#" style="width: 31%;float: left;" />
+		<span id="dropdownlistPlaceholder" style="position: absolute;left: 37.5%;padding-left: 0.4em;top: 35px;font-size: 0.8em;color: rgb(169,169,169);" data-bind="invisible: hidden">请选择品种</span>
+		<img src="../resources/@3x/dropdownlist_icon@3x.png" style="width: 20px;float: right;position: absolute;right: 1em;top: 2em;" />
+		<select id="yieldInput_dropdownlist" data-bind="source: varietiesDataSource,value:variety,events:{change:onChange}" data-text-field="variety" data-value-field="variety" style="position: relative;top: 28px;padding-left: 6px;font-size: 0.8em;float: right;height: 30px;width: 64%;border-radius: 0;right:0;border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: lightgray;text-align: left;">
+			<option value="" selected disabled="true">请选择品种</option>
+		</select>
+		<input data-bind="value: yield" placeholder="请输入产量" type="number" style="position: relative;float: right;top: 60px;font-size: 0.8em;width: 64%;padding-left: 0.35em;padding-bottom: 3px;border: none;border-bottom-width: 1px;border-bottom-style: solid;border-color: lightgray;border-radius: 0;"></input>
+		<div style="width: 31%;text-align: center;font-size: 0.8em;"><label style="color: rgb(51,51,51)">#:devcodename#</label></div>
 
-			</script>
-            <script src="../Controller/url.js"></script>
-			<script src="../Controller/yield_input.js"></script>
-			<link href="../css/yield_input.css" rel="stylesheet" />
-		</div>
+	</script>
+	<script src="../Controller/url.js"></script>
+	<script src="../Controller/yield_input.js"></script>
+	<link href="../css/yield_input.css" rel="stylesheet" />
+</div>
 
-	<!--</body>
+<!--</body>
 
 </html>-->

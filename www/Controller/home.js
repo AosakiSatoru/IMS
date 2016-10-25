@@ -52,15 +52,39 @@ function viewInit() {
 	$("#deptname").text(storage.get("deptname") != "undefined" ? storage.get("deptname") : " ");
 	$("#rolename").text(storage.get("rolename") != "undefined" ? storage.get("rolename") : " ");
 }
-function viewBeforeShow(){
+
+function viewBeforeShow() {
 	$("#left_drawerButton").show();
 	$("#bindingMachine_leftNavButton").hide();
 }
+
 function viewAfterShow() {
 	$("#left_drawerButton").show();
 	$("#bindingMachine_leftNavButton").hide();
 	document.addEventListener("backbutton", exitFunction, false);
 	beginDate = new Date().getTime();
+
+	home_dealloc();
+}
+
+function home_dealloc() {
+	//IMSBindingMachine dealloc
+	if($("#IMSBindingMachine").data("kendoMobileView"))
+		$("#IMSBindingMachine").data("kendoMobileView").destroy();
+	if($("#IMSBindingMachine"))
+		$("#IMSBindingMachine").remove();
+
+	//IMSYieldinput dealloc
+	if($("#IMSYieldinput").data("kendoMobileView"))
+		$("#IMSYieldinput").data("kendoMobileView").destroy();
+	if($("#IMSYieldinput"))
+		$("#IMSYieldinput").remove();
+		
+	//IMSPackingInput dealloc
+	if($("#IMSPackingInput").data("kendoMobileView"))
+		$("#IMSPackingInput").data("kendoMobileView").destroy();
+	if($("#IMSPackingInput"))
+		$("#IMSPackingInput").remove();
 
 	//IMSQueryYieldInput dealloc
 	if($("#queryYieldInput_procedure-list").data("kendoPopup"))

@@ -5,16 +5,22 @@ function viewShow() {
 		warningListInitRequest();
 	}, false);
 }
-function removeEventListenerFunction(event){
+
+function removeEventListenerFunction(event) {
 
 }
 
-function viewBeforeHide(){
-	document.removeEventListener("jpush.receiveMessage",removeEventListenerFunction, false);
+function viewBeforeHide() {
+	document.removeEventListener("jpush.receiveMessage", removeEventListenerFunction, false);
 }
 
 function viewAfterShow() {
+	warningList_dealloc();
+}
+
+function warningList_dealloc() {
 	//IMSWarningInfo dealloc
+	console.log($("#IMSWarningInfo").data("kendoMobileView"));
 	if($("#IMSWarningInfo").data("kendoMobileView"))
 		$("#IMSWarningInfo").data("kendoMobileView").destroy();
 	if($("#IMSWarningInfo"))
@@ -53,7 +59,7 @@ function warningListBindView(data) {
 	if(data.outstatus != 0) {
 		alert(data.outputstr);
 	} else if(data.outstatus == 0) {
-//		alert(JSON.stringify(data.outputstr.Messagerows));
+		//		alert(JSON.stringify(data.outputstr.Messagerows));
 		var messageArray = data.outputstr.Messagerows;
 		$.each(messageArray, function(n, value) {
 			if(value.messagename == "设备告警")

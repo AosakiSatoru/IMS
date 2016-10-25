@@ -36,12 +36,10 @@ function viewShow(e) {
 		dataType: "json",
 		success: function(data) {
 			kendo.ui.progress($("#IMSYieldinput"), false);
-			//			kendo.mobile.application.hideLoading();
 			bindView(data);
 			console.log(JSON.stringify(data));
 		},
 		error: function(data, status, e) {
-			//			kendo.mobile.application.hideLoading();
 			kendo.ui.progress($("#IMSYieldinput"), false);
 			alert("请求服务器出错!原因:" + JSON.stringify(data));
 		}
