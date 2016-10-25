@@ -94,7 +94,7 @@ $("#queryPackingInput_QueryButton").click(function() {
 
 	var startDate = $("#queryPackingInput_startTimeDatepicker1").val()+" 00:00:00";
 	var endDate = $("#queryPackingInput_startTimeDatepicker2").val()+" 23:59:59";
-    alert(startDate+" "+endDate);
+   
 	if(endDate == "" || startDate == "") {
 		alert("请输入完整日期");
 		return;
