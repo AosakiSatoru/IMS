@@ -52,11 +52,15 @@ function viewInit() {
 	$("#deptname").text(storage.get("deptname") != "undefined" ? storage.get("deptname") : " ");
 	$("#rolename").text(storage.get("rolename") != "undefined" ? storage.get("rolename") : " ");
 }
-
+function viewBeforeShow(){
+	$("#left_drawerButton").show();
+	$("#bindingMachine_leftNavButton").hide();
+}
 function viewAfterShow() {
+	$("#left_drawerButton").show();
 	$("#bindingMachine_leftNavButton").hide();
 	document.addEventListener("backbutton", exitFunction, false);
-	beginDate = new Date().getTime()
+	beginDate = new Date().getTime();
 
 	//IMSQueryYieldInput dealloc
 	if($("#queryYieldInput_procedure-list").data("kendoPopup"))
@@ -80,41 +84,42 @@ function viewAfterShow() {
 }
 
 function viewBeforeHide() {
+	$("#left_drawerButton").hide();
 	$("#bindingMachine_leftNavButton").show();
 	//$("#packingInput_rightNavButton_1").data("kendoMobileButton").badge(100);
 	document.removeEventListener("backbutton", exitFunction);
 }
 var actionsheetAction = {
 	action0: function() {
-		app.navigate("queryYieldInput.html");
+		app.navigate("query_yield_input.html");
 	},
 	action1: function() {
-		app.navigate("queryPackingInput.html");
+		app.navigate("query_packing_input.html");
 	}
 }
 
 function machine_input(type) {
-	var urlString = "yieldInput.html?type=" + type + "&selectdate=" + $("#datepicker").val();
+	var urlString = "yield_input.html?type=" + type + "&selectdate=" + $("#datepicker").val();
 	app.navigate(urlString);
 }
 $("#bindingMachine").click(function() {
 	$("#homeDrawer").data("kendoMobileDrawer").hide();
 	setTimeout(function() {
-		app.navigate("bindingMachine.html");
+		app.navigate("binding_machine.html");
 	}, 200);
 
 });
 $("#packingInput").click(function() {
-	app.navigate("packingInput.html");
+	app.navigate("packing_input.html");
 });
 $("#warning").click(function() {
-	app.navigate("warningList.html");
+	app.navigate("warning_list.html");
 });
 $("#queryYieldInput").click(function() {
-	app.navigate("queryYieldInput.html");
+	app.navigate("query_yield_input.html");
 });
 $("#queryPackingInput").click(function() {
-	app.navigate("query-packing-input.html");
+	app.navigate("query_packing_input.html");
 });
 
 document.addEventListener("deviceready", function() {
@@ -152,16 +157,11 @@ document.addEventListener("deviceready", function() {
 	};
 
 	var onOpenNotification = function(event) {
-
 		try {
-			var message;
-			if(device.platform == "Android") {
-				message = event.message;
-			} else {
-				message = event.content;
+			if(device.platform == "iOS") {
+				window.plugins.jPushPlugin.setApplicationIconBadgeNumber(0);
 			}
-			//alert("onOpenNotification"+JSON.stringify(event));
-			app.navigate("warningList.html");
+			app.navigate("warning_list.html");
 		} catch(exception) {
 			alert("出错 JPushPlugin:onReceiveMessage-->" + exception);
 		}

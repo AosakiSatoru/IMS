@@ -21,6 +21,7 @@
 		453C3D3788AD40A3BC18A5AA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDEEA09D31749AF8B2088C3 /* Security.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4979F04CF9734BD984C6B58D /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0162550C69C14A6CB078DEFA /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6026A4E01D6C031D00FDDB25 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6026A4DF1D6C031D00FDDB25 /* CDVStatusBar.m */; };
+		60DC8F4F1DBF1D7C001C2978 /* UIWebView+JavaScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DC8F4E1DBF1D7C001C2978 /* UIWebView+JavaScript.m */; };
 		6CE40153554B4867A20CD5DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF0DDBFD3D1C49A882C4D2B5 /* Foundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		888268A057E94393AC805BAD /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D123BE485784345AAEEF44B /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A1507C97E7724AB99136787A /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACB77877CB948669D4857E1 /* CDVDevice.m */; };
@@ -79,6 +80,8 @@
 		5559D0901D5E4AC1B6687E3E /* CDVNotification.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVNotification.m; path = "cordova-plugin-dialogs/CDVNotification.m"; sourceTree = "<group>"; };
 		6026A4DE1D6C031D00FDDB25 /* CDVStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVStatusBar.h; sourceTree = "<group>"; };
 		6026A4DF1D6C031D00FDDB25 /* CDVStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVStatusBar.m; sourceTree = "<group>"; };
+		60DC8F4D1DBF1D7C001C2978 /* UIWebView+JavaScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+JavaScript.h"; sourceTree = "<group>"; };
+		60DC8F4E1DBF1D7C001C2978 /* UIWebView+JavaScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+JavaScript.m"; sourceTree = "<group>"; };
 		60EF7E8D1D9A65E000273EEE /* IMS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = IMS.entitlements; path = IMS/IMS.entitlements; sourceTree = "<group>"; };
 		705D55310F64409CB2B72AE6 /* CFNetwork.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		825B9CAEEBE34436BCE8F616 /* CDVNotification.bundle */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.plug-in"; path = CDVNotification.bundle; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 				302D95F014D2391D003F00A1 /* MainViewController.xib */,
 				1D3623240D0F684500981E51 /* AppDelegate.h */,
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
+				60DC8F4D1DBF1D7C001C2978 /* UIWebView+JavaScript.h */,
+				60DC8F4E1DBF1D7C001C2978 /* UIWebView+JavaScript.m */,
 			);
 			name = Classes;
 			path = IMS/Classes;
@@ -380,6 +385,7 @@
 				B785A47F87CA4EC49B79824F /* AppDelegate+JPush.m in Sources */,
 				EC26058CE62A4724A1470439 /* CDVNotification.m in Sources */,
 				05A449867CA5403A8F397086 /* CDVVibration.m in Sources */,
+				60DC8F4F1DBF1D7C001C2978 /* UIWebView+JavaScript.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

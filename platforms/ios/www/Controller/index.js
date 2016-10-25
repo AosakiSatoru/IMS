@@ -11,7 +11,11 @@ if(storage.get("login") == "yes") {
 
 	}
 }
-
+document.addEventListener("deviceready", function() {
+	setTimeout(function () {  
+               navigator.splashscreen.hide();  
+           },1000 );
+});
 var app = new kendo.mobile.Application(document.body, {
 	platform: 'ios',
 	skin: 'nova'
