@@ -150,9 +150,6 @@ function showList(data) {
 					"Dotype": "0" //0-修改
 				};
 				queryPackingInputModifyDataRequest(params);
-			},
-			deleteItem: function(e) {
-				var index = e.target.parent().index();
 			}
 		});
 		kendo.bind($("#queryPackingInput_listview"), listViewModel);

@@ -232,9 +232,6 @@ function showList(data) {
 			};
 			queryYieldInputModifyDataRequest(params);
 
-		},
-		deleteItem: function(e) {
-			var index = e.target.parent().index();
 		}
 	});
 	kendo.bind($("#queryYieldInput_listview"), listViewModel);
