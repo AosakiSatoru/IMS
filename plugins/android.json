@@ -28,6 +28,9 @@
         },
         "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.esquel.ims"
+        },
+        "cordova-plugin-appversion": {
+            "PACKAGE_NAME": "com.esquel.ims"
         }
     },
     "dependent_plugins": {}

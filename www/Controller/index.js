@@ -11,8 +11,13 @@ if(storage.get("login") == "yes") {
 
 	}
 }
+
 document.addEventListener("deviceready", function() {
-	
+	try {
+		$("#version").text("V"+AppVersion.version);
+}catch(e){
+	alert("AppVersion fail to get");
+}
 });
 var app = new kendo.mobile.Application(document.body, {
 	platform: 'ios',
