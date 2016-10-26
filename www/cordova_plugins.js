@@ -15,13 +15,6 @@ module.exports = [
                   "clobbers": [
                                "cordova.logger"
                                ]
-                  },
-                  {
-                  "id": "cordova-plugin-statusbar-master.statusbar",
-                  "file": "plugins/cordova-plugin-statusbar-master/www/statusbar.js",
-                  "clobbers": [
-                               "Statusbar"
-                               ]
                   }
 ];
 module.exports.metadata = 
