@@ -40,6 +40,14 @@ module.exports = [
             "navigator.notification",
             "navigator"
         ]
+    },
+    {
+        "id": "cordova-plugin-splashscreen.SplashScreen",
+        "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+        "pluginId": "cordova-plugin-splashscreen",
+        "clobbers": [
+            "navigator.splashscreen"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -50,7 +58,8 @@ module.exports.metadata =
     "cordova-plugin-device": "1.1.3",
     "jpush-phonegap-plugin": "2.2.5",
     "cordova-plugin-dialogs": "1.3.0",
-    "cordova-plugin-vibration": "2.1.2"
+    "cordova-plugin-vibration": "2.1.2",
+    "cordova-plugin-splashscreen": "4.0.0"
 };
 // BOTTOM OF METADATA
 });

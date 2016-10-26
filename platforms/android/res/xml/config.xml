@@ -16,6 +16,10 @@
     <feature name="Vibration">
         <param name="android-package" value="org.apache.cordova.vibration.Vibration" />
     </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
     <name>IMS</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -38,6 +42,7 @@
     <icon density="xhdpi" src="logo.png" />
     <icon density="xxhdpi" src="logo.png" />
     <icon density="xxxhdpi" src="logo.png" />
+    <splash density="port-hdpi" src="launch_screen.png" />
     <preference name="loglevel" value="DEBUG" />
-    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
 </widget>

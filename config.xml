@@ -23,6 +23,11 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+     <platform name="ios">
+       
+        <preference name="ShowSplashScreenSpinner" value="false"/>
+       
+    </platform>
     <platform name="android">
         <!--
             ldpi    : 36x36 px
@@ -38,6 +43,8 @@
         <icon src="logo.png" density="xhdpi" />
         <icon src="logo.png" density="xxhdpi" />
         <icon src="logo.png" density="xxxhdpi" />
-        <preference name="AutoHideSplashScreen" value="false" />
+        <splash src="launch_screen.png" density="port-hdpi"/>
+        <preference name="ShowSplashScreenSpinner" value="false"/>
+       
     </platform>
 </widget>
