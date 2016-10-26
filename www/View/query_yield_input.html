@@ -64,8 +64,8 @@
 		<div style="background-color: slategray;">
 			<div style="text-align: left;">
 			<span style="top: 5px;font-size: 1em;text-align: right;width: 5%;">工序:</span>
-			<select id="queryYieldInput_procedure" style="position: relative;top: 18px;font-size: 1em;width: 26%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
-				<option value="0" selected>全部</option>
+			<select id="queryYieldInput_procedure" onchange="queryYieldInput_AutoFill(this.options[this.options.selectedIndex].value)" style="position: relative;top: 18px;font-size: 1em;width: 26%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
+				<option value="ALL" selected>全部</option>
 				<!--<option value="1">清花</option>-->
 				<option value="2">梳棉</option>
 				<option value="3">预并</option>
@@ -79,7 +79,7 @@
 			</select>
 			<span style="top: 5px;font-size: 1em;text-align: right;width: 5%;">班别:</span>
 			<select id="duty" style="position: relative;top: 18px;font-size: 1em;width: 26%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
-				<option value="0" selected>全部</option>
+				<option value="ALL" selected>全部</option>
 				<option value="1">甲</option>
 				<option value="2">乙</option>
 				<option value="3">丙</option>

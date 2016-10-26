@@ -1,4 +1,5 @@
 var varList;
+var devList;
 
 //params mark - Initalize
 function viewInit() {
@@ -21,7 +22,7 @@ function viewInit() {
 	var todayDate = kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd');
 	$("#queryYieldInput_startTimeDatepicker1").data("kendoDatePicker").value(todayDate);
 	$("#queryYieldInput_startTimeDatepicker2").data("kendoDatePicker").value(todayDate);
-	
+
 	var dataSource = kendo.data.DataSource.create({
 		data: [{}],
 	});
@@ -33,7 +34,7 @@ function viewInit() {
 }
 
 function viewShow() {
-	
+
 }
 
 function afterShow() {
@@ -140,27 +141,23 @@ function queryYieldInputFetchDevicesDataRequest() {
 		},
 		dataType: "json",
 		success: function(data) {
-			var content = data.outputstr.flowcoderows;
+			devList = data.outputstr.flowcoderows;
 			//			var dropdownlist = $("#queryYieldInput_machine").data("kendoDropDownList");
 			//			dropdownlist.dataSource.add({
 			//				devcodename: "全部",
 			//				devcode: "ALL"
 			//			});
-			var obj = document.getElementById('queryYieldInput_machine');
-			for(var key in content) {
-				var object = content[key];
-				$.each(object.devices, function(n, device) {
-					if(device.devcode.trim() != "" && device.devcode && device.devcodename.trim() != "" && device.devcodename) {
-						//						var dropdownlist = $("#queryYieldInput_machine").data("kendoDropDownList");
-						//						dropdownlist.dataSource.add({
-						//							devcodename: device.devcodename.trim() + ":" + device.devcode.trim(),
-						//							devcode: device.devcode.trim()
-						//						});
-						//						//dropdownlist.search("A");
-						//						dropdownlist.select(0);
-						obj.options.add(new Option(device.devcodename.trim() + ":" + device.devcode.trim(), device.devcode.trim()));
-					}
-				});
+			var devDropDownList = document.getElementById('queryYieldInput_machine');
+			for(var key in devList) {
+				var object = devList[key];
+				//指定2、3、7工序
+				if(object.flowcode == "2" || object.flowcode == "3" || object.flowcode == "7") {
+					$.each(object.devices, function(n, device) {
+						if(device.devcode.trim() != "" && device.devcode && device.devcodename.trim() != "" && device.devcodename) {
+							devDropDownList.options.add(new Option(device.devcodename.trim() + ":" + device.devcode.trim(), device.devcode.trim()));
+						}
+					});
+				}
 			}
 			setTimeout(function() {
 				kendo.ui.progress($("#IMSQueryYieldInput"), false);
@@ -176,8 +173,8 @@ function queryYieldInputFetchDevicesDataRequest() {
 
 //params mark - Action
 $("#queryYieldInput_QueryButton").click(function() {
-	var startDate = $("#queryYieldInput_startTimeDatepicker1").val()+" 00:00:00";
-	var endDate = $("#queryYieldInput_startTimeDatepicker2").val()+" 23:59:59";
+	var startDate = $("#queryYieldInput_startTimeDatepicker1").val() + " 00:00:00";
+	var endDate = $("#queryYieldInput_startTimeDatepicker2").val() + " 23:59:59";
 	if(endDate == "" || startDate == "") {
 		alert("请输入完整日期");
 		return;
@@ -196,8 +193,8 @@ $("#queryYieldInput_QueryButton").click(function() {
 		"enddate": endDate,
 	};
 	if($("#queryYieldInput_machine").val() != "ALL") params.devcode = devcode;
-	if($("#duty").val() != "0") params.duty = $("#duty").val();
-	if($("#queryYieldInput_procedure").val() != "0") params.flowcode = $("#queryYieldInput_procedure").val();
+	if($("#duty").val() != "ALL") params.duty = $("#duty").val();
+	if($("#queryYieldInput_procedure").val() != "ALL") params.flowcode = $("#queryYieldInput_procedure").val();
 
 	queryYieldInputFetchDataRequest(params);
 });
@@ -246,6 +243,26 @@ function showList(data) {
 		}
 	});
 	kendo.bind($("#queryYieldInput_listview"), listViewModel);
+}
+
+function queryYieldInput_AutoFill(flowcode) {
+	//清空设备选项
+	var devDropDownList = document.getElementById('queryYieldInput_machine');
+	devDropDownList.options.length = 0;
+	devDropDownList.options.add(new Option("全部", "ALL"));
+	//筛选设备选项
+	for(var key in devList) {
+		var object = devList[key];
+		if(object.flowcode == flowcode || flowcode == "ALL") {
+			$.each(object.devices, function(n, device) {
+				if(device.devcode.trim() != "" && device.devcode && device.devcodename.trim() != "" && device.devcodename) {
+					//添加设备选项
+					devDropDownList.options.add(new Option(device.devcodename.trim() + ":" + device.devcode.trim(), device.devcode.trim()));
+				}
+			});
+		}
+	}
+
 }
 
 Date.prototype.Format = function(fmt) { //author: meizz  
