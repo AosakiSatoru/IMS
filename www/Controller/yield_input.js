@@ -81,7 +81,7 @@ function bindView(data) {
 		var object = content[key];
 		var contentArray = new Array();
 
-		if(object.flowname == "预并") {
+		if(object.flowname.trim() == "预并") {
 			$.each(object.devices, function(n, device) {
 				contentArray.push({
 					"image": "../resources/@3x/ybt-sb2@3x.png",
@@ -96,7 +96,7 @@ function bindView(data) {
 				kendo.data.DataSource.create({
 					data: contentArray
 				});
-		} else if(object.flowname == "梳棉") {
+		} else if(object.flowname.trim() == "梳棉") {
 			$.each(object.devices, function(n, device) {
 				contentArray.push({
 					"image": "../resources/@3x/smj-c51@3x.png",
@@ -111,7 +111,7 @@ function bindView(data) {
 				kendo.data.DataSource.create({
 					data: contentArray
 				});
-		} else if(object.flowname == "粗纱") {
+		} else if(object.flowname.trim() == "粗纱") {
 			$.each(object.devices, function(n, device) {
 				contentArray.push({
 					"image": "../resources/@3x/csj-ftid@3x.png",
@@ -162,13 +162,13 @@ function bindView(data) {
 			e.target[0].style.borderColor = "#A9293D";
 
 			if($(e.target.find(".km-text")[0]).text() == "预并") {
-				contentViewModel.selectflowcode = 2;
+				contentViewModel.selectflowcode = 3;
 				$("#yieldInputListView").data("kendoMobileListView").setDataSource(self.contentViewModel.first);
 			} else if($(e.target.find(".km-text")[0]).text() == "梳棉") {
-				contentViewModel.selectflowcode = 1;
+				contentViewModel.selectflowcode = 2;
 				$("#yieldInputListView").data("kendoMobileListView").setDataSource(self.contentViewModel.second);
 			} else if($(e.target.find(".km-text")[0]).text() == "粗纱") {
-				contentViewModel.selectflowcode = 3;
+				contentViewModel.selectflowcode = 7;
 				$("#yieldInputListView").data("kendoMobileListView").setDataSource(self.contentViewModel.third);
 			}
 

@@ -17,9 +17,6 @@
        		<a href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back_big@3x.png);background-repeat: round;height: 80px;width: 100px;"></a>
 			<a data-badge="0" id="packingInput_rightNavButton_1" href="#warning_list.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red_big@3x.png);background-repeat: round;height: 80px;width: 100px;"></a>
 		</span>
-	</header>
-
-	<div data-role="content" style="background-color: white;">
 		<div style="font-size: 1em;text-align: left;margin-top: 1em;padding-left: 3%;" id="headerButtonGroup">
 			<span><a data-role="button"
                      style="width: 31%;;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;"
@@ -31,6 +28,9 @@
                      style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE; "
                      data-bind="click: headerButtonClick">粗纱</a></span>
 		</div>
+	</header>
+
+	<div data-role="content" style="background-color: white;">
 		<div>
 			<div data-role="listview" data-bind="source: contentDataSource" data-template="nameTemplate" data-fixed-headers="true" id="yieldInputListView">
 			</div>
