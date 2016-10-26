@@ -14,11 +14,11 @@ function viewInit() {
 		culture: "zh-CN",
 		format: "yyyy-MM-dd"
 	});
-	$("#queryYieldInput_machine").kendoDropDownList({
-		dataSource: [],
-		dataTextField: "devcodename",
-		dataValueField: "devcode"
-	});
+//	$("#queryYieldInput_machine").kendoDropDownList({
+//		dataSource: [],
+//		dataTextField: "devcodename",
+//		dataValueField: "devcode"
+//	});
 	var todayDate = kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd');
 	$("#queryYieldInput_startTimeDatepicker1").data("kendoDatePicker").value(todayDate);
 	$("#queryYieldInput_startTimeDatepicker2").data("kendoDatePicker").value(todayDate);
@@ -142,11 +142,6 @@ function queryYieldInputFetchDevicesDataRequest() {
 		dataType: "json",
 		success: function(data) {
 			devList = data.outputstr.flowcoderows;
-			//			var dropdownlist = $("#queryYieldInput_machine").data("kendoDropDownList");
-			//			dropdownlist.dataSource.add({
-			//				devcodename: "全部",
-			//				devcode: "ALL"
-			//			});
 			var devDropDownList = document.getElementById('queryYieldInput_machine');
 			for(var key in devList) {
 				var object = devList[key];
@@ -154,7 +149,7 @@ function queryYieldInputFetchDevicesDataRequest() {
 				if(object.flowcode == "2" || object.flowcode == "3" || object.flowcode == "7") {
 					$.each(object.devices, function(n, device) {
 						if(device.devcode.trim() != "" && device.devcode && device.devcodename.trim() != "" && device.devcodename) {
-							devDropDownList.options.add(new Option(device.devcodename.trim() + ":" + device.devcode.trim(), device.devcode.trim()));
+							devDropDownList.options.add(new Option(device.devcodename.trim(), device.devcode.trim()));
 						}
 					});
 				}
@@ -253,11 +248,11 @@ function queryYieldInput_AutoFill(flowcode) {
 	//筛选设备选项
 	for(var key in devList) {
 		var object = devList[key];
-		if(object.flowcode == flowcode || flowcode == "ALL") {
+		if(object.flowcode == flowcode || (flowcode == "ALL" && (object.flowcode == "2" || object.flowcode == "3" || object.flowcode == "7"))) {
 			$.each(object.devices, function(n, device) {
 				if(device.devcode.trim() != "" && device.devcode && device.devcodename.trim() != "" && device.devcodename) {
 					//添加设备选项
-					devDropDownList.options.add(new Option(device.devcodename.trim() + ":" + device.devcode.trim(), device.devcode.trim()));
+					devDropDownList.options.add(new Option(device.devcodename.trim(), device.devcode.trim()));
 				}
 			});
 		}
