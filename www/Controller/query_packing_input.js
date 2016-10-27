@@ -91,10 +91,6 @@ function queryPackingInputModifyDataRequest(params) {
 //params mark - Action
 $("#queryPackingInput_QueryButton").click(function() {
 	var params;
-	var Type = "";
-	if($("#queryPackingInput_type").val() == "回条") Type = "0";
-	else if($("#queryPackingInput_type").val() == "粗纱头") Type = "1";
-	else if($("#queryPackingInput_type").val() == "白花") Type = "2";
 
 	var startDate = $("#queryPackingInput_startTimeDatepicker1").val()+" 00:00:00";
 	var endDate = $("#queryPackingInput_startTimeDatepicker2").val()+" 23:59:59";
@@ -108,8 +104,7 @@ $("#queryPackingInput_QueryButton").click(function() {
 		"startdate": startDate,
 		"enddate": endDate,
 	};
-	if($("#queryPackingInput_type").val() != "全部") params.Type = Type;
-
+	if($("#queryPackingInput_type").val() != "ALL") params.Type = $("#queryPackingInput_type").val();
 	queryPackingInputFetchDataRequest(params);
 });
 
