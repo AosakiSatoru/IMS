@@ -1,23 +1,55 @@
-if(storage.get("login") == "yes") {
-	kendo.ui.progress($("#IMSLogin"), true);
+var beginDate; // 两次点击退出按钮开始时间  
+var isToast = false; // 是否弹出弹框  
+
+var exitFunction = function() {
+	var endDate = new Date().getTime(); // 两次点击退出按钮结束时间  
+	// 提示过Toast并且两次点击时间小于2S  
+	if(isToast && endDate - beginDate < 2000) {
+		beginDate = endDate;
+		isToast = false;
+		navigator.app.exitApp();
+	} else Toast('再次点击退出程序', 2000);
+};
+
+function Toast(msg, duration) {
+	isToast = true;
+	beginDate = new Date().getTime();
+	duration = isNaN(duration) ? 3000 : duration; // duration是不是一个数字      
+	var m = document.createElement('div');
+	m.innerHTML = msg;
+	m.style.cssText = "width:60%; min-width:150px; background:#000; opacity:0.5; height:40px; color:#fff; line-height:40px; text-align:center; border-radius:5px; position:fixed; top:80%; left:20%; z-index:999999; font-weight:bold;";
+	document.body.appendChild(m);
 	setTimeout(function() {
-		window.location.href = "View/home.html";
-	}, 1000);
-
-} else {
-	try {
-		window.plugins.jPushPlugin.setTagsWithAlias([], "");
-	} catch(exception) {
-
-	}
+		var d = 0.5;
+		m.style.webkitTransition = '-webkit-transform ' + d + 's ease-in, opacity ' + d + 's ease-in';
+		m.style.opacity = '0';
+		setTimeout(function() {
+			document.body.removeChild(m)
+		}, d * 1000);
+	}, duration);
 }
 
 document.addEventListener("deviceready", function() {
+	if(storage.get("login") == "yes") {
+		kendo.ui.progress($("#IMSLogin"), true);
+		setTimeout(function() {
+			window.location.href = "View/home.html";
+		}, 1000);
+
+	} else {
+		try {
+			window.plugins.jPushPlugin.setTagsWithAlias([], "");
+		} catch(exception) {
+
+		}
+	}
+	//显示版本号
 	try {
-		$("#version").text("V"+AppVersion.version);
-}catch(e){
-	alert("AppVersion fail to get");
-}
+		$("#version").text("V" + AppVersion.version);
+	} catch(e) {
+
+	}
+
 });
 var app = new kendo.mobile.Application(document.body, {
 	platform: 'ios',
@@ -31,6 +63,15 @@ function showPassword(element) {
 	} else {
 		$("#loginPassword")[0].type = "password";
 	}
+}
+
+function viewBeforeShow() {
+	beginDate = new Date().getTime();
+	document.addEventListener("backbutton", exitFunction, false);
+}
+
+function viewBeforeHide() {
+	document.removeEventListener("backbutton", exitFunction);
 }
 
 function RequestPreHookData() {
