@@ -153,6 +153,7 @@ $("#warningInfo_allButton").click(function() {
 		isAll = true;
 	}
 	warningInfoFetchDataRequest(!isAll, messageid_global);
+	$(".selector").val("");
 });
 
 function warningInfo_filter(flowcode) {
@@ -164,4 +165,5 @@ function warningInfo_displayStatus(status) {
 	if(status == "ALL") isAll = true;
 	else isAll = false;
 	warningInfoFetchDataRequest(!isAll, messageid_global);
+	$(".selector").val("");
 }
