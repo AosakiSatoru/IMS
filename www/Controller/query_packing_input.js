@@ -77,10 +77,12 @@ function queryPackingInputModifyDataRequest(params) {
 				alert("修改成功");
 			}
 			kendo.ui.progress($("#IMSQueryPackingInput"), false);
+		    $("#queryPackingInput_QueryButton").click();
 		},
 		error: function(data, status, e) {
 			kendo.ui.progress($("#IMSQueryPackingInput"), false);
 			alert("请求服务器出错");
+			 $("#queryPackingInput_QueryButton").click();
 		}
 	});
 

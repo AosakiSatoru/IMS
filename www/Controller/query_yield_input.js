@@ -91,10 +91,12 @@ function queryYieldInputModifyDataRequest(params) {
 				alert("修改成功");
 			}
 			kendo.ui.progress($("#IMSQueryYieldInput"), false);
+			$("#queryYieldInput_QueryButton").click();
 		},
 		error: function(data, status, e) {
 			kendo.ui.progress($("#IMSQueryYieldInput"), false);
 			alert("请求服务器出错");
+			$("#queryYieldInput_QueryButton").click();
 		}
 	});
 
