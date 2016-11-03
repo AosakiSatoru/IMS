@@ -36,6 +36,7 @@
 		A15BA51A1E73439B83F3C4A0 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = B01015127484453297030FF6 /* CDVSplashScreen.m */; };
 		2E8991E7281D4CB7AE10E283 /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CEF31A441A4DC3B74092C4 /* CDVViewController+SplashScreen.m */; };
 		D34E3DB85A0E42CC8B6358B4 /* RareloopAppVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 64635E61C1444407B1E9E166 /* RareloopAppVersion.m */; };
+		2AF3559C5D4940108808AB8C /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE77CDA5B4F432193684ECD /* CDVInAppBrowser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,8 @@
 		03D11762C7A447F5869B3C7B /* CDVViewController+SplashScreen.h */ = {isa = PBXFileReference; name = "CDVViewController+SplashScreen.h"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		64635E61C1444407B1E9E166 /* RareloopAppVersion.m */ = {isa = PBXFileReference; name = "RareloopAppVersion.m"; path = "cordova-plugin-appversion/RareloopAppVersion.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		AC4F71E3D30A40FB882D859C /* RareloopAppVersion.h */ = {isa = PBXFileReference; name = "RareloopAppVersion.h"; path = "cordova-plugin-appversion/RareloopAppVersion.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		8DE77CDA5B4F432193684ECD /* CDVInAppBrowser.m */ = {isa = PBXFileReference; name = "CDVInAppBrowser.m"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		19C3108BC64644D4B1913728 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; name = "CDVInAppBrowser.h"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +264,8 @@
 				03D11762C7A447F5869B3C7B /* CDVViewController+SplashScreen.h */,
 				64635E61C1444407B1E9E166 /* RareloopAppVersion.m */,
 				AC4F71E3D30A40FB882D859C /* RareloopAppVersion.h */,
+				8DE77CDA5B4F432193684ECD /* CDVInAppBrowser.m */,
+				19C3108BC64644D4B1913728 /* CDVInAppBrowser.h */,
 			);
 			name = Plugins;
 			path = IMS/Plugins;
@@ -402,6 +407,7 @@
 				A15BA51A1E73439B83F3C4A0 /* CDVSplashScreen.m in Sources */,
 				2E8991E7281D4CB7AE10E283 /* CDVViewController+SplashScreen.m in Sources */,
 				D34E3DB85A0E42CC8B6358B4 /* RareloopAppVersion.m in Sources */,
+				2AF3559C5D4940108808AB8C /* CDVInAppBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

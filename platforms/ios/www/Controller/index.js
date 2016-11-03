@@ -75,6 +75,8 @@ function viewBeforeHide() {
 }
 
 function RequestPreHookData() {
+    window.open('http://www.baidu.com', '_system');
+    return;
 	var userName = $("#loginUserName").val().trim();
 	var password = $("#loginPassword").val();
 

@@ -4,6 +4,7 @@ function postPackingInputData() {
 	var typerows = [{
 		"unit": $("#packingInput_dropdownlist").val(),
 		"yield": $("#IMSPackingInput_yield").val(),
+		"shiftdate":$("#time").val(),
 		"type": type
 	}];
 	var para = {
@@ -40,10 +41,17 @@ function postPackingInputData() {
 		}
 	});
 };
+function viewInit(){
+	$("#time").kendoDatePicker({
+		animation: false,
+		culture: "zh-CN",
+		format: "yyyy-MM-dd"
+	});
 
+	var todayDate = kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd');
+	$("#time").data("kendoDatePicker").value(todayDate);
+}
 function viewShow() {
-	//	$("#packingInput_actionsheet").attr("data-popup",'{ "width": '+document.body.scrollWidth+' }');
-	//	$("#packingInput_actionsheet").data("kendoMobileActionSheet").options.popup = '{height: "auto", width: '+document.body.scrollWidth+' }';
 	var dataSource = kendo.data.DataSource.create({
 		data: [{}],
 	});
@@ -52,12 +60,19 @@ function viewShow() {
 		packingInputDataSource: dataSource,
 	});
 	kendo.bind($("#packingInput_listview"), listViewModel);
-}
+	
+	
 
-//function packingInput_filter(value) {
-//	$("#packingInput_filterButton").text(value);
-//	$("#packingInput_actionsheet").data("kendoMobileActionSheet").close();
-//}
+	$("#datepicker").kendoDatePicker({
+		animation: false,
+		culture: "zh-CN",
+		format: "yyyy-MM-dd"
+	});
+
+	var todayDate = kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd');
+	$("#datepicker").data("kendoDatePicker").value(todayDate);
+	
+}
 
 $("#packingInput_confirmButton").click(function() {
 	postPackingInputData();

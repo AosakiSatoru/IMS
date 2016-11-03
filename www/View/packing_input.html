@@ -11,7 +11,7 @@
     </head>
     
     <body>-->
-<div data-role="view" data-title="副料打包" id="IMSPackingInput" data-show="viewShow">
+<div data-role="view" data-title="副料打包" id="IMSPackingInput" data-show="viewShow" data-init="viewInit">
 	<header data-role="header">
 		<span data-role="navbar" style="border-bottom-width:1px ;border-bottom-style: solid;border-bottom-color: lightgray;">
                     <div data-role="view-title" style="line-height: 80px;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
@@ -26,6 +26,8 @@
 			<span><a id="packingInput_button_2" data-role = "button" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">粗纱头</a></span>
 			<span><a id="packingInput_button_3" data-role = "button" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">白 花</a></span>
 		</div>
+		<input id="time" style="font-size: 1em;width: 100%;" placeholder="开始日期" />
+				
 		<ul data-role="listview" data-bind="source: packingInputDataSource" data-style="inset" style="margin-top: 15px;background-color: white" data-template="packingInput_itemTemplate" id="packingInput_listview">
 		</ul>
 	</div>

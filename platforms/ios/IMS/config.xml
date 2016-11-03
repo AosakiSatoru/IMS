@@ -68,4 +68,7 @@
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
     <preference name="ShowSplashScreenSpinner" value="false" />
+    <feature name="InAppBrowser">
+        <param name="ios-package" value="CDVInAppBrowser" />
+    </feature>
 </widget>
