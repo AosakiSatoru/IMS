@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-packageName="com.esquel.ims" id="com.esquel.ims" ios-CFBundleIdentifier="com.esquel.ims.prod" version="1.0.18" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-packageName="com.esquel.ims" android-versionCode="18" id="com.esquel.ims" ios-CFBundleIdentifier="com.esquel.ims.prod" ios-CFBundleVersion="18" version="1.0.18" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
@@ -37,6 +37,9 @@
     <feature name="RareloopAppVersion">
         <param name="ios-package" value="RareloopAppVersion" />
     </feature>
+    <feature name="InAppBrowser">
+        <param name="ios-package" value="CDVInAppBrowser" />
+    </feature>
     <name>IMS</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -68,7 +71,4 @@
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
     <preference name="ShowSplashScreenSpinner" value="false" />
-    <feature name="InAppBrowser">
-        <param name="ios-package" value="CDVInAppBrowser" />
-    </feature>
 </widget>

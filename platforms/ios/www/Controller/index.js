@@ -30,6 +30,27 @@ function Toast(msg, duration) {
 }
 
 document.addEventListener("deviceready", function() {
+	
+	var platform = (device.platform == "Android")?ANDROID:IOS;
+	$.ajax({
+		type: "post",
+		url:IMSUrl +"getAppVersion/",
+		timeout: 10000,
+		async: false,
+		dataType: "jsonp",
+		data: {
+			"parameter": JSON.stringify({"platform":platform})
+		},
+		dataType: "json",
+		success: function(data) {
+        console.log(data);
+			//比较AppVersion.version 和
+		},
+		error: function(data, status, e) {
+			//如果失败，就不做处理
+		}
+	});
+	
 	if(storage.get("login") == "yes") {
 		kendo.ui.progress($("#IMSLogin"), true);
 		setTimeout(function() {
@@ -75,8 +96,6 @@ function viewBeforeHide() {
 }
 
 function RequestPreHookData() {
-    window.open('http://www.baidu.com', '_system');
-    return;
 	var userName = $("#loginUserName").val().trim();
 	var password = $("#loginPassword").val();
 
