@@ -1,5 +1,6 @@
 var beginDate; // 两次点击退出按钮开始时间  
 var isToast = false; // 是否弹出弹框  
+var updateUrl;
 
 var exitFunction = function() {
 	var endDate = new Date().getTime(); // 两次点击退出按钮结束时间  
@@ -30,39 +31,38 @@ function Toast(msg, duration) {
 }
 
 document.addEventListener("deviceready", function() {
-	
-	var platform = (device.platform == "Android")?ANDROID:IOS;
-	$.ajax({
-		type: "post",
-		url:IMSUrl +"getAppVersion/",
-		timeout: 10000,
-		async: false,
-		dataType: "jsonp",
-		data: {
-			"parameter": JSON.stringify({"platform":platform})
-		},
-		dataType: "json",
-		success: function(data) {
-        console.log(data);
-			//比较AppVersion.version 和
-		},
-		error: function(data, status, e) {
-			//如果失败，就不做处理
-		}
-	});
-	
-	if(storage.get("login") == "yes") {
-		kendo.ui.progress($("#IMSLogin"), true);
-		setTimeout(function() {
-			window.location.href = "View/home.html";
-		}, 1000);
+	try {
+		var platform = (device.platform == "Android") ? "ANDROID" : "IOS";
+		$.ajax({
+			type: "post",
+			url: IMSUrl + "getAppVersion/",
+			timeout: 4000,
+			async: false,
+			dataType: "jsonp",
+			data: {
+				"parameter": JSON.stringify({
+					"platform": platform
+				})
+			},
+			dataType: "json",
+			success: function(data) {
+				console.log(data);
+				if(data.outputstr.version > AppVersion.version) {
+					$("#updateModal").data("kendoMobileModalView").open();
+					updateUrl = data.outputstr.url;
+					console.log("Server Version:" + data.outputstr.version + " App Version:" + AppVersion.version + " Need Update");
+				} else {
+					autoLogin();
+					console.log("Server Version:" + data.outputstr.version + " App Version:" + AppVersion.version + " No Update");
+				}
+			},
+			error: function(data, status, e) {
+				autoLogin();
+				console.log("error:00001 get Version Fail!");
+			}
+		});
+	} catch(exception) {
 
-	} else {
-		try {
-			window.plugins.jPushPlugin.setTagsWithAlias([], "");
-		} catch(exception) {
-
-		}
 	}
 	//显示版本号
 	try {
@@ -76,6 +76,22 @@ var app = new kendo.mobile.Application(document.body, {
 	platform: 'ios',
 	skin: 'nova'
 });
+
+function autoLogin() {
+	if(storage.get("login") == "yes") {
+		kendo.ui.progress($("#IMSLogin"), true);
+		setTimeout(function() {
+			window.location.href = "View/home.html";
+		}, 1000);
+
+	} else {
+		try {
+			window.plugins.jPushPlugin.setTagsWithAlias([], "");
+		} catch(exception) {
+
+		}
+	}
+}
 
 function showPassword(element) {
 
@@ -196,4 +212,9 @@ $('input#loginPassword').bind('keypress', function(event) {
 	if(event.keyCode == "13") {
 		RequestPreHookData();
 	}
+});
+
+$("#updateButton").click(function (){
+	window.open(updateUrl, '_system');
+//	$("#updateModal").data("kendoMobileModalView").close();
 });
