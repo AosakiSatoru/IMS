@@ -34,6 +34,9 @@
         },
         "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "com.esquel.ims"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.esquel.ims"
         }
     },
     "dependent_plugins": {}

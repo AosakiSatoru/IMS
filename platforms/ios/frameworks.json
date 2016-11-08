@@ -1,8 +1,8 @@
 {
     "CFNetwork.framework": 2,
     "CoreFoundation.framework": 2,
-    "CoreTelephony.framework": 2,
-    "SystemConfiguration.framework": 2,
+    "CoreTelephony.framework": 3,
+    "SystemConfiguration.framework": 3,
     "Foundation.framework": 2,
     "UIKit.framework": 2,
     "Security.framework": 2,

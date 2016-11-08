@@ -18,6 +18,7 @@ var todayDate = kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd');
 $("#datepicker").data("kendoDatePicker").value(todayDate);
 var beginDate; // 两次点击退出按钮开始时间  
 var isToast = false; // 是否弹出弹框  
+var isOnline = true;
 
 var exitFunction = function() {
 	var endDate = new Date().getTime(); // 两次点击退出按钮结束时间  
@@ -200,12 +201,27 @@ document.addEventListener("deviceready", function() {
 
 		}
 	}
+
 	document.addEventListener("jpush.setTagsWithAlias", onTagsWithAlias, false);
 	document.addEventListener("jpush.receiveMessage", onReceiveMessage, false);
 	document.addEventListener("jpush.openNotification", onOpenNotification, false);
 
+	document.addEventListener("online", onLineCallBack, false);
+	document.addEventListener("offline", offLineCallBack, false);
+
 }, false);
 
+function offLineCallBack(e) {
+	// Handle the offline event
+	isOnline = false;
+
+}
+
+function onLineCallBack() {
+	// Handle the offline event
+	isOnline = true;
+
+}
 $("#logout").click(function() {
 	try {
 		window.plugins.jPushPlugin.setTagsWithAlias([], "");
