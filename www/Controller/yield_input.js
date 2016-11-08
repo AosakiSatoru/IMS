@@ -134,7 +134,7 @@ function bindView(data) {
 	});
 	contentDataSource = first;
 	contentViewModel = kendo.observable({
-		"selectflowcode": 2,
+		"selectflowcode": 3,
 		"varietiesDataSource": varietiesDataSource,
 		"contentDataSource": contentDataSource,
 		"first": first,
