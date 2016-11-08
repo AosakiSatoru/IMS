@@ -78,18 +78,10 @@ var app = new kendo.mobile.Application(document.body, {
 });
 
 function autoLogin() {
-	if(storage.get("login") == "yes") {
-		kendo.ui.progress($("#IMSLogin"), true);
-		setTimeout(function() {
-			window.location.href = "View/home.html";
-		}, 1000);
+	try {
+		window.plugins.jPushPlugin.setTagsWithAlias([], "");
+	} catch(exception) {
 
-	} else {
-		try {
-			window.plugins.jPushPlugin.setTagsWithAlias([], "");
-		} catch(exception) {
-
-		}
 	}
 }
 
