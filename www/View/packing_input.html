@@ -25,9 +25,11 @@
 			<span><a id="packingInput_button_1" data-role = "button" style="width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;">回 条</a></span>
 			<span><a id="packingInput_button_2" data-role = "button" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">粗纱头</a></span>
 			<span><a id="packingInput_button_3" data-role = "button" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">白 花</a></span>
+			<div style="margin-top: 15px;">
+				<input id="time" style="font-size: 1em;width: 91%;" placeholder="日期" />
+			</div>
 		</div>
-		<input id="time" style="font-size: 1em;width: 100%;" placeholder="开始日期" />
-				
+
 		<ul data-role="listview" data-bind="source: packingInputDataSource" data-style="inset" style="margin-top: 15px;background-color: white" data-template="packingInput_itemTemplate" id="packingInput_listview">
 		</ul>
 	</div>

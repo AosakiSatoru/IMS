@@ -174,7 +174,9 @@ document.addEventListener("deviceready", function() {
 			}
 			//alert("i onReceiveMessage"+JSON.stringify(event));
 			//alert("收到自定义信息" + message);
-			$(".km-badge").text(JSON.parse(message)["告警汇总"]);
+			navigator.vibrate(2000);
+			navigator.notification.beep(1);
+			//$(".km-badge").text(JSON.parse(message)["告警汇总"]);
 		} catch(exception) {
 			alert("JPushPlugin:onReceiveMessage-->" + exception);
 		}
