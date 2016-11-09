@@ -143,8 +143,13 @@ $("#warning").click(function() {
 $("#queryYieldInput").click(function() {
 	app.navigate("query_yield_input.html");
 });
+
 $("#queryPackingInput").click(function() {
 	app.navigate("query_packing_input.html");
+});
+
+$("#offline_upload").click(function() {
+	app.navigate("offline_upload.html");
 });
 
 document.addEventListener("deviceready", function() {

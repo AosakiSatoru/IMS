@@ -17,6 +17,10 @@ function postPackingInputData() {
 	}
 	
 	var url = IMSUrl + "busi_PackingInput/";
+	if(!isOnline){
+		saveOfflineInfo(para);
+		return;
+	}
 	kendo.ui.progress($("body"), true);
 	$.ajax({
 		type: "post",
@@ -37,10 +41,37 @@ function postPackingInputData() {
 		},
 		error: function(data, status, e) {
 			kendo.ui.progress($("body"), false);
-			alert("请求服务器出错");
+			if (e == "timeout"){
+				saveOfflineInfo(para);
+			}
+			else {
+				alert("请求服务器出错");
+			}
 		}
 	});
 };
+function saveOfflineInfo(para){
+
+	var log = {type:"packing_input",
+		operatetime:kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd HH:mm:ss'),
+		status:"",
+		content:para
+	};
+	var array = isArrayFn(JSON.parse(storage.get("offline")))?JSON.parse(storage.get("offline")):new Array();
+	console.log(">>>>>>>>>>"+array);
+	array.push(log);
+	console.log("<<<<<<<<<<"+array);
+	storage.put("offline",JSON.stringify(array));
+	alert("网络环境不佳,请稍候在网络好的的地方再重新上传");
+}
+//判断是不是数组
+function isArrayFn(value){
+	if (typeof Array.isArray === "function") {
+		return Array.isArray(value);
+	}else{
+		return Object.prototype.toString.call(value) === "[object Array]";
+	}
+}
 function viewInit(){
 	$("#time").kendoDatePicker({
 		animation: false,
