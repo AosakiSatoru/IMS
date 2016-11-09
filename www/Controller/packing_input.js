@@ -35,8 +35,10 @@ function postPackingInputData() {
 		dataType: "json",
 		success: function(data) {
 			kendo.ui.progress($("body"), false);
-			if(data.outstatus == 0)
+			if(data.outstatus == 0) {
 				alert("处理成功");
+				$("#IMSPackingInput_yield").val("");
+			}
 			else
 				alert("操作失败，请稍后再试");
 		},
@@ -66,7 +68,7 @@ function saveOfflineInfo(para) {
 	console.log("<<<<<<<<<<" + array);
 	storage.put("offline", JSON.stringify(array));
 	alert("网络环境不佳,请稍候在网络好的的地方再重新上传");
-
+	$("#IMSPackingInput_yield").val("");
 }
 
 function dealWithContent(content) {
