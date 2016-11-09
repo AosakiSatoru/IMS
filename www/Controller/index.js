@@ -110,7 +110,7 @@ function RequestPreHookData() {
 	};
 
 	if(userName.length == 0) {
-		alert("请输入名字");
+		alert("请输入账号");
 		return;
 	}
 

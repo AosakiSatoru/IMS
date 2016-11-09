@@ -4,6 +4,9 @@
 
 #packingInput_listview.km-list>li{
 	border: none;
+	margin: 0px;
+	padding-left: 3%;
+	padding-right: 3%;
 }
 
 /*.km-nova .km-actionsheet-root, .km-nova .km-popup, .km-nova .km-shim, .km-phone .km-nova .km-actionsheet-wrapper{

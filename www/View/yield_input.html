@@ -12,20 +12,20 @@
 	<body>-->
 <div data-role="view" data-title="产量输入" data-use-native-scrolling="true" data-show="viewShow" data-init="viewInit" id="IMSYieldinput">
 	<header data-role="header">
-		<span data-role="navbar">
+		<span data-role="navbar" style="border-bottom-width:1px ;border-bottom-style: solid;border-bottom-color: lightgray;">
       		<div data-role="view-title" style="line-height: 80px;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
        		<a href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back_big@3x.png);background-repeat: round;height: 80px;width: 100px;"></a>
 			<a data-badge="0" id="packingInput_rightNavButton_1" href="#warning_list.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red_big@3x.png);background-repeat: round;height: 80px;width: 100px;"></a>
 		</span>
-		<div style="font-size: 1em;text-align: left;margin-top: 1em;padding-left: 3%;" id="headerButtonGroup">
+		<div style="font-size: 1em;text-align: center;margin-top: 1em;" id="headerButtonGroup">
 			<span><a data-role="button"
-                     style="width: 31%;;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;"
+                     style="width: 30%;;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;"
                      data-bind="click: headerButtonClick">预并</a></span>
 			<span><a data-role="button"
-                     style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;"
+                     style="width: 30%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;"
                      data-bind="click: headerButtonClick">梳棉</a></span>
 			<span><a data-role="button"
-                     style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE; "
+                     style="width: 30%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE; "
                      data-bind="click: headerButtonClick">粗纱</a></span>
 		</div>
 	</header>
@@ -37,10 +37,8 @@
 		</div>
 	</div>
 
-	<div data-role="footer" id="footer">
-		<button id="inputButton" type="submit" data-bind="click: input" style="width: 100%;height: 2.5em;border: none;font-size: 1.2em;padding: 0em;background-color: #A62A40;color: #FFFFFF;text-align: center;margin-bottom:0px">
-            确认
-        </button>
+	<div style="text-align: center;position: relative;bottom: 0.5em;">
+		<button id="yieldInput_confirmButton" style="border-width: 1px;border-style: solid;border-radius: 4px;width: 97%;height: 2.5em;font-size: 1.2em;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;">确认</button>
 	</div>
 	<!--List模板-->
 	<script id="nameTemplate" type="text/x-kendo-template">
