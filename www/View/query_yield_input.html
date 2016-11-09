@@ -24,8 +24,8 @@
 		</span>
 		<div style="background-color: slategray;">
 			<div style="text-align: center;border-bottom-width: 1px;border-top-width: 1px;border-bottom-color: #EEEEEE;border-top-color: #EEEEEE;border-bottom-style: solid;border-top-style: solid;padding-top: 10px;padding-bottom: 10px;">
-				<input id="queryYieldInput_startTimeDatepicker1" style="font-size: 1em;width: 47%;" placeholder="开始日期" />
-				<input id="queryYieldInput_startTimeDatepicker2" style="font-size: 1em;width: 47%;" placeholder="结束日期" />
+				<input id="queryYieldInput_startTimeDatepicker1" onkeydown="GLOBAL_EnterDisable()" style="font-size: 1em;width: 47%;" placeholder="开始日期" />
+				<input id="queryYieldInput_startTimeDatepicker2" onkeydown="GLOBAL_EnterDisable()" style="font-size: 1em;width: 47%;" placeholder="结束日期" />
 				<ul data-role="listview" data-bind="source: queryYieldInputCommonDataSource" data-style="inset" style="width: 100%;margin-top: 15px;background-color: white" data-template="queryYieldInputCommonItemTemplate" id="queryYieldInputCommonlistview">
 				</ul>
 				<div>
@@ -52,7 +52,7 @@
 			<select id="queryYieldInput_varieties" data-bind="source: varietiesDataSource,value:variety" data-text-field="variety" data-value-field="variety" style="position: relative;top: 25px;font-size: 1em;float: right;width: 48%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
 				<option value="" selected disabled="true">品种</option>
 			</select>
-			<input id="queryYieldInput_yield" value="#:yield#" placeholder="产量" type="number" style="position: relative;font-size: 1em;padding-left: 0.5em;width: 48%;height: 35px;margin-top: 35px;border-width: 2px;border-style: solid;border-color: rgb(238,238,238);border-radius: 4px;"></input>
+			<input id="queryYieldInput_yield" value="#:yield#" placeholder="产量" type="number" onkeydown="GLOBAL_onlyNum(this.value)" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" style="position: relative;font-size: 1em;padding-left: 0.5em;width: 48%;height: 35px;margin-top: 35px;border-width: 2px;border-style: solid;border-color: rgb(238,238,238);border-radius: 4px;"></input>
 			<div data-role="button" data-bind="click: editItem" style="float: right;margin-top: 18px;width: 47.5%;background-color: rgb(255,255,255);color: rgb(169,41,61);border-color: rgb(169,41,61);border-radius: 4px;font-size: 14px;">修 改</div>
 			<!--<div data-role="button" data-bind="click: deleteItem" style="float: right;width: 47.5%;background-color: rgb(255,255,255);color: rgb(169,41,61);border-color: rgb(169,41,61);border-radius: 4px;">删 除</div>-->
 
@@ -62,34 +62,39 @@
 	<!--Common Item模板-->
 	<script id="queryYieldInputCommonItemTemplate" type="text/x-kendo-template">
 		<div style="background-color: slategray;">
-			<div style="text-align: left;">
-			<span style="top: 5px;font-size: 1em;text-align: right;width: 5%;">工序:</span>
-			<select id="queryYieldInput_procedure" onchange="queryYieldInput_AutoFill(this.options[this.options.selectedIndex].value)" style="position: relative;top: 18px;font-size: 1em;width: 26%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
-				<option value="ALL" selected>全部</option>
-				<!--<option value="1">清花</option>-->
-				<option value="2">梳棉</option>
-				<option value="3">预并</option>
-				<!--<option value="4">条并卷</option>
+			<div style="text-align: center;">
+				<div style="float: left;text-align: left;width: 48%;margin-left: 2%;">
+					<span style="top: 5px;font-size: 0.8em;text-align: right;width: 5%;">工序:</span>
+					<select id="queryYieldInput_procedure" onchange="queryYieldInput_AutoFill(this.options[this.options.selectedIndex].value)" style="position: relative;top: 18px;font-size: 0.8em;width: 70%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
+						<option value="ALL" selected>全部</option>
+						<!--<option value="1">清花</option>-->
+						<option value="2">梳棉</option>
+						<option value="3">预并</option>
+						<!--<option value="4">条并卷</option>
 				<option value="5">精梳</option>
 				<option value="6">末并</option>-->
-				<option value="7">粗纱</option>
-				<!--<option value="8">细纱</option>
+						<option value="7">粗纱</option>
+						<!--<option value="8">细纱</option>
 				<option value="9">清纱</option>
 				<option value="10">络筒</option>-->
-			</select>
-			<span style="top: 5px;font-size: 1em;text-align: right;width: 5%;">班别:</span>
-			<select id="duty" style="position: relative;top: 18px;font-size: 1em;width: 26%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
-				<option value="ALL" selected>全部</option>
-				<option value="1">甲</option>
-				<option value="2">乙</option>
-				<option value="3">丙</option>
-			</select>
+					</select>
+				</div>
+				<div style="float: right;text-align: right;width: 48%;margin-right: 2%;">
+					<span style="top: 5px;font-size: 0.8em;text-align: right;width: 5%;">班别:</span>
+					<select id="duty" style="position: relative;top: 18px;font-size: 0.8em;width: 70%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
+						<option value="ALL" selected>全部</option>
+						<option value="1">甲</option>
+						<option value="2">乙</option>
+						<option value="3">丙</option>
+					</select>
+				</div>
+
 			</div>
-			
+
 		</div>
-		<div style="margin-top: 15px;text-align: left;">
-			<span style="top: 5px;font-size: 1em;text-align: right;">设备:</span>
-			<select id="queryYieldInput_machine" style="position: relative;top: 18px;font-size: 1em;width: 58%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
+		<div style="margin-top: 15px;text-align: left;float: left;margin-left: 2%;width: 100%;">
+			<span style="top: 5px;font-size: 0.8em;text-align: right;">设备:</span>
+			<select id="queryYieldInput_machine" style="position: relative;top: 18px;font-size: 0.8em;width: 55%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
 				<option value="ALL" selected>全部</option>
 			</select>
 		</div>

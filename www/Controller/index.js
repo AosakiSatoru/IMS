@@ -52,12 +52,10 @@ document.addEventListener("deviceready", function() {
 					updateUrl = data.outputstr.url;
 					console.log("Server Version:" + data.outputstr.version + " App Version:" + AppVersion.version + " Need Update");
 				} else {
-					autoLogin();
 					console.log("Server Version:" + data.outputstr.version + " App Version:" + AppVersion.version + " No Update");
 				}
 			},
 			error: function(data, status, e) {
-				autoLogin();
 				console.log("error:00001 get Version Fail!");
 			}
 		});
@@ -70,20 +68,18 @@ document.addEventListener("deviceready", function() {
 	} catch(e) {
 
 	}
+	
+	try {
+		window.plugins.jPushPlugin.setTagsWithAlias([], "");
+	} catch(exception) {
+
+	}
 
 });
 var app = new kendo.mobile.Application(document.body, {
 	platform: 'ios',
 	skin: 'nova'
 });
-
-function autoLogin() {
-	try {
-		window.plugins.jPushPlugin.setTagsWithAlias([], "");
-	} catch(exception) {
-
-	}
-}
 
 function showPassword(element) {
 

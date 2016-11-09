@@ -26,7 +26,7 @@
 			<span><a id="packingInput_button_2" data-role = "button" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">粗纱头</a></span>
 			<span><a id="packingInput_button_3" data-role = "button" style="width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;">白 花</a></span>
 			<div style="margin-top: 15px;">
-				<input id="time" style="font-size: 1em;width: 91%;" placeholder="日期" />
+				<input id="time" onkeydown="GLOBAL_EnterDisable()" style="font-size: 1em;width: 91%;" placeholder="日期" />
 			</div>
 		</div>
 
@@ -56,7 +56,7 @@
 		</div>
 		<img src="../resources/@3x/dropdownlist_icon@3x.png" style="width: 20px;position: absolute;right: 30px;top: 13px;z-index: 999;" />
 		<div style="width: 100%;text-align: center;position: relative;margin-top: 15px;">
-			<input id="IMSPackingInput_yield" type="number" placeholder="请输入数量" style="position: relative;top: 40px;font-size: 0.8em;width: 100%;padding: 10px;margin: 0;border: none;background-color: rgb(238,238,238);border-radius: 6px;" />
+			<input id="IMSPackingInput_yield" type="number" placeholder="请输入数量" onkeydown="GLOBAL_onlyNum(this.value)" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" style="position: relative;top: 40px;font-size: 0.8em;width: 100%;padding: 10px;margin: 0;border: none;background-color: rgb(238,238,238);border-radius: 6px;" />
 		</div>
 	</script>
 

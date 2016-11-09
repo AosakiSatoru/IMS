@@ -5,20 +5,38 @@ var devList;
 function viewInit() {
 	kendo.ui.progress($("#IMSQueryYieldInput"), true);
 	$("#queryYieldInput_startTimeDatepicker1").kendoDatePicker({
-		animation: false,
+		animation: {
+			open: {
+				effects: "fadeIn",
+				duration: 300
+			},
+			close: {
+				effects: "fadeOut",
+				duration: 300
+			}
+		},
 		culture: "zh-CN",
 		format: "yyyy-MM-dd"
 	});
 	$("#queryYieldInput_startTimeDatepicker2").kendoDatePicker({
-		animation: false,
+		animation: {
+			open: {
+				effects: "fadeIn",
+				duration: 300
+			},
+			close: {
+				effects: "fadeOut",
+				duration: 300
+			}
+		},
 		culture: "zh-CN",
 		format: "yyyy-MM-dd"
 	});
-//	$("#queryYieldInput_machine").kendoDropDownList({
-//		dataSource: [],
-//		dataTextField: "devcodename",
-//		dataValueField: "devcode"
-//	});
+	//	$("#queryYieldInput_machine").kendoDropDownList({
+	//		dataSource: [],
+	//		dataTextField: "devcodename",
+	//		dataValueField: "devcode"
+	//	});
 	var todayDate = kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd');
 	$("#queryYieldInput_startTimeDatepicker1").data("kendoDatePicker").value(todayDate);
 	$("#queryYieldInput_startTimeDatepicker2").data("kendoDatePicker").value(todayDate);
@@ -261,21 +279,3 @@ function queryYieldInput_AutoFill(flowcode) {
 	}
 
 }
-
-Date.prototype.Format = function(fmt) { //author: meizz  
-	var o = {
-		"M+": this.getMonth() + 1, //月份  
-		"d+": this.getDate(), //日  
-		"h+": this.getHours(), //小时  
-		"m+": this.getMinutes(), //分  
-		"s+": this.getSeconds(), //秒  
-		"q+": Math.floor((this.getMonth() + 3) / 3), //季度  
-		"S": this.getMilliseconds() //毫秒  
-	};
-	if(/(y+)/.test(fmt))
-		fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-	for(var k in o)
-		if(new RegExp("(" + k + ")").test(fmt))
-			fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-	return fmt;
-};
