@@ -1,30 +1,27 @@
-
 <div data-role="view" data-title="离线恢复上传" id="offline_upload" data-show="viewShow" data-init="viewInit" data-after-show="viewAfterShow">
-    <header data-role="header">
-				<span data-role="navbar">
+	<header data-role="header">
+		<span data-role="navbar">
                     <div data-role="view-title"
                          style="line-height: 80px;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
 
 					    <a id="bindingMachine_leftNavButton" href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back_big@3x.png);background-repeat: round;height: 80px;width: 100px;"></a>
                         <a  id="submit"  data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red_big@3x.png);background-repeat: round;height: 80px;width: 100px;"></a>
                 </span>
-    </header>
-    <div data-role="content" style="background-color: #F7F7F7;">
-        <div data-role="listview" data-bind="source: dataSource" data-template="offline_upload_Template" data-fixed-headers="true" id="offlineUploadListView" style="background-color: white;" data-click="listViewClick">
-        </div>
-    </div>
+	</header>
+	<div data-role="content" style="background-color: #F7F7F7;">
+		<div data-role="listview" data-bind="source: dataSource" data-template="offline_upload_Template" data-fixed-headers="true" id="offlineUploadListView" style="background-color: white;" data-click="listViewClick">
+		</div>
+	</div>
 
+	<script id="offline_upload_Template" type="text/x-kendo-template">
+		<div>#:type#</div>
+		<div>#:operatetime#</div>
+		<div>#:info#</div>
+		<div>#:status#</div>
+		<button data-bind="click: deleteItem">删除</button>
+	</script>
 
-    <script id="offline_upload_Template" type="text/x-kendo-template">
-        <div>#:type#</div>
-        <div>#:operatetime#</div>
-        <div>#:info#</div>
-        <div>#:status#</div>
-        <button data-bind="click: deleteItem">删除</button>
-    </script>
-
-    <script src="../Controller/url.js"></script>
-    <script src="../Controller/storage.js"></script>
-    <script src="../Controller/offline_upload.js"></script>
+	<script src="../Controller/url.js"></script>
+	<script src="../Controller/storage.js"></script>
+	<script src="../Controller/offline_upload.js"></script>
 </div>
-
