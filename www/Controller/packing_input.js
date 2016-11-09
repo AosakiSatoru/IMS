@@ -18,6 +18,7 @@ function postPackingInputData() {
 	
 	var url = IMSUrl + "busi_PackingInput/";
 	if(!isOnline){
+
 		saveOfflineInfo(para);
 		return;
 	}
@@ -52,10 +53,12 @@ function postPackingInputData() {
 };
 function saveOfflineInfo(para){
 
-	var log = {type:"packing_input",
+	var log = {
+		type:"副料打包",
 		operatetime:kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd HH:mm:ss'),
 		status:"",
-		content:para
+		info:dealWithContent(JSON.stringify(para)),
+		content:JSON.stringify(para)
 	};
 	var array = isArrayFn(JSON.parse(storage.get("offline")))?JSON.parse(storage.get("offline")):new Array();
 	console.log(">>>>>>>>>>"+array);
@@ -63,6 +66,24 @@ function saveOfflineInfo(para){
 	console.log("<<<<<<<<<<"+array);
 	storage.put("offline",JSON.stringify(array));
 	alert("网络环境不佳,请稍候在网络好的的地方再重新上传");
+
+}
+function  dealWithContent(content) {
+	return content.replace(/[{"}]/g,"")
+		.replace(/typerows/,"内容")
+		.replace(/flowcoderows/,"内容")
+		.replace(/unit/g,"单位")
+		.replace(/yield/g,"产量")
+		.replace(/shiftdate/,"时间")
+		.replace(/username/g,"操作人")
+		.replace(/type/g,"类别")
+		.replace(/shiftdate/g,"时间")
+		.replace(/flowcode/g,"工序号")
+		.replace(/machinerows/g,"机台")
+		.replace(/devcode/g,"机台号")
+		.replace(/varieties/g,"品种")
+
+
 }
 //判断是不是数组
 function isArrayFn(value){

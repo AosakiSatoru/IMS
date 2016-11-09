@@ -18,8 +18,9 @@
     <script id="offline_upload_Template" type="text/x-kendo-template">
         <div>#:type#</div>
         <div>#:operatetime#</div>
-        <div>#:content#</div>
+        <div>#:info#</div>
         <div>#:status#</div>
+        <button data-bind="click: deleteItem">删除</button>
     </script>
 
     <script src="../Controller/url.js"></script>
@@ -27,6 +28,3 @@
     <script src="../Controller/offline_upload.js"></script>
 </div>
 
-<!--</body>
-
-</html>-->
