@@ -247,6 +247,7 @@ function bindView(data) {
 					kendo.ui.progress($("#IMSYieldinput"), false);
 					if(data.outstatus == 0) {
 						alert("成功");
+						clearInputnNumber();
 					} else {
 						alert("失败,原因:" + data.outputstr);
 					}
@@ -267,6 +268,12 @@ function bindView(data) {
 
 	kendo.bind($("#footer"), footerViewModel);
 }
+function clearInputnNumber() {
+	$("#yieldInputListView").data("kendoMobileListView").dataSource.data().forEach(function (item) {
+		item.yield = "";
+	});
+	$("#yieldInputListView").data("kendoMobileListView").setDataSource($("#yieldInputListView").data("kendoMobileListView").dataSource);
+}
 function saveOfflineInfo(para){
 
 	var log = {
@@ -277,11 +284,10 @@ function saveOfflineInfo(para){
 		content:JSON.stringify(para)
 	};
 	var array = isArrayFn(JSON.parse(storage.get("offline")))?JSON.parse(storage.get("offline")):new Array();
-	console.log(">>>>>>>>>>"+array);
 	array.push(log);
-	console.log("<<<<<<<<<<"+array);
 	storage.put("offline",JSON.stringify(array));
 	alert("网络环境不佳,请稍候在网络好的的地方再重新上传");
+	clearInputnNumber();
 }
 //让展示信息可读
 function  dealWithContent(content) {
