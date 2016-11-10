@@ -299,7 +299,7 @@ function saveOfflineInfo(para) {
 	var log = {
 		type: "机台输入产量",
 		operatetime: kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd HH:mm:ss'),
-		status: "",
+		status: "待处理",
 		info: dealWithContent(JSON.stringify(para)),
 		content: JSON.stringify(para)
 	};
