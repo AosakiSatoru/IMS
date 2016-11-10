@@ -82,6 +82,8 @@ function viewAfterShow() {
 	IMSWarningList_dealloc();
 	IMSQueryYieldInput_dealloc();
 	IMSQueryPackingInput_dealloc();
+	//收起软键盘
+	document.activeElement.blur();
 }
 
 function viewBeforeHide() {
@@ -93,7 +95,6 @@ function viewBeforeHide() {
 
 //params mark - dealloc
 function IMSBindingMachine_dealloc() {
-	document.activeElement.blur();
 	if($("#IMSBindingMachine").data("kendoMobileView"))
 		$("#IMSBindingMachine").data("kendoMobileView").destroy();
 	if($("#IMSBindingMachine"))
@@ -101,7 +102,6 @@ function IMSBindingMachine_dealloc() {
 }
 
 function IMSYieldinput_dealloc() {
-	document.activeElement.blur();
 	if($("#IMSYieldinput").data("kendoMobileView"))
 		$("#IMSYieldinput").data("kendoMobileView").destroy();
 	if($("#IMSYieldinput"))
@@ -109,7 +109,6 @@ function IMSYieldinput_dealloc() {
 }
 
 function IMSPackingInput_dealloc() {
-	document.activeElement.blur();
 	if($("#IMSPackingInput").data("kendoMobileView"))
 		$("#IMSPackingInput").data("kendoMobileView").destroy();
 	if($("#IMSPackingInput"))
@@ -117,11 +116,10 @@ function IMSPackingInput_dealloc() {
 }
 
 function IMSWarningList_dealloc() {
-	document.activeElement.blur();
+	
 }
 
 function IMSQueryYieldInput_dealloc() {
-	document.activeElement.blur();
 	if($("#queryYieldInput_procedure-list").data("kendoPopup"))
 		$("#queryYieldInput_procedure-list").data("kendoPopup").destroy();
 	if($("#queryYieldInput_machine-list").data("kendoPopup"))
@@ -135,7 +133,6 @@ function IMSQueryYieldInput_dealloc() {
 }
 
 function IMSQueryPackingInput_dealloc() {
-	document.activeElement.blur();
 	if($("#queryPackingInput_type-list").data("kendoPopup"))
 		$("#queryPackingInput_type-list").data("kendoPopup").destroy();
 	if($("#IMSQueryPackingInput").data("kendoMobileView"))
