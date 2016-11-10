@@ -146,13 +146,13 @@ function bindingView() {
 			alldevices: value.devices,
 			select: function(e) {
 				if(e.target.checked) {
-					//$($(e.target.parentElement).find("span")).removeClass().addClass("image-select");
+
 					$(e.target.parentElement).find("span")[0].style.backgroundImage = 'url("../resources/@3x/selected@3x.png")';
-					//$($(e.target.parentElement).find("span")).css("background-image","url(../resources/@3x/未选@3x.png)");
+
 				} else {
-					//$($(e.target.parentElement).find("span")).removeClass().addClass("image-unselect");
+
 					$(e.target.parentElement).find("span")[0].style.backgroundImage = 'url("../resources/@3x/select@3x.png")';
-					//$($(e.target.parentElement).find("span")).css('background-image',"url(../resources/@3x/已选@3x.png)");
+
 				}
 			},
 			//
@@ -215,6 +215,32 @@ function bindingView() {
 		}
 	});
 	kendo.bind($("footer"), footViewModel);
+
+	//加载绑定过的信息
+	loadHistoryInfo();
+}
+//上次选择的机台
+function loadHistoryInfo() {
+	var array = JSON.parse(storage.get("machinerows"))?JSON.parse(storage.get("machinerows")):[];
+
+
+	var selects = new Array();
+	$.each(array,function (index,item) {
+		//var flowcode = item.flowcode;
+		//console.log(item);
+		var devcodes  = item.devcodes.split(',');
+		selects = selects.concat(devcodes);
+
+	});
+	console.log(selects);
+	$.each($("input.km-widget.km-icon.km-check"),function (index,checkbox) {
+       var devcode = $(checkbox).attr("value");
+			$.each(selects,function (index,select_devcode) {
+				if(devcode==select_devcode){
+					checkbox.click();
+				}
+			});
+	});
 }
 
 $("#bindingMachine_confirmButton").click(function(){
@@ -233,7 +259,10 @@ $("#bindingMachine_confirmButton").click(function(){
 				"srcid": storage.get("srcid"),
 				"flowcoderows": flowcoderows
 			};
-			
+
+
+
+
 			var url = IMSUrl + "busi_binding/";
 			$.ajax({
 				type: "post",
@@ -247,6 +276,7 @@ $("#bindingMachine_confirmButton").click(function(){
 				dataType: "json",
 				success: function(data) {
 					if(data.outstatus == 0) {
+						logInfo(flowcoderows);
 						alert("成功");
 					} else {
 						alert("失败,原因:" + data.outputstr);
@@ -258,3 +288,26 @@ $("#bindingMachine_confirmButton").click(function(){
 				}
 			});
 });
+//记录绑定机台
+function logInfo(flowcoderows) {
+	var history =  new Array();
+	$.each(flowcoderows,function (index,object) {
+		var flowcode = object.flowcode;
+		var devcodes = object.machinerows;
+
+		var ss = devcodes.reduce(function(prev, current, index, array){
+			if (index === 0){
+				return current.devcode;
+			}
+			{
+				return prev + ',' + current.devcode;
+			}
+		}, '');
+		var item = {"flowcode":flowcode,"devcodes":ss};
+		history.push(item);
+
+
+	});
+
+	storage.put("machinerows", JSON.stringify(history));
+}
