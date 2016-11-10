@@ -57,6 +57,7 @@ function Toast(msg, duration) {
 	}, duration);
 }
 
+//params mark - Initalize
 function viewInit() {
 	$("#username").text(storage.get("username") != "undefined" ? storage.get("username") : " ");
 	$("#deptname").text(storage.get("deptname") != "undefined" ? storage.get("deptname") : " ");
@@ -74,29 +75,53 @@ function viewAfterShow() {
 	document.addEventListener("backbutton", exitFunction, false);
 	beginDate = new Date().getTime();
 
-	home_dealloc();
+	//dealloc
+	IMSBindingMachine_dealloc();
+	IMSYieldinput_dealloc();
+	IMSPackingInput_dealloc();
+	IMSWarningList_dealloc();
+	IMSQueryYieldInput_dealloc();
+	IMSQueryPackingInput_dealloc();
 }
 
-function home_dealloc() {
-	//IMSBindingMachine dealloc
+function viewBeforeHide() {
+	$("#left_drawerButton").hide();
+	$("#bindingMachine_leftNavButton").show();
+	//$("#packingInput_rightNavButton_1").data("kendoMobileButton").badge(100);
+	document.removeEventListener("backbutton", exitFunction);
+}
+
+//params mark - dealloc
+function IMSBindingMachine_dealloc() {
+	document.activeElement.blur();
 	if($("#IMSBindingMachine").data("kendoMobileView"))
 		$("#IMSBindingMachine").data("kendoMobileView").destroy();
 	if($("#IMSBindingMachine"))
 		$("#IMSBindingMachine").remove();
+}
 
-	//IMSYieldinput dealloc
+function IMSYieldinput_dealloc() {
+	document.activeElement.blur();
 	if($("#IMSYieldinput").data("kendoMobileView"))
 		$("#IMSYieldinput").data("kendoMobileView").destroy();
 	if($("#IMSYieldinput"))
 		$("#IMSYieldinput").remove();
+}
 
-	//IMSPackingInput dealloc
+function IMSPackingInput_dealloc() {
+	document.activeElement.blur();
 	if($("#IMSPackingInput").data("kendoMobileView"))
 		$("#IMSPackingInput").data("kendoMobileView").destroy();
 	if($("#IMSPackingInput"))
 		$("#IMSPackingInput").remove();
+}
 
-	//IMSQueryYieldInput dealloc
+function IMSWarningList_dealloc() {
+	document.activeElement.blur();
+}
+
+function IMSQueryYieldInput_dealloc() {
+	document.activeElement.blur();
 	if($("#queryYieldInput_procedure-list").data("kendoPopup"))
 		$("#queryYieldInput_procedure-list").data("kendoPopup").destroy();
 	if($("#queryYieldInput_machine-list").data("kendoPopup"))
@@ -107,8 +132,10 @@ function home_dealloc() {
 		$("#IMSQueryYieldInput").data("kendoMobileView").destroy();
 	if($("#IMSQueryYieldInput"))
 		$("#IMSQueryYieldInput").remove();
+}
 
-	//IMSQueryPackingInput dealloc
+function IMSQueryPackingInput_dealloc() {
+	document.activeElement.blur();
 	if($("#queryPackingInput_type-list").data("kendoPopup"))
 		$("#queryPackingInput_type-list").data("kendoPopup").destroy();
 	if($("#IMSQueryPackingInput").data("kendoMobileView"))
@@ -117,25 +144,13 @@ function home_dealloc() {
 		$("#IMSQueryPackingInput").remove();
 }
 
-function viewBeforeHide() {
-	$("#left_drawerButton").hide();
-	$("#bindingMachine_leftNavButton").show();
-	//$("#packingInput_rightNavButton_1").data("kendoMobileButton").badge(100);
-	document.removeEventListener("backbutton", exitFunction);
-}
-var actionsheetAction = {
-	action0: function() {
-		app.navigate("query_yield_input.html");
-	},
-	action1: function() {
-		app.navigate("query_packing_input.html");
-	}
-}
-
+//params mark - Action
 function machine_input(type) {
 	var urlString = "yield_input.html?type=" + type + "&selectdate=" + $("#datepicker").val();
 	app.navigate(urlString);
 }
+
+//params mark - clickAction
 $("#bindingMachine").click(function() {
 	$("#homeDrawer").data("kendoMobileDrawer").hide();
 	setTimeout(function() {
@@ -143,12 +158,15 @@ $("#bindingMachine").click(function() {
 	}, 200);
 
 });
+
 $("#packingInput").click(function() {
 	app.navigate("packing_input.html");
 });
+
 $("#warning").click(function() {
 	app.navigate("warning_list.html");
 });
+
 $("#queryYieldInput").click(function() {
 	app.navigate("query_yield_input.html");
 });
@@ -159,6 +177,22 @@ $("#queryPackingInput").click(function() {
 
 $("#offline_upload").click(function() {
 	app.navigate("offline_upload.html");
+});
+
+$("#logout").click(function() {
+	try {
+		window.plugins.jPushPlugin.setTagsWithAlias([], "");
+	} catch(exception) {
+
+	}
+	$("#homeDrawer").data("kendoMobileDrawer").hide();
+	kendo.ui.progress($("#IMSHome"), true);
+	setTimeout(function() {
+		storage.put("login", "no");
+		kendo.ui.progress($("#IMSHome"), false);
+		window.location.href = "../index.html";
+	}, 1000);
+
 });
 
 document.addEventListener("deviceready", function() {
@@ -236,23 +270,8 @@ function onLineCallBack() {
 	isOnline = true;
 
 }
-$("#logout").click(function() {
-	try {
-		window.plugins.jPushPlugin.setTagsWithAlias([], "");
-	} catch(exception) {
 
-	}
-	$("#homeDrawer").data("kendoMobileDrawer").hide();
-	kendo.ui.progress($("#IMSHome"), true);
-	setTimeout(function() {
-		storage.put("login", "no");
-		kendo.ui.progress($("#IMSHome"), false);
-		window.location.href = "../index.html";
-	}, 1000);
-
-});
-
-//弹出视图事件
+//params mark - 弹出视图事件
 $("#chooseJia").click(function() {
 	machine_input("0");
 	$("#yieldInputModal").data("kendoMobileModalView").close();
@@ -295,7 +314,7 @@ function GLOBAL_onlyNum(value) {
 	if(!(event.keyCode == 46) && !(event.keyCode == 8) && !(event.keyCode == 37) && !(event.keyCode == 39))
 		if(!((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)))
 			event.returnValue = false;
-	//数字长度限制6位
+		//数字长度限制6位
 	if(value.length > 5 && !(event.keyCode == 46) && !(event.keyCode == 8) && !(event.keyCode == 37) && !(event.keyCode == 39)) {
 		event.returnValue = false;
 	}
