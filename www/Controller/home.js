@@ -75,6 +75,9 @@ function viewAfterShow() {
 	document.addEventListener("backbutton", exitFunction, false);
 	beginDate = new Date().getTime();
 
+	//收起软键盘
+	document.activeElement.blur();
+	
 	//dealloc
 	IMSBindingMachine_dealloc();
 	IMSYieldinput_dealloc();
@@ -83,8 +86,7 @@ function viewAfterShow() {
 	IMSQueryYieldInput_dealloc();
 	IMSQueryPackingInput_dealloc();
 	IMSOfflineUpload_dealloc();
-	//收起软键盘
-	document.activeElement.blur();
+	
 }
 
 function viewBeforeHide() {
