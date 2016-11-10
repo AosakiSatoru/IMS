@@ -249,7 +249,7 @@ $("#yieldInput_confirmButton").click(function() {
 		success: function(data) {
 			kendo.ui.progress($("#IMSYieldinput"), false);
 			if(data.outstatus == 0) {
-				alert("成功");
+				alert("处理成功");
 				storage.put("yield_input_flowcode_"+params.flowcoderows[0].flowcode,JSON.stringify(params.flowcoderows[0].machinerows));
 
 			} else {
