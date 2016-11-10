@@ -44,7 +44,7 @@ function viewShow() {
 
 					if(data.outstatus == 0) {
 
-						element.status = "成功";
+						element.status = "发送成功";
 					} else {
 						element.status = "失败,原因:" + data.outputstr;
 					}
@@ -113,5 +113,11 @@ function loadInfo() {
 		}
 
 	});
-	return content;
+	var groupedData = new kendo.data.DataSource({
+		data: content,
+		group: {
+			field: "type"
+		}
+	});
+	return groupedData;
 }

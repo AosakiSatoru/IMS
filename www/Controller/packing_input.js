@@ -26,7 +26,7 @@ function postPackingInputData() {
 	$.ajax({
 		type: "post",
 		url: url,
-		timeout: 10000,
+		timeout: 10,
 		async: true,
 		dataType: "jsonp",
 		data: {
