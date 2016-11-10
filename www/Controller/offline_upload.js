@@ -20,8 +20,8 @@ function viewShow() {
 
 	$("#submit").click(function() {
 		//  kendo.ui.progress($("#offline_upload"), true);
-		$(listViewModel.dataSource).each(function(index, element) {
-			//console.log(element);
+		$(listViewModel.dataSource._data).each(function(index, element) {
+//			console.log(element);
 
 			var url = "";
 			if(element.type == "副料打包") {
@@ -72,7 +72,7 @@ function viewShow() {
 function changeLog() {
 
 	var content = $("#offlineUploadListView").data("kendoMobileListView").dataSource.data().filter(function(item) {
-		return !(item.status == "成功" || item.status == "删除");
+		return !(item.status == "发送成功" || item.status == "删除");
 	});
 
 	if(content == null) {
