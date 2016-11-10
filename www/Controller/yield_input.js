@@ -41,7 +41,7 @@ function viewShow(e) {
 		},
 		error: function(data, status, e) {
 			kendo.ui.progress($("#IMSYieldinput"), false);
-			alert("请求服务器出错!原因:" + JSON.stringify(data));
+			alert("请求服务器出错");
 		}
 	});
 }

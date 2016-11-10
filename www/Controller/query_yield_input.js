@@ -181,7 +181,7 @@ function queryYieldInputFetchDevicesDataRequest() {
 		},
 		error: function(data, status, e) {
 			kendo.ui.progress($("#IMSQueryYieldInput"), false);
-			alert("请求服务器出错!原因:" + JSON.stringify(data));
+			alert("请求服务器出错");
 		}
 	});
 }

@@ -67,7 +67,7 @@ function loadInfoFromService() {
 		error: function(data, status, e) {
 			kendo.ui.progress($("#IMSBindingMachine"), false);
 			kendo.mobile.application.hideLoading();
-			alert("请求服务器出错!原因:" + JSON.stringify(data));
+			alert("请求服务器出错");
 		}
 	});
 }

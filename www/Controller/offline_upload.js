@@ -46,15 +46,15 @@ function viewShow() {
 
 						element.status = "发送成功";
 					} else {
-						element.status = "失败,原因:" + data.outputstr;
+						element.status = "发送失败";// + data.outputstr;
 					}
 				},
 				error: function(data, status, e) {
 					// kendo.ui.progress($("#IMSYieldinput"), false);
 					if(e == "timeout") {
-						element.status = "超时";
+						element.status = "请求超时";
 					} else {
-						element.status = "请求服务器出错";
+						element.status = "发送失败";
 					}
 
 				}

@@ -15,12 +15,13 @@ function viewBeforeHide() {
 }
 
 function viewAfterShow() {
-	warningList_dealloc();
+	//收起软键盘
+	document.activeElement.blur();
+	//dealloc
+	IMSWarningInfo_dealloc();
 }
 
-function warningList_dealloc() {
-	//IMSWarningInfo dealloc
-	console.log($("#IMSWarningInfo").data("kendoMobileView"));
+function IMSWarningInfo_dealloc() {
 	if($("#IMSWarningInfo").data("kendoMobileView"))
 		$("#IMSWarningInfo").data("kendoMobileView").destroy();
 	if($("#IMSWarningInfo"))
