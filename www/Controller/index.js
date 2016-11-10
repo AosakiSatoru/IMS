@@ -2,13 +2,7 @@ var beginDate; // 两次点击退出按钮开始时间
 var isToast = false; // 是否弹出弹框  
 var updateUrl;
 
-var onOpenNotification = function(event) {
-	try {
-		window.plugins.jPushPlugin.setApplicationIconBadgeNumber(0);
-	} catch(exception) {
-		alert("出错 JPushPlugin:onReceiveMessage-->" + exception);
-	}
-};
+
 
 var exitFunction = function() {
 	var endDate = new Date().getTime(); // 两次点击退出按钮结束时间  
@@ -101,12 +95,17 @@ function showPassword(element) {
 function viewBeforeShow() {
 	beginDate = new Date().getTime();
 	document.addEventListener("backbutton", exitFunction, false);
-	document.addEventListener("jpush.openNotification", onOpenNotification, false);
+	//document.addEventListener("jpush.openNotification", onOpenNotification, false);
+	try {
+		window.plugins.jPushPlugin.setApplicationIconBadgeNumber(0);
+	} catch (e){
+
+	}
 }
 
 function viewBeforeHide() {
 	document.removeEventListener("backbutton", exitFunction);
-	document.removeEventListener("jpush.openNotification", onOpenNotification, false);
+//	document.removeEventListener("jpush.openNotification", onOpenNotification, false);
 }
 
 function RequestPreHookData() {
