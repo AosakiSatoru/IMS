@@ -82,13 +82,14 @@ function bindView(data) {
 		var contentArray = new Array();
 
 		if(object.flowname.trim() == "预并") {
+			console.log(object);
 			$.each(object.devices, function(n, device) {
 				contentArray.push({
 					"image": "../resources/@3x/ybt-sb2@3x.png",
 					"devcodename": device["devcodename"],
 					"devcode": device["devcode"],
-					"yield": "",
-					"variety": ""
+					"yield":"",
+					"variety": loadHistory(object.flowcode,device["devcode"])
 				});
 			});
 			//
@@ -103,7 +104,7 @@ function bindView(data) {
 					"devcodename": device["devcodename"],
 					"devcode": device["devcode"],
 					"yield": "",
-					"variety": ""
+					"variety":  loadHistory(object.flowcode,device["devcode"])
 				});
 			});
 			//
@@ -117,8 +118,8 @@ function bindView(data) {
 					"image": "../resources/@3x/csj-ftid@3x.png",
 					"devcodename": device["devcodename"],
 					"devcode": device["devcode"],
-					"yield": "",
-					"variety": ""
+					"yield":"",
+					"variety":  loadHistory(object.flowcode,device["devcode"])
 				});
 			});
 			third =
@@ -230,7 +231,11 @@ $("#yieldInput_confirmButton").click(function() {
 		saveOfflineInfo(params);
 		return;
 	}
+
+
+
 	kendo.ui.progress($("#IMSYieldinput"), true);
+
 	$.ajax({
 		type: "post",
 		url: IMSUrl + "busi_YieldInput/",
@@ -245,6 +250,8 @@ $("#yieldInput_confirmButton").click(function() {
 			kendo.ui.progress($("#IMSYieldinput"), false);
 			if(data.outstatus == 0) {
 				alert("成功");
+				storage.put("yield_input_flowcode_"+params.flowcoderows[0].flowcode,JSON.stringify(params.flowcoderows[0].machinerows));
+
 			} else {
 				alert("失败,原因:" + data.outputstr);
 			}
@@ -260,7 +267,26 @@ $("#yieldInput_confirmButton").click(function() {
 		}
 	});
 });
+function loadHistory(flowcode,devcode) {
+	var array =JSON.parse(storage.get("yield_input_flowcode_"+flowcode));
+	//console.log("----------"+flowcode+array);
+	if(array==null){
+		return "";
+	}
+	var varieties = "";
+	//console.log(devcode);
 
+	$.each(array,function (index,item) {
+
+
+		if(item.devcode==devcode){
+
+			varieties = item.varieties;
+			console.log(varieties);
+		}
+	});
+	return varieties;
+}
 function clearInputnNumber() {
 	$("#yieldInputListView").data("kendoMobileListView").dataSource.data().forEach(function(item) {
 		item.yield = "";

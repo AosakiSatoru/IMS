@@ -235,11 +235,14 @@ function loadHistoryInfo() {
 	console.log(selects);
 	$.each($("input.km-widget.km-icon.km-check"),function (index,checkbox) {
        var devcode = $(checkbox).attr("value");
-			$.each(selects,function (index,select_devcode) {
-				if(devcode==select_devcode){
-					checkbox.click();
-				}
-			});
+		if($.inArray(devcode, selects)!=-1){
+			checkbox.click();
+		}
+			// $.each(selects,function (index,select_devcode) {
+			// 	if(devcode==select_devcode){
+			// 		checkbox.click();
+			// 	}
+			// });
 	});
 }
 
