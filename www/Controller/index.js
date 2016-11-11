@@ -77,12 +77,42 @@ document.addEventListener("deviceready", function() {
 
 	}
 
+
+	$("#account").kendoComboBox({
+		clearButton: true,
+		dataSource: historyAccounts(),
+		dataTextField: "name",
+		dataValueField: "name"
+
+	});
+
 });
 var app = new kendo.mobile.Application(document.body, {
 	platform: 'ios',
 	skin: 'nova'
 });
+function historyAccounts() {
+	return JSON.parse(storage.get("accounts"))? JSON.parse(storage.get("accounts")): new Array();
+}
+function addAccountIfNeeded(name) {
 
+	var history = historyAccounts();
+	let accounts = history.map(function (item) {
+		 return item.name;
+	});
+
+	if($.inArray( name,accounts) == -1){
+		history.push({"name":name});
+		storage.put("accounts",JSON.stringify(history));
+	}
+
+
+}
+function removeAllAccounts() {
+	storage.put("accounts",JSON.stringify([]));
+	$("#account").data("kendoComboBox").close();
+	$("#account").data("kendoComboBox").setDataSource(historyAccounts());
+}
 function showPassword(element) {
 
 	if(element.checked) {
@@ -109,7 +139,7 @@ function viewBeforeHide() {
 }
 
 function RequestPreHookData() {
-	var userName = $("#loginUserName").val().trim();
+	var userName = $("#account").data("kendoComboBox").text().trim();
 	var password = $("#loginPassword").val();
 
 	var para = {
@@ -118,7 +148,7 @@ function RequestPreHookData() {
 		"channel": 1
 	};
 
-	if(userName.length == 0) {
+	if($("#account").data("kendoComboBox").text().length == 0) {
 		alert("请输入账号");
 		return;
 	}
@@ -145,6 +175,7 @@ function RequestPreHookData() {
 				kendo.ui.progress($("#IMSLogin"), false);
 				alert("账号或密码出错");
 			} else if(data.outstatus == 0) {
+				addAccountIfNeeded($("#account").data("kendoComboBox").text());
 				storage.put("account", data.outputstr.account);
 				storage.put("deptid", data.outputstr.deptid);
 				storage.put("deptname", data.outputstr.deptname);
