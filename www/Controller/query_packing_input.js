@@ -142,7 +142,8 @@ function showList(data) {
 			category.push({
 				"recid": value.recid,
 				"Type": type,
-				"date": new Date(value.shiftdate).Format("yyyy-MM-dd hh:mm:ss"),
+				"date": new Date(value.date).Format("yyyy-MM-dd hh:mm:ss"),
+				"shiftdate": new Date(value.shiftdate).Format("yyyy-MM-dd"),
 				"unit": value.unit.trim(),
 				"yield": value.yield
 			});

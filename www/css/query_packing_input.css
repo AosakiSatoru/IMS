@@ -3,7 +3,10 @@
  */
 
 #queryPackingInput_listview.km-list>li{
-	padding: 10px;
+	padding-top: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 0px;
 }
 
 #queryPackingInputCommonlistview.km-list>li{

@@ -3,7 +3,10 @@
  */
 
 #queryYieldInput_listview.km-list>li{
-	padding: 10px;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 0px;
 }
 
 #queryYieldInputCommonlistview.km-list>li{

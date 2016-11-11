@@ -26,10 +26,10 @@
 			<div style="text-align: center;border-bottom-width: 1px;border-top-width: 1px;border-bottom-color: #EEEEEE;border-top-color: #EEEEEE;border-bottom-style: solid;border-top-style: solid;padding-top: 10px;padding-bottom: 10px;">
 				<input id="queryYieldInput_startTimeDatepicker1" onkeydown="GLOBAL_EnterDisable()" style="font-size: 1em;width: 47%;" placeholder="开始日期" />
 				<input id="queryYieldInput_startTimeDatepicker2" onkeydown="GLOBAL_EnterDisable()" style="font-size: 1em;width: 47%;" placeholder="结束日期" />
-				<ul data-role="listview" data-bind="source: queryYieldInputCommonDataSource" data-style="inset" style="width: 100%;margin-top: 15px;background-color: white" data-template="queryYieldInputCommonItemTemplate" id="queryYieldInputCommonlistview">
+				<ul data-role="listview" data-bind="source: queryYieldInputCommonDataSource" data-style="inset" style="width: 100%;margin-top: 10px;background-color: white" data-template="queryYieldInputCommonItemTemplate" id="queryYieldInputCommonlistview">
 				</ul>
 				<div>
-					<div id="queryYieldInput_QueryButton" data-role="button" style="position: absolute;right: 4%;top: 184px;width: 22%;height: 35px;border: none;font-size: 1em;background-color: #A62A40;color: #FFFFFF;border-radius: 4px;margin-top: 10px;">查 询</div>
+					<div id="queryYieldInput_QueryButton" data-role="button" style="position: absolute;right: 4%;top: 187px;width: 22%;height: 35px;border: none;font-size: 1em;background-color: #A62A40;color: #FFFFFF;border-radius: 4px;">查 询</div>
 				</div>
 			</div>
 		</div>
@@ -41,7 +41,13 @@
 	</div>
 	<!--list模板-->
 	<script id="queryYieldInput_itemTemplate" type="text/x-kendo-template">
-		<div id="queryYieldInput_itemInfo" style="text-align: right;color: gray;font-size: 0.7em;width: 100%;height: 10px;" recid="#:recid#">#:flowname# #:devname# #:date#</div>
+		<div id="queryYieldInput_itemInfo" recid="#:recid#">
+			<span style="color: black;font-size: 0.8em;">#:flowname# #:devname# </span>
+			<span style="width: 10em;position: absolute;right: 0px;top: 5px;">
+				<div style="text-align: left;color: gray;font-size: 0.7em;width: 100%;">创建日期:#:date# </div>
+				<div style="text-align: left;color: gray;font-size: 0.7em;width: 100%;">排班日期:#:shiftdate#</div>
+			</span>
+		</div>
 		<div>
 			<select id="queryYieldInput_duty" data-bind="value: duty" data-text-field="duty" data-value-field="duty" style="position: relative;top: 25px;font-size: 1em;width: 48%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
 				<option value="" selected disabled="true">班别</option>
@@ -64,7 +70,7 @@
 		<div style="background-color: slategray;">
 			<div style="text-align: center;">
 				<div style="float: left;text-align: left;width: 48%;margin-left: 2%;">
-					<span style="top: 5px;font-size: 0.8em;text-align: right;width: 5%;">工序:</span>
+					<span style=";font-size: 0.8em;text-align: right;width: 5%;">工序:</span>
 					<select id="queryYieldInput_procedure" onchange="queryYieldInput_AutoFill(this.options[this.options.selectedIndex].value)" style="position: relative;top: 18px;font-size: 0.8em;width: 70%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
 						<option value="ALL" selected>全部</option>
 						<!--<option value="1">清花</option>-->
