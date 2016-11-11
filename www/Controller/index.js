@@ -78,7 +78,7 @@ document.addEventListener("deviceready", function() {
 	}
 
 
-	$("#account").kendoComboBox({
+	$("#loginUserName").kendoComboBox({
 		clearButton: true,
 		dataSource: historyAccounts(),
 		dataTextField: "name",
@@ -110,8 +110,8 @@ function addAccountIfNeeded(name) {
 }
 function removeAllAccounts() {
 	storage.put("accounts",JSON.stringify([]));
-	$("#account").data("kendoComboBox").close();
-	$("#account").data("kendoComboBox").setDataSource(historyAccounts());
+	$("#loginUserName").data("kendoComboBox").close();
+	$("#loginUserName").data("kendoComboBox").setDataSource(historyAccounts());
 }
 function showPassword(element) {
 
@@ -139,7 +139,7 @@ function viewBeforeHide() {
 }
 
 function RequestPreHookData() {
-	var userName = $("#account").data("kendoComboBox").text().trim();
+	var userName = $("#loginUserName").data("kendoComboBox").text().trim();
 	var password = $("#loginPassword").val();
 
 	var para = {
@@ -148,7 +148,7 @@ function RequestPreHookData() {
 		"channel": 1
 	};
 
-	if($("#account").data("kendoComboBox").text().length == 0) {
+	if($("#loginUserName").data("kendoComboBox").text().length == 0) {
 		alert("请输入账号");
 		return;
 	}
@@ -175,7 +175,7 @@ function RequestPreHookData() {
 				kendo.ui.progress($("#IMSLogin"), false);
 				alert("账号或密码出错");
 			} else if(data.outstatus == 0) {
-				addAccountIfNeeded($("#account").data("kendoComboBox").text());
+				addAccountIfNeeded($("#loginUserName").data("kendoComboBox").text());
 				storage.put("account", data.outputstr.account);
 				storage.put("deptid", data.outputstr.deptid);
 				storage.put("deptname", data.outputstr.deptname);
@@ -207,7 +207,7 @@ $(document).ready(function() {
 });
 
 function showAccountClearBtn() {
-	if(document.getElementById('loginUserName').value.length > 0) {
+	if($("#loginUserName").data("kendoComboBox").text().length > 0) {
 		document.getElementById('accountClearBtn').style.display = 'block';
 	} else {
 		document.getElementById('accountClearBtn').style.display = 'none';

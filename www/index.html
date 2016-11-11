@@ -8,6 +8,7 @@
 		<link href="styles/kendo.silver.min.css" rel="stylesheet" />
 		<link href="styles/kendo.common.min.css" rel="stylesheet" />
 		<link href="styles/kendo.mobile.all.min.css" rel="stylesheet" />
+		<link href="css/index.css" rel="stylesheet" />
 
 		<script src="Controller/url.js"></script>
 		<script src="Controller/storage.js"></script>
@@ -29,8 +30,8 @@
 				<div style="top: 270px;margin-left: 5%;position: absolute;width: 95%;">
 					<p style="border-bottom: 1px solid #EEEEEE;padding-bottom: 0.45em;">
 						<img src="resources/@3x/account_icon@3x.png" style="width: 23px;height: 25px;float: left;" />
-						<input id="account" placeholder="请输入账号" style="width: 100%;" />
-						<!--<input id="loginUserName" type="text" class="texter" placeholder="请输入账号" name="userID" onKeyUp="showAccountClearBtn()" style="font-size: 1em;width: 75%;height: 30px;padding-left: 0.4em;margin: 0;border: none;" />-->
+						<input id="loginUserName" placeholder="请输入账号" onkeydown="showAccountClearBtn()" style="font-size: 1em;width: 75%;border: none;" />
+						<!--<input id="loginUserName" class="texter" placeholder="请输入账号" name="userID" onKeyUp="showAccountClearBtn()" style="font-size: 1em;width: 75%;height: 30px;padding-left: 0.4em;margin: 0;border: none;" />-->
 						<input type="image" class="clearer" id="accountClearBtn" onclick="clearAccountText()" src="resources/@3x/clear_icon@3x.png" style="top: 5px;width: 18px;position: relative;float: right;margin-right: 10%" />
 					</p>
 				</div>
@@ -40,7 +41,6 @@
 						<input id="loginPassword" type="password" placeholder="请输入密码" name="password" onKeyUp="showPasswordClearBtn()" style="font-size: 1em;width: 75%;height: 30px;padding-left: 0.5em;margin: 0;border: none;" />
 						<input type="image" class="clearer" id="passwordClearBtn" onclick="clearPasswordText()" src="resources/@3x/clear_icon@3x.png" style="top: 5px;width: 18px;position: relative;float: right;margin-right: 10%" />
 					</p>
-					<!--<input type="checkbox" onchange="showPassword(this)">显示密码</input>-->
 					<div style="text-align: right;margin-right: 20px;margin-top: 10px;">
 						<button style="color:gray" onclick="removeAllAccounts()">清除历史账号</button>
 						<input type="checkbox" id="eq1" class="k-checkbox" onchange="showPassword(this)" style="border-color:white;padding: none;margin: none;">
