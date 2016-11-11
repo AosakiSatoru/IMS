@@ -223,7 +223,7 @@ function showList(data) {
 			"recid": value.recid,
 			"duty": value.duty,
 			"flowname": value.flowname,
-			"date": new Date(value.date).Format("yyyy-MM-dd hh:mm:ss"),
+			"date": new Date(value.shiftdate).Format("yyyy-MM-dd hh:mm:ss"),
 			"devname": value.devcode,
 			"yield": value.yield,
 			"variety": value.varieties
