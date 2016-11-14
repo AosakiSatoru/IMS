@@ -300,7 +300,7 @@ function saveOfflineInfo(para) {
 		type: "机台输入产量",
 		operatetime: kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd HH:mm:ss'),
 		status: "待处理",
-		info: dealWithContent(JSON.stringify(para)),
+		info: dealWithContent(para),
 		content: JSON.stringify(para)
 	};
 	var array = isArrayFn(JSON.parse(storage.get("offline"))) ? JSON.parse(storage.get("offline")) : new Array();
@@ -310,8 +310,47 @@ function saveOfflineInfo(para) {
 	clearInputnNumber();
 }
 //让展示信息可读
-function dealWithContent(content) {
+function dealWithContent(para) {
+
+
+	switch (para.duty){
+		case "1":
+			para.duty = "甲班";
+			break;
+		case "2":
+			para.duty = "乙班";
+			break;
+		case "3":
+			para.duty = "丙班";
+			break;
+	}
+
+	$.each(para.flowcoderows,function (n,item) {
+
+
+		switch (item.flowcode){
+
+			case 3:
+
+				item.flowcode = "预并";
+				break;
+			case 2:
+
+				item.flowcode = "梳棉";
+				break;
+			case 7:
+
+				item.flowcode = "粗纱";
+				break;
+		}
+
+
+	});
+
+
+	var content = JSON.stringify(para);
 	return content.replace(/[{"}]/g, "")
+		.replace(/duty/,'班别')
 		.replace(/typerows/, "内容")
 		.replace(/flowcoderows/, "内容")
 		.replace(/unit/g, "单位")
@@ -320,7 +359,7 @@ function dealWithContent(content) {
 		.replace(/username/g, "操作人")
 		.replace(/type/g, "类别")
 		.replace(/shiftdate/g, "时间")
-		.replace(/flowcode/g, "工序号")
+		.replace(/flowcode/g, "工序")
 		.replace(/machinerows/g, "机台")
 		.replace(/devcode/g, "机台号")
 		.replace(/varieties/g, "品种")

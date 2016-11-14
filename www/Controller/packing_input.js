@@ -59,9 +59,11 @@ function saveOfflineInfo(para) {
 		type: "副料打包",
 		operatetime: kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd HH:mm:ss'),
 		status: "待处理",
-		info: dealWithContent(JSON.stringify(para)),
+		info: dealWithContent(para),
 		content: JSON.stringify(para)
 	};
+
+
 	var array = isArrayFn(JSON.parse(storage.get("offline"))) ? JSON.parse(storage.get("offline")) : new Array();
 	array.push(log);
 	storage.put("offline", JSON.stringify(array));
@@ -69,7 +71,26 @@ function saveOfflineInfo(para) {
 	$("#IMSPackingInput_yield").val("");
 }
 
-function dealWithContent(content) {
+function dealWithContent(para) {
+
+	$.each(para.typerows,function (n,item) {
+
+
+		switch (item.type){
+			case "0":
+				item.type = "回条";
+				break;
+			case "1":
+				item.type = "粗纱头";
+				break;
+			case "2":
+				item.type = "白花";
+				break;
+		}
+	});
+	var content = JSON.stringify(para);
+
+
 	return content.replace(/[{"}]/g, "")
 		.replace(/typerows/, "内容")
 		.replace(/flowcoderows/, "内容")
