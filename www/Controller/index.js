@@ -1,4 +1,5 @@
-var beginDate; // 两次点击退出按钮开始时间  
+"use strict";
+var beginDate; // 两次点击退出按钮开始时间
 var isToast = false; // 是否弹出弹框  
 var updateUrl;
 
@@ -98,6 +99,7 @@ function addAccountIfNeeded(name) {
 
 	var history = historyAccounts();
 	let accounts = history.map(function (item) {
+
 		 return item.name;
 	});
 
