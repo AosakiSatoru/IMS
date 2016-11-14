@@ -210,6 +210,7 @@ $("#queryYieldInput_QueryButton").click(function() {
 	if($("#queryYieldInput_machine").val() != "ALL") params.devcode = devcode;
 	if($("#duty").val() != "ALL") params.duty = $("#duty").val();
 	if($("#queryYieldInput_procedure").val() != "ALL") params.flowcode = $("#queryYieldInput_procedure").val();
+	if($("#queryYieldInput_flight").val() != "ALL") params.flight = $("#queryYieldInput_flight").val();
 
 	queryYieldInputFetchDataRequest(params);
 });
