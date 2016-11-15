@@ -32,11 +32,6 @@ function viewInit() {
 		culture: "zh-CN",
 		format: "yyyy-MM-dd"
 	});
-	//	$("#queryYieldInput_machine").kendoDropDownList({
-	//		dataSource: [],
-	//		dataTextField: "devcodename",
-	//		dataValueField: "devcode"
-	//	});
 	var todayDate = kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd');
 	$("#queryYieldInput_startTimeDatepicker1").data("kendoDatePicker").value(todayDate);
 	$("#queryYieldInput_startTimeDatepicker2").data("kendoDatePicker").value(todayDate);
@@ -46,24 +41,7 @@ function viewInit() {
 	});
 
 	var viewModel = new kendo.observable({
-		queryYieldInputCommonDataSource: dataSource,
-		search: function(e) {
-			var startDate = $("#queryYieldInput_startTimeDatepicker1").val() + " 00:00:00";
-			var endDate = $("#queryYieldInput_startTimeDatepicker2").val() + " 23:59:59";
-
-			kendo.ui.progress($("#IMSQueryYieldInput"), true);
-			var params;
-			params = {
-				"startdate": startDate,
-				"enddate": endDate,
-			};
-			if($("#queryYieldInput_machine").val() != "ALL") params.devcode = devcode;
-			if($("#duty").val() != "ALL") params.duty = $("#duty").val();
-			if($("#queryYieldInput_procedure").val() != "ALL") params.flowcode = $("#queryYieldInput_procedure").val();
-			if($("#queryYieldInput_flight").val() != "ALL") params.flight = $("#queryYieldInput_flight").val();
-
-			queryYieldInputFetchDataRequest(params);
-		}
+		queryYieldInputCommonDataSource: dataSource
 	});
 	kendo.bind($("#queryYieldInputCommonlistview"), viewModel);
 }
@@ -204,33 +182,33 @@ function queryYieldInputFetchDevicesDataRequest() {
 }
 
 //params mark - Action
-//$("#queryYieldInput_QueryButton").click(function() {
-	//	var startDate = $("#queryYieldInput_startTimeDatepicker1").val() + " 00:00:00";
-	//	var endDate = $("#queryYieldInput_startTimeDatepicker2").val() + " 23:59:59";
-	//	if(endDate == "" || startDate == "") {
-	//		alert("请输入完整日期");
-	//		return;
-	//	}
-	//
-	//	var devcode = $("#queryYieldInput_machine").val();
-	//	if(devcode == "" || !devcode) {
-	//		alert("请选择设备");
-	//		return;
-	//	}
-	//
-	//	kendo.ui.progress($("#IMSQueryYieldInput"), true);
-	//	var params;
-	//	params = {
-	//		"startdate": startDate,
-	//		"enddate": endDate,
-	//	};
-	//	if($("#queryYieldInput_machine").val() != "ALL") params.devcode = devcode;
-	//	if($("#duty").val() != "ALL") params.duty = $("#duty").val();
-	//	if($("#queryYieldInput_procedure").val() != "ALL") params.flowcode = $("#queryYieldInput_procedure").val();
-	//	if($("#queryYieldInput_flight").val() != "ALL") params.flight = $("#queryYieldInput_flight").val();
-	//
-	//	queryYieldInputFetchDataRequest(params);
-//});
+function search() {
+	var startDate = $("#queryYieldInput_startTimeDatepicker1").val() + " 00:00:00";
+	var endDate = $("#queryYieldInput_startTimeDatepicker2").val() + " 23:59:59";
+	if(endDate == "" || startDate == "") {
+		alert("请输入完整日期");
+		return;
+	}
+
+	var devcode = $("#queryYieldInput_machine").val();
+	if(devcode == "" || !devcode) {
+		alert("请选择设备");
+		return;
+	}
+
+	kendo.ui.progress($("#IMSQueryYieldInput"), true);
+	var params;
+	params = {
+		"startdate": startDate,
+		"enddate": endDate,
+	};
+	if($("#queryYieldInput_machine").val() != "ALL") params.devcode = devcode;
+	if($("#duty").val() != "ALL") params.duty = $("#duty").val();
+	if($("#queryYieldInput_procedure").val() != "ALL") params.flowcode = $("#queryYieldInput_procedure").val();
+	if($("#queryYieldInput_flight").val() != "ALL") params.flight = $("#queryYieldInput_flight").val();
+
+	queryYieldInputFetchDataRequest(params);
+}
 
 function showList(data) {
 
