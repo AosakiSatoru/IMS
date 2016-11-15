@@ -147,7 +147,17 @@ function RequestPreHookData() {
 	var para = {
 		"account": userName,
 		"password": password,
-		"channel": 1
+		"channel": 0
+	};
+
+	try{
+		if(device.platform == "Android"){
+			para.channel = 2;
+		}else{
+			para,channel = 1;
+		}
+	}catch (e){
+
 	};
 
 	if($("#loginUserName").data("kendoComboBox").text().length == 0) {
@@ -164,7 +174,7 @@ function RequestPreHookData() {
 	$.ajax({
 		type: "post",
 		url: url,
-		timeout: 10000,
+		timeout: 30000,
 		async: true,
 		dataType: "json",
 		data: {
