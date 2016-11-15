@@ -47,7 +47,6 @@ document.addEventListener("deviceready", function() {
 					"platform": platform
 				})
 			},
-			dataType: "json",
 			success: function(data) {
 				console.log(data);
 				if(data.outputstr.version > AppVersion.version) {
@@ -98,7 +97,7 @@ function historyAccounts() {
 function addAccountIfNeeded(name) {
 
 	var history = historyAccounts();
-	let accounts = history.map(function (item) {
+	var accounts = history.map(function (item) {
 
 		 return item.name;
 	});
@@ -170,7 +169,6 @@ function RequestPreHookData() {
 		data: {
 			"parameter": JSON.stringify(para)
 		},
-		dataType: "json",
 		success: function(data) {
 
 			if(data.outstatus == 201) {
