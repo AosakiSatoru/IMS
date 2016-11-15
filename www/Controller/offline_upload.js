@@ -19,9 +19,9 @@ function viewShow() {
 	kendo.bind($("#offlineUploadListView"), listViewModel);
 
 	$("#submit").click(function() {
-		//  kendo.ui.progress($("#offline_upload"), true);
+		kendo.ui.progress($("#IMSOfflineUpload"), true);
 		$(listViewModel.dataSource._data).each(function(index, element) {
-//			console.log(element);
+			//			console.log(element);
 
 			var url = "";
 			if(element.type == "副料打包") {
@@ -46,11 +46,17 @@ function viewShow() {
 
 						element.status = "发送成功";
 					} else {
-						element.status = "发送失败";// + data.outputstr;
+						element.status = "发送失败"; // + data.outputstr;
 					}
+					setTimeout(function() {
+						kendo.ui.progress($("#IMSOfflineUpload"), false);
+					}, 500);
 				},
 				error: function(data, status, e) {
-					// kendo.ui.progress($("#IMSYieldinput"), false);
+					setTimeout(function() {
+						kendo.ui.progress($("#IMSOfflineUpload"), false);
+					}, 500);
+
 					if(e == "timeout") {
 						element.status = "请求超时";
 					} else {
