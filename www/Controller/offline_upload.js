@@ -1,12 +1,12 @@
 /**
  * Created by mac on 2016/11/8.
  */
-var listViewModel;
+
 
 function viewShow() {
 	//var content = JSON.parse(storage.get("offline"));
 
-	listViewModel = new kendo.observable({
+	var listViewModel = new kendo.observable({
 		dataSource: loadInfo(),
 		deleteItem: function(e) {
 			console.log(e.data.status);
@@ -36,7 +36,7 @@ function viewShow() {
 }
 function upload() {
 	var defer = $.Deferred();
-	$(listViewModel.dataSource._data).each(function(index, element) {
+	$($("#offlineUploadListView").data("kendoMobileListView").dataSource.data()).each(function(index, element) {
 		//			console.log(element);
 
 		var url = "";
