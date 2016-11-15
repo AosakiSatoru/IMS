@@ -41,12 +41,13 @@ document.addEventListener("deviceready", function() {
 			url: IMSUrl + "getAppVersion/",
 			timeout: 4000,
 			async: false,
-			dataType: "jsonp",
+			dataType: "json",
 			data: {
 				"parameter": JSON.stringify({
 					"platform": platform
 				})
 			},
+
 			success: function(data) {
 				console.log(data);
 				if(data.outputstr.version > AppVersion.version) {
@@ -165,7 +166,7 @@ function RequestPreHookData() {
 		url: url,
 		timeout: 10000,
 		async: true,
-		dataType: "jsonp",
+		dataType: "json",
 		data: {
 			"parameter": JSON.stringify(para)
 		},
