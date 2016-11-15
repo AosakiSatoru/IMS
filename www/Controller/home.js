@@ -21,7 +21,8 @@ $("#datepicker").kendoDatePicker({
 		}
 	},
 	culture: "zh-CN",
-	format: "yyyy-MM-dd"
+	format: "yyyy-MM-dd",
+	max: new Date()
 });
 var todayDate = kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd');
 $("#datepicker").data("kendoDatePicker").value(todayDate);
