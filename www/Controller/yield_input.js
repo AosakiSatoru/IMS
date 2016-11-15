@@ -300,7 +300,7 @@ function saveOfflineInfo(para) {
 		type: "机台输入产量",
 		operatetime: kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd HH:mm:ss'),
 		status: "待处理",
-		info: dealWithContent(para),
+		info: dealWithContent(JSON.parse(JSON.stringify(para))),
 		content: JSON.stringify(para)
 	};
 	var array = isArrayFn(JSON.parse(storage.get("offline"))) ? JSON.parse(storage.get("offline")) : new Array();

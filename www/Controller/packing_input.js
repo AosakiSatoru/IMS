@@ -59,7 +59,7 @@ function saveOfflineInfo(para) {
 		type: "副料打包",
 		operatetime: kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd HH:mm:ss'),
 		status: "待处理",
-		info: dealWithContent(para),
+		info: dealWithContent(SON.parse(JSON.stringify(para))),
 		content: JSON.stringify(para)
 	};
 
