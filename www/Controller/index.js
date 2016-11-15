@@ -154,7 +154,7 @@ function RequestPreHookData() {
 		if(device.platform == "Android"){
 			para.channel = 2;
 		}else{
-			para,channel = 1;
+			para.channel = 1;
 		}
 	}catch (e){
 
