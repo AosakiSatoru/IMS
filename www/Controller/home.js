@@ -235,7 +235,7 @@ document.addEventListener("deviceready", function() {
 			navigator.notification.beep(1);
 			//$(".km-badge").text(JSON.parse(message)["告警汇总"]);
 		} catch(exception) {
-			alert("JPushPlugin:onReceiveMessage-->" + exception);
+			//alert("JPushPlugin:onReceiveMessage-->" + exception);
 		}
 	};
 
@@ -246,7 +246,7 @@ document.addEventListener("deviceready", function() {
 			}
 			app.navigate("warning_list.html");
 		} catch(exception) {
-			alert("出错 JPushPlugin:onReceiveMessage-->" + exception);
+			//alert("出错 JPushPlugin:onReceiveMessage-->" + exception);
 		}
 	};
 	var onTagsWithAlias = function(event) {
