@@ -19,60 +19,70 @@ function viewShow() {
 	kendo.bind($("#offlineUploadListView"), listViewModel);
 
 	$("#submit").click(function() {
+
 		kendo.ui.progress($("#IMSOfflineUpload"), true);
-		$(listViewModel.dataSource._data).each(function(index, element) {
-			//			console.log(element);
+		$.when(upload()).done(function(data){
+			setTimeout(function() {
+				$("#offlineUploadListView").data("kendoMobileListView").setDataSource(loadInfo());
+				kendo.ui.progress($("#IMSOfflineUpload"), false);
+			}, 1000);
 
-			var url = "";
-			if(element.type == "副料打包") {
-				url = IMSUrl + "busi_PackingInput/";
-			} else if(element.type == "机台输入产量") {
-				url = IMSUrl + "busi_YieldInput/";
-			}
 
-			$.ajax({
-				type: "post",
-				url: url,
-				timeout: 10000,
-				async: false,
-				dataType: "jsonp",
-				data: {
-					"parameter": element.content,
-				},
-				dataType: "json",
-				success: function(data) {
-
-					if(data.outstatus == 0) {
-
-						element.status = "发送成功";
-					} else {
-						element.status = "发送失败"; // + data.outputstr;
-					}
-					setTimeout(function() {
-						kendo.ui.progress($("#IMSOfflineUpload"), false);
-					}, 500);
-				},
-				error: function(data, status, e) {
-					setTimeout(function() {
-						kendo.ui.progress($("#IMSOfflineUpload"), false);
-					}, 500);
-
-					if(e == "timeout") {
-						element.status = "请求超时";
-					} else {
-						element.status = "发送失败";
-					}
-
-				}
-			});
 
 		});
 
-		changeLog();
-		$("#offlineUploadListView").data("kendoMobileListView").setDataSource(loadInfo());
+	});
+
+}
+function upload() {
+	var defer = $.Deferred();
+	$(listViewModel.dataSource._data).each(function(index, element) {
+		//			console.log(element);
+
+		var url = "";
+		if(element.type == "副料打包") {
+			url = IMSUrl + "busi_PackingInput/";
+		} else if(element.type == "机台输入产量") {
+			url = IMSUrl + "busi_YieldInput/";
+		}
+
+		$.ajax({
+			type: "post",
+			url: url,
+			timeout: 10000,
+			async: false,
+			dataType: "jsonp",
+			data: {
+				"parameter": element.content,
+			},
+			dataType: "json",
+			success: function(data) {
+
+				if(data.outstatus == 0) {
+
+					element.status = "发送成功";
+				} else {
+					element.status = "发送失败"; // + data.outputstr;
+				}
+
+			},
+			error: function(data, status, e) {
+
+
+				if(e == "timeout") {
+					element.status = "请求超时";
+				} else {
+					element.status = "发送失败";
+				}
+
+			}
+		});
 
 	});
 
+	changeLog();
+	defer.resolve();
+	return defer.promise();
 }
 //修改记录
 function changeLog() {
