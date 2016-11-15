@@ -17,7 +17,7 @@ function viewInit(e) {
 	isAll = false;
 
 	warningInfoFetchDataRequest(true, messageid_global);
-	
+
 	var dataSource = kendo.data.DataSource.create({
 		data: [{}],
 	});
@@ -44,10 +44,10 @@ function warningInfo_dealloc() {
 		$("#IMSWarningDetail").remove();
 }
 
-function listViewClick(e) {
+function warningInfo_listViewClick(e) {
 	var button = $(e.item.find("#warningInfoDetailButton")[0]);
-   app.navigate("#warning_detail.html?deviceCode=" + button.attr("deviceCode"));
- }
+	app.navigate("#warning_detail.html?deviceCode=" + button.attr("deviceCode"));
+}
 //params mark - Interface
 // BOOL onlyShowBindingMachine -- "type":"define" 只显示绑定机台
 //messsage id 消息类型
