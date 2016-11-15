@@ -251,7 +251,7 @@ $("#yieldInput_confirmButton").click(function() {
 			if(data.outstatus == 0) {
 				alert("处理成功");
 				storage.put("yield_input_flowcode_"+params.flowcoderows[0].flowcode,JSON.stringify(params.flowcoderows[0].machinerows));
-
+				clearInputnNumber();
 			} else {
 				alert("失败,原因:" + data.outputstr);
 			}
