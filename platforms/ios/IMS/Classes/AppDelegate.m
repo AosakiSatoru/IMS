@@ -33,6 +33,7 @@
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
     self.viewController = [[MainViewController alloc] init];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
