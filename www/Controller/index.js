@@ -40,7 +40,7 @@ document.addEventListener("deviceready", function() {
 			type: "post",
 			url: IMSUrl + "getAppVersion/",
 			timeout: 4000,
-			async: false,
+			async: true,
 			dataType: "json",
 			data: {
 				"parameter": JSON.stringify({
