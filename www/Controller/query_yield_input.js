@@ -45,21 +45,11 @@ function viewInit() {
 		data: [{}],
 	});
 
-	var listViewModel = new kendo.observable({
+	var viewModel = new kendo.observable({
 		queryYieldInputCommonDataSource: dataSource,
 		search: function(e) {
 			var startDate = $("#queryYieldInput_startTimeDatepicker1").val() + " 00:00:00";
 			var endDate = $("#queryYieldInput_startTimeDatepicker2").val() + " 23:59:59";
-			if(endDate == "" || startDate == "") {
-				alert("请输入完整日期");
-				return;
-			}
-
-			var devcode = $("#queryYieldInput_machine").val();
-			if(devcode == "" || !devcode) {
-				alert("请选择设备");
-				return;
-			}
 
 			kendo.ui.progress($("#IMSQueryYieldInput"), true);
 			var params;
@@ -75,7 +65,7 @@ function viewInit() {
 			queryYieldInputFetchDataRequest(params);
 		}
 	});
-	kendo.bind($("#queryYieldInputCommonlistview"), listViewModel);
+	kendo.bind($("#queryYieldInputCommonlistview"), viewModel);
 }
 
 function viewShow() {
@@ -214,7 +204,7 @@ function queryYieldInputFetchDevicesDataRequest() {
 }
 
 //params mark - Action
-$("#queryYieldInput_QueryButton").click(function() {
+//$("#queryYieldInput_QueryButton").click(function() {
 	//	var startDate = $("#queryYieldInput_startTimeDatepicker1").val() + " 00:00:00";
 	//	var endDate = $("#queryYieldInput_startTimeDatepicker2").val() + " 23:59:59";
 	//	if(endDate == "" || startDate == "") {
@@ -240,7 +230,7 @@ $("#queryYieldInput_QueryButton").click(function() {
 	//	if($("#queryYieldInput_flight").val() != "ALL") params.flight = $("#queryYieldInput_flight").val();
 	//
 	//	queryYieldInputFetchDataRequest(params);
-});
+//});
 
 function showList(data) {
 
