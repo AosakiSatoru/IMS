@@ -261,7 +261,7 @@ function queryYieldInput_AutoFill(flowcode) {
 	//清空设备选项
 	var devDropDownList = document.getElementById('queryYieldInput_machine');
 	devDropDownList.options.length = 0;
-	devDropDownList.options.add(new Option("全部", "ALL"));
+	devDropDownList.options.add(new Option("所有设备", "ALL"));
 	//筛选设备选项
 	for(var key in devList) {
 		var object = devList[key];
