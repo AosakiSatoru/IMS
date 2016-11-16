@@ -5,7 +5,7 @@
 
 function viewShow() {
 	//var content = JSON.parse(storage.get("offline"));
-
+    
 	var listViewModel = new kendo.observable({
 		dataSource: loadInfo(),
 		deleteItem: function(e) {
@@ -62,7 +62,7 @@ function upload() {
 
 					element.status = "发送成功";
 				} else {
-					element.status = "发送失败"; // + data.outputstr;
+					element.status = "发送失败 "+ data.outputstr;
 				}
 
 			},
@@ -72,7 +72,7 @@ function upload() {
 				if(e == "timeout") {
 					element.status = "请求超时";
 				} else {
-					element.status = "发送失败";
+					element.status = "发送失败 "+e;
 				}
 
 			}
