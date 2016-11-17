@@ -30,9 +30,6 @@ function viewInit() {
 		format: "yyyy-MM-dd"
 	});
 
-	$("#queryPackingInput_yield").kendoDropDownList();
-	$("#queryPackingInput_type").kendoDropDownList();
-
 	var todayDate = kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd');
 	$("#queryPackingInput_startTimeDatepicker1").data("kendoDatePicker").value(todayDate);
 	$("#queryPackingInput_startTimeDatepicker2").data("kendoDatePicker").value(todayDate);
