@@ -1,6 +1,9 @@
-var beginDate; // 两次点击退出按钮开始时间  
+"use strict";
+var beginDate; // 两次点击退出按钮开始时间
 var isToast = false; // 是否弹出弹框  
 var updateUrl;
+
+
 
 var exitFunction = function() {
 	var endDate = new Date().getTime(); // 两次点击退出按钮结束时间  
@@ -37,14 +40,14 @@ document.addEventListener("deviceready", function() {
 			type: "post",
 			url: IMSUrl + "getAppVersion/",
 			timeout: 4000,
-			async: false,
-			dataType: "jsonp",
+			async: true,
+			dataType: "json",
 			data: {
 				"parameter": JSON.stringify({
 					"platform": platform
 				})
 			},
-			dataType: "json",
+
 			success: function(data) {
 				console.log(data);
 				if(data.outputstr.version > AppVersion.version) {
@@ -52,12 +55,10 @@ document.addEventListener("deviceready", function() {
 					updateUrl = data.outputstr.url;
 					console.log("Server Version:" + data.outputstr.version + " App Version:" + AppVersion.version + " Need Update");
 				} else {
-					autoLogin();
 					console.log("Server Version:" + data.outputstr.version + " App Version:" + AppVersion.version + " No Update");
 				}
 			},
 			error: function(data, status, e) {
-				autoLogin();
 				console.log("error:00001 get Version Fail!");
 			}
 		});
@@ -70,21 +71,50 @@ document.addEventListener("deviceready", function() {
 	} catch(e) {
 
 	}
+	
+	try {
+		window.plugins.jPushPlugin.setTagsWithAlias([], "");
+	} catch(exception) {
+
+	}
+
+
+	$("#loginUserName").kendoComboBox({
+		clearButton: true,
+		dataSource: historyAccounts(),
+		dataTextField: "name",
+		dataValueField: "name"
+
+	});
 
 });
 var app = new kendo.mobile.Application(document.body, {
 	platform: 'ios',
 	skin: 'nova'
 });
-
-function autoLogin() {
-	try {
-		window.plugins.jPushPlugin.setTagsWithAlias([], "");
-	} catch(exception) {
-
-	}
+function historyAccounts() {
+	return JSON.parse(storage.get("accounts"))? JSON.parse(storage.get("accounts")): new Array();
 }
+function addAccountIfNeeded(name) {
 
+	var history = historyAccounts();
+	var accounts = history.map(function (item) {
+
+		 return item.name;
+	});
+
+	if($.inArray( name,accounts) == -1){
+		history.push({"name":name});
+		storage.put("accounts",JSON.stringify(history));
+	}
+
+
+}
+function removeAllAccounts() {
+	storage.put("accounts",JSON.stringify([]));
+	$("#loginUserName").data("kendoComboBox").close();
+	$("#loginUserName").data("kendoComboBox").setDataSource(historyAccounts());
+}
 function showPassword(element) {
 
 	if(element.checked) {
@@ -97,24 +127,41 @@ function showPassword(element) {
 function viewBeforeShow() {
 	beginDate = new Date().getTime();
 	document.addEventListener("backbutton", exitFunction, false);
+	//document.addEventListener("jpush.openNotification", onOpenNotification, false);
+	try {
+		window.plugins.jPushPlugin.setApplicationIconBadgeNumber(0);
+	} catch (e){
+
+	}
 }
 
 function viewBeforeHide() {
 	document.removeEventListener("backbutton", exitFunction);
+//	document.removeEventListener("jpush.openNotification", onOpenNotification, false);
 }
 
 function RequestPreHookData() {
-	var userName = $("#loginUserName").val().trim();
+	var userName = $("#loginUserName").data("kendoComboBox").text().trim();
 	var password = $("#loginPassword").val();
 
 	var para = {
 		"account": userName,
 		"password": password,
-		"channel": 1
+		"channel": 0
 	};
 
-	if(userName.length == 0) {
-		alert("请输入名字");
+	try{
+		if(device.platform == "Android"){
+			para.channel = 2;
+		}else{
+			para.channel = 1;
+		}
+	}catch (e){
+
+	};
+
+	if($("#loginUserName").data("kendoComboBox").text().length == 0) {
+		alert("请输入账号");
 		return;
 	}
 
@@ -127,19 +174,19 @@ function RequestPreHookData() {
 	$.ajax({
 		type: "post",
 		url: url,
-		timeout: 10000,
+		timeout: 30000,
 		async: true,
-		dataType: "jsonp",
+		dataType: "json",
 		data: {
 			"parameter": JSON.stringify(para)
 		},
-		dataType: "json",
 		success: function(data) {
 
 			if(data.outstatus == 201) {
 				kendo.ui.progress($("#IMSLogin"), false);
 				alert("账号或密码出错");
 			} else if(data.outstatus == 0) {
+				addAccountIfNeeded($("#loginUserName").data("kendoComboBox").text());
 				storage.put("account", data.outputstr.account);
 				storage.put("deptid", data.outputstr.deptid);
 				storage.put("deptname", data.outputstr.deptname);
@@ -150,7 +197,7 @@ function RequestPreHookData() {
 				storage.put("flowcode", data.outputstr.flowcode);
 				storage.put("flight", data.outputstr.flight);
 				storage.put("duty", data.outputstr.duty);
-				storage.put("machinerows", data.outputstr.machinerows);
+				storage.put("machinerows", JSON.stringify(data.outputstr.machinerows));
 				storage.put("login", "yes");
 				window.location.href = "View/home.html";
 			}
@@ -171,7 +218,7 @@ $(document).ready(function() {
 });
 
 function showAccountClearBtn() {
-	if(document.getElementById('loginUserName').value.length > 0) {
+	if($("#loginUserName").data("kendoComboBox").text().length > 0) {
 		document.getElementById('accountClearBtn').style.display = 'block';
 	} else {
 		document.getElementById('accountClearBtn').style.display = 'none';

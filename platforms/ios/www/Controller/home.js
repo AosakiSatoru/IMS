@@ -10,14 +10,25 @@ window.app = new kendo.mobile.Application(document.body, {
 });
 
 $("#datepicker").kendoDatePicker({
-	animation: false,
+	animation: {
+		open: {
+			effects: "fadeIn",
+			duration: 300
+		},
+		close: {
+			effects: "fadeOut",
+			duration: 300
+		}
+	},
 	culture: "zh-CN",
-	format: "yyyy-MM-dd"
+	format: "yyyy-MM-dd",
+	max: new Date()
 });
 var todayDate = kendo.toString(kendo.parseDate(new Date()), 'yyyy-MM-dd');
 $("#datepicker").data("kendoDatePicker").value(todayDate);
 var beginDate; // 两次点击退出按钮开始时间  
 var isToast = false; // 是否弹出弹框  
+var isOnline = true;
 
 var exitFunction = function() {
 	var endDate = new Date().getTime(); // 两次点击退出按钮结束时间  
@@ -47,6 +58,7 @@ function Toast(msg, duration) {
 	}, duration);
 }
 
+//params mark - Initalize
 function viewInit() {
 	$("#username").text(storage.get("username") != "undefined" ? storage.get("username") : " ");
 	$("#deptname").text(storage.get("deptname") != "undefined" ? storage.get("deptname") : " ");
@@ -64,29 +76,54 @@ function viewAfterShow() {
 	document.addEventListener("backbutton", exitFunction, false);
 	beginDate = new Date().getTime();
 
-	home_dealloc();
+	//收起软键盘
+	document.activeElement.blur();
+	
+	//dealloc
+	IMSBindingMachine_dealloc();
+	IMSYieldinput_dealloc();
+	IMSPackingInput_dealloc();
+	IMSWarningList_dealloc();
+	IMSQueryYieldInput_dealloc();
+	IMSQueryPackingInput_dealloc();
+	IMSOfflineUpload_dealloc();
+	
 }
 
-function home_dealloc() {
-	//IMSBindingMachine dealloc
+function viewBeforeHide() {
+	$("#left_drawerButton").hide();
+	$("#bindingMachine_leftNavButton").show();
+	//$("#packingInput_rightNavButton_1").data("kendoMobileButton").badge(100);
+	document.removeEventListener("backbutton", exitFunction);
+}
+
+//params mark - dealloc
+function IMSBindingMachine_dealloc() {
 	if($("#IMSBindingMachine").data("kendoMobileView"))
 		$("#IMSBindingMachine").data("kendoMobileView").destroy();
 	if($("#IMSBindingMachine"))
 		$("#IMSBindingMachine").remove();
+}
 
-	//IMSYieldinput dealloc
+function IMSYieldinput_dealloc() {
 	if($("#IMSYieldinput").data("kendoMobileView"))
 		$("#IMSYieldinput").data("kendoMobileView").destroy();
 	if($("#IMSYieldinput"))
 		$("#IMSYieldinput").remove();
-		
-	//IMSPackingInput dealloc
+}
+
+function IMSPackingInput_dealloc() {
 	if($("#IMSPackingInput").data("kendoMobileView"))
 		$("#IMSPackingInput").data("kendoMobileView").destroy();
 	if($("#IMSPackingInput"))
 		$("#IMSPackingInput").remove();
+}
 
-	//IMSQueryYieldInput dealloc
+function IMSWarningList_dealloc() {
+	
+}
+
+function IMSQueryYieldInput_dealloc() {
 	if($("#queryYieldInput_procedure-list").data("kendoPopup"))
 		$("#queryYieldInput_procedure-list").data("kendoPopup").destroy();
 	if($("#queryYieldInput_machine-list").data("kendoPopup"))
@@ -97,8 +134,9 @@ function home_dealloc() {
 		$("#IMSQueryYieldInput").data("kendoMobileView").destroy();
 	if($("#IMSQueryYieldInput"))
 		$("#IMSQueryYieldInput").remove();
+}
 
-	//IMSQueryPackingInput dealloc
+function IMSQueryPackingInput_dealloc() {
 	if($("#queryPackingInput_type-list").data("kendoPopup"))
 		$("#queryPackingInput_type-list").data("kendoPopup").destroy();
 	if($("#IMSQueryPackingInput").data("kendoMobileView"))
@@ -107,25 +145,20 @@ function home_dealloc() {
 		$("#IMSQueryPackingInput").remove();
 }
 
-function viewBeforeHide() {
-	$("#left_drawerButton").hide();
-	$("#bindingMachine_leftNavButton").show();
-	//$("#packingInput_rightNavButton_1").data("kendoMobileButton").badge(100);
-	document.removeEventListener("backbutton", exitFunction);
-}
-var actionsheetAction = {
-	action0: function() {
-		app.navigate("query_yield_input.html");
-	},
-	action1: function() {
-		app.navigate("query_packing_input.html");
-	}
+function IMSOfflineUpload_dealloc() {
+	if($("#IMSOfflineUpload").data("kendoMobileView"))
+		$("#IMSOfflineUpload").data("kendoMobileView").destroy();
+	if($("#IMSOfflineUpload"))
+		$("#IMSOfflineUpload").remove();
 }
 
+//params mark - Action
 function machine_input(type) {
 	var urlString = "yield_input.html?type=" + type + "&selectdate=" + $("#datepicker").val();
 	app.navigate(urlString);
 }
+
+//params mark - clickAction
 $("#bindingMachine").click(function() {
 	$("#homeDrawer").data("kendoMobileDrawer").hide();
 	setTimeout(function() {
@@ -133,17 +166,41 @@ $("#bindingMachine").click(function() {
 	}, 200);
 
 });
+
 $("#packingInput").click(function() {
 	app.navigate("packing_input.html");
 });
+
 $("#warning").click(function() {
 	app.navigate("warning_list.html");
 });
+
 $("#queryYieldInput").click(function() {
 	app.navigate("query_yield_input.html");
 });
+
 $("#queryPackingInput").click(function() {
 	app.navigate("query_packing_input.html");
+});
+
+$("#offline_upload").click(function() {
+	app.navigate("offline_upload.html");
+});
+
+$("#logout").click(function() {
+	try {
+		window.plugins.jPushPlugin.setTagsWithAlias([], "");
+	} catch(exception) {
+
+	}
+	$("#homeDrawer").data("kendoMobileDrawer").hide();
+	kendo.ui.progress($("#IMSHome"), true);
+	setTimeout(function() {
+		storage.put("login", "no");
+		kendo.ui.progress($("#IMSHome"), false);
+		window.location.href = "../index.html";
+	}, 1000);
+
 });
 
 document.addEventListener("deviceready", function() {
@@ -178,7 +235,7 @@ document.addEventListener("deviceready", function() {
 			navigator.notification.beep(1);
 			//$(".km-badge").text(JSON.parse(message)["告警汇总"]);
 		} catch(exception) {
-			alert("JPushPlugin:onReceiveMessage-->" + exception);
+			//alert("JPushPlugin:onReceiveMessage-->" + exception);
 		}
 	};
 
@@ -189,7 +246,7 @@ document.addEventListener("deviceready", function() {
 			}
 			app.navigate("warning_list.html");
 		} catch(exception) {
-			alert("出错 JPushPlugin:onReceiveMessage-->" + exception);
+			//alert("出错 JPushPlugin:onReceiveMessage-->" + exception);
 		}
 	};
 	var onTagsWithAlias = function(event) {
@@ -200,29 +257,29 @@ document.addEventListener("deviceready", function() {
 
 		}
 	}
+
 	document.addEventListener("jpush.setTagsWithAlias", onTagsWithAlias, false);
 	document.addEventListener("jpush.receiveMessage", onReceiveMessage, false);
 	document.addEventListener("jpush.openNotification", onOpenNotification, false);
 
+	document.addEventListener("online", onLineCallBack, false);
+	document.addEventListener("offline", offLineCallBack, false);
+
 }, false);
 
-$("#logout").click(function() {
-	try {
-		window.plugins.jPushPlugin.setTagsWithAlias([], "");
-	} catch(exception) {
+function offLineCallBack(e) {
+	// Handle the offline event
+	isOnline = false;
 
-	}
-	$("#homeDrawer").data("kendoMobileDrawer").hide();
-	kendo.ui.progress($("#IMSHome"), true);
-	setTimeout(function() {
-		storage.put("login", "no");
-		kendo.ui.progress($("#IMSHome"), false);
-		window.location.href = "../index.html";
-	}, 1000);
+}
 
-});
+function onLineCallBack() {
+	// Handle the offline event
+	isOnline = true;
 
-//弹出视图事件
+}
+
+//params mark - 弹出视图事件
 $("#chooseJia").click(function() {
 	machine_input("0");
 	$("#yieldInputModal").data("kendoMobileModalView").close();
