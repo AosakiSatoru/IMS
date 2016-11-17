@@ -204,8 +204,8 @@ $("#logout").click(function() {
 });
 
 document.addEventListener("deviceready", function() {
-
-	window.plugins.jPushPlugin.init();
+	try {
+		window.plugins.jPushPlugin.init();
 
 	window.plugins.jPushPlugin.isPushStopped(function(result) {
 		if(result == 0) {
@@ -219,8 +219,8 @@ document.addEventListener("deviceready", function() {
 		} else {
 
 		}
-	})
-
+	});
+	}catch (e){};
 	var onReceiveMessage = function(event) {
 		try {
 			var message;
