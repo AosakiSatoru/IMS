@@ -30,3 +30,26 @@ function GLOBAL_onlyNum(value) {
 function GLOBAL_EnterDisable() {
 	event.returnValue = false;
 };
+
+function GLOBAL_ErrorInfo(data) {
+	switch(data.outstatus) {
+		case "101":
+			alert("调用服务异常 " + data.outputstr);
+			break;
+		case "201":
+			alert("参数验证出错 " + data.outputstr);
+			break;
+		case "202":
+			alert("客户端合法性验证出错 " + data.outputstr);
+			break;
+		case "203":
+			alert("请求服务未定义 " + data.outputstr);
+			break;
+		case "400":
+			alert("应用级异常 " + data.outputstr);
+			break;
+		default:
+			alert("未知错误 " + data.outputstr);
+			break;
+	}
+};

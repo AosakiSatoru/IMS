@@ -69,7 +69,7 @@ function queryYieldInputFetchDataRequest(params) {
 		dataType: "json",
 		success: function(data) {
 			if(data.outstatus != 0) {
-				alert(data.outputstr);
+				GLOBAL_ErrorInfo(data);
 			} else if(data.outstatus == 0) {
 				showList(data);
 			}
@@ -99,7 +99,7 @@ function queryYieldInputModifyDataRequest(params) {
 		dataType: "json",
 		success: function(data) {
 			if(data.outstatus != 0) {
-				alert(data.outputstr);
+				GLOBAL_ErrorInfo(data);
 			} else if(data.outstatus == 0) {
 				alert("修改成功");
 			}

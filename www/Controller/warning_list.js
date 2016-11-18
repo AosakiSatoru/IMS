@@ -58,7 +58,7 @@ function warningListInitRequest() {
 
 function warningListBindView(data) {
 	if(data.outstatus != 0) {
-		alert(data.outputstr);
+		GLOBAL_ErrorInfo(data);
 	} else if(data.outstatus == 0) {
 		//		alert(JSON.stringify(data.outputstr.Messagerows));
 		var messageArray = data.outputstr.Messagerows;

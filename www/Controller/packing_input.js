@@ -39,8 +39,9 @@ function postPackingInputData() {
 				alert("处理成功");
 				$("#IMSPackingInput_yield").val("");
 			}
-			else
-				alert("操作失败，请稍后再试");
+			else{
+				GLOBAL_ErrorInfo(data);
+			}
 		},
 		error: function(data, status, e) {
 			kendo.ui.progress($("body"), false);
@@ -164,23 +165,23 @@ $("#packingInput_confirmButton").click(function() {
 $("#packingInput_button_1").click(function() {
 	type = "0";
 	$("#IMSPackingInput_yield").val("");
-	$("#packingInput_button_1").attr("style", "width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;");
-	$("#packingInput_button_2").attr("style", "width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
-	$("#packingInput_button_3").attr("style", "width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
+	$("#packingInput_button_1").attr("style", "width: 30%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;");
+	$("#packingInput_button_2").attr("style", "width: 30%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
+	$("#packingInput_button_3").attr("style", "width: 30%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
 });
 
 $("#packingInput_button_2").click(function() {
 	type = "1";
 	$("#IMSPackingInput_yield").val("");
-	$("#packingInput_button_1").attr("style", "width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
-	$("#packingInput_button_2").attr("style", "width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;");
-	$("#packingInput_button_3").attr("style", "width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
+	$("#packingInput_button_1").attr("style", "width: 30%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
+	$("#packingInput_button_2").attr("style", "width: 30%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;");
+	$("#packingInput_button_3").attr("style", "width: 30%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
 });
 
 $("#packingInput_button_3").click(function() {
 	type = "2";
 	$("#IMSPackingInput_yield").val("");
-	$("#packingInput_button_1").attr("style", "width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
-	$("#packingInput_button_2").attr("style", "width: 31%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
-	$("#packingInput_button_3").attr("style", "width: 31%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;");
+	$("#packingInput_button_1").attr("style", "width: 30%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
+	$("#packingInput_button_2").attr("style", "width: 30%;background-color: #EEEEEE;color: #AAAAAA;border-color: #EEEEEE;");
+	$("#packingInput_button_3").attr("style", "width: 30%;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;");
 });

@@ -262,7 +262,7 @@ $("#yieldInput_confirmButton").click(function() {
 				storage.put("yield_input_flowcode_"+params.flowcoderows[0].flowcode,JSON.stringify(params.flowcoderows[0].machinerows));
 				clearInputnNumber();
 			} else {
-				alert("失败,原因:" + data.outputstr);
+				GLOBAL_ErrorInfo(data);
 			}
 		},
 		error: function(data, status, e) {

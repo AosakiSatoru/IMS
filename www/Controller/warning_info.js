@@ -93,9 +93,8 @@ function warningInfoFetchDataRequest(onlyShowBindingMachine, messageid) {
 //params mark - Action
 function warningInfoBindView(data, messageid, filtercode) {
 	if(data.outstatus != 0) {
-		alert(data.outputstr);
+		GLOBAL_ErrorInfo(data);
 	} else if(data.outstatus == 0) {
-		//				alert(JSON.stringify(data.outputstr.Messagerows));
 		var category = new Array();
 		flowArray = data.outputstr.Messagerows;
 		$.each(flowArray, function(n, flowValue) {

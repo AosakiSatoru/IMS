@@ -76,7 +76,7 @@ function loadView(data) {
 	viewModels = [];
 
 	if(data.outstatus != 0) {
-		alert(data.outputstr);
+		GLOBAL_ErrorInfo(data);
 	} else if(data.outstatus == 0) {
 		var category = new Array();
 		fetchData = data.outputstr.flowcoderows;
