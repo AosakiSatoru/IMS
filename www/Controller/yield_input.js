@@ -4,7 +4,15 @@
 var contentViewModel;
 var type;
 var selectdate;
+var flowCodeName ={
+	"2":"梳棉",
+	"3":"预并",
+	"7":"粗纱",
+	"梳棉":"2",
+	"预并":"3",
+	"粗纱":"7",
 
+};
 function viewInit(e) {}
 
 function viewShow(e) {
@@ -81,7 +89,7 @@ function bindView(data) {
 		var object = content[key];
 		var contentArray = new Array();
 
-		if(object.flowname.trim() == "预并") {
+		if(object.flowname.trim() == "梳棉") {
 			console.log(object);
 			$.each(object.devices, function(n, device) {
 				contentArray.push({
@@ -97,7 +105,7 @@ function bindView(data) {
 				kendo.data.DataSource.create({
 					data: contentArray
 				});
-		} else if(object.flowname.trim() == "梳棉") {
+		} else if(object.flowname.trim() == "预并") {
 			$.each(object.devices, function(n, device) {
 				contentArray.push({
 					"image": "../resources/@3x/smj-c51@3x.png",
@@ -135,7 +143,7 @@ function bindView(data) {
 	});
 	contentDataSource = first;
 	contentViewModel = kendo.observable({
-		"selectflowcode": 3,
+		"selectflowcode": flowCodeName["梳棉"],
 		"varietiesDataSource": varietiesDataSource,
 		"contentDataSource": contentDataSource,
 		"first": first,
@@ -163,13 +171,13 @@ function bindView(data) {
 			e.target[0].style.borderColor = "#A9293D";
 
 			if($(e.target.find(".km-text")[0]).text() == "预并") {
-				contentViewModel.selectflowcode = 3;
-				$("#yieldInputListView").data("kendoMobileListView").setDataSource(self.contentViewModel.first);
-			} else if($(e.target.find(".km-text")[0]).text() == "梳棉") {
-				contentViewModel.selectflowcode = 2;
+				contentViewModel.selectflowcode = flowCodeName["预并"];
 				$("#yieldInputListView").data("kendoMobileListView").setDataSource(self.contentViewModel.second);
+			} else if($(e.target.find(".km-text")[0]).text() == "梳棉") {
+				contentViewModel.selectflowcode =flowCodeName["梳棉"];
+				$("#yieldInputListView").data("kendoMobileListView").setDataSource(self.contentViewModel.first);
 			} else if($(e.target.find(".km-text")[0]).text() == "粗纱") {
-				contentViewModel.selectflowcode = 7;
+				contentViewModel.selectflowcode = flowCodeName["粗纱"];
 				$("#yieldInputListView").data("kendoMobileListView").setDataSource(self.contentViewModel.third);
 			}
 
@@ -227,6 +235,7 @@ $("#yieldInput_confirmButton").click(function() {
 			machinerows: filterContent
 		}]
 	};
+
 	if(!isOnline) {
 		saveOfflineInfo(params);
 		return;
@@ -326,25 +335,7 @@ function dealWithContent(para) {
 	}
 
 	$.each(para.flowcoderows,function (n,item) {
-
-
-		switch (item.flowcode){
-
-			case 3:
-
-				item.flowcode = "预并";
-				break;
-			case 2:
-
-				item.flowcode = "梳棉";
-				break;
-			case 7:
-
-				item.flowcode = "粗纱";
-				break;
-		}
-
-
+		item.flowcode = flowCodeName[item.flowcode];
 	});
 
 
@@ -373,3 +364,5 @@ function isArrayFn(value) {
 		return Object.prototype.toString.call(value) === "[object Array]";
 	}
 }
+
+//# sourceURL=yield_input.js
