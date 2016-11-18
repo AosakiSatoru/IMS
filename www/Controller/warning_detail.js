@@ -7,7 +7,24 @@ var workingMark = false;
 function viewShow(e) {
 	var navbar = $("#navbar").kendoMobileNavBar();
 	warningDetailInitRequest(e.view.params.deviceCode);
+	//init UI
 	$(document).bind("kendo:skinChange", createChart);
+	var scrollViewCategory = new Array();
+	scrollViewCategory.push({
+		"Title_1": "",
+		"Message_1": "",
+		"Title_2": "",
+		"Message_2": "",
+		"Title_3": "",
+		"Message_3": ""
+	});
+	var scrollViewDataSource = kendo.data.DataSource.create({
+		data: scrollViewCategory,
+	});
+	var contentScrollViewModel = kendo.observable({
+		"scrollViewDataSource": scrollViewDataSource,
+	});
+	kendo.bind($("#warningDetailScrollView"), contentScrollViewModel);
 }
 
 function warningDetailInitRequest(devcode) {
@@ -37,7 +54,7 @@ function warningDetailInitRequest(devcode) {
 			alert("请求服务器出错");
 		}
 	});
-
+//	fakeData();
 }
 
 function warningDetailBindView(data, devcode) {
@@ -255,24 +272,6 @@ function warningDetailBindView(data, devcode) {
 	}
 }
 
-Date.prototype.Format = function(fmt) { //author: meizz  
-	var o = {
-		"M+": this.getMonth() + 1, //月份  
-		"d+": this.getDate(), //日  
-		"h+": this.getHours(), //小时  
-		"m+": this.getMinutes(), //分  
-		"s+": this.getSeconds(), //秒  
-		"q+": Math.floor((this.getMonth() + 3) / 3), //季度  
-		"S": this.getMilliseconds() //毫秒  
-	};
-	if(/(y+)/.test(fmt))
-		fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-	for(var k in o)
-		if(new RegExp("(" + k + ")").test(fmt))
-			fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-	return fmt;
-};
-
 function createChart(productionEfficiency, color) {
 	$("#chart").kendoChart({
 		title: {
@@ -315,4 +314,59 @@ function createChart(productionEfficiency, color) {
 			template: /*"#= series.name #:*/ "#= value #%"
 		}
 	});
+}
+
+function fakeData() {
+	$("#warningDetail_devcode").text("devcode");
+	$("#warningDetail_ProductionKM").text("12345");
+	$("#warningDetail_ArticleName").text("JC80S/2ZS-AW2");
+	var EfficProduction = 65.23;
+	$("#warningDetail_EfficProduction").text(EfficProduction);
+	if(EfficProduction > 20 || EfficProduction < 10) //阈值
+		createChart(EfficProduction, "#A9293D");
+	else
+		createChart(EfficProduction, "#9DE219");
+	$("#warningDetail_deviceStatusMessage").html("设备告警信息<br>设备告警信息<br>设备告警信息<br>设备告警信息<br>设备告警信息<br>设备告警信息<br>设备告警信息<br>设备告警信息<br>设备告警信息<br>设备告警信息<br>设备告警信息<br>设备告警信息<br>设备告警信息<br>设备告警信息<br>设备告警信息<br>");
+
+	var category = new Array();
+	var scrollViewCategory = new Array();
+	scrollViewCategory.push({
+		"Title_1": "组切割",
+		"Message_1": "组切割信息<br>组切割信息<br>组切割信息<br>组切割信息<br>组切割信息<br>组切割信息<br>组切割信息<br>",
+		"Title_2": "锭位",
+		"Message_2": "锭位信息<br>锭位信息<br>锭位信息<br>锭位信息<br>锭位信息<br>锭位信息<br>锭位信息<br>锭位信息<br>锭位信息<br>锭位信息<br>",
+		"Title_3": "生产组",
+		"Message_3": "生产组信息<br>生产组信息<br>生产组信息<br>生产组信息<br>生产组信息<br>生产组信息<br>生产组信息<br>生产组信息<br>生产组信息<br>生产组信息<br>生产组信息<br>生产组信息<br>生产组信息<br>生产组信息<br>生产组信息<br>生产组信息<br>生产组信息<br>生产组信息<br>生产组信息<br>生产组信息<br>生产组信息<br>"
+	});
+	scrollViewCategory.push({
+		"Title_1": "%A",
+		"Message_1": "message_a",
+		"Title_2": "CV%",
+		"Message_2": "message_cv",
+		"Title_3": "",
+		"Message_3": ""
+	});
+
+	var scrollViewDataSource = kendo.data.DataSource.create({
+		data: scrollViewCategory,
+	});
+
+	var contentScrollViewModel = kendo.observable({
+		"scrollViewDataSource": scrollViewDataSource,
+	});
+	kendo.bind($("#warningDetailScrollView"), contentScrollViewModel);
+	var i = 0
+	while(i < 6) {
+		category.push({
+			"otherMessage": new Date().Format("yyyy-MM-dd hh:mm") + "&nbsp&nbsp&nbsp" + "其他告警信息"
+		});
+		i = i + 1;
+	}
+	dataSource = kendo.data.DataSource.create({
+		data: category,
+	});
+	var contentViewModel = kendo.observable({
+		"dataSource": dataSource,
+	});
+	kendo.bind($("#warningDetailListView"), contentViewModel);
 }
