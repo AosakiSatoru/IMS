@@ -44,7 +44,6 @@ function warningDetailBindView(data, devcode) {
 	if(data.outstatus != 0) {
 		GLOBAL_ErrorInfo(data);
 	} else if(data.outstatus == 0) {
-		//		alert(JSON.stringify(data.outputstr));
 		$("#warningDetail_devcode").text(devcode);
 		var ProductionKM = data.outputstr.ProductionKM;
 		var ArticleName = data.outputstr.ArticleName;
@@ -244,20 +243,6 @@ function warningDetailBindView(data, devcode) {
 				"Message_3": ""
 			});
 		}
-		var i = 0
-		while( i < 6) {
-			category.push({
-				"otherMessage": new Date().Format("yyyy-MM-dd hh:mm") + "&nbsp&nbsp&nbsp" + "其他告警信息"
-			});
-			i=i+1;
-		}
-		dataSource = kendo.data.DataSource.create({
-			data: category,
-		});
-		var contentViewModel = kendo.observable({
-			"dataSource": dataSource,
-		});
-		kendo.bind($("#warningDetailListView"), contentViewModel);
 
 		var scrollViewDataSource = kendo.data.DataSource.create({
 			data: scrollViewCategory,
