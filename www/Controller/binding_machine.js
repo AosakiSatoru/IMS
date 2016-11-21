@@ -280,9 +280,10 @@ $("#bindingMachine_confirmButton").click(function(){
 				success: function(data) {
 					if(data.outstatus == 0) {
 						logInfo(flowcoderows);
-						alert("成功");
+						alert("绑定成功");
+						app.navigate("#:back");
 					} else {
-						alert("失败,原因:" + data.outputstr);
+						alert("绑定失败,原因:" + data.outputstr);
 					}
 				},
 				error: function(data, status, e) {
