@@ -83,8 +83,25 @@ document.addEventListener("deviceready", function() {
 		clearButton: true,
 		dataSource: historyAccounts(),
 		dataTextField: "name",
-		dataValueField: "name"
+		dataValueField: "name",
+		select:function(e){
+			setTimeout(function() {
+				$('input#loginPassword').focus();
+			},  100);
 
+		}
+
+	});
+
+	$('input.k-input').bind('keypress', function(event) {
+		if(event.keyCode == "13") {
+			$('input#loginPassword').focus();
+		}
+	});
+	$('input#loginPassword').bind('keypress', function(event) {
+		if(event.keyCode == "13") {
+			RequestPreHookData();
+		}
 	});
 
 });
@@ -242,16 +259,7 @@ function clearPasswordText() {
 	document.getElementById('loginPassword').value = '';
 	document.getElementById('passwordClearBtn').style.display = 'none';
 }
-$('input#loginUserName').bind('keypress', function(event) {
-	if(event.keyCode == "13") {
-		$('input#loginPassword').focus();
-	}
-});
-$('input#loginPassword').bind('keypress', function(event) {
-	if(event.keyCode == "13") {
-		RequestPreHookData();
-	}
-});
+
 
 $("#updateButton").click(function (){
 	window.open(updateUrl, '_system');

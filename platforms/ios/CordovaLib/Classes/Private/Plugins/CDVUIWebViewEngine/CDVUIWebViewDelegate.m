@@ -319,6 +319,8 @@ static NSString *stripFragment(NSString* url)
 
 - (void)webViewDidFinishLoad:(UIWebView*)webView
 {
+    [webView setKeyboardDisplayRequiresUserAction:NO];
+
     VerboseLog(@"webView didFinishLoad (before). state=%d loadCount=%d", _state, _loadCount);
     BOOL fireCallback = NO;
     switch (_state) {
