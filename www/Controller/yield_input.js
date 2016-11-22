@@ -173,12 +173,18 @@ function bindView(data) {
 			if($(e.target.find(".km-text")[0]).text() == "预并") {
 				contentViewModel.selectflowcode = flowCodeName["预并"];
 				$("#yieldInputListView").data("kendoMobileListView").setDataSource(self.contentViewModel.second);
+				app.view().scroller.scrollTo(0, 0);
+				$("#yieldInputListView").data("kendoMobileListView").refresh();
 			} else if($(e.target.find(".km-text")[0]).text() == "梳棉") {
 				contentViewModel.selectflowcode =flowCodeName["梳棉"];
 				$("#yieldInputListView").data("kendoMobileListView").setDataSource(self.contentViewModel.first);
+				app.view().scroller.scrollTo(0, 0);
+				$("#yieldInputListView").data("kendoMobileListView").refresh();
 			} else if($(e.target.find(".km-text")[0]).text() == "粗纱") {
 				contentViewModel.selectflowcode = flowCodeName["粗纱"];
 				$("#yieldInputListView").data("kendoMobileListView").setDataSource(self.contentViewModel.third);
+				app.view().scroller.scrollTo(0, 0);
+				$("#yieldInputListView").data("kendoMobileListView").refresh();
 			}
 
 		}

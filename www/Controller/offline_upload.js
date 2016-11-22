@@ -13,7 +13,8 @@ function viewShow() {
 			e.data.status = "删除";
 			changeLog();
 			$("#offlineUploadListView").data("kendoMobileListView").setDataSource(loadInfo());
-
+			app.view().scroller.scrollTo(0, 0);
+			$("#offlineUploadListView").data("kendoMobileListView").refresh();
 		}
 	});
 	kendo.bind($("#offlineUploadListView"), listViewModel);
@@ -24,6 +25,8 @@ function viewShow() {
 		$.when(upload()).done(function(data){
 			setTimeout(function() {
 				$("#offlineUploadListView").data("kendoMobileListView").setDataSource(loadInfo());
+				app.view().scroller.scrollTo(0, 0);
+				$("#offlineUploadListView").data("kendoMobileListView").refresh();
 				kendo.ui.progress($("#IMSOfflineUpload"), false);
 			}, 1000);
 
