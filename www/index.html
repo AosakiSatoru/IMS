@@ -45,25 +45,25 @@
 						<input type="image" class="clearer" id="accountClearBtn" onclick="clearAccountText()" src="resources/@3x/clear_icon@3x.png" style="top: 5px;width: 18px;position: relative;float: right;margin-right: 10%" />
 					</p>
 				</div>
-				<div style="top: 230px;margin-left: 5%;position: absolute;width: 95%;">
+				<div style="top: 220px;margin-left: 5%;position: absolute;width: 95%;">
 					<p style="border-bottom: 1px solid #EEEEEE;padding-bottom: 0.45em;">
 						<img src="resources/@3x/password_icon@3x.png" style="width: 20px;height: 25px;float: left;margin-left: 0.1em;" />
 						<input id="loginPassword" type="password" placeholder="请输入密码" name="password" onKeyUp="showPasswordClearBtn()" style="font-size: 1em;width: 75%;height: 30px;padding-left: 0.5em;margin: 0;border: none;" />
 						<input type="image" class="clearer" id="passwordClearBtn" onclick="clearPasswordText()" src="resources/@3x/clear_icon@3x.png" style="top: 5px;width: 18px;position: relative;float: right;margin-right: 10%" />
 					</p>
+				</div>
+				<div style="top: 290px;text-align: center;position: absolute;width: 100%;">
+					<button id="loginButton" type="submit" style="width: 95%;height: 2.5em;border: none;font-size: 1.2em;background-color: #A62A40;color: #FFFFFF;border-radius: 4px;">登 录</button>
+					<!--<a href="View/home.html">home</a>-->
+				</div>
+				<div style="top: 340px;margin-left: 5%;position: absolute;width: 95%;">
 					<button style="font-size: 0.8em;color:#AAAAAA;background-color: white;border: none;margin-top: 10px;" onclick="removeAllAccounts()">清除账号历史</button>
 					<span style="float: right;text-align: right;margin-right: 20px;margin-top: 10px;width: 40%;">
 						<input type="checkbox" id="eq1" class="k-checkbox" onchange="showPassword(this)" style="border-color:white;padding: none;margin: none;">
 						<label class="k-checkbox-label" for="eq1" style="font-size: 1em;color: #AAAAAA;">显示密码</label>
 					</span>
 				</div>
-
-				<div style="top: 340px;text-align: center;position: absolute;width: 100%;">
-
-					<button id="loginButton" type="submit" style="width: 95%;height: 2.5em;border: none;font-size: 1.2em;background-color: #A62A40;color: #FFFFFF;border-radius: 4px;">登 录</button>
-					<!--<a href="View/home.html">home</a>-->
-				</div>
-				<a style="color: #A9293D;font-size: 1em;position: absolute;top: 10px;right: 10px;" id="version"></a>
+				<a style="color: #A9293D;font-size: 1em;position: absolute;top: 20px;right: 15px;" id="version"></a>
 			</div>
 			</ul>
 		</div>
