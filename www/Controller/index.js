@@ -85,7 +85,10 @@ document.addEventListener("deviceready", function() {
 		dataTextField: "name",
 		dataValueField: "name",
 		select:function(e){
-			$('input#loginPassword').focus();
+			setTimeout(function() {
+				$('input#loginPassword').focus();
+			},  100);
+
 		}
 
 	});
