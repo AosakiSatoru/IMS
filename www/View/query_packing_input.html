@@ -1,0 +1,98 @@
+<!--<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>副料打包查询</title>
+
+		<link href="../styles/kendo.default.min.css" rel="stylesheet" />
+		<link href="../styles/kendo.common.min.css" rel="stylesheet" />
+		<link href="../styles/kendo.mobile.all.min.css" rel="stylesheet" />
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/kendo.all.min.js"></script>
+
+	</head>
+
+	<body>-->
+
+<div data-role="view" data-title="副料打包查询" data-show="viewShow" data-init="viewInit" id="IMSQueryPackingInput">
+	<header data-role="header" style="background-color: white;">
+		<span data-role="navbar" style="border-bottom-width:1px ;border-bottom-style: solid;border-bottom-color: lightgray;">
+                <div data-role="view-title" style="line-height: 80px;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
+                <a id="queryPackingInput_leftNavButton" href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back_big@3x.png);background-repeat: round;height: 80px;width: 100px;"></a>
+				<a data-badge="0" id="queryPackingInput_rightNavButton_1" href="warning_list.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red_big@3x.png);background-repeat: round;height: 80px;width: 100px;"></a>
+		</span>
+		<div style="background-color: slategray;height: 90px;">
+			<div style="text-align: center;border-top-width: 1px;border-top-color: rgb(238,238,238);border-top-style: solid;padding-top: 10px;padding-bottom: 10px;">
+				<input id="queryPackingInput_startTimeDatepicker1" onkeydown="GLOBAL_EnterDisable()" style="font-size: 1em;width: 47%;" placeholder="开始日期" />
+				<input id="queryPackingInput_startTimeDatepicker2" onkeydown="GLOBAL_EnterDisable()" style="font-size: 1em;width: 47%;" placeholder="结束日期" />
+				<span id="queryPackingInput_QueryButton" data-role="button" style="float: right;right: 2%;width: 25%;height: 30px;border: none;font-size: 1em;background-color: rgb(166,42,64);color: white;border-radius: 4px;margin-top: 10px;">查询</span>
+				<ul data-role="listview" data-bind="source: queryPackingInputCommonDataSource" data-style="inset" style="float: left;width: 70%;margin-top: 10px;background-color: white" data-template="queryPackingInputCommonItemTemplate" id="queryPackingInputCommonlistview">
+				</ul>
+			</div>
+
+		</div>
+
+	</header>
+	<div data-role="content" style="background-color: #FFFFFF;">
+		<ul data-role="listview" data-bind="source: queryResultDataSource" data-style="inset" style="background-color: white" data-template="queryPackingInput_itemTemplate" id="queryPackingInput_listview">
+		</ul>
+	</div>
+	<!--item模板-->
+	<script id="queryPackingInput_itemTemplate" type="text/x-kendo-template">
+		<div id="queryPackingInput_itemInfo" recid="#:recid#">
+			<span style="color: black;font-size: 0.8em;">#:Type#&nbsp</span>
+			<span style="width: 10em;position: absolute;right: 0px;top: 5px;">
+				<div style="text-align: left;color: gray;font-size: 0.7em;width: 100%;">创建日期:#:date# </div>
+				<div style="text-align: left;color: gray;font-size: 0.7em;width: 100%;">排班日期:#:shiftdate#</div>
+			</span>
+		</div>
+		<div style="height: 50px;">
+			<select id="queryPackingInput_unit" data-bind="value: unit" data-text-field="unit" data-value-field="unit" style="position: relative;top: 30px;font-size: 1em;margin-left: 40%;width: 30%;height: 30px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
+				<!--<option value="" selected disabled="true">单位</option>-->
+				<option>T</option>
+				<option>KG</option>
+				<option>G</option>
+			</select>
+			<input id="queryPackingInput_yield" value="#:yield#" placeholder="产量" type="number" onkeydown="GLOBAL_onlyNum(this.value)" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" style="position: relative;top: 0px;font-size: 1em;padding-left: 0.5em;width: 37%;height: 30px;margin-top: 0px;padding-top: 0px;border: none;background-color: rgb(238,238,238);border-radius: 4px;"></input>
+			<a data-role="button" data-bind="click: editItem" style="position: absolute;top: 40px;right: 2%;width: 20%;background-color: rgb(255,255,255);color: rgb(169,41,61);border-color: rgb(169,41,61);border-radius: 4px;font-size: 0.7em;">修 改</a>
+			<!--<div style="text-align: center;">-->
+			<!--<a data-role="button" data-bind="click: editItem" style="float: right;position: relative;width: 10%;background-color: rgb(255,255,255);color: rgb(169,41,61);border-color: rgb(169,41,61);border-radius: 4px;font-size: 0.6em;">修改</a>-->
+			<!--<span data-role="button" data-bind="click: deleteItem" style="position: absolute;top: 10px;right: 3%;width: 13%;background-color: rgb(255,255,255);color: rgb(169,41,61);border-color: rgb(169,41,61);border-radius: 4px;font-size: 0.6em;">删除</span>-->
+			<!--</div>-->
+		</div>
+	</script>
+
+	<!--Common Item模板-->
+	<script id="queryPackingInputCommonItemTemplate" type="text/x-kendo-template">
+		<div style="background-color: slategray;">
+			<div style="text-align: left;width: 100%;">
+				<span style="margin-left: 4%;top: 5px;font-size: 0.8em;text-align: right;">类型:</span>
+				<select id="queryPackingInput_type" style="font-size: 0.8em;width: 97%;height: 30px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
+					<option value="ALL">所有类型</option>
+					<option value="0">回条</option>
+					<option value="1">粗纱头</option>
+					<option value="2">白花</option>
+				</select>
+				
+			</div>
+
+		</div>
+	</script>
+
+	<link rel="stylesheet" href="../css/query_packing_input.css" />
+	<script src="../Controller/query_packing_input.js"></script>
+	<script src="../Controller/url.js"></script>
+</div>
+<!--<script>
+			window.app = new kendo.mobile.Application(document.body, {
+				platform: 'ios',
+				skin: 'nova',
+				layout: 'default',
+				transition: 'overlay'
+			});
+		</script>
+
+	</body>
+
+</html>-->

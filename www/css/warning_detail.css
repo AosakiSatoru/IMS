@@ -1,0 +1,10 @@
+/**
+ * Created by Satoru on 16/9/22.
+ */
+
+#warningDetailListView.km-list>li {
+	padding-left: 4%;
+	padding-bottom: 3px;
+	padding-right: none;
+	padding-top: 3px;
+}

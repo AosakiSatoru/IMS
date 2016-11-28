@@ -1,0 +1,125 @@
+<!--<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>告警列表</title>
+
+		<link href="../styles/kendo.mobile.all.min.css" rel="stylesheet" />
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/kendo.all.min.js"></script>
+
+	</head>
+
+	<body>-->
+<div data-role="view" data-title="告警列表" id="IMSWarningInfo" data-show="viewShow" data-init="viewInit" data-after-show="viewAfterShow">
+	<header data-role="header">
+		<span data-role="navbar">
+        		<div data-role="view-title" style="line-height: 80px;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
+    			<a href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back_big@3x.png);background-repeat: round;height: 80px;width: 100px;"></a>
+		</span>
+		<div style="background-color: white;text-align: center;">
+			<ul data-role="listview" data-bind="source: warningInfoCommonDataSource" data-style="inset" style="width: 40%;float: left;margin-left: 8%;background-color: white" data-template="warningInfoCommonItemTemplate" id="warningInfoCommonlistview">
+			</ul>
+			<span>
+         		<a data-role="button" id="warningInfo_allButton" style="float: right;margin-right: 8%;font-size: 15px;width: 40%;background-color: #FFFFFF;color: #A9293D;border-color: #A9293D;border-radius: 2px;">
+           			显示全部
+      			</a>
+     		</span>
+		</div>
+	</header>
+
+	<div data-role="content" style="background-color: #F7F7F7;">
+		<div data-role="listview" data-bind="source: dataSource" data-template="warningInfo_Template" data-fixed-headers="true" id="warningInfoListView" style="background-color: white;" data-click="warningInfo_listViewClick">
+		</div>
+	</div>
+
+	<!--<ul id="warningInfo_actionsheet" data-role="actionsheet" data-cancel="取消" style="font-size: 0.7em;">
+		<li class="km-actionsheet-title">选择工序</li>
+		<li>
+			<a data-action="warningInfo_filter('0')">全部</a>
+		</li>
+		<li>
+			<a data-action="warningInfo_filter('1')">清花</a>
+		</li>
+		<li>
+			<a data-action="warningInfo_filter('2')">梳棉</a>
+		</li>
+		<li>
+			<a data-action="warningInfo_filter('3')">预并</a>
+		</li>
+		<li>
+			<a data-action="warningInfo_filter('4')">条并卷</a>
+		</li>
+		<li>
+			<a data-action="warningInfo_filter('5')">精梳</a>
+		</li>
+		<li>
+			<a data-action="warningInfo_filter('6')">末并</a>
+		</li>
+		<li>
+			<a data-action="warningInfo_filter('7')">粗纱</a>
+		</li>
+		<li>
+			<a data-action="warningInfo_filter('8')">细纱</a>
+		</li>
+		<li>
+			<a data-action="warningInfo_filter('9')">络筒</a>
+		</li>
+	</ul>-->
+
+	<!--List模板-->
+	<script id="warningInfo_Template" type="text/x-kendo-template">
+		<div style="background-color:rgb(247,247,247);height: 5px;"></div>
+		<div>
+			<a id="machineName" style="font-size: 1em;float: left;margin-top: 0.5em;padding-left: 0.5em;color: black;">#=deviceName#</a>
+			<div id="warningInfoDetailButton" deviceCode="#:deviceCode#" data-bind="click: detailClicked" data-role="button" style="background-image: url(../resources/@3x/detail@3x.png);background-repeat: round;border: none;float: right;margin: 15px;padding-left: 23px;padding-right: 23px;padding-top: 8px;padding-bottom: 8px;"></div>
+		</div>
+		<div style="margin-top: 2.5em;padding-top: 0.5em;border-top-width: 1px;border-top-color: lightgray;border-top-style: solid;">
+			<div style="padding-left: 0.5em;float: left;font-size: 0.8em;;width: 48%;">
+				<img src="../resources/@3x/status_red@3x.png" style="width: 15px;" /> #=deviceStatus#
+			</div>
+			<div>
+				<div style="font-size: 0.8em;width: 50%;float: right;border-left-width: 1px;border-left-style: solid;border-left-color: lightgray;padding-left: 0.5em;margin-bottom: 0.5em;">
+					<p>#=message#</p>
+				</div>
+			</div>
+
+		</div>
+	</script>
+
+	<!--Common Item模板-->
+	<script id="warningInfoCommonItemTemplate" type="text/x-kendo-template">
+		<div style="text-align: center;">
+			<select id="warningInfo_procedure" class="selector" onchange="warningInfo_filter(this.options[this.options.selectedIndex].value)" style="top: 19px;position: relative;font-size: 15px;width: 100%;height: 36px;padding-left: 0.5em;text-align: center;color: rgb(169,61,41);border-width: 1px;border-color: rgb(169,61,41);border-style: solid;border-radius: 2px;">
+				<option value="" selected disabled="true">工序筛选</option>
+				<option value="ALL">全部</option>
+				<option value="1">清花</option>
+				<option value="2">梳棉</option>
+				<option value="3">预并</option>
+				<option value="4">条并卷</option>
+				<option value="5">精梳</option>
+				<option value="6">末并</option>
+				<option value="7">粗纱</option>
+				<option value="8">细纱</option>
+				<option value="9">络筒</option>
+			</select>
+			<!--<img src="../resources/@3x/dropdownlist_icon@3x.png" style="width: 20px;position: absolute;left: 35%;top: 13px;z-index: 999;" />-->
+			<img src="../resources/@3x/dropdownlist_icon@3x.png" style="width: 20px;position: absolute;right: 10%;top: 13px;z-index: 999;" />
+			<!--<select id="warningInfo_displayStatus" onchange="warningInfo_displayStatus(this.options[this.options.selectedIndex].value)" style="top: 19px;position: relative;font-size: 15px;width: 48%;height: 36px;padding-left: 0.5em;text-align: center;color: rgb(169,61,41);border-width: 1px;border-color: rgb(169,61,41);border-style: solid;border-radius: 2px;">
+				<option value="" selected disabled="true">显示机台</option>
+				<option value="FOCUS">已绑定机台</option>
+				<option value="ALL">全部机台</option>
+			</select>-->
+		</div>
+	</script>
+
+	<script src="../Controller/url.js"></script>
+	<script src="../Controller/storage.js"></script>
+	<script src="../Controller/warning_info.js"></script>
+	<link href="../css/warning_info.css" rel="stylesheet" />
+</div>
+
+<!--</body>
+
+</html>-->

@@ -1,0 +1,9 @@
+/**
+ * Created by Satoru on 16/9/22.
+ */
+
+#warningListView.km-widget .km-listview-link {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #DDDDDD;
+}

@@ -1,0 +1,45 @@
+/**
+ * Created by Satoru on 16/10/17.
+ */
+
+#queryPackingInput_listview.km-list>li{
+	padding-top: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 0px;
+}
+
+#queryPackingInputCommonlistview.km-list>li{
+	padding: 4px;
+	background: slategray;
+	margin: 0;
+	border: 0;
+}
+
+/*.k-popup .k-list .k-item {
+	background-color: #EEEEEE;
+	text-align: left;
+	padding-left: 1em;
+	border: 0;
+	color: #AAAAAA;
+	height: 60px;
+	font-size: 1em;
+}
+
+.k-dropdown .k-state-default {
+	background-color: #EEEEEE;
+	border-color: #EEEEEE;
+	padding-left: 0.5em;
+	background: none;
+	font-size: 1em;
+}
+
+.k-item.k-state-selected.k-state-focused {
+	background-color: #E6E6E6;
+	text-align: left;
+	padding-left: 1em;
+	border: 0;
+	color: #A9293F;
+	height: 60px;
+	font-size: 1em;
+}*/

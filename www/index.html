@@ -1,61 +1,87 @@
 <!DOCTYPE html>
 <html>
-    
-    <head>
-        <meta charset="utf-8" />
-        <title>登录</title>
-        
-        <link href="styles/kendo.mobile.all.min.css" rel="stylesheet" />
-        <script src="Controller/url.js"></script>
-        <script src="Controller/storage.js" ></script>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/kendo.all.min.js"></script>
-    </head>
-    
-    <body>
-        <div data-role="view" id="IMSLogin">
-            <div data-role="header">
-            </div>
-            <div data-role="content" style="background-color: white;">
-                <img src="resources/@3x/cc_background@3x.png" width="100%" border="0" style="position: absolute;" />
-                <div style="width: 100%;height: 100%;text-align: center;padding-top: 25%;">
-                    <img src="resources/@3x/logo@3x.png" width="35%" border="0" />
-                </div>
-                <div style="margin-top: 15%;margin-left: 1em;">
-                    <p style="border-bottom: 1px solid #EEEEEE;padding-bottom: 0.45em;">
-                    <img src="resources/@3x/account_icon@3x.png" style="width: 19px;height: 20px;float: left;" />
-                    <input id="loginUserName" type="text" class="texter" placeholder="请输入账号" name="userID" onKeyUp="showAccountClearBtn()" style="font-size: 1.1em;width: 80%;padding-left: 0.4em;margin: 0;border: none;" />
-                    <input type="image" class="clearer" id="accountClearBtn" onclick="clearAccountText()" src="resources/@3x/clear_icon@3x.png" style="width: 18px;position: relative;float: right;margin-right: 1em"/>
-                    </p>
-                </div>
-                <div style="margin-top: 5%;margin-left: 1em;">
-                    <p style="border-bottom: 1px solid #EEEEEE;padding-bottom: 0.45em;">
-                    <img src="resources/@3x/password_icon@3x.png" style="width: 17px;height: 20px;float: left;margin-left: 0.1em;" />
-                    <input id="loginPassword" type="password" placeholder="请输入密码" name="password" onKeyUp="showPasswordClearBtn()" style="font-size: 1.1em;width: 80%;padding-left: 0.5em;margin: 0;border: none;" />
-                    <input type="image" class="clearer" id="passwordClearBtn" onclick="clearPasswordText()" src="resources/@3x/clear_icon@3x.png" style="width: 18px;position: relative;float: right;margin-right: 1em"/>
-                    </p>
-                </div>
-                <div style="margin-top: 30%;text-align: center;">
-                    <button id="loginButton" type="submit" style="width: 95%;height: 2.5em;border: none;font-size: 1.2em;background-color: #A62A40;color: #FFFFFF;">登录</button>
-                    <!--<a href="View/home.html">home</a>-->
-                </div>
-                
-            </div>
-            </ul>
-            <div style="text-align: center;bottom: 0.5em;">
-                <a style="color: #B5B5B5;font-size: 1.1em;">V1.0.0</a>
-            </div>
-        </div>
-        
-        <script>
-            	var app = new kendo.mobile.Application(document.body,{
-        			platform:'ios',
-        			skin:'nova'
-    			});
-        </script>
-        
-        <script src="Controller/index.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
-    </body>
-    
+
+	<head>
+		<meta charset="utf-8" />
+		<title>登录</title>
+
+		<link href="styles/kendo.silver.min.css" rel="stylesheet" />
+		<link href="styles/kendo.common.min.css" rel="stylesheet" />
+		<link href="styles/kendo.mobile.all.min.css" rel="stylesheet" />
+		<link href="css/index.css" rel="stylesheet" />
+
+		<script src="Controller/url.js"></script>
+		<script src="Controller/storage.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/kendo.mobile.min.js"></script>
+		<script src="js/kendo.core.min.js"></script>
+		<script src="js/kendo.data.min.js"></script>
+		<script src="js/kendo.popup.min.js"></script>
+		<script src="js/kendo.list.min.js"></script>
+		<script src="js/kendo.fx.min.js"></script>
+		<script src="js/kendo.userevents.min.js"></script>
+		<script src="js/kendo.draganddrop.min.js"></script>
+		<script src="js/kendo.mobile.scroller.min.js"></script>
+		<script src="js/kendo.virtuallist.min.js"></script>
+		<script src="js/kendo.draganddrop.min.js"></script>
+		<script src="js/kendo.combobox.min.js"></script>
+	</head>
+
+	<body>
+		<div data-role="view" id="IMSLogin" data-before-hide="viewBeforeHide" data-before-show="viewBeforeShow">
+			<div data-role="header">
+			</div>
+			<div data-role="content" style="background-color: white;">
+				<img src="resources/@3x/cc_background@3x.png" width="100%" border="0" style="position: absolute;" />
+				<div style="width: 100%;height: 100%;text-align: center;top: 30px;position: absolute;">
+					<img src="resources/@3x/logo@3x.png" width="120px" border="0" />
+				</div>
+
+				<div style="top: 170px;margin-left: 5%;position: absolute;width: 95%;">
+					<p style="border-bottom: 1px solid #EEEEEE;padding-bottom: 0.45em;">
+						<img src="resources/@3x/account_icon@3x.png" style="width: 23px;height: 25px;float: left;" />
+						<input id="loginUserName" placeholder="请输入账号" style="font-size: 1em;width: 85%;border: none;" />
+						<!--<input id="loginUserName" class="texter" placeholder="请输入账号" name="userID" onKeyUp="showAccountClearBtn()" style="font-size: 1em;width: 75%;height: 30px;padding-left: 0.4em;margin: 0;border: none;" />-->
+						<input type="image" class="clearer" id="accountClearBtn" onclick="clearAccountText()" src="resources/@3x/clear_icon@3x.png" style="top: 5px;width: 18px;position: relative;float: right;margin-right: 10%" />
+					</p>
+				</div>
+				<div style="top: 220px;margin-left: 5%;position: absolute;width: 95%;">
+					<p style="border-bottom: 1px solid #EEEEEE;padding-bottom: 0.45em;">
+						<img src="resources/@3x/password_icon@3x.png" style="width: 20px;height: 25px;float: left;margin-left: 0.1em;" />
+						<input id="loginPassword" type="password" placeholder="请输入密码" name="password" onKeyUp="showPasswordClearBtn()" style="font-size: 1em;width: 75%;height: 30px;padding-left: 0.5em;margin: 0;border: none;" />
+						<input type="image" class="clearer" id="passwordClearBtn" onclick="clearPasswordText()" src="resources/@3x/clear_icon@3x.png" style="top: 5px;width: 18px;position: relative;float: right;margin-right: 10%" />
+					</p>
+				</div>
+				<div style="top: 290px;text-align: center;position: absolute;width: 100%;">
+					<button id="loginButton" type="submit" style="width: 95%;height: 2.5em;border: none;font-size: 1.2em;background-color: #A62A40;color: #FFFFFF;border-radius: 4px;">登 录</button>
+					<!--<a href="View/home.html">home</a>-->
+				</div>
+				<div style="top: 340px;margin-left: 5%;position: absolute;width: 95%;">
+					<button style="font-size: 0.8em;color:#AAAAAA;background-color: white;border: none;margin-top: 10px;" onclick="removeAllAccounts()">清除账号历史</button>
+					<span style="float: right;text-align: right;margin-right: 20px;margin-top: 10px;width: 40%;">
+						<input type="checkbox" id="eq1" class="k-checkbox" onchange="showPassword(this)" style="border-color:white;padding: none;margin: none;">
+						<label class="k-checkbox-label" for="eq1" style="font-size: 1em;color: #AAAAAA;">显示密码</label>
+					</span>
+				</div>
+				<a style="color: #A9293D;font-size: 1em;position: absolute;top: 20px;right: 15px;" id="version"></a>
+			</div>
+			</ul>
+		</div>
+
+		<div data-role="modalview" id="updateModal" style="display: none;font-size: 1em;width: 100%; height: 100%;border-radius: 0px;" data-modal="false">
+			<img src="resources/@3x/cc_background@3x.png" width="100%" border="0" style="position: absolute;" />
+			<div style="width: 100%;height: 100%;text-align: center;top: 90px;position: absolute;">
+				<img src="resources/@3x/logo@3x.png" width="120px" border="0" />
+			</div>
+			<div style="text-align: center;width: 100%;top: 300px;position: absolute;">
+				<div>检测到新版本,请下载更新</div>
+				<div id="updateButton" data-role="button" style="margin-top: 100px;color: #A9293D;border-color: #A9293D;">点击下载新版本</div>
+			</div>
+
+		</div>
+
+		<script src="Controller/index.js"></script>
+		<script type="text/javascript" src="cordova.js"></script>
+	</body>
+
 </html>

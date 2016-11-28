@@ -1,0 +1,134 @@
+<!--<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>机台输入产量查询</title>
+
+		<link href="../styles/kendo.default.min.css" rel="stylesheet" />
+		<link href="../styles/kendo.common.min.css" rel="stylesheet" />
+		<link href="../styles/kendo.mobile.all.min.css" rel="stylesheet" />
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/kendo.all.min.js"></script>
+
+	</head>
+
+	<body>-->
+
+<div data-role="view" data-title="机台输入产量查询" data-show="viewShow" data-init="viewInit" data-after-show="afterShow" id="IMSQueryYieldInput">
+	<header data-role="header" style="background-color: white;">
+		<span data-role="navbar" style="border-bottom-width:1px ;border-bottom-style: solid;border-bottom-color: lightgray;">
+                <div data-role="view-title" style="line-height: 80px;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
+                <a id="queryYieldInput_leftNavButton" href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back_big@3x.png);background-repeat: round;height: 80px;width: 100px;"></a>
+				<a data-badge="0" id="queryYieldInput_rightNavButton_1" href="warning_list.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red_big@3x.png);background-repeat: round;height: 80px;width: 100px;"></a>
+		</span>
+		<div style="background-color: slategray;">
+			<div style="text-align: center;border-bottom-width: 1px;border-top-width: 1px;border-bottom-color: #EEEEEE;border-top-color: #EEEEEE;border-bottom-style: solid;border-top-style: solid;padding-top: 10px;padding-bottom: 10px;">
+				<input id="queryYieldInput_startTimeDatepicker1" onkeydown="GLOBAL_EnterDisable()" style="font-size: 1em;width: 47%;" placeholder="开始日期" />
+				<input id="queryYieldInput_startTimeDatepicker2" onkeydown="GLOBAL_EnterDisable()" style="font-size: 1em;width: 47%;" placeholder="结束日期" />
+				<ul data-role="listview" data-bind="source: queryYieldInputCommonDataSource" data-style="inset" style="width: 100%;margin-top: 5px;background-color: white" data-template="queryYieldInputCommonItemTemplate" id="queryYieldInputCommonlistview">
+				</ul>
+				<!--<div>
+					<div id="queryYieldInput_QueryButton" data-role="button" style="position: absolute;right: 2%;top: 169px;width: 30%;height: 30px;border: none;font-size: 1em;background-color: #A62A40;color: #FFFFFF;border-radius: 4px;">查 询</div>
+				</div>-->
+			</div>
+		</div>
+
+	</header>
+	<div data-role="content" style="background-color: #FFFFFF;">
+		<ul data-role="listview" data-bind="source: queryResultDataSource" data-style="inset" style="background-color: white" data-template="queryYieldInput_itemTemplate" id="queryYieldInput_listview">
+		</ul>
+	</div>
+	<!--list模板-->
+	<script id="queryYieldInput_itemTemplate" type="text/x-kendo-template">
+		<div id="queryYieldInput_itemInfo" recid="#:recid#">
+			<span style="color: black;font-size: 0.8em;">#:flowname# #:devname#&nbsp</span>
+			<span style="width: 10em;position: absolute;right: 0px;top: 5px;">
+				<div style="text-align: left;color: gray;font-size: 0.7em;width: 100%;">创建日期:#:date# </div>
+				<div style="text-align: left;color: gray;font-size: 0.7em;width: 100%;">排班日期:#:shiftdate#</div>
+			</span>
+		</div>
+		<div>
+			<select id="queryYieldInput_duty" data-bind="value: duty" data-text-field="duty" data-value-field="duty" style="position: relative;top: 25px;font-size: 1em;width: 48%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
+				<option value="" selected disabled="true">班别</option>
+				<option value="1">甲</option>
+				<option value="2">乙</option>
+				<option value="3">丙</option>
+			</select>
+			<select id="queryYieldInput_varieties" data-bind="source: varietiesDataSource,value:variety" data-text-field="variety" data-value-field="variety" style="position: relative;top: 25px;font-size: 1em;float: right;width: 48%;height: 35px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
+				<option value="" selected disabled="true">品种</option>
+			</select>
+			<input id="queryYieldInput_yield" value="#:yield#" placeholder="产量" type="number" onkeydown="GLOBAL_onlyNum(this.value)" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" style="position: relative;font-size: 1em;padding-left: 0.5em;width: 48%;height: 35px;margin-top: 35px;border-width: 2px;border-style: solid;border-color: rgb(238,238,238);border-radius: 4px;"></input>
+			<div data-role="button" data-bind="click: editItem" style="float: right;margin-top: 18px;width: 47.5%;background-color: rgb(255,255,255);color: rgb(169,41,61);border-color: rgb(169,41,61);border-radius: 4px;font-size: 14px;">修 改</div>
+			<!--<div data-role="button" data-bind="click: deleteItem" style="float: right;width: 47.5%;background-color: rgb(255,255,255);color: rgb(169,41,61);border-color: rgb(169,41,61);border-radius: 4px;">删 除</div>-->
+
+		</div>
+	</script>
+
+	<!--Common Item模板-->
+	<script id="queryYieldInputCommonItemTemplate" type="text/x-kendo-template">
+		<div style="background-color: slategray;">
+			<div style="text-align: center;">
+				<div style="float: left;text-align: left;width: 47%;margin-left: 2%;">
+					<!--<span style=";font-size: 0.8em;text-align: right;width: 5%;">工序:</span>-->
+					<select id="queryYieldInput_procedure" onchange="queryYieldInput_AutoFill(this.options[this.options.selectedIndex].value)" style="position: relative;top: 15px;font-size: 0.8em;width: 100%;height: 30px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
+						<option value="ALL" selected>所有工序</option>
+						<!--<option value="1">清花</option>-->
+						<option value="2">梳棉</option>
+						<option value="3">预并</option>
+						<!--<option value="4">条并卷</option>
+				<option value="5">精梳</option>
+				<option value="6">末并</option>-->
+						<option value="7">粗纱</option>
+						<!--<option value="8">细纱</option>
+				<option value="9">络筒</option>-->
+					</select>
+				</div>
+				<div style="float: right;text-align: right;width: 47%;margin-right: 2%;">
+					<!--<span style="top: 5px;font-size: 0.8em;text-align: right;width: 5%;">班别:</span>-->
+					<select id="duty" style="position: relative;top: 15px;font-size: 0.8em;width: 100%;height: 30px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
+						<option value="ALL" selected>所有班别</option>
+						<option value="1">甲</option>
+						<option value="2">乙</option>
+						<option value="3">丙</option>
+					</select>
+				</div>
+
+			</div>
+
+		</div>
+		<div style="margin-top: 10px;text-align: left;float: left;margin-left: 2%;width: 31%;">
+			<!--<span style="top: 5px;font-size: 0.8em;text-align: right;">设备:</span>-->
+			<select id="queryYieldInput_machine" style="position: relative;top: 15px;font-size: 0.8em;width: 100%;height: 30px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
+				<option value="ALL" selected>所有设备</option>
+			</select>
+		</div>
+		<div style="margin-top: 9px;float: right;text-align: right;width: 31%;margin-right: 2%;">
+			<div id="queryYieldInput_QueryButton" onclick="search()" data-role="button" style="width: 100%;height: 30px;border: none;font-size: 0.8em;background-color: rgb(166,42,64);color: white;border-radius: 4px;">查 询</div>
+		</div>
+		<div style="margin-top: 10px;float: right;text-align: right;width: 31%;margin-right: 1%;">
+			<!--<span style="top: 5px;font-size: 0.8em;text-align: right;width: 5%;">白夜:</span>-->
+			<select id="queryYieldInput_flight" style="position: relative;top: 15px;font-size: 0.8em;width: 100%;height: 30px;padding-left: 0.5em;border-radius: 4px;text-align: left;background-color: rgb(238,238,238);">
+				<option value="ALL" selected>白夜班</option>
+				<option value="1">白班</option>
+				<option value="2">夜班</option>
+			</select>
+		</div>
+	</script>
+
+	<link rel="stylesheet" href="../css/query_yield_input.css" />
+	<script src="../Controller/query_yield_input.js"></script>
+	<script src="../Controller/url.js"></script>
+</div>
+<!--<script>
+			window.app = new kendo.mobile.Application(document.body, {
+				platform: 'ios',
+				skin: 'nova',
+				layout: 'default',
+				transition: 'overlay'
+			});
+		</script>
+
+	</body>
+
+</html>-->

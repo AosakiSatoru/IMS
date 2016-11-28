@@ -33,7 +33,24 @@
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
     self.viewController = [[MainViewController alloc] init];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
+    NSLog(@"continueUserActiity enter");
+    NSLog(@"\tAction Type : %@", userActivity.activityType);
+    NSLog(@"\tURL         : %@", userActivity.webpageURL);
+    NSLog(@"\tuserinfo :%@",userActivity.userInfo);
+    
+    NSLog(@"continueUserActiity exit");
+    restorationHandler(nil);
+    
+    NSHTTPCookieStorage *sharedHTTPCookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    NSArray *cookies = [sharedHTTPCookieStorage cookiesForURL:userActivity.webpageURL];
+    
+    NSLog(@"COOKIE{name: %@", cookies);
+    return true;
 }
 
 @end

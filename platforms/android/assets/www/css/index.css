@@ -41,7 +41,7 @@ body {
     height:100%;
     margin:0px;
     padding:0px;
-    text-transform:uppercase;
+    /*text-transform:uppercase;*/
     width:100%;
 }
 
@@ -112,4 +112,39 @@ h1 {
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
+}
+
+.k-list>.k-state-focused{
+	box-shadow:none;
+	-webkit-box-shadow:none;
+	background-color: white;
+	border-color: lightgray;
+	color: black;
+}
+.k-list-container{
+	/*background-color: white;*/
+	color: black;
+}
+
+.k-dropdown-wrap.k-state-default{
+	border: none;
+}
+
+.k-icon:not(.k-loading){
+	background-image: url(../resources/@3x/dropdownlist_icon@3x.png);
+	background-repeat: round;
+	width: 23px;
+}
+
+.k-state-hover>*>.k-i-arrow-s{
+	background-position: 0px;
+}
+
+.k-combobox .k-select{
+	border: none;
+	background-color: white;
+}
+
+.km-nova [class^=k-]{
+	border-color: lightgray;
 }

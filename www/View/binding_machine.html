@@ -1,0 +1,75 @@
+<!--<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>绑定机台</title>
+		<link href="../styles/kendo.mobile.all.min.css" rel="stylesheet" />
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/kendo.mobile.min.js"></script>
+
+	</head>
+
+	<body>-->
+<div data-role="view" data-title="绑定机台" id="IMSBindingMachine" data-show="viewShow">
+
+	<header data-role="header">
+		<span data-role="navbar">
+			<div data-role="view-title" style="line-height: 80px;font-weight: 100;background-color: white;color: black;font-family: arial;"></div>
+			<a id="bindingMachine_leftNavButton" href="#:back" data-role="button" data-align="left" style="background-image: url(../resources/@3x/back_big@3x.png);background-repeat: round;height: 80px;width: 100px;"></a>
+			<a data-badge="0" id="packingInput_rightNavButton_1" href="#warning_list.html" data-role="button" data-align="right" style="background-image: url(../resources/@3x/status_red_big@3x.png);background-repeat: round;height: 80px;width: 100px;"></a>
+		</span>
+	</header>
+	<div data-role="content" style="background-color: #F7F7F7;">
+		<!--data-source="flownameDataSource"-->
+
+		<div id="bindingMachineListView" data-role="listview" data-style="inset" style="background-color: white;" data-bind="source: flownameDataSource" data-template="flownameTemplate">
+		</div>
+	</div>
+	<footer data-role="footer">
+		<div style="background-color: #F7F7F7;">
+			<span>
+                        <a data-role="button" id="bindingMachine_cancelButton"
+                            style="width: 48%;margin-left: 1%;height: 2.5em;font-size: 1.2em;background-color: #FFFFFF;color: #A9293D;border-radius: 4px;"
+                            data-bind="click: unselectedAll">取 消</a>
+                    </span>
+			<span>
+                        <a data-role="button" id="bindingMachine_confirmButton"
+                            style="width: 48%;height: 2.5em;font-size: 1.2em;background-color: #A9293D;color: #FFFFFF;border-color: #A9293D;border-radius: 4px;"
+                            data-bind="click: bindingMachine">确 认</a>
+                    </span>
+		</div>
+	</footer>
+
+	<!--collapsible模板-->
+	<script id="flownameTemplate" type="text/x-kendo-template">
+		<div data-role="collapsible" data-collapse-icon="arrow-up" data-expand-icon="arrow-down" id="collapsible" data-animation="true">
+
+			<h3 style="padding-top: 0.5em;padding-bottom: 0.5em;font-weight: 100;font-family: arial;">
+        			<span style="font-size: 1em;">#=flowname#</span>
+        			<span>
+        				<div data-role="button" data-bind="click :collapsibleButtonClick" id="#=flowname#CheckAllButton" isselect="NO" style="float: right;background-image: url(../resources/@3x/select@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;"></div>
+	       		</span>
+       		</h3>
+
+			<ul data-role="listview" data-style="inset" style="background-color: white" data-template="deviceTemplate" data-source="#=deviceDataSource#" id="#=flownameid#">
+			</ul>
+		</div>
+	</script>
+
+	<!--List模板-->
+	<script id="deviceTemplate" type="text/x-kendo-template">
+		<label style="padding-top: 25px;padding-bottom: 25px;"><input type="checkbox" value="#=devcode#" data-bind="checked: devices,click: select">
+					<span  id="#=flowname#CheckButton" isselect="NO" style="float: right;background-image: url(../resources/@3x/select@3x.png);background-repeat: round;border: 0;width: 27px;height: 27px;right: 2px;position: relative;font-size: 1em;"></span>
+					#=device#
+				</label>
+	</script>
+
+	<link href="../css/binding_machine.css" rel="stylesheet" />
+	<script src="../Controller/url.js"></script>
+	<script src="../Controller/storage.js"></script>
+	<script src="../Controller/binding_machine.js"></script>
+</div>
+<!--</body>
+
+</html>-->

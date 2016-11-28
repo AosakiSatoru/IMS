@@ -1,5 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.esquel.ims" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.esquel.ims"
+        version="1.0.20"
+        android-versionCode="20"
+        ios-CFBundleVersion="20"
+        xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0"
+        android-packageName="com.esquel.ims"
+        ios-CFBundleIdentifier="com.esquel.ims.prod"
+>
     <name>IMS</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -22,5 +30,29 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+    </platform>
+     <platform name="ios">
+       
+        <preference name="ShowSplashScreenSpinner" value="false"/>
+       
+    </platform>
+    <platform name="android">
+        <!--
+            ldpi    : 36x36 px
+            mdpi    : 48x48 px
+            hdpi    : 72x72 px
+            xhdpi   : 96x96 px
+            xxhdpi  : 144x144 px
+            xxxhdpi : 192x192 px
+        -->
+        <icon src="logo.png" density="ldpi" />
+        <icon src="logo.png" density="mdpi" />
+        <icon src="logo.png" density="hdpi" />
+        <icon src="logo.png" density="xhdpi" />
+        <icon src="logo.png" density="xxhdpi" />
+        <icon src="logo.png" density="xxxhdpi" />
+        <splash src="launch_screen.png" density="port-hdpi"/>
+        <preference name="ShowSplashScreenSpinner" value="false"/>
+       
     </platform>
 </widget>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.esquel.ims" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-packageName="com.esquel.ims" android-versionCode="20" id="com.esquel.ims" ios-CFBundleIdentifier="com.esquel.ims.prod" ios-CFBundleVersion="20" version="1.0.20" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="Whitelist">
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
@@ -9,6 +9,25 @@
     </feature>
     <feature name="JPushPlugin">
         <param name="android-package" value="cn.jpush.phonegap.JPushPlugin" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <feature name="Vibration">
+        <param name="android-package" value="org.apache.cordova.vibration.Vibration" />
+    </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
+    <feature name="RareloopAppVersion">
+        <param name="android-package" value="com.rareloop.cordova.appversion.RareloopAppVersion" />
     </feature>
     <name>IMS</name>
     <description>
@@ -26,5 +45,13 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <allow-intent href="market:*" />
+    <icon density="ldpi" src="logo.png" />
+    <icon density="mdpi" src="logo.png" />
+    <icon density="hdpi" src="logo.png" />
+    <icon density="xhdpi" src="logo.png" />
+    <icon density="xxhdpi" src="logo.png" />
+    <icon density="xxxhdpi" src="logo.png" />
+    <splash density="port-hdpi" src="launch_screen.png" />
     <preference name="loglevel" value="DEBUG" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
 </widget>

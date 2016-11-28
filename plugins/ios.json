@@ -14,13 +14,30 @@
             "PACKAGE_NAME": "com.esquel.ims"
         },
         "jpush-phonegap-plugin": {
-            "API_KEY": "c521d351cae0eb0208c70551",
+            "API_KEY": "f4a1c2568706d4389d0111f2",
             "PACKAGE_NAME": "com.esquel.ims"
-        }
-    },
-    "dependent_plugins": {
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.esquel.ims.prod"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "com.esquel.ims.prod"
+        },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.esquel.ims"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.esquel.ims.prod"
+        },
+        "cordova-plugin-appversion": {
+            "PACKAGE_NAME": "com.esquel.ims.prod"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.esquel.ims.prod"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.esquel.ims.prod"
         }
-    }
+    },
+    "dependent_plugins": {}
 }

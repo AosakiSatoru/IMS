@@ -59,3 +59,5 @@ platforms/android/.idea/
 platforms/android/assets/www/index.html
 
 platforms/android/assets/www/index.html
+
+platforms/ios/www/Controller/url.js

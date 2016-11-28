@@ -1,0 +1,95 @@
+/**
+ * Created by Satoru on 16/9/21.
+ */
+
+
+/*collapsible图标:上*/
+
+.km-arrow-up:after,
+.km-arrow-up:before {
+	width: 23px;
+	height: 23px;
+	content: url("../resources/@3x/collapsible_selected_23x23@3x.png");
+	background-repeat: round;
+	-webkit-background-clip: border-box;
+}
+
+
+/*collapsible图标:下*/
+
+.km-arrow-down:after,
+.km-arrow-down:before {
+	width: 23px;
+	height: 23px;
+	content: url("../resources/@3x/collapsible_select_23x23@3x.png");
+	background-repeat: round;
+	-webkit-background-clip: border-box;
+}
+
+
+/*collapsible标题样式*/
+
+.km-collapsible-header.km-icon-left {
+	border-top: none;
+	border-bottom: 0;
+	font-size: 1em;
+	line-height: 0;
+	top: 15px;
+	padding: 0;
+	padding-right: 1em;
+}
+
+.km-nova .km-collapsible-header h3 {
+	color: #333333;
+}
+
+.km-nova .km-collapsible-header .km-icon {
+	top: 13px;
+}
+
+.km-widget.km-collapsible.km-expanded,
+.km-widget.km-collapsible.km-collapsed,
+.km-nova .km-collapsible-content {
+	padding-bottom: 0;
+	padding-top: 0;
+	margin: 0;
+	border: none;
+}
+
+
+/*List样式*/
+
+.km-nova #bindingMachineListView.km-list>li,
+#bindingMachineListView .km-list:not(.km-virtual-list)>li {
+	padding: 0;
+	margin: 0;
+	border-bottom: none;
+	border-top-width: 1px;
+	padding-left: 1em;
+}
+
+.km-nova #bindingMachineListView.km-list>li label {
+	color: #333333;
+	font-weight: 300;
+	font-size: 0.8em;
+}
+
+
+/*选择图片样式*/
+
+.km-root .km-pane .km-icon.km-check {
+	border: none;
+}
+
+.image-select {
+	background-image: url("../resources/@3x/select@3x.png")
+}
+
+.image-unselect {
+	background-image: url("../resources/@3x/selected@3x.png")
+}
+
+.km-root .km-pane .km-check:checked:after,
+.km-widget .km-check:checked:after {
+	content: none;
+}
