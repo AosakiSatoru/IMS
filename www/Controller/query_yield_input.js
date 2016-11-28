@@ -61,7 +61,7 @@ function queryYieldInputFetchDataRequest(params) {
 	$.ajax({
 		type: "post",
 		url: IMSUrl + "Query_YieldInput/",
-		async: false,
+		async: true,
 		dataType: "jsonp",
 		data: {
 			"parameter": JSON.stringify(params)
@@ -255,6 +255,8 @@ function showList(data) {
 		}
 	});
 	kendo.bind($("#queryYieldInput_listview"), listViewModel);
+	app.view().scroller.scrollTo(0, 0);
+	$("#queryYieldInput_listview").data("kendoMobileListView").refresh();
 }
 
 function queryYieldInput_AutoFill(flowcode) {

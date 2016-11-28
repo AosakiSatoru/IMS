@@ -54,7 +54,7 @@ function queryPackingInputFetchDataRequest(params) {
 	$.ajax({
 		type: "post",
 		url: IMSUrl + "Query_PackingInput/",
-		async: false,
+		async: true,
 		dataType: "jsonp",
 		data: {
 			"parameter": JSON.stringify(params)
@@ -168,5 +168,7 @@ function showList(data) {
 			}
 		});
 		kendo.bind($("#queryPackingInput_listview"), listViewModel);
+		app.view().scroller.scrollTo(0, 0);
+		$("#queryPackingInput_listview").data("kendoMobileListView").refresh();
 	}
 }
